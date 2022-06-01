@@ -14,5 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+Route::post('/search', "App\Http\Controllers\SearchController@call");
+
+Route::get("/{any}", function(){
+    return view('home');
+});
+
