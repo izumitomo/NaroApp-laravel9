@@ -16,7 +16,7 @@ export default function Home() {
     },
   });
 
-  const titleStyle = styled('div')({
+  const TitleStyle = styled('div')({
     textAlign: "center",
     color: "black",
     fontSize: 40,
@@ -72,7 +72,7 @@ export default function Home() {
 
   return (
     <ThemeProvider theme={theme}>
-      <titleStyle>{title}</titleStyle>
+      <TitleStyle>{title}</TitleStyle>
       <div>
         <FormControl sx={{
            m: 1,

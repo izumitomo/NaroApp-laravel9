@@ -26352,7 +26352,7 @@ function Home() {
       }
     }
   });
-  var titleStyle = (0,_mui_system__WEBPACK_IMPORTED_MODULE_6__["default"])('div')({
+  var TitleStyle = (0,_mui_system__WEBPACK_IMPORTED_MODULE_6__["default"])('div')({
     textAlign: "center",
     color: "black",
     fontSize: 40
@@ -26424,7 +26424,7 @@ function Home() {
   var title = "なろーせんとーりょく！";
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material_styles__WEBPACK_IMPORTED_MODULE_7__["default"], {
     theme: theme,
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("titleStyle", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(TitleStyle, {
       children: title
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_8__["default"], {
