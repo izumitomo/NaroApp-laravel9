@@ -2,10 +2,20 @@ import Search from "./Search";
 import axios from 'axios';
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
-import {Button, InputLabel, Select, MenuItem, FormGroup, FormControl, FormControlLabel, Checkbox  } from '@mui/material';
+import {Box, Paper, Grid, Button, InputLabel, Select, MenuItem, FormGroup, FormControl, FormControlLabel, Checkbox  } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { styled } from '@mui/system';
 import WifiFindIcon from '@mui/icons-material/WifiFind';
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+  height: "100%"
+}));
+
 
 export default function Home() {
   const theme = createTheme({
@@ -16,7 +26,7 @@ export default function Home() {
     },
   });
 
-  const titleStyle = styled('div')({
+  const TitleStyle = styled('div')({
     textAlign: "center",
     color: "black",
     fontSize: 40,
@@ -49,8 +59,8 @@ export default function Home() {
     setChecked(event.target.checked);//処理に時間がかかるのか、どこに入れても最後に実行される。
   };
 
-  let response
   const [search, setSearch] = React.useState(false);
+  const [novels, setNovels] = React.useState([]);
   const handleSearch = () => {
     setSearch(true);
     const data = {
@@ -59,8 +69,8 @@ export default function Home() {
     }
     axios.post("/search", data)
     .then(res => {
-      response = res.data;
-      console.log(response)
+      setNovels(res.data)
+      console.log(res.data)//dataはbodyとかheaderのやつ。
     }
     );
   };
@@ -72,7 +82,7 @@ export default function Home() {
 
   return (
     <ThemeProvider theme={theme}>
-      <titleStyle>{title}</titleStyle>
+      <TitleStyle>{title}</TitleStyle>
       <div>
         <FormControl sx={{
            m: 1,
@@ -142,12 +152,35 @@ export default function Home() {
             <b>計測</b>
           </Button>
       </div>
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid container spacing={2} columns={20}>
+          <Grid item xs={3}>
+            <Item>xs=8</Item>
+          </Grid>
+          <Grid item xs={3}>
+            <Item>xs=8</Item>
+          </Grid>
+          <Grid item xs={14}>
+          <Grid container spacing={2} columns={10}>
+          <Grid item xs={3}>
+            <Item>xs=8</Item>
+          </Grid>
+          <Grid item xs={3}>
+            <Item>xs=8</Item>
+          </Grid>
+          <Grid item xs={14}>
+            <Item>xs=8</Item>
+          </Grid>
+        </Grid>
+          </Grid>
+        </Grid>
+      </Box>
       <p>{base_url}</p>
       {search ? (
       <Search
         base_url = {base_url}//左が渡す名前で右が渡す変数
         search = {search}
-        response = {response}
+        response = {novels}
       />
     ) : null
     }

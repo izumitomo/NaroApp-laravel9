@@ -8,7 +8,14 @@ export default function Search({
   return (
     <div>
       <p>{base_url}</p>
-      <p>コンソールにサーバ経由で取得したAPIのresponseを表示中</p>
+      {response.map(res => {
+        //計算処理を書く
+        return (
+          //gridで整形
+          <p key={res.title}>{res.title}</p>
+        );
+      })}
+
     </div>
   );
 }
