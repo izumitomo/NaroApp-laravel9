@@ -27031,20 +27031,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
 /* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Paper/Paper.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/FormControl/FormControl.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/InputLabel/InputLabel.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Select/Select.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/MenuItem/MenuItem.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/FormGroup/FormGroup.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/FormControlLabel/FormControlLabel.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Checkbox/Checkbox.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Button/Button.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Box/Box.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Grid/Grid.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Box/Box.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Grid/Grid.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/FormControl/FormControl.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/InputLabel/InputLabel.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Select/Select.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/MenuItem/MenuItem.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/FormGroup/FormGroup.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/FormControlLabel/FormControlLabel.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Checkbox/Checkbox.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Button/Button.js");
 /* harmony import */ var _mui_material_styles__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/material/styles */ "./node_modules/@mui/material/styles/createTheme.js");
 /* harmony import */ var _mui_material_styles__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/material/styles */ "./node_modules/@mui/system/esm/ThemeProvider/ThemeProvider.js");
 /* harmony import */ var _mui_system__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/system */ "./node_modules/@mui/system/esm/styled.js");
-/* harmony import */ var _mui_icons_material_WifiFind__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @mui/icons-material/WifiFind */ "./node_modules/@mui/icons-material/WifiFind.js");
+/* harmony import */ var _mui_icons_material_WifiFind__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @mui/icons-material/WifiFind */ "./node_modules/@mui/icons-material/WifiFind.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -27078,6 +27078,16 @@ var Item = (0,_mui_system__WEBPACK_IMPORTED_MODULE_5__["default"])(_mui_material
   var theme = _ref.theme;
   return _objectSpread(_objectSpread({
     backgroundColor: '#fff'
+  }, theme.typography.body2), {}, {
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary
+  });
+});
+var Centering = (0,_mui_system__WEBPACK_IMPORTED_MODULE_5__["default"])(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"])(function (_ref2) {
+  var theme = _ref2.theme;
+  return _objectSpread(_objectSpread({
+    backgroundColor: '#e6e6e6'
   }, theme.typography.body2), {}, {
     padding: theme.spacing(1),
     textAlign: 'center',
@@ -27159,10 +27169,13 @@ function Home() {
       notIsekai: notIsekai
     };
     axios__WEBPACK_IMPORTED_MODULE_1___default().post("/search", data).then(function (res) {
-      setNovels(res.data);
-      console.log(res.data); //dataはbodyとかheaderのやつ。
+      setNovels(res.data[0]); //console.log(Array.isArray(res.data[0]))
+      //console.log(res.data)//dataはbodyとかheaderのやつ。
     });
-  };
+  }; //setNovelsでnovelsにres.data[0]が入るタイミングが遅すぎることによって、searchに
+  //responseとしてnovelsを格納した時にnovelsの中身が空のまま送られ、遅れてnovelsに値が入った後に再びsearchが呼ばれているように見える。
+  //元々67行目あたりのsetCheckedの実行時からset系の処理が遅すぎるので色々工夫はしていたが……。
+
 
   var base_url = "https://api.syosetu.com/novelapi/api/?lim=5&out=json&order=weekly" + "&genre=" + genre + "&nottensei=" + notIsekai + "&nottenni=" + notIsekai;
   var title = "なろーせんとーりょく！";
@@ -27170,174 +27183,147 @@ function Home() {
     theme: theme,
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(TitleStyle, {
       children: title
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], {
-        sx: {
-          m: 1,
-          minWidth: 200
-        },
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], {
-          id: "demo-controlled-open-select-label",
-          children: "\u30B8\u30E3\u30F3\u30EB"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_11__["default"], {
-          labelId: "demo-controlled-open-select-label",
-          id: "demo-controlled-open-select",
-          open: open,
-          onClose: handleClose,
-          onOpen: handleOpen,
-          value: genre,
-          onChange: genreSelect,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            value: 101,
-            children: "\u7570\u4E16\u754C(\u604B\u611B)"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            value: 102,
-            children: "\u73FE\u5B9F\u4E16\u754C\uFF08\u604B\u611B\uFF09"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            value: 201,
-            children: "\u30CF\u30A4\u30D5\u30A1\u30F3\u30BF\u30B8\u30FC"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            value: 202,
-            children: "\u30ED\u30FC\u30D5\u30A1\u30F3\u30BF\u30B8\u30FC"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            value: 301,
-            children: "\u7D14\u6587\u5B66"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            value: 302,
-            children: "\u30D2\u30E5\u30FC\u30DE\u30F3\u30C9\u30E9\u30DE"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            value: 303,
-            children: "\u6B74\u53F2"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            value: 304,
-            children: "\u63A8\u7406"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            value: 305,
-            children: "\u30DB\u30E9\u30FC"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            value: 306,
-            children: "\u30A2\u30AF\u30B7\u30E7\u30F3"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            value: 307,
-            children: "\u30B3\u30E1\u30C7\u30A3\uFF0D"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            value: 401,
-            children: "VR\u30B2\u30FC\u30E0"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            value: 402,
-            children: "\u5B87\u5B99"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            value: 403,
-            children: "\u7A7A\u60F3\u79D1\u5B66"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            value: 404,
-            children: "\u30D1\u30CB\u30C3\u30AF"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            value: 9901,
-            children: "\u7AE5\u8A71"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            value: 9902,
-            children: "\u8A69"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            value: 9903,
-            children: "\u30A8\u30C3\u30BB\u30A4"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            value: 9904,
-            children: "\u30EA\u30D7\u30EC\u30A4"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            value: 9999,
-            children: "\u305D\u306E\u4ED6"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            value: 9801,
-            children: "\u30CE\u30F3\u30B8\u30E3\u30F3\u30EB"
-          })]
-        })]
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], {
-        component: "fieldset",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_13__["default"], {
-          "aria-label": "position",
-          row: true,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
-            value: "end",
-            control: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_15__["default"], {
-              color: "pink" //secondaryなどを指定する時はこの方法で色を変える
-              ,
-              checked: checked,
-              onChange: checkBoxChange
-            }),
-            label: "\u7570\u4E16\u754C\u8EE2\u751F\u30FB\u53EC\u559A\u3092\u542B\u3080",
-            labelPlacement: "end"
-          })
-        })
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_16__["default"], {
-        style: {
-          color: "black",
-          //styleを使えばCSSの記法が通用する？
-          backgroundColor: "#4feff7"
-        },
-        variant: "contained",
-        size: "large",
-        startIcon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_icons_material_WifiFind__WEBPACK_IMPORTED_MODULE_17__["default"], {}),
-        onClick: handleSearch //component={ Link } to={"/search"}
-        ,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
-          children: "\u8A08\u6E2C"
-        })
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_18__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], {
       sx: {
         flexGrow: 1
       },
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_19__["default"], {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], {
         container: true,
         spacing: 2,
         columns: 20,
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_19__["default"], {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], {
           item: true,
-          xs: 3,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Item, {
-            children: "xs=8"
+          xs: 9,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Centering, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_11__["default"], {
+              sx: {
+                m: 1,
+                minWidth: 190
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
+                id: "demo-controlled-open-select-label",
+                children: "\u30B8\u30E3\u30F3\u30EB"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_13__["default"], {
+                labelId: "demo-controlled-open-select-label",
+                id: "demo-controlled-open-select",
+                open: open,
+                onClose: handleClose,
+                onOpen: handleOpen,
+                value: genre,
+                onChange: genreSelect,
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
+                  value: 101,
+                  children: "\u7570\u4E16\u754C(\u604B\u611B)"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
+                  value: 102,
+                  children: "\u73FE\u5B9F\u4E16\u754C\uFF08\u604B\u611B\uFF09"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
+                  value: 201,
+                  children: "\u30CF\u30A4\u30D5\u30A1\u30F3\u30BF\u30B8\u30FC"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
+                  value: 202,
+                  children: "\u30ED\u30FC\u30D5\u30A1\u30F3\u30BF\u30B8\u30FC"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
+                  value: 301,
+                  children: "\u7D14\u6587\u5B66"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
+                  value: 302,
+                  children: "\u30D2\u30E5\u30FC\u30DE\u30F3\u30C9\u30E9\u30DE"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
+                  value: 303,
+                  children: "\u6B74\u53F2"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
+                  value: 304,
+                  children: "\u63A8\u7406"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
+                  value: 305,
+                  children: "\u30DB\u30E9\u30FC"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
+                  value: 306,
+                  children: "\u30A2\u30AF\u30B7\u30E7\u30F3"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
+                  value: 307,
+                  children: "\u30B3\u30E1\u30C7\u30A3\uFF0D"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
+                  value: 401,
+                  children: "VR\u30B2\u30FC\u30E0"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
+                  value: 402,
+                  children: "\u5B87\u5B99"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
+                  value: 403,
+                  children: "\u7A7A\u60F3\u79D1\u5B66"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
+                  value: 404,
+                  children: "\u30D1\u30CB\u30C3\u30AF"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
+                  value: 9901,
+                  children: "\u7AE5\u8A71"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
+                  value: 9902,
+                  children: "\u8A69"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
+                  value: 9903,
+                  children: "\u30A8\u30C3\u30BB\u30A4"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
+                  value: 9904,
+                  children: "\u30EA\u30D7\u30EC\u30A4"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
+                  value: 9999,
+                  children: "\u305D\u306E\u4ED6"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
+                  value: 9801,
+                  children: "\u30CE\u30F3\u30B8\u30E3\u30F3\u30EB"
+                })]
+              })]
+            })
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_19__["default"], {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], {
           item: true,
-          xs: 3,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Item, {
-            children: "xs=8"
+          xs: 7,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Centering, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_11__["default"], {
+              component: "fieldset",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_15__["default"], {
+                "aria-label": "position",
+                row: true,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_16__["default"], {
+                  value: "end",
+                  control: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_17__["default"], {
+                    color: "pink" //secondaryなどを指定する時はこの方法で色を変える
+                    ,
+                    checked: checked,
+                    onChange: checkBoxChange
+                  }),
+                  label: "\u7570\u4E16\u754C\u8EE2\u751F\u30FB\u53EC\u559A\u3092\u542B\u3080",
+                  labelPlacement: "end"
+                })
+              })
+            })
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_19__["default"], {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], {
           item: true,
-          xs: 14,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_19__["default"], {
-            container: true,
-            spacing: 2,
-            columns: 10,
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_19__["default"], {
-              item: true,
-              xs: 3,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Item, {
-                children: "xs=8"
+          xs: 4,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Centering, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_18__["default"], {
+              style: {
+                color: "black",
+                //styleを使えばCSSの記法が通用する？
+                backgroundColor: "#4feff7"
+              },
+              variant: "contained",
+              size: "large",
+              startIcon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_icons_material_WifiFind__WEBPACK_IMPORTED_MODULE_19__["default"], {}),
+              onClick: handleSearch //component={ Link } to={"/search"}
+              ,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
+                children: "\u8A08\u6E2C"
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_19__["default"], {
-              item: true,
-              xs: 3,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Item, {
-                children: "xs=8"
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_19__["default"], {
-              item: true,
-              xs: 14,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Item, {
-                children: "xs=8"
-              })
-            })]
+            })
           })
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
       children: base_url
     }), search ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Search__WEBPACK_IMPORTED_MODULE_0__["default"], {
       base_url: base_url //左が渡す名前で右が渡す変数
@@ -27565,6 +27551,9 @@ function Search(_ref) {
   var base_url = _ref.base_url,
       search = _ref.search,
       response = _ref.response;
+  console.log(response); //2回実行される。最初はArray(0)とArray(20)
+  //console.log(Array.isArray(response[0]));
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
       children: base_url

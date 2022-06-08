@@ -13,9 +13,17 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: 'center',
   color: theme.palette.text.secondary,
-  height: "100%"
+  
 }));
 
+const Centering = styled(Paper)(({ theme }) => ({
+  backgroundColor: '#e6e6e6',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+  height: "100%"
+}));
 
 export default function Home() {
   const theme = createTheme({
@@ -69,12 +77,18 @@ export default function Home() {
     }
     axios.post("/search", data)
     .then(res => {
-      setNovels(res.data)
-      console.log(res.data)//dataはbodyとかheaderのやつ。
+      setNovels(res.data[0])
+      //console.log(Array.isArray(res.data[0]))
+
+      //console.log(res.data)//dataはbodyとかheaderのやつ。
     }
     );
   };
   
+  //setNovelsでnovelsにres.data[0]が入るタイミングが遅すぎることによって、searchに
+  //responseとしてnovelsを格納した時にnovelsの中身が空のまま送られ、遅れてnovelsに値が入った後に再びsearchが呼ばれているように見える。
+  //元々67行目あたりのsetCheckedの実行時からset系の処理が遅すぎるので色々工夫はしていたが……。
+
   let base_url = "https://api.syosetu.com/novelapi/api/?lim=5&out=json&order=weekly" + "&genre=" + genre + "&nottensei=" + notIsekai + "&nottenni=" + notIsekai;
 
 
@@ -83,98 +97,92 @@ export default function Home() {
   return (
     <ThemeProvider theme={theme}>
       <TitleStyle>{title}</TitleStyle>
-      <div>
-        <FormControl sx={{
-           m: 1,
-           minWidth: 200,
-        }}>
-          <InputLabel id="demo-controlled-open-select-label">ジャンル</InputLabel>
-          <Select
-            labelId="demo-controlled-open-select-label"
-            id="demo-controlled-open-select"
-            open={open}
-            onClose={handleClose}
-            onOpen={handleOpen}
-            value={genre}
-            onChange={genreSelect}
-            >
-              <MenuItem value={101}>異世界(恋愛)</MenuItem>
-              <MenuItem value={102}>現実世界（恋愛）</MenuItem>
-              <MenuItem value={201}>ハイファンタジー</MenuItem>
-              <MenuItem value={202}>ローファンタジー</MenuItem>
-              <MenuItem value={301}>純文学</MenuItem>
-              <MenuItem value={302}>ヒューマンドラマ</MenuItem>
-              <MenuItem value={303}>歴史</MenuItem>
-              <MenuItem value={304}>推理</MenuItem>
-              <MenuItem value={305}>ホラー</MenuItem>
-              <MenuItem value={306}>アクション</MenuItem>
-              <MenuItem value={307}>コメディ－</MenuItem>
-              <MenuItem value={401}>VRゲーム</MenuItem>
-              <MenuItem value={402}>宇宙</MenuItem>
-              <MenuItem value={403}>空想科学</MenuItem>
-              <MenuItem value={404}>パニック</MenuItem>
-              <MenuItem value={9901}>童話</MenuItem>
-              <MenuItem value={9902}>詩</MenuItem>
-              <MenuItem value={9903}>エッセイ</MenuItem>
-              <MenuItem value={9904}>リプレイ</MenuItem>
-              <MenuItem value={9999}>その他</MenuItem>
-              <MenuItem value={9801}>ノンジャンル</MenuItem>
-            </Select>
-          </FormControl>
-      </div>
-      <div>
-        <FormControl component="fieldset">
-          <FormGroup aria-label="position" row>
-            <FormControlLabel
-              value="end"
-              control={<Checkbox 
-                color="pink"//secondaryなどを指定する時はこの方法で色を変える
-                checked={checked}
-                onChange={checkBoxChange}/>}
-              label="異世界転生・召喚を含む"
-              labelPlacement="end"
-            />
-          </FormGroup>
-        </FormControl>
-      </div>
-      <div>
-        <Button
-            style={{
-              color:"black",//styleを使えばCSSの記法が通用する？
-              backgroundColor: "#4feff7",
-            }}
-            variant="contained"
-            size="large"
-            startIcon={<WifiFindIcon/>}
-            onClick={handleSearch}
-            //component={ Link } to={"/search"}
-          >
-            <b>計測</b>
-          </Button>
-      </div>
-      <Box sx={{ flexGrow: 1 }}>
+       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2} columns={20}>
-          <Grid item xs={3}>
-            <Item>xs=8</Item>
+          <Grid item xs={9}>
+          <Centering>
+            <FormControl sx={{
+            m: 1,
+            minWidth: 190,
+          }}>
+            <InputLabel id="demo-controlled-open-select-label">ジャンル</InputLabel>
+            <Select
+              labelId="demo-controlled-open-select-label"
+              id="demo-controlled-open-select"
+              open={open}
+              onClose={handleClose}
+              onOpen={handleOpen}
+              value={genre}
+              onChange={genreSelect}
+              >
+                <MenuItem value={101}>異世界(恋愛)</MenuItem>
+                <MenuItem value={102}>現実世界（恋愛）</MenuItem>
+                <MenuItem value={201}>ハイファンタジー</MenuItem>
+                <MenuItem value={202}>ローファンタジー</MenuItem>
+                <MenuItem value={301}>純文学</MenuItem>
+                <MenuItem value={302}>ヒューマンドラマ</MenuItem>
+                <MenuItem value={303}>歴史</MenuItem>
+                <MenuItem value={304}>推理</MenuItem>
+                <MenuItem value={305}>ホラー</MenuItem>
+                <MenuItem value={306}>アクション</MenuItem>
+                <MenuItem value={307}>コメディ－</MenuItem>
+                <MenuItem value={401}>VRゲーム</MenuItem>
+                <MenuItem value={402}>宇宙</MenuItem>
+                <MenuItem value={403}>空想科学</MenuItem>
+                <MenuItem value={404}>パニック</MenuItem>
+                <MenuItem value={9901}>童話</MenuItem>
+                <MenuItem value={9902}>詩</MenuItem>
+                <MenuItem value={9903}>エッセイ</MenuItem>
+                <MenuItem value={9904}>リプレイ</MenuItem>
+                <MenuItem value={9999}>その他</MenuItem>
+                <MenuItem value={9801}>ノンジャンル</MenuItem>
+              </Select>
+            </FormControl>
+            </Centering>
           </Grid>
-          <Grid item xs={3}>
-            <Item>xs=8</Item>
+          <Grid item xs={7}>
+          <Centering>
+            <FormControl component="fieldset">
+              <FormGroup aria-label="position" row>
+                <FormControlLabel
+                  value="end"
+                  control={<Checkbox 
+                    color="pink"//secondaryなどを指定する時はこの方法で色を変える
+                    checked={checked}
+                    onChange={checkBoxChange}/>}
+                  label="異世界転生・召喚を含む"
+                  labelPlacement="end"
+                />
+              </FormGroup>
+            </FormControl>
+            </Centering>
           </Grid>
-          <Grid item xs={14}>
-          <Grid container spacing={2} columns={10}>
-          <Grid item xs={3}>
-            <Item>xs=8</Item>
-          </Grid>
-          <Grid item xs={3}>
-            <Item>xs=8</Item>
-          </Grid>
-          <Grid item xs={14}>
-            <Item>xs=8</Item>
-          </Grid>
-        </Grid>
+          <Grid item xs={4}>
+          <Centering>
+            <Button
+              style={{
+                color:"black",//styleを使えばCSSの記法が通用する？
+                backgroundColor: "#4feff7",
+              }}
+              variant="contained"
+              size="large"
+              startIcon={<WifiFindIcon/>}
+              onClick={handleSearch}
+              //component={ Link } to={"/search"}
+            >
+              <b>計測</b>
+            </Button>
+            </Centering>
           </Grid>
         </Grid>
       </Box>
+      <div>
+
+      </div>
+      <div>
+
+      </div>
+      
       <p>{base_url}</p>
       {search ? (
       <Search
