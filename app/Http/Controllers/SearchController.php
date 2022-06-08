@@ -11,7 +11,7 @@ class SearchController extends Controller
     {
         //var_dump($request["genre"]);
         $genre = $request["genre"];
-        $not_isekai = $request["notIsekai"] ;
+        $not_isekai = $request["notIsekai"];
         header("Access-Control-Allow-Origin: *");  //CORS
         
         $url= 'https://api.syosetu.com/novelapi/api/?lim=20&genre=' . $genre . '&nottensei=' . $not_isekai . '&nottenni=' . $not_isekai . '&order=weekly&out=json';
@@ -31,7 +31,15 @@ class SearchController extends Controller
         $raw_decode_data = json_decode($raw_data, true);
         //先頭のallcountを削除してforeachを使えるようにする
         $allcount = array_shift($raw_decode_data);
-        //var_dump($raw_decode_data);
-        return $raw_decode_data ;
+
+        //DBからborder値を取る処理
+
+        //tensei_or_tenniはtinyint(boolean)型なので型を合わせる
+        $not_isekai = (boolean)$not_isekai;
+        $isekai = !$not_isekai;
+        $border = Border::where("genre", $genre)
+            ->where("tensei_or_tenni", $isekai)->first();
+        //return $raw_decode_data;
+        return array($raw_decode_data, $border);
     }
 }
