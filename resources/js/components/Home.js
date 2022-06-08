@@ -70,17 +70,17 @@ export default function Home() {
   const [search, setSearch] = React.useState(false);
   const [novels, setNovels] = React.useState([]);
   const handleSearch = () => {
-    setSearch(true);
     const data = {
       genre : genre,
       notIsekai : notIsekai,
     }
     axios.post("/search", data)
     .then(res => {
-      setNovels(res.data[0])
+      setNovels(res.data);
       //console.log(Array.isArray(res.data[0]))
 
-      //console.log(res.data)//dataはbodyとかheaderのやつ。
+      console.log(res.data)//dataはbodyとかheaderのやつ。
+      setSearch(true);
     }
     );
   };
@@ -187,7 +187,6 @@ export default function Home() {
       {search ? (
       <Search
         base_url = {base_url}//左が渡す名前で右が渡す変数
-        search = {search}
         response = {novels}
       />
     ) : null

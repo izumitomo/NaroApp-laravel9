@@ -27163,14 +27163,16 @@ function Home() {
       setNovels = _React$useState12[1];
 
   var handleSearch = function handleSearch() {
-    setSearch(true);
     var data = {
       genre: genre,
       notIsekai: notIsekai
     };
     axios__WEBPACK_IMPORTED_MODULE_1___default().post("/search", data).then(function (res) {
-      setNovels(res.data[0]); //console.log(Array.isArray(res.data[0]))
-      //console.log(res.data)//dataはbodyとかheaderのやつ。
+      setNovels(res.data); //console.log(Array.isArray(res.data[0]))
+
+      console.log(res.data); //dataはbodyとかheaderのやつ。
+
+      setSearch(true);
     });
   }; //setNovelsでnovelsにres.data[0]が入るタイミングが遅すぎることによって、searchに
   //responseとしてnovelsを格納した時にnovelsの中身が空のまま送られ、遅れてnovelsに値が入った後に再びsearchが呼ばれているように見える。
@@ -27328,7 +27330,6 @@ function Home() {
     }), search ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Search__WEBPACK_IMPORTED_MODULE_0__["default"], {
       base_url: base_url //左が渡す名前で右が渡す変数
       ,
-      search: search,
       response: novels
     }) : null]
   });
@@ -27543,50 +27544,112 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+Object(function webpackMissingModule() { var e = new Error("Cannot find module 'recharts'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
 function Search(_ref) {
   var base_url = _ref.base_url,
-      search = _ref.search,
       response = _ref.response;
-  console.log(response); //2回実行される。最初はArray(0)とArray(20)
-  //console.log(Array.isArray(response[0]));
+  var novelData = response[0].map(function (novel) {
+    //計算処理を書く
+    return (
+      /*#__PURE__*/
+      //gridで整形
+      (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+        children: novel.title
+      }, novel.title)
+    );
+  });
+  var result = [];
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-      children: base_url
-    }), response.map(function (res) {
-      //計算処理を書く
-      return (
-        /*#__PURE__*/
-        //gridで整形
-        (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-          children: res.title
-        }, res.title)
-      );
+  for (var i in response[1]) {
+    result.push( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("p", {
+      children: [i, ":", response[1][i]]
+    }, i));
+  }
+
+  var data = [{
+    subject: "Math",
+    A: 120,
+    B: 110,
+    fullMark: 150
+  }, {
+    subject: "Chinese",
+    A: 98,
+    B: 130,
+    fullMark: 150
+  }, {
+    subject: "English",
+    A: 86,
+    B: 130,
+    fullMark: 150
+  }, {
+    subject: "Geography",
+    A: 99,
+    B: 100,
+    fullMark: 150
+  }, {
+    subject: "Physics",
+    A: 85,
+    B: 90,
+    fullMark: 150
+  }, {
+    subject: "History",
+    A: 65,
+    B: 85,
+    fullMark: 150
+  }];
+
+  var radar = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(Object(function webpackMissingModule() { var e = new Error("Cannot find module 'recharts'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+    cx: 300,
+    cy: 250,
+    outerRadius: 150,
+    width: 500,
+    height: 500,
+    data: data,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Object(function webpackMissingModule() { var e = new Error("Cannot find module 'recharts'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Object(function webpackMissingModule() { var e = new Error("Cannot find module 'recharts'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+      dataKey: "subject"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Object(function webpackMissingModule() { var e = new Error("Cannot find module 'recharts'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Object(function webpackMissingModule() { var e = new Error("Cannot find module 'recharts'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+      name: "Mike",
+      dataKey: "A",
+      stroke: "#8884d8",
+      fill: "#8884d8",
+      fillOpacity: 0.6
     })]
   });
 }
-/* 
-import React from "react";
-import { Link } from "react-router-dom";
-
-export default function Search({
+/* export default function Search({
   base_url,
-  search,
   response,
 }) {
+  //console.log(Array.isArray(response[0]));
+  const novelData = response[0].map(novel => {
+    //novelというresponse[0]をコピーした配列を用意してreturnをnovelの要素ごとに処理を走らせてreturnするイメージ？
+    //計算処理を書く
+    return (
+      //gridで整形
+      <p key={novel.title}>{novel.title}</p>
+    );
+  });
+  let result = [];
+  for (const i in response[1]) {
+    result.push(<p key={i}>{i}:{response[1][i]}</p>);
+  }
+  //resultにpタグごと格納している
+
   return (
-    //axios.get(props.base_url)
     <div>
       <p>{base_url}</p>
-      <p>コンソールにサーバ経由で取得したAPIのresponseを表示中</p>
+      {novelData}
+      <p>------</p>
+      {result}
+
     </div>
   );
-}
- */
+} */
 
 /***/ }),
 
