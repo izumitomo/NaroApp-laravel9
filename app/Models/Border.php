@@ -102,11 +102,12 @@ class Border extends Model
         $global_point = intdiv($global_point, $count);
         $favorite_count = intdiv($favorite_count, $count);
         $reviewer_count = intdiv($reviewer_count, $count);
-        //評価者が100人未満のジャンルは平均点を0とする（本当はNULLにしたいけどDBへんこうがだるい）
+        //評価者が100人未満のジャンルは平均点、最高平均点をnullとする。
         if($rate_count != 0) {
             $average_rate = round($average_rate / $rate_count, 2);
         }else{
-            $average_rate = 0;
+            $max_average_rate = null;
+            $average_rate = null;
         }
         $comment_count = intdiv($comment_count, $count);
         

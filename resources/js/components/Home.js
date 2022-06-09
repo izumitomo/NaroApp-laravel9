@@ -2,8 +2,22 @@ import Search from "./Search";
 import axios from 'axios';
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
-import {Box, Paper, Grid, Button, InputLabel, Select, MenuItem, FormGroup, FormControl, FormControlLabel, Checkbox  } from '@mui/material';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import {
+  Box,
+  Paper,
+  Grid,
+  Button,
+  InputLabel,
+  Select,
+  MenuItem,
+  FormGroup,
+  FormControl,
+  FormControlLabel,
+  Checkbox
+} from '@mui/material';
+import { ThemeProvider,
+  createTheme
+} from '@mui/material/styles';
 import { styled } from '@mui/system';
 import WifiFindIcon from '@mui/icons-material/WifiFind';
 
@@ -70,17 +84,17 @@ export default function Home() {
   const [search, setSearch] = React.useState(false);
   const [novels, setNovels] = React.useState([]);
   const handleSearch = () => {
-    setSearch(true);
     const data = {
       genre : genre,
       notIsekai : notIsekai,
     }
     axios.post("/search", data)
     .then(res => {
-      setNovels(res.data[0])
+      setNovels(res.data);
       //console.log(Array.isArray(res.data[0]))
 
-      //console.log(res.data)//dataはbodyとかheaderのやつ。
+      console.log(res.data)//dataはbodyとかheaderのやつ。
+      setSearch(true);
     }
     );
   };
@@ -89,7 +103,7 @@ export default function Home() {
   //responseとしてnovelsを格納した時にnovelsの中身が空のまま送られ、遅れてnovelsに値が入った後に再びsearchが呼ばれているように見える。
   //元々67行目あたりのsetCheckedの実行時からset系の処理が遅すぎるので色々工夫はしていたが……。
 
-  let base_url = "https://api.syosetu.com/novelapi/api/?lim=5&out=json&order=weekly" + "&genre=" + genre + "&nottensei=" + notIsekai + "&nottenni=" + notIsekai;
+  let base_url = "https://api.syosetu.com/novelapi/api/?lim=50&out=json&order=weekly" + "&genre=" + genre + "&nottensei=" + notIsekai + "&nottenni=" + notIsekai;
 
 
   const title = "なろーせんとーりょく！";
@@ -187,7 +201,6 @@ export default function Home() {
       {search ? (
       <Search
         base_url = {base_url}//左が渡す名前で右が渡す変数
-        search = {search}
         response = {novels}
       />
     ) : null
