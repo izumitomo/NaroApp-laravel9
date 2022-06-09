@@ -27,7 +27,7 @@ export default function Search({
   const novelData = response[0].map(novel => {
     //novelというresponse[0]をコピーした配列を用意してreturnをnovelの要素ごとに処理を走らせてreturnするイメージ？
     const data = {
-      labels: ['ポイント', 'ブクマ', '評価者', '平均評価', '感想'],
+      labels: ['ポイント', 'ブクマ数', '評価者数', '平均評価点', '感想数'],
       datasets: [
         {
           label: '# of Votes',

@@ -27179,7 +27179,7 @@ function Home() {
   //元々67行目あたりのsetCheckedの実行時からset系の処理が遅すぎるので色々工夫はしていたが……。
 
 
-  var base_url = "https://api.syosetu.com/novelapi/api/?lim=5&out=json&order=weekly" + "&genre=" + genre + "&nottensei=" + notIsekai + "&nottenni=" + notIsekai;
+  var base_url = "https://api.syosetu.com/novelapi/api/?lim=50&out=json&order=weekly" + "&genre=" + genre + "&nottensei=" + notIsekai + "&nottenni=" + notIsekai;
   var title = "なろーせんとーりょく！";
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material_styles__WEBPACK_IMPORTED_MODULE_8__["default"], {
     theme: theme,
@@ -27560,7 +27560,7 @@ function Search(_ref) {
   var novelData = response[0].map(function (novel) {
     //novelというresponse[0]をコピーした配列を用意してreturnをnovelの要素ごとに処理を走らせてreturnするイメージ？
     var data = {
-      labels: ['ポイント', 'ブクマ', '評価者', '平均評価', '感想'],
+      labels: ['ポイント', 'ブクマ数', '評価者数', '平均評価点', '感想数'],
       datasets: [{
         label: '# of Votes',
         data: [novel.global_point / response[1]["max_global_point"], novel.fav_novel_cnt / response[1]["max_favorite_count"], novel.all_hyoka_cnt / response[1]["max_reviewer_count"], novel.all_point / novel.all_hyoka_cnt / response[1]["max_average_rate"], novel.impression_cnt / response[1]["max_comment_count"]],
