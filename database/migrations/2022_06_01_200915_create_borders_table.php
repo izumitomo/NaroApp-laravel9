@@ -19,13 +19,13 @@ class CreateBordersTable extends Migration
             $table->integer('global_point');
             $table->integer('favorite_count');
             $table->integer('reviewer_count');
-            $table->float('average_rate', 4, 2);
+            $table->float('average_rate', 4, 2)->nullable(true);
             $table->integer('comment_count');
             $table->float('length_per_point', 7, 3);
             $table -> integer("max_global_point");
             $table -> integer("max_favorite_count");
             $table -> integer("max_reviewer_count");
-            $table -> float("max_average_rate", 4, 2);
+            $table -> float("max_average_rate", 4, 2)->nullable(true);
             $table -> integer("max_comment_count");
         });
     }
