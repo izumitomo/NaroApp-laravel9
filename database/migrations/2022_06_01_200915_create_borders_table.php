@@ -14,6 +14,7 @@ class CreateBordersTable extends Migration
     public function up()
     {
         Schema::create('borders', function (Blueprint $table) {
+            $table->Increments('id');
             $table->integer('genre');
             $table->boolean('tensei_or_tenni');
             $table->integer('global_point');
