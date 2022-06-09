@@ -27634,7 +27634,7 @@ function Search(_ref) {
 
       if (_i3 == 6) {
         for (var _j3 = 1; _j3 < 5; _j3++) {
-          if (novel.impression_cnt >= response[1].max_comment_cnt - comDownScale * _j3) {
+          if (novel.impression_cnt >= response[1].comment_cnt - comDownScale * _j3) {
             novelRank.push(5 - _j3);
             break;
           }

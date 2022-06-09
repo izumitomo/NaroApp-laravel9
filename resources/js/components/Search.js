@@ -103,7 +103,7 @@ export default function Search({
       }
       if (i == 6) {
         for (let j = 1; j < 5; j++) {
-          if (novel.impression_cnt >= response[1].max_comment_cnt - comDownScale*j) {
+          if (novel.impression_cnt >= response[1].comment_cnt - comDownScale*j) {
             novelRank.push(5-j);
             break;
           }
