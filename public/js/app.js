@@ -27553,32 +27553,128 @@ __webpack_require__.r(__webpack_exports__);
 
 
 chart_js__WEBPACK_IMPORTED_MODULE_1__.Chart.register(chart_js__WEBPACK_IMPORTED_MODULE_1__.RadialLinearScale, chart_js__WEBPACK_IMPORTED_MODULE_1__.PointElement, chart_js__WEBPACK_IMPORTED_MODULE_1__.LineElement, chart_js__WEBPACK_IMPORTED_MODULE_1__.Filler, chart_js__WEBPACK_IMPORTED_MODULE_1__.Tooltip, chart_js__WEBPACK_IMPORTED_MODULE_1__.Legend);
+var novelUrl = "https://ncode.syosetu.com/";
+var numberOfRank = 10;
 function Search(_ref) {
   var base_url = _ref.base_url,
       response = _ref.response;
-  //console.log(Array.isArray(response[0]));
+  var averageData = {
+    label: "平均戦闘力",
+    data: [response[1].global_point / response[1].max_global_point * 100, response[1].favorite_count / response[1].max_favorite_count * 100, response[1].reviewer_count / response[1].max_reviewer_count * 100, response[1].average_rate / response[1].max_average_rate * 100, response[1].comment_count / response[1].max_comment_count * 100],
+    backgroundColor: 'rgba(50,17,240,0.4)',
+    borderColor: 'rgba(50,17,240,1)',
+    borderWidth: 1
+  }; //中心をランクC（5点）としてC,B,A,S,SS,SSSに分けるために5で割る。
+
+  var pointUpScale = (response[1].max_global_point - response[1].global_point) / 6; //平均から0までをD,E,F,Gに分けるために4で割る。
+
+  var pointDownScale = response[1].global_point / 4;
+  var favUpScale = (response[1].max_favorite_count - response[1].favorite_count) / 6;
+  var favDownScale = response[1].favorite_count / 4;
+  var revUpScale = (response[1].max_reviewer_count - response[1].reviewer_count) / 6;
+  var revDownScale = response[1].reviewer_count / 4;
+  var comUpScale = (response[1].max_comment_count - response[1].comment_count) / 6;
+  var comDownScale = response[1].comment_count / 4;
   var novelData = response[0].map(function (novel) {
-    //novelというresponse[0]をコピーした配列を用意してreturnをnovelの要素ごとに処理を走らせてreturnするイメージ？
-    var data = {
+    var novelRank = [];
+
+    for (var i = 1; i < 7; i++) {
+      if (novel.global_point >= response[1].max_global_point - pointUpScale * i) {
+        novelRank.push(11 - i);
+        break;
+      }
+
+      if (i == 6) {
+        for (var j = 1; j < 5; j++) {
+          if (novel.global_point >= response[1].global_point - pointDownScale * j) {
+            novelRank.push(5 - j);
+            break;
+          }
+        }
+      }
+    }
+
+    for (var _i = 1; _i < 7; _i++) {
+      if (novel.fav_novel_cnt >= response[1].max_favorite_count - favUpScale * _i) {
+        novelRank.push(11 - _i);
+        break;
+      }
+
+      if (_i == 6) {
+        for (var _j = 1; _j < 5; _j++) {
+          if (novel.fav_novel_cnt >= response[1].favorite_count - favDownScale * _j) {
+            novelRank.push(5 - _j);
+            break;
+          }
+        }
+      }
+    }
+
+    for (var _i2 = 1; _i2 < 7; _i2++) {
+      if (novel.all_hyoka_cnt >= response[1].max_reviewer_count - revUpScale * _i2) {
+        novelRank.push(11 - _i2);
+        break;
+      }
+
+      if (_i2 == 6) {
+        for (var _j2 = 1; _j2 < 5; _j2++) {
+          if (novel.all_hyoka_cnt >= response[1].reviewer_count - revDownScale * _j2) {
+            novelRank.push(5 - _j2);
+            break;
+          }
+        }
+      }
+    }
+
+    for (var _i3 = 1; _i3 < 7; _i3++) {
+      if (novel.impression_cnt >= response[1].max_comment_count - comUpScale * _i3) {
+        novelRank.push(11 - _i3);
+        break;
+      }
+
+      if (_i3 == 6) {
+        for (var _j3 = 1; _j3 < 5; _j3++) {
+          if (novel.impression_cnt >= response[1].max_comment_cnt - comDownScale * _j3) {
+            novelRank.push(5 - _j3);
+            break;
+          }
+        }
+      }
+    }
+
+    var rankData = {
       labels: ['ポイント', 'ブクマ数', '評価者数', '平均評価点', '感想数'],
       datasets: [{
-        label: '# of Votes',
-        data: [novel.global_point / response[1]["max_global_point"] * 100, novel.fav_novel_cnt / response[1]["max_favorite_count"] * 100, novel.all_hyoka_cnt / response[1]["max_reviewer_count"] * 100, novel.all_point / novel.all_hyoka_cnt / response[1]["max_average_rate"] * 100, novel.impression_cnt / response[1]["max_comment_count"] * 100],
+        label: novel.title,
+        data: [novel.global_point / response[1].max_global_point * 100, novel.fav_novel_cnt / response[1].max_favorite_count * 100, novel.all_hyoka_cnt / response[1].max_reviewer_count * 100, novel.all_point / novel.all_hyoka_cnt / response[1].max_average_rate * 100, novel.impression_cnt / response[1].max_comment_count * 100],
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1
       }]
     };
+    var numberData = {
+      labels: ['ポイント', 'ブクマ数', '評価者数', '平均評価点', '感想数'],
+      datasets: [{
+        label: novel.title,
+        data: [novel.global_point / response[1].max_global_point * 100, novel.fav_novel_cnt / response[1].max_favorite_count * 100, novel.all_hyoka_cnt / response[1].max_reviewer_count * 100, novel.all_point / novel.all_hyoka_cnt / response[1].max_average_rate * 100, novel.impression_cnt / response[1].max_comment_count * 100],
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1
+      }, averageData]
+    };
     return (
       /*#__PURE__*/
       //gridで整形
       (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+          href: novelUrl + novel.ncode,
           children: novel.title
-        }, novel.title), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_3__.Radar, {
-          data: data
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+          children: novelRank
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_3__.Radar, {
+          data: numberData
         })]
-      })
+      }, novel.ncode)
     );
   });
   var result = [];
