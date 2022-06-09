@@ -32,11 +32,11 @@ export default function Search({
         {
           label: '# of Votes',
           data: [
-            novel.global_point / response[1]["max_global_point"],
-            novel.fav_novel_cnt / response[1]["max_favorite_count"],
-            novel.all_hyoka_cnt / response[1]["max_reviewer_count"],
-            (novel.all_point/novel.all_hyoka_cnt) / response[1]["max_average_rate"],
-            novel.impression_cnt / response[1]["max_comment_count"]
+            novel.global_point / response[1]["max_global_point"] * 100,
+            novel.fav_novel_cnt / response[1]["max_favorite_count"] * 100,
+            novel.all_hyoka_cnt / response[1]["max_reviewer_count"] * 100,
+            (novel.all_point/novel.all_hyoka_cnt) / response[1]["max_average_rate"] * 100,
+            novel.impression_cnt / response[1]["max_comment_count"] * 100
           ],
           backgroundColor: 'rgba(255, 99, 132, 0.2)',
           borderColor: 'rgba(255, 99, 132, 1)',
