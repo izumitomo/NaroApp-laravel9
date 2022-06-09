@@ -28,7 +28,7 @@ class Border extends Model
     //$not_isekaiをbool型にするとURLに文字列として入れる時に弊害あり。not系パラメータは1かどうかしか見ていないが便宜上0を入れておく。
     {
         $url= 'https://api.syosetu.com/novelapi/api/?lim=100&genre=' . $genre . '&nottensei=' . $not_isekai . '&nottenni=' . $not_isekai . '&order=weekly&out=json';
-        var_dump($url);
+        //var_dump($url);
         // ストリームコンテキストのオプションを作成
         $options = array(
             // HTTPコンテキストオプションをセット
@@ -114,7 +114,7 @@ class Border extends Model
         // debug
         //var_dump($raw_decode_data);
         //var_dump($raw_decode_data[1]["global_point"]);
-        var_dump($global_point);
+        /* var_dump($global_point);
         var_dump($favorite_count);
         var_dump($reviewer_count);
         var_dump($average_rate);
@@ -124,7 +124,7 @@ class Border extends Model
         var_dump($max_favorite_count);
         var_dump($max_reviewer_count);
         var_dump($max_average_rate);
-        var_dump($max_comment_count);
+        var_dump($max_comment_count); */
         
         //得られた値をDBに格納
         $border = new Border();
