@@ -157,7 +157,7 @@ export default function Home() {
           <Grid item xs={8}>
           <Centering>
             <FormControl component="fieldset" sx={{width: 1, height: 1}}>
-              <FormGroup aria-label="position" row>
+              <FormGroup aria-label="position" sx={{ margin: 'auto' }}>
                 <FormControlLabel
                   value="end"
                   control={<Checkbox 
@@ -173,19 +173,26 @@ export default function Home() {
           </Grid>
           <Grid item xs={4}>
           <Centering>
-            <Button
-              style={{
-                color:"black",//styleを使えばCSSの記法が通用する？
-                backgroundColor: "#4feff7",
-              }}
-              variant="contained"
-              size="large"
-              startIcon={<WifiFindIcon/>}
-              onClick={handleSearch}
-              //component={ Link } to={"/search"}
-            >
-              <b>計測</b>
-            </Button>
+          <div style={{
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+            }}>
+              <Button
+                style={{
+                  color:"black",//styleを使えばCSSの記法が通用する？
+                  backgroundColor: "#4feff7",
+                }}
+                variant="contained"
+                size="large"
+                startIcon={<WifiFindIcon/>}
+                onClick={handleSearch}
+                //component={ Link } to={"/search"}
+              >
+                <b>計測</b>
+              </Button>
+            </div>
             </Centering>
           </Grid>
         </Grid>
