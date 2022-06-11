@@ -266,7 +266,6 @@ export default function Search({
   return (
     <div>
       <p>{base_url}</p>
-      {novelDataList}
 
     </div>
   );
