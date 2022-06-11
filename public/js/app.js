@@ -27290,7 +27290,9 @@ function Home() {
               },
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_15__["default"], {
                 "aria-label": "position",
-                row: true,
+                sx: {
+                  margin: 'auto'
+                },
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_16__["default"], {
                   value: "end",
                   control: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_17__["default"], {
@@ -27309,19 +27311,27 @@ function Home() {
           item: true,
           xs: 4,
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Centering, {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_18__["default"], {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
               style: {
-                color: "black",
-                //styleを使えばCSSの記法が通用する？
-                backgroundColor: "#4feff7"
+                height: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
               },
-              variant: "contained",
-              size: "large",
-              startIcon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_icons_material_WifiFind__WEBPACK_IMPORTED_MODULE_19__["default"], {}),
-              onClick: handleSearch //component={ Link } to={"/search"}
-              ,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
-                children: "\u8A08\u6E2C"
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_18__["default"], {
+                style: {
+                  color: "black",
+                  //styleを使えばCSSの記法が通用する？
+                  backgroundColor: "#4feff7"
+                },
+                variant: "contained",
+                size: "large",
+                startIcon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_icons_material_WifiFind__WEBPACK_IMPORTED_MODULE_19__["default"], {}),
+                onClick: handleSearch //component={ Link } to={"/search"}
+                ,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
+                  children: "\u8A08\u6E2C"
+                })
               })
             })
           })
