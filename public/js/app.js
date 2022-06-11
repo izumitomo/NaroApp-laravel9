@@ -27859,8 +27859,8 @@ function Search(_ref2) {
     return (
       /*#__PURE__*/
       //gridで整形
-      (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_7__["default"], {
+      (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_7__["default"], {
           sx: {
             flexGrow: 1
           },
@@ -27925,13 +27925,7 @@ function Search(_ref2) {
               })]
             })]
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_PointChart__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            title: novel.title,
-            averagePoint: averagePoint,
-            novelPoint: novelPoint
-          })
-        })]
+        })
       }, novel.ncode)
     );
   });

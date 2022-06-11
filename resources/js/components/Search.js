@@ -227,13 +227,7 @@ export default function Search({
         </Grid>
       </Box>
 
-      <div>
-        <PointChart 
-          title = {novel.title}
-          averagePoint = {averagePoint}
-          novelPoint = {novelPoint}
-          />
-      </div>
+      
     </div>
     );
   });
