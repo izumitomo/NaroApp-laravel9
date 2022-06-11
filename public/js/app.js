@@ -27191,11 +27191,11 @@ function Home() {
       },
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], {
         container: true,
-        spacing: 2,
+        spacing: 1,
         columns: 20,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], {
           item: true,
-          xs: 9,
+          xs: 8,
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Centering, {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_11__["default"], {
               sx: {
@@ -27282,10 +27282,14 @@ function Home() {
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], {
           item: true,
-          xs: 7,
+          xs: 8,
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Centering, {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_11__["default"], {
               component: "fieldset",
+              sx: {
+                width: 1,
+                height: 1
+              },
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_15__["default"], {
                 "aria-label": "position",
                 row: true,
@@ -27544,9 +27548,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _mui_material_styles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/material/styles */ "./node_modules/@mui/material/styles/styled.js");
+/* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Paper/Paper.js");
+/* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Box/Box.js");
+/* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Grid/Grid.js");
 /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/chart.esm.js");
-/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-chartjs-2 */ "./node_modules/react-chartjs-2/dist/index.js");
+/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-chartjs-2 */ "./node_modules/react-chartjs-2/dist/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
 
 
 
@@ -27555,9 +27571,46 @@ __webpack_require__.r(__webpack_exports__);
 chart_js__WEBPACK_IMPORTED_MODULE_1__.Chart.register(chart_js__WEBPACK_IMPORTED_MODULE_1__.RadialLinearScale, chart_js__WEBPACK_IMPORTED_MODULE_1__.PointElement, chart_js__WEBPACK_IMPORTED_MODULE_1__.LineElement, chart_js__WEBPACK_IMPORTED_MODULE_1__.Filler, chart_js__WEBPACK_IMPORTED_MODULE_1__.Tooltip, chart_js__WEBPACK_IMPORTED_MODULE_1__.Legend);
 var novelUrl = "https://ncode.syosetu.com/";
 var numberOfRank = 10;
-function Search(_ref) {
-  var base_url = _ref.base_url,
-      response = _ref.response;
+var Item = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_3__["default"])(_mui_material___WEBPACK_IMPORTED_MODULE_4__["default"])(function (_ref) {
+  var theme = _ref.theme;
+  return _objectSpread(_objectSpread({
+    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff'
+  }, theme.typography.body2), {}, {
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary
+  });
+});
+var rankOption = {
+  scales: {
+    r: {
+      angleLines: {
+        display: false
+      },
+      suggestedMin: 0,
+      suggestedMax: 10
+    }
+  },
+  plugins: {
+    legend: {
+      display: false
+    }
+  }
+};
+var pointOption = {
+  scales: {
+    r: {
+      angleLines: {
+        display: false
+      },
+      suggestedMin: 0,
+      suggestedMax: 100
+    }
+  }
+};
+function Search(_ref2) {
+  var base_url = _ref2.base_url,
+      response = _ref2.response;
   var averageData = {
     label: "平均戦闘力",
     data: [response[1].global_point / response[1].max_global_point * 100, response[1].favorite_count / response[1].max_favorite_count * 100, response[1].reviewer_count / response[1].max_reviewer_count * 100, response[1].average_rate / response[1].max_average_rate * 100, response[1].comment_count / response[1].max_comment_count * 100],
@@ -27574,20 +27627,23 @@ function Search(_ref) {
   var revUpScale = (response[1].max_reviewer_count - response[1].reviewer_count) / 6;
   var revDownScale = response[1].reviewer_count / 4;
   var comUpScale = (response[1].max_comment_count - response[1].comment_count) / 6;
-  var comDownScale = response[1].comment_count / 4;
-  var novelData = response[0].map(function (novel) {
-    var novelRank = [];
+  var comDownScale = response[1].comment_count / 4; //平均評価点は０にならないのでupscaleを採用する。
+
+  var rateUpScale = (response[1].max_favorite_count - response[1].favorite_count) / 6;
+  var novelDataList = response[0].map(function (novel) {
+    var novelRankNum = [];
+    var novelRankAlpha = [];
 
     for (var i = 1; i < 7; i++) {
       if (novel.global_point >= response[1].max_global_point - pointUpScale * i) {
-        novelRank.push(11 - i);
+        novelRankNum.push(11 - i);
         break;
       }
 
       if (i == 6) {
         for (var j = 1; j < 5; j++) {
           if (novel.global_point >= response[1].global_point - pointDownScale * j) {
-            novelRank.push(5 - j);
+            novelRankNum.push(5 - j);
             break;
           }
         }
@@ -27596,14 +27652,14 @@ function Search(_ref) {
 
     for (var _i = 1; _i < 7; _i++) {
       if (novel.fav_novel_cnt >= response[1].max_favorite_count - favUpScale * _i) {
-        novelRank.push(11 - _i);
+        novelRankNum.push(11 - _i);
         break;
       }
 
       if (_i == 6) {
         for (var _j = 1; _j < 5; _j++) {
           if (novel.fav_novel_cnt >= response[1].favorite_count - favDownScale * _j) {
-            novelRank.push(5 - _j);
+            novelRankNum.push(5 - _j);
             break;
           }
         }
@@ -27612,14 +27668,14 @@ function Search(_ref) {
 
     for (var _i2 = 1; _i2 < 7; _i2++) {
       if (novel.all_hyoka_cnt >= response[1].max_reviewer_count - revUpScale * _i2) {
-        novelRank.push(11 - _i2);
+        novelRankNum.push(11 - _i2);
         break;
       }
 
       if (_i2 == 6) {
         for (var _j2 = 1; _j2 < 5; _j2++) {
           if (novel.all_hyoka_cnt >= response[1].reviewer_count - revDownScale * _j2) {
-            novelRank.push(5 - _j2);
+            novelRankNum.push(5 - _j2);
             break;
           }
         }
@@ -27628,70 +27684,164 @@ function Search(_ref) {
 
     for (var _i3 = 1; _i3 < 7; _i3++) {
       if (novel.impression_cnt >= response[1].max_comment_count - comUpScale * _i3) {
-        novelRank.push(11 - _i3);
+        novelRankNum.push(11 - _i3);
         break;
       }
 
       if (_i3 == 6) {
         for (var _j3 = 1; _j3 < 5; _j3++) {
-          if (novel.impression_cnt >= response[1].comment_cnt - comDownScale * _j3) {
-            novelRank.push(5 - _j3);
+          if (novel.impression_cnt >= response[1].comment_count - comDownScale * _j3) {
+            novelRankNum.push(5 - _j3);
             break;
           }
         }
       }
     }
 
+    for (var _i4 = 1; _i4 < 7; _i4++) {
+      if (novel.impression_cnt >= response[1].max_comment_count - comUpScale * _i4) {
+        novelRankNum.push(11 - _i4);
+        break;
+      }
+
+      if (_i4 == 6) {
+        for (var _j4 = 1; _j4 < 5; _j4++) {
+          if (novel.impression_cnt >= response[1].comment_count - comDownScale * _j4) {
+            novelRankNum.push(5 - _j4);
+            break;
+          }
+        }
+      }
+    } //ランクをアルファベットにして格納
+
+
+    novelRankNum.forEach(function (rank) {
+      if (rank == 10) {
+        novelRankAlpha.push("SSS");
+      } else if (rank == 9) {
+        novelRankAlpha.push("SS");
+      } else if (rank == 8) {
+        novelRankAlpha.push("S");
+      } else if (rank == 7) {
+        novelRankAlpha.push("A");
+      } else if (rank == 6) {
+        novelRankAlpha.push("B");
+      } else if (rank == 5) {
+        novelRankAlpha.push("C");
+      } else if (rank == 4) {
+        novelRankAlpha.push("D");
+      } else if (rank == 3) {
+        novelRankAlpha.push("E");
+      } else if (rank == 2) {
+        novelRankAlpha.push("F");
+      } else {
+        novelRankAlpha.push("G");
+      }
+    });
     var rankData = {
-      labels: ['ポイント', 'ブクマ数', '評価者数', '平均評価点', '感想数'],
+      labels: ['Pt', 'Fav', 'Rev', 'Rate', 'Com'],
       datasets: [{
-        label: novel.title,
-        data: [novel.global_point / response[1].max_global_point * 100, novel.fav_novel_cnt / response[1].max_favorite_count * 100, novel.all_hyoka_cnt / response[1].max_reviewer_count * 100, novel.all_point / novel.all_hyoka_cnt / response[1].max_average_rate * 100, novel.impression_cnt / response[1].max_comment_count * 100],
+        //label: novel.title,
+        data: novelRankNum,
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1
       }]
     };
-    var numberData = {
+    var novelData = {
       labels: ['ポイント', 'ブクマ数', '評価者数', '平均評価点', '感想数'],
       datasets: [{
         label: novel.title,
-        data: [novel.global_point / response[1].max_global_point * 100, novel.fav_novel_cnt / response[1].max_favorite_count * 100, novel.all_hyoka_cnt / response[1].max_reviewer_count * 100, novel.all_point / novel.all_hyoka_cnt / response[1].max_average_rate * 100, novel.impression_cnt / response[1].max_comment_count * 100],
+        data: [Math.floor(novel.global_point / response[1].max_global_point * 100), Math.floor(novel.fav_novel_cnt / response[1].max_favorite_count * 100), Math.floor(novel.all_hyoka_cnt / response[1].max_reviewer_count * 100), novel.all_point / novel.all_hyoka_cnt / response[1].max_average_rate * 100, Math.floor(novel.impression_cnt / response[1].max_comment_count * 100)],
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1
       }, averageData]
     };
+    var novelChart = {
+      type: "radar",
+      data: novelData
+    };
     return (
       /*#__PURE__*/
       //gridで整形
       (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
-          href: novelUrl + novel.ncode,
-          children: novel.title
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-          children: novelRank
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_3__.Radar, {
-          data: numberData
-        })]
-      }, novel.ncode)
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_5__["default"], {
+          sx: {
+            flexGrow: 1
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+            container: true,
+            spacing: 0,
+            columns: 20,
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+              item: true,
+              xs: 20,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+                className: "novelTitle",
+                target: "_blank",
+                href: novelUrl + novel.ncode,
+                children: novel.title
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+              container: true,
+              spacing: 1,
+              columns: 20,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+                item: true,
+                xs: 5,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Item, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_7__.Radar, {
+                    data: rankData,
+                    options: rankOption
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+                item: true,
+                xs: 3,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Item, {
+                  children: novelRankAlpha[0]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+                item: true,
+                xs: 3,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Item, {
+                  children: novelRankAlpha[1]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+                item: true,
+                xs: 3,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Item, {
+                  children: novelRankAlpha[2]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+                item: true,
+                xs: 3,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Item, {
+                  children: novelRankAlpha[3]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+                item: true,
+                xs: 3,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Item, {
+                  children: novelRankAlpha[4]
+                })
+              })]
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_7__.Radar, {
+            data: novelData,
+            options: pointOption
+          })
+        }, novel.ncode)]
+      })
     );
   });
-  var result = [];
-
-  for (var i in response[1]) {
-    result.push( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("p", {
-      children: [i, ":", response[1][i]]
-    }, i));
-  } //resultにpタグごと格納している
-
-
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
       children: base_url
-    }), novelData, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-      children: "------"
-    }), result]
+    }), novelDataList]
   });
 }
 /* export default function Search({
