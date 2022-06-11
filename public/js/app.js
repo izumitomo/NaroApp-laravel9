@@ -27543,6 +27543,118 @@ export default function Home(){
 
 /***/ }),
 
+/***/ "./resources/js/components/PointChart.js":
+/*!***********************************************!*\
+  !*** ./resources/js/components/PointChart.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ PointChart)
+/* harmony export */ });
+/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/chart.esm.js");
+/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-chartjs-2 */ "./node_modules/react-chartjs-2/dist/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+chart_js__WEBPACK_IMPORTED_MODULE_0__.Chart.register(chart_js__WEBPACK_IMPORTED_MODULE_0__.RadialLinearScale, chart_js__WEBPACK_IMPORTED_MODULE_0__.PointElement, chart_js__WEBPACK_IMPORTED_MODULE_0__.LineElement, chart_js__WEBPACK_IMPORTED_MODULE_0__.Filler, chart_js__WEBPACK_IMPORTED_MODULE_0__.Tooltip, chart_js__WEBPACK_IMPORTED_MODULE_0__.Legend);
+var pointOption = {
+  scales: {
+    r: {
+      angleLines: {
+        display: false
+      },
+      suggestedMin: 0,
+      suggestedMax: 100
+    }
+  }
+};
+function PointChart(_ref) {
+  var averagePoint = _ref.averagePoint,
+      novelPoint = _ref.novelPoint,
+      title = _ref.title;
+  var averageData = {
+    label: "平均戦闘力",
+    data: averagePoint,
+    backgroundColor: 'rgba(50,17,240,0.4)',
+    borderColor: 'rgba(50,17,240,1)',
+    borderWidth: 1
+  };
+  var novelData = {
+    labels: ['ポイント', 'ブクマ数', '評価者数', '平均評価点', '感想数'],
+    datasets: [{
+      label: title.length < 50 ? title : title.substring(0, 50) + "……",
+      data: novelPoint,
+      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+      borderColor: 'rgba(255, 99, 132, 1)',
+      borderWidth: 1
+    }, averageData]
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_2__.Radar, {
+    data: novelData,
+    options: pointOption
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/RankChart.js":
+/*!**********************************************!*\
+  !*** ./resources/js/components/RankChart.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ RankChart)
+/* harmony export */ });
+/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/chart.esm.js");
+/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-chartjs-2 */ "./node_modules/react-chartjs-2/dist/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+chart_js__WEBPACK_IMPORTED_MODULE_0__.Chart.register(chart_js__WEBPACK_IMPORTED_MODULE_0__.RadialLinearScale, chart_js__WEBPACK_IMPORTED_MODULE_0__.PointElement, chart_js__WEBPACK_IMPORTED_MODULE_0__.LineElement, chart_js__WEBPACK_IMPORTED_MODULE_0__.Filler, chart_js__WEBPACK_IMPORTED_MODULE_0__.Tooltip, chart_js__WEBPACK_IMPORTED_MODULE_0__.Legend);
+var rankOption = {
+  scales: {
+    r: {
+      angleLines: {
+        display: false
+      },
+      suggestedMin: 0,
+      suggestedMax: 10
+    }
+  },
+  plugins: {
+    legend: {
+      display: false
+    }
+  }
+};
+function RankChart(_ref) {
+  var rank = _ref.rank;
+  var rankData = {
+    labels: ['Pt', 'Fav', 'Rev', 'Rate', 'Com'],
+    datasets: [{
+      //label: novel.title,
+      data: rank,
+      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+      borderColor: 'rgba(255, 99, 132, 1)',
+      borderWidth: 1
+    }]
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_2__.Radar, {
+    data: rankData,
+    options: rankOption
+  });
+}
+
+/***/ }),
+
 /***/ "./resources/js/components/Search.js":
 /*!*******************************************!*\
   !*** ./resources/js/components/Search.js ***!
@@ -27554,15 +27666,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Search)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _mui_material_styles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/material/styles */ "./node_modules/@mui/material/styles/styled.js");
-/* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Paper/Paper.js");
-/* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Box/Box.js");
-/* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Grid/Grid.js");
-/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/chart.esm.js");
-/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-chartjs-2 */ "./node_modules/react-chartjs-2/dist/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _RankChart__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RankChart */ "./resources/js/components/RankChart.js");
+/* harmony import */ var _PointChart__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PointChart */ "./resources/js/components/PointChart.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _mui_material_styles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material/styles */ "./node_modules/@mui/material/styles/styled.js");
+/* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Paper/Paper.js");
+/* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Box/Box.js");
+/* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Grid/Grid.js");
+/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/chart.esm.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -27576,19 +27689,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-chart_js__WEBPACK_IMPORTED_MODULE_1__.Chart.register(chart_js__WEBPACK_IMPORTED_MODULE_1__.RadialLinearScale, chart_js__WEBPACK_IMPORTED_MODULE_1__.PointElement, chart_js__WEBPACK_IMPORTED_MODULE_1__.LineElement, chart_js__WEBPACK_IMPORTED_MODULE_1__.Filler, chart_js__WEBPACK_IMPORTED_MODULE_1__.Tooltip, chart_js__WEBPACK_IMPORTED_MODULE_1__.Legend);
-var novelUrl = "https://ncode.syosetu.com/";
-var numberOfRank = 10;
-var Item = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_3__["default"])(_mui_material___WEBPACK_IMPORTED_MODULE_4__["default"])(function (_ref) {
-  var theme = _ref.theme;
-  return _objectSpread(_objectSpread({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff'
-  }, theme.typography.body2), {}, {
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary
-  });
-});
+
+
+chart_js__WEBPACK_IMPORTED_MODULE_3__.Chart.register(chart_js__WEBPACK_IMPORTED_MODULE_3__.RadialLinearScale, chart_js__WEBPACK_IMPORTED_MODULE_3__.PointElement, chart_js__WEBPACK_IMPORTED_MODULE_3__.LineElement, chart_js__WEBPACK_IMPORTED_MODULE_3__.Filler, chart_js__WEBPACK_IMPORTED_MODULE_3__.Tooltip, chart_js__WEBPACK_IMPORTED_MODULE_3__.Legend);
 var rankOption = {
   scales: {
     r: {
@@ -27616,16 +27719,21 @@ var pointOption = {
     }
   }
 };
+var novelUrl = "https://ncode.syosetu.com/";
+var Item = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_5__["default"])(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"])(function (_ref) {
+  var theme = _ref.theme;
+  return _objectSpread(_objectSpread({
+    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff'
+  }, theme.typography.body2), {}, {
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary
+  });
+});
 function Search(_ref2) {
   var base_url = _ref2.base_url,
       response = _ref2.response;
-  var averageData = {
-    label: "平均戦闘力",
-    data: [response[1].global_point / response[1].max_global_point * 100, response[1].favorite_count / response[1].max_favorite_count * 100, response[1].reviewer_count / response[1].max_reviewer_count * 100, response[1].average_rate / response[1].max_average_rate * 100, response[1].comment_count / response[1].max_comment_count * 100],
-    backgroundColor: 'rgba(50,17,240,0.4)',
-    borderColor: 'rgba(50,17,240,1)',
-    borderWidth: 1
-  }; //中心をランクC（5点）としてC,B,A,S,SS,SSSに分けるために6で割る。
+  var averagePoint = [response[1].global_point / response[1].max_global_point * 100, response[1].favorite_count / response[1].max_favorite_count * 100, response[1].reviewer_count / response[1].max_reviewer_count * 100, response[1].average_rate / response[1].max_average_rate * 100, response[1].comment_count / response[1].max_comment_count * 100]; //中心をランクC（5点）としてC,B,A,S,SS,SSSに分けるために6で割る。
 
   var pointUpScale = (response[1].max_global_point - response[1].global_point) / 6; //平均から0までをD,E,F,Gに分けるために4で割る。
 
@@ -27641,6 +27749,8 @@ function Search(_ref2) {
   var novelDataList = response[0].map(function (novel) {
     var novelRankNum = [];
     var novelRankAlpha = [];
+    var novelPoint = [Math.floor(novel.global_point / response[1].max_global_point * 100), Math.floor(novel.fav_novel_cnt / response[1].max_favorite_count * 100), Math.floor(novel.all_hyoka_cnt / response[1].max_reviewer_count * 100), novel.all_point / novel.all_hyoka_cnt / response[1].max_average_rate * 100, Math.floor(novel.impression_cnt / response[1].max_comment_count * 100)];
+    var averageRate = Math.round(novel.all_point / novel.all_hyoka_cnt * 100) / 100;
 
     for (var i = 1; i < 7; i++) {
       if (novel.global_point >= response[1].max_global_point - pointUpScale * i) {
@@ -27746,111 +27856,87 @@ function Search(_ref2) {
         novelRankAlpha.push("G");
       }
     });
-    var rankData = {
-      labels: ['Pt', 'Fav', 'Rev', 'Rate', 'Com'],
-      datasets: [{
-        //label: novel.title,
-        data: novelRankNum,
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-        borderColor: 'rgba(255, 99, 132, 1)',
-        borderWidth: 1
-      }]
-    };
-    var novelData = {
-      labels: ['ポイント', 'ブクマ数', '評価者数', '平均評価点', '感想数'],
-      datasets: [{
-        label: novel.title.length < 50 ? novel.title : novel.title.substring(0, 50) + "……",
-        data: [Math.floor(novel.global_point / response[1].max_global_point * 100), Math.floor(novel.fav_novel_cnt / response[1].max_favorite_count * 100), Math.floor(novel.all_hyoka_cnt / response[1].max_reviewer_count * 100), novel.all_point / novel.all_hyoka_cnt / response[1].max_average_rate * 100, Math.floor(novel.impression_cnt / response[1].max_comment_count * 100)],
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-        borderColor: 'rgba(255, 99, 132, 1)',
-        borderWidth: 1
-      }, averageData]
-    };
-    var novelChart = {
-      type: "radar",
-      data: novelData
-    };
     return (
       /*#__PURE__*/
       //gridで整形
-      (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_5__["default"], {
+      (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_7__["default"], {
           sx: {
             flexGrow: 1
           },
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
             container: true,
             spacing: 0,
             columns: 20,
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
               item: true,
               xs: 20,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
                 className: "novelTitle",
                 target: "_blank",
                 href: novelUrl + novel.ncode,
                 children: novel.title
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
               container: true,
               spacing: 1,
               columns: 20,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
                 item: true,
                 xs: 5,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Item, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Item, {
                   onClick: function onClick() {
                     return console.log("aaaa");
                   },
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_7__.Radar, {
-                    data: rankData,
-                    options: rankOption
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_RankChart__WEBPACK_IMPORTED_MODULE_0__["default"], {
+                    rank: novelRankNum
                   })
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
                 item: true,
                 xs: 3,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(Item, {
-                  children: ["\u30DD\u30A4\u30F3\u30C8\u6570", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), novelRankAlpha[0]]
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(Item, {
+                  children: ["\u30DD\u30A4\u30F3\u30C8", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), novelRankAlpha[0], /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), novel.global_point]
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
                 item: true,
                 xs: 3,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Item, {
-                  children: novelRankAlpha[1]
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(Item, {
+                  children: ["\u30D6\u30AF\u30DE", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), novelRankAlpha[1], /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), novel.fav_novel_cnt]
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
                 item: true,
                 xs: 3,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Item, {
-                  children: novelRankAlpha[2]
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(Item, {
+                  children: ["\u8A55\u4FA1\u8005\u6570", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), novelRankAlpha[2], /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), novel.all_hyoka_cnt]
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
                 item: true,
                 xs: 3,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Item, {
-                  children: novelRankAlpha[3]
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(Item, {
+                  children: ["\u5E73\u5747\u8A55\u4FA1", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), novelRankAlpha[3], /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), averageRate]
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
                 item: true,
                 xs: 3,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Item, {
-                  children: novelRankAlpha[4]
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(Item, {
+                  children: ["\u611F\u60F3\u6570", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), novelRankAlpha[4], /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), novel.impression_cnt]
                 })
               })]
             })]
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_7__.Radar, {
-            data: novelData,
-            options: pointOption
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_PointChart__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            title: novel.title,
+            averagePoint: averagePoint,
+            novelPoint: novelPoint
           })
         })]
       }, novel.ncode)
     );
   });
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
       children: base_url
     }), novelDataList]
   });

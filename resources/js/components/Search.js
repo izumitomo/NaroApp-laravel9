@@ -1,3 +1,5 @@
+import RankChart from "./RankChart";
+import PointChart from "./PointChart"
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import {
@@ -5,7 +7,7 @@ import {
   Paper,
   Grid
  } from '@mui/material/';
-import {
+ import {
   Chart as ChartJS,
   RadialLinearScale,
   PointElement,
@@ -17,24 +19,13 @@ import {
 import { Radar } from 'react-chartjs-2';
 
 ChartJS.register(
-  RadialLinearScale,
-  PointElement,
-  LineElement,
-  Filler,
-  Tooltip,
-  Legend
+RadialLinearScale,
+PointElement,
+LineElement,
+Filler,
+Tooltip,
+Legend
 );
-
-const novelUrl = "https://ncode.syosetu.com/"
-const numberOfRank = 10
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
 
 const rankOption ={
   scales: {
@@ -65,23 +56,30 @@ const pointOption ={
   }
 };
 
+
+const novelUrl = "https://ncode.syosetu.com/"
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
+
+
 export default function Search({
   base_url,
   response,
 }) {
-  const averageData ={
-    label: "平均戦闘力",
-    data: [
-      response[1].global_point / response[1].max_global_point * 100,
-      response[1].favorite_count / response[1].max_favorite_count * 100,
-      response[1].reviewer_count / response[1].max_reviewer_count * 100,
-      response[1].average_rate / response[1].max_average_rate * 100,
-      response[1].comment_count / response[1].max_comment_count * 100
-    ],
-    backgroundColor: 'rgba(50,17,240,0.4)',
-    borderColor: 'rgba(50,17,240,1)',
-    borderWidth: 1,
-  }
+  const averagePoint = [
+    response[1].global_point / response[1].max_global_point * 100,
+    response[1].favorite_count / response[1].max_favorite_count * 100,
+    response[1].reviewer_count / response[1].max_reviewer_count * 100,
+    response[1].average_rate / response[1].max_average_rate * 100,
+    response[1].comment_count / response[1].max_comment_count * 100
+    ]
+  
   //中心をランクC（5点）としてC,B,A,S,SS,SSSに分けるために6で割る。
   const pointUpScale = (response[1].max_global_point - response[1].global_point) / 6;
   //平均から0までをD,E,F,Gに分けるために4で割る。
@@ -99,6 +97,16 @@ export default function Search({
   const novelDataList = response[0].map(novel => {
     let novelRankNum = [];
     let novelRankAlpha = [];
+
+    const novelPoint = [
+      Math.floor(novel.global_point / response[1].max_global_point * 100),
+      Math.floor(novel.fav_novel_cnt / response[1].max_favorite_count * 100),
+      Math.floor(novel.all_hyoka_cnt / response[1].max_reviewer_count * 100),
+      (novel.all_point/novel.all_hyoka_cnt) / response[1].max_average_rate * 100,
+      Math.floor(novel.impression_cnt / response[1].max_comment_count * 100)
+    ]
+
+    const averageRate = Math.round(novel.all_point/novel.all_hyoka_cnt * 100) / 100
 
     for (let i = 1; i < 7; i++) {
       if (novel.global_point >= response[1].max_global_point - pointUpScale*i) {
@@ -186,44 +194,7 @@ export default function Search({
       else {novelRankAlpha.push("G")}
     })
 
-    const rankData = {
-      labels: ['Pt', 'Fav', 'Rev', 'Rate', 'Com'],
-      datasets: [
-        {
-          //label: novel.title,
-          data: novelRankNum,
-          backgroundColor: 'rgba(255, 99, 132, 0.2)',
-          borderColor: 'rgba(255, 99, 132, 1)',
-          borderWidth: 1,
-        },
-      ]
-    }
 
-    const novelData = {
-      labels: ['ポイント', 'ブクマ数', '評価者数', '平均評価点', '感想数'],
-      datasets: [
-        {
-          label: novel.title.length < 50 ?  novel.title :
-          novel.title.substring(0, 50) + "……"
-          ,  
-          data: [
-            Math.floor(novel.global_point / response[1].max_global_point * 100),
-            Math.floor(novel.fav_novel_cnt / response[1].max_favorite_count * 100),
-            Math.floor(novel.all_hyoka_cnt / response[1].max_reviewer_count * 100),
-            (novel.all_point/novel.all_hyoka_cnt) / response[1].max_average_rate * 100,
-            Math.floor(novel.impression_cnt / response[1].max_comment_count * 100)
-          ],
-          backgroundColor: 'rgba(255, 99, 132, 0.2)',
-          borderColor: 'rgba(255, 99, 132, 1)',
-          borderWidth: 1,
-        },averageData
-      ],
-    };
-
-    const novelChart = {
-      type: "radar",
-      data: novelData,
-    };
     
     return (
       //gridで整形
@@ -235,29 +206,33 @@ export default function Search({
           </Grid>
           <Grid container spacing={1} columns={20}>
             <Grid item xs={5}>
-              <Item onClick={() => console.log("aaaa")}><Radar data={rankData} options={rankOption}/></Item>
+              <Item onClick={() => console.log("aaaa")}><RankChart rank={novelRankNum}/></Item>
             </Grid>
             <Grid item xs={3}>
-              <Item>ポイント数<br/>{novelRankAlpha[0]}</Item>
+              <Item>ポイント<br/>{novelRankAlpha[0]}<br/>{novel.global_point}</Item>
             </Grid>
             <Grid item xs={3}>
-              <Item>{novelRankAlpha[1]}</Item>
+              <Item>ブクマ<br/>{novelRankAlpha[1]}<br/>{novel.fav_novel_cnt}</Item>
             </Grid>
             <Grid item xs={3}>
-              <Item>{novelRankAlpha[2]}</Item>
+              <Item>評価者数<br/>{novelRankAlpha[2]}<br/>{novel.all_hyoka_cnt}</Item>
             </Grid>
             <Grid item xs={3}>
-              <Item>{novelRankAlpha[3]}</Item>
+              <Item>平均評価<br/>{novelRankAlpha[3]}<br/>{averageRate}</Item>
             </Grid>
             <Grid item xs={3}>
-              <Item>{novelRankAlpha[4]}</Item>
+              <Item>感想数<br/>{novelRankAlpha[4]}<br/>{novel.impression_cnt}</Item>
             </Grid>
           </Grid>
         </Grid>
       </Box>
 
       <div>
-        <Radar data={novelData} options={pointOption}/>
+        <PointChart 
+          title = {novel.title}
+          averagePoint = {averagePoint}
+          novelPoint = {novelPoint}
+          />
       </div>
     </div>
     );
