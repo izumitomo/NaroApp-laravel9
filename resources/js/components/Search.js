@@ -16,7 +16,8 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { Radar } from 'react-chartjs-2';
+import { pink } from "@mui/material/colors";
+
 
 ChartJS.register(
 RadialLinearScale,
@@ -66,6 +67,41 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
   color: theme.palette.text.secondary,
 }));
+
+const Score = styled('p')({
+  textAlign: "center",
+  color: "red",
+  fontSize: 40,
+});
+
+const SSS = {
+  color: "red"
+}
+const SS = {
+  color: pink
+}
+const A = {
+  color: 'red'
+  }
+const B = {
+  color: 'blue'
+  }
+const C = {
+  color: "orange"
+}
+const D = {
+  color: pink
+}
+const E = {
+  color: 'red'
+  }
+const F = {
+  color: 'blue'
+  }
+const G = {
+  color: "orange"
+}
+
 
 
 export default function Search({
@@ -209,19 +245,19 @@ export default function Search({
               <Item onClick={() => console.log("aaaa")}><RankChart rank={novelRankNum}/></Item>
             </Grid>
             <Grid item xs={3}>
-              <Item>ポイント<br/>{novelRankAlpha[0]}<br/>{novel.global_point}</Item>
+              <Item>ポイント<br/><Score>{novelRankAlpha[0]}</Score>{novel.global_point}</Item>
             </Grid>
             <Grid item xs={3}>
-              <Item>ブクマ<br/>{novelRankAlpha[1]}<br/>{novel.fav_novel_cnt}</Item>
+              <Item>ブクマ<br/><p style={novelRankAlpha[1]}>{novelRankAlpha[1]}</p>{novel.fav_novel_cnt}</Item>
             </Grid>
             <Grid item xs={3}>
-              <Item>評価者数<br/>{novelRankAlpha[2]}<br/>{novel.all_hyoka_cnt}</Item>
+              <Item>評価者数<br/><Score>{novelRankAlpha[2]}</Score>{novel.all_hyoka_cnt}</Item>
             </Grid>
             <Grid item xs={3}>
-              <Item>平均評価<br/>{novelRankAlpha[3]}<br/>{averageRate}</Item>
+              <Item>平均評価<br/><Score>{novelRankAlpha[3]}</Score>{averageRate}</Item>
             </Grid>
             <Grid item xs={3}>
-              <Item>感想数<br/>{novelRankAlpha[4]}<br/>{novel.impression_cnt}</Item>
+              <Item>感想数<br/><Score>{novelRankAlpha[4]}</Score>{novel.impression_cnt}</Item>
             </Grid>
           </Grid>
         </Grid>
