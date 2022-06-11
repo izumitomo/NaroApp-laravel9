@@ -27186,9 +27186,7 @@ function Home() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(TitleStyle, {
       children: title
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      sx: {
-        flexGrow: 1
-      },
+      sx: {},
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], {
         container: true,
         spacing: 1,
@@ -27617,7 +27615,7 @@ function Search(_ref2) {
     backgroundColor: 'rgba(50,17,240,0.4)',
     borderColor: 'rgba(50,17,240,1)',
     borderWidth: 1
-  }; //中心をランクC（5点）としてC,B,A,S,SS,SSSに分けるために5で割る。
+  }; //中心をランクC（5点）としてC,B,A,S,SS,SSSに分けるために6で割る。
 
   var pointUpScale = (response[1].max_global_point - response[1].global_point) / 6; //平均から0までをD,E,F,Gに分けるために4で割る。
 
@@ -27751,7 +27749,7 @@ function Search(_ref2) {
     var novelData = {
       labels: ['ポイント', 'ブクマ数', '評価者数', '平均評価点', '感想数'],
       datasets: [{
-        label: novel.title,
+        label: novel.title.length < 50 ? novel.title : novel.title.substring(0, 50) + "……",
         data: [Math.floor(novel.global_point / response[1].max_global_point * 100), Math.floor(novel.fav_novel_cnt / response[1].max_favorite_count * 100), Math.floor(novel.all_hyoka_cnt / response[1].max_reviewer_count * 100), novel.all_point / novel.all_hyoka_cnt / response[1].max_average_rate * 100, Math.floor(novel.impression_cnt / response[1].max_comment_count * 100)],
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         borderColor: 'rgba(255, 99, 132, 1)',
@@ -27791,6 +27789,9 @@ function Search(_ref2) {
                 item: true,
                 xs: 5,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Item, {
+                  onClick: function onClick() {
+                    return console.log("aaaa");
+                  },
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_7__.Radar, {
                     data: rankData,
                     options: rankOption
@@ -27799,8 +27800,8 @@ function Search(_ref2) {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
                 item: true,
                 xs: 3,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Item, {
-                  children: novelRankAlpha[0]
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(Item, {
+                  children: ["\u30DD\u30A4\u30F3\u30C8\u6570", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), novelRankAlpha[0]]
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
                 item: true,
@@ -27834,8 +27835,8 @@ function Search(_ref2) {
             data: novelData,
             options: pointOption
           })
-        }, novel.ncode)]
-      })
+        })]
+      }, novel.ncode)
     );
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {

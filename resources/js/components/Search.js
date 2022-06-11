@@ -82,7 +82,7 @@ export default function Search({
     borderColor: 'rgba(50,17,240,1)',
     borderWidth: 1,
   }
-  //中心をランクC（5点）としてC,B,A,S,SS,SSSに分けるために5で割る。
+  //中心をランクC（5点）としてC,B,A,S,SS,SSSに分けるために6で割る。
   const pointUpScale = (response[1].max_global_point - response[1].global_point) / 6;
   //平均から0までをD,E,F,Gに分けるために4で割る。
   const pointDownScale = response[1].global_point / 4;
@@ -203,7 +203,9 @@ export default function Search({
       labels: ['ポイント', 'ブクマ数', '評価者数', '平均評価点', '感想数'],
       datasets: [
         {
-          label: novel.title,
+          label: novel.title.length < 50 ?  novel.title :
+          novel.title.substring(0, 50) + "……"
+          ,  
           data: [
             Math.floor(novel.global_point / response[1].max_global_point * 100),
             Math.floor(novel.fav_novel_cnt / response[1].max_favorite_count * 100),
@@ -225,7 +227,7 @@ export default function Search({
     
     return (
       //gridで整形
-      <div>
+      <div key={novel.ncode}>
         <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={0} columns={20}>
           <Grid item xs={20}>
@@ -233,10 +235,10 @@ export default function Search({
           </Grid>
           <Grid container spacing={1} columns={20}>
             <Grid item xs={5}>
-              <Item><Radar data={rankData} options={rankOption}/></Item>
+              <Item onClick={() => console.log("aaaa")}><Radar data={rankData} options={rankOption}/></Item>
             </Grid>
             <Grid item xs={3}>
-              <Item>{novelRankAlpha[0]}</Item>
+              <Item>ポイント数<br/>{novelRankAlpha[0]}</Item>
             </Grid>
             <Grid item xs={3}>
               <Item>{novelRankAlpha[1]}</Item>
@@ -254,7 +256,7 @@ export default function Search({
         </Grid>
       </Box>
 
-      <div key={novel.ncode}>
+      <div>
         <Radar data={novelData} options={pointOption}/>
       </div>
     </div>
