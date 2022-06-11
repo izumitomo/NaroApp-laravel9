@@ -256,9 +256,6 @@ export default function Search({
         </Grid>
       </Box>
 
-      <div>
-        <Radar data={novelData} options={pointOption}/>
-      </div>
     </div>
     );
   });
@@ -266,6 +263,7 @@ export default function Search({
   return (
     <div>
       <p>{base_url}</p>
+      {novelDataList}
 
     </div>
   );
