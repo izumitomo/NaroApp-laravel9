@@ -112,8 +112,8 @@ export default function Home() {
     <ThemeProvider theme={theme}>
       <TitleStyle>{title}</TitleStyle>
        <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={2} columns={20}>
-          <Grid item xs={9}>
+        <Grid container spacing={1} columns={20}>
+          <Grid item xs={8}>
           <Centering>
             <FormControl sx={{
             m: 1,
@@ -154,9 +154,9 @@ export default function Home() {
             </FormControl>
             </Centering>
           </Grid>
-          <Grid item xs={7}>
+          <Grid item xs={8}>
           <Centering>
-            <FormControl component="fieldset">
+            <FormControl component="fieldset" sx={{width: 1, height: 1}}>
               <FormGroup aria-label="position" row>
                 <FormControlLabel
                   value="end"
