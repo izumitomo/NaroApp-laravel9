@@ -111,7 +111,7 @@ export default function Home() {
   return (
     <ThemeProvider theme={theme}>
       <TitleStyle>{title}</TitleStyle>
-       <Box sx={{ flexGrow: 1 }}>
+       <Box sx={{}}>
         <Grid container spacing={1} columns={20}>
           <Grid item xs={8}>
           <Centering>
