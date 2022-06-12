@@ -15241,37 +15241,6 @@ const orange = {
 
 /***/ }),
 
-/***/ "./node_modules/@mui/material/colors/pink.js":
-/*!***************************************************!*\
-  !*** ./node_modules/@mui/material/colors/pink.js ***!
-  \***************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-const pink = {
-  50: '#fce4ec',
-  100: '#f8bbd0',
-  200: '#f48fb1',
-  300: '#f06292',
-  400: '#ec407a',
-  500: '#e91e63',
-  600: '#d81b60',
-  700: '#c2185b',
-  800: '#ad1457',
-  900: '#880e4f',
-  A100: '#ff80ab',
-  A200: '#ff4081',
-  A400: '#f50057',
-  A700: '#c51162'
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (pink);
-
-/***/ }),
-
 /***/ "./node_modules/@mui/material/colors/purple.js":
 /*!*****************************************************!*\
   !*** ./node_modules/@mui/material/colors/purple.js ***!
@@ -27105,18 +27074,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-var Item = (0,_mui_system__WEBPACK_IMPORTED_MODULE_5__["default"])(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"])(function (_ref) {
+var Centering = (0,_mui_system__WEBPACK_IMPORTED_MODULE_5__["default"])(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"])(function (_ref) {
   var theme = _ref.theme;
-  return _objectSpread(_objectSpread({
-    backgroundColor: '#fff'
-  }, theme.typography.body2), {}, {
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary
-  });
-});
-var Centering = (0,_mui_system__WEBPACK_IMPORTED_MODULE_5__["default"])(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"])(function (_ref2) {
-  var theme = _ref2.theme;
   return _objectSpread(_objectSpread({
     backgroundColor: '#e6e6e6'
   }, theme.typography.body2), {}, {
@@ -27703,10 +27662,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _mui_material_styles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material/styles */ "./node_modules/@mui/material/styles/styled.js");
 /* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Paper/Paper.js");
-/* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Box/Box.js");
-/* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Grid/Grid.js");
+/* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Box/Box.js");
+/* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Grid/Grid.js");
 /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/chart.esm.js");
-/* harmony import */ var _mui_material_colors__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/material/colors */ "./node_modules/@mui/material/colors/pink.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -27751,6 +27709,56 @@ var pointOption = {
     }
   }
 };
+var styleSSS = {
+  textAlign: "center",
+  color: "#FF99FF",
+  fontSize: 30
+};
+var styleSS = {
+  textAlign: "center",
+  color: "#FF99FF",
+  fontSize: 30
+};
+var styleS = {
+  textAlign: "center",
+  color: "#FF99FF",
+  fontSize: 30
+};
+var styleA = {
+  textAlign: "center",
+  color: "#FF33CC",
+  fontSize: 30
+};
+var styleB = {
+  textAlign: "center",
+  color: "#FF0000",
+  fontSize: 30
+};
+var styleC = {
+  textAlign: "center",
+  color: "#FFC000",
+  fontSize: 30
+};
+var styleD = {
+  textAlign: "center",
+  color: "#FFD966",
+  fontSize: 30
+};
+var styleE = {
+  textAlign: "center",
+  color: "#70AD47",
+  fontSize: 30
+};
+var styleF = {
+  textAlign: "center",
+  color: "#4472C4",
+  fontSize: 30
+};
+var styleG = {
+  textAlign: "center",
+  color: "#A5A5A5",
+  fontSize: 30
+};
 var novelUrl = "https://ncode.syosetu.com/";
 var Item = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_5__["default"])(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"])(function (_ref) {
   var theme = _ref.theme;
@@ -27767,33 +27775,6 @@ var Score = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_5__["default"])('p'
   color: "red",
   fontSize: 40
 });
-var SSS = {
-  color: "red"
-};
-var SS = {
-  color: _mui_material_colors__WEBPACK_IMPORTED_MODULE_7__["default"]
-};
-var A = {
-  color: 'red'
-};
-var B = {
-  color: 'blue'
-};
-var C = {
-  color: "orange"
-};
-var D = {
-  color: _mui_material_colors__WEBPACK_IMPORTED_MODULE_7__["default"]
-};
-var E = {
-  color: 'red'
-};
-var F = {
-  color: 'blue'
-};
-var G = {
-  color: "orange"
-};
 function Search(_ref2) {
   var base_url = _ref2.base_url,
       response = _ref2.response;
@@ -27809,12 +27790,12 @@ function Search(_ref2) {
   var comUpScale = (response[1].max_comment_count - response[1].comment_count) / 6;
   var comDownScale = response[1].comment_count / 4; //平均評価点は０にならないのでupscaleを採用する。
 
-  var rateUpScale = (response[1].max_favorite_count - response[1].favorite_count) / 6;
+  var rateUpScale = (response[1].max_average_rate - response[1].average_rate) / 6;
   var novelDataList = response[0].map(function (novel) {
     var novelRankNum = [];
     var novelRankAlpha = [];
     var novelPoint = [Math.floor(novel.global_point / response[1].max_global_point * 100), Math.floor(novel.fav_novel_cnt / response[1].max_favorite_count * 100), Math.floor(novel.all_hyoka_cnt / response[1].max_reviewer_count * 100), novel.all_point / novel.all_hyoka_cnt / response[1].max_average_rate * 100, Math.floor(novel.impression_cnt / response[1].max_comment_count * 100)];
-    var averageRate = Math.round(novel.all_point / novel.all_hyoka_cnt * 100) / 100;
+    var novelAverageRate = Math.round(novel.all_point / novel.all_hyoka_cnt * 100) / 100;
 
     for (var i = 1; i < 7; i++) {
       if (novel.global_point >= response[1].max_global_point - pointUpScale * i) {
@@ -27880,59 +27861,62 @@ function Search(_ref2) {
       }
     }
 
-    for (var _i4 = 1; _i4 < 7; _i4++) {
-      if (novel.impression_cnt >= response[1].max_comment_count - comUpScale * _i4) {
+    for (var _i4 = 1; _i4 < 11; _i4++) {
+      if (novelAverageRate >= response[1].max_average_rate - rateUpScale * _i4) {
+        console.log(11 - _i4, response[1].max_average_rate - rateUpScale * _i4);
         novelRankNum.push(11 - _i4);
         break;
-      }
-
-      if (_i4 == 6) {
-        for (var _j4 = 1; _j4 < 5; _j4++) {
-          if (novel.impression_cnt >= response[1].comment_count - comDownScale * _j4) {
-            novelRankNum.push(5 - _j4);
-            break;
-          }
-        }
       }
     } //ランクをアルファベットにして格納
 
 
+    var styleRank = [];
     novelRankNum.forEach(function (rank) {
       if (rank == 10) {
         novelRankAlpha.push("SSS");
+        styleRank.push(styleSSS);
       } else if (rank == 9) {
         novelRankAlpha.push("SS");
+        styleRank.push(styleSS);
       } else if (rank == 8) {
         novelRankAlpha.push("S");
+        styleRank.push(styleS);
       } else if (rank == 7) {
         novelRankAlpha.push("A");
+        styleRank.push(styleA);
       } else if (rank == 6) {
         novelRankAlpha.push("B");
+        styleRank.push(styleB);
       } else if (rank == 5) {
         novelRankAlpha.push("C");
+        styleRank.push(styleC);
       } else if (rank == 4) {
         novelRankAlpha.push("D");
+        styleRank.push(styleD);
       } else if (rank == 3) {
         novelRankAlpha.push("E");
+        styleRank.push(styleE);
       } else if (rank == 2) {
         novelRankAlpha.push("F");
+        styleRank.push(styleF);
       } else {
         novelRankAlpha.push("G");
+        styleRank.push(styleG);
       }
     });
     return (
       /*#__PURE__*/
       //gridで整形
       (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_7__["default"], {
           sx: {
             flexGrow: 1
           },
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_9__["default"], {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
             container: true,
             spacing: 0,
             columns: 20,
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_9__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
               item: true,
               xs: 20,
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
@@ -27941,11 +27925,11 @@ function Search(_ref2) {
                 href: novelUrl + novel.ncode,
                 children: novel.title
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_9__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
               container: true,
               spacing: 1,
               columns: 20,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_9__["default"], {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
                 item: true,
                 xs: 5,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Item, {
@@ -27956,44 +27940,48 @@ function Search(_ref2) {
                     rank: novelRankNum
                   })
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_9__["default"], {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
                 item: true,
                 xs: 3,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(Item, {
-                  children: ["\u30DD\u30A4\u30F3\u30C8", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Score, {
+                  children: ["\u30DD\u30A4\u30F3\u30C8", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+                    style: styleRank[0],
                     children: novelRankAlpha[0]
                   }), novel.global_point]
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_9__["default"], {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
                 item: true,
                 xs: 3,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(Item, {
                   children: ["\u30D6\u30AF\u30DE", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-                    style: novelRankAlpha[1],
+                    style: styleRank[1],
                     children: novelRankAlpha[1]
                   }), novel.fav_novel_cnt]
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_9__["default"], {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
                 item: true,
                 xs: 3,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(Item, {
-                  children: ["\u8A55\u4FA1\u8005\u6570", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Score, {
+                  children: ["\u8A55\u4FA1\u8005\u6570", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+                    style: styleRank[2],
                     children: novelRankAlpha[2]
                   }), novel.all_hyoka_cnt]
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_9__["default"], {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
                 item: true,
                 xs: 3,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(Item, {
-                  children: ["\u5E73\u5747\u8A55\u4FA1", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Score, {
+                  children: ["\u5E73\u5747\u8A55\u4FA1", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+                    style: styleRank[3],
                     children: novelRankAlpha[3]
-                  }), averageRate]
+                  }), novelAverageRate]
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_9__["default"], {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
                 item: true,
                 xs: 3,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(Item, {
-                  children: ["\u611F\u60F3\u6570", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Score, {
+                  children: ["\u611F\u60F3\u6570", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+                    style: styleRank[4],
                     children: novelRankAlpha[4]
                   }), novel.impression_cnt]
                 })

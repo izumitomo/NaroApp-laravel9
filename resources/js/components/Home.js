@@ -21,15 +21,6 @@ import { ThemeProvider,
 import { styled } from '@mui/system';
 import WifiFindIcon from '@mui/icons-material/WifiFind';
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-  
-}));
-
 const Centering = styled(Paper)(({ theme }) => ({
   backgroundColor: '#e6e6e6',
   ...theme.typography.body2,
