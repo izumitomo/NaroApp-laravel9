@@ -27100,15 +27100,22 @@ function Home() {
     fontSize: 50
   });
   var GenreP = (0,_mui_system__WEBPACK_IMPORTED_MODULE_5__["default"])('p')({
-    style: "inline",
     fontFamily: "pixel10-r",
     fontSize: 25,
-    margin: 'auto'
+    margin: 'auto',
+    color: "black"
   });
   var IsekaiP = (0,_mui_system__WEBPACK_IMPORTED_MODULE_5__["default"])("p")({
     fontFamily: "pixel10-r",
-    fontSize: 25,
-    margin: 'auto'
+    fontSize: 22,
+    margin: 'auto',
+    color: "black"
+  });
+  var SearchP = (0,_mui_system__WEBPACK_IMPORTED_MODULE_5__["default"])("p")({
+    fontFamily: "pixel10-r",
+    fontSize: 22,
+    margin: 'auto',
+    color: "black"
   });
 
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_2__.useState(false),
@@ -27356,28 +27363,35 @@ function Home() {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], {
           item: true,
           xs: 4,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Centering, {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+            style: {
+              height: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_18__["default"], {
+              className: "WifiFindIcon",
               style: {
-                height: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
+                color: "black",
+                //styleを使えばCSSの記法が通用する？
+                backgroundColor: "#4feff7",
+                display: "block",
+                fontSize: 20
               },
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_18__["default"], {
-                style: {
-                  color: "black",
-                  //styleを使えばCSSの記法が通用する？
-                  backgroundColor: "#4feff7"
-                },
-                variant: "contained",
-                size: "large",
-                startIcon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_icons_material_WifiFind__WEBPACK_IMPORTED_MODULE_19__["default"], {}),
-                onClick: handleSearch //component={ Link } to={"/search"}
-                ,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
-                  children: "\u8A08\u6E2C"
+              variant: "contained",
+              size: "large",
+              startIcon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_icons_material_WifiFind__WEBPACK_IMPORTED_MODULE_19__["default"], {
+                  style: {
+                    fontSize: 40
+                  }
                 })
+              }),
+              onClick: handleSearch //component={ Link } to={"/search"}
+              ,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(SearchP, {
+                children: "\u8A08\u6E2C"
               })
             })
           })

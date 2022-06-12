@@ -47,15 +47,22 @@ export default function Home() {
   });
 
   const GenreP = styled('p')({
-    style: "inline",
     fontFamily: "pixel10-r",
     fontSize: 25,
     margin: 'auto',
+    color: "black",
   });
   const IsekaiP = styled("p")({
     fontFamily: "pixel10-r",
-    fontSize: 25,
+    fontSize: 22,
     margin: 'auto',
+    color: "black",
+  })
+  const SearchP = styled("p")({
+    fontFamily: "pixel10-r",
+    fontSize: 22,
+    margin: 'auto',
+    color: "black",
   })
   
 
@@ -176,28 +183,27 @@ export default function Home() {
             </Centering>
           </Grid>
           <Grid item xs={4}>
-          <Centering>
           <div style={{
             height: '100%',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center'
             }}>
-              <Button
-                style={{
+              <Button className="WifiFindIcon" style={{
                   color:"black",//styleを使えばCSSの記法が通用する？
                   backgroundColor: "#4feff7",
+                  display:"block",
+                  fontSize:20
                 }}
                 variant="contained"
                 size="large"
-                startIcon={<WifiFindIcon/>}
+                startIcon={<div><WifiFindIcon style={{fontSize:40}}/></div>}
                 onClick={handleSearch}
                 //component={ Link } to={"/search"}
               >
-                <b>計測</b>
+                <SearchP>計測</SearchP>
               </Button>
             </div>
-            </Centering>
           </Grid>
         </Grid>
       </Box>

@@ -1,7 +1,11 @@
-.FindInPageIcon .MuiButton-startIcon {
+.WifiFindIcon .MuiButton-startIcon {
   margin-left: 0px;
   margin-right: 0px;
 }
+/* .WifiFindIcon .MuiSvgIcon-root {
+  font-size: 40px;
+} */
+
 /* better than 12 */
 @font-face {
   font-family: "pixel10-b";
