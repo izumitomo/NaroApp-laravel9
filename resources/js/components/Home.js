@@ -52,6 +52,11 @@ export default function Home() {
     fontSize: 25,
     margin: 'auto',
   });
+  const IsekaiP = styled("p")({
+    fontFamily: "pixel10-r",
+    fontSize: 25,
+    margin: 'auto',
+  })
   
 
   const [open, setOpen] = React.useState(false);
@@ -163,7 +168,7 @@ export default function Home() {
                     color="pink"//secondaryなどを指定する時はこの方法で色を変える
                     checked={checked}
                     onChange={checkBoxChange}/>}
-                  label="異世界転生・召喚を含む"
+                  label={<IsekaiP>異世界転生・召喚を含む</IsekaiP>}
                   labelPlacement="end"
                 />
               </FormGroup>

@@ -213,6 +213,9 @@ export default function Search({
         novelRankNum.push(11-i);
         break;
       }
+      if (i == 10){
+        novelRankNum.push(1);
+      }
     }
 
     for (let i = 1; i < 7; i++) {

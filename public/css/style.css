@@ -23,6 +23,18 @@
   src: url(../fonts/PixelMplus12-Regular.ttf);
 }
 
+.pixel10b {
+  font-family: "pixel10-b";
+}
+.pixel10r {
+  font-family: "pixel10-r";
+}
+.pixel12b {
+  font-family: "pixel12-b";
+}
+.pixel12r {
+  font-family: "pixel12-r";
+}
 
 
 

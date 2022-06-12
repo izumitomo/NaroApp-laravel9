@@ -27105,6 +27105,11 @@ function Home() {
     fontSize: 25,
     margin: 'auto'
   });
+  var IsekaiP = (0,_mui_system__WEBPACK_IMPORTED_MODULE_5__["default"])("p")({
+    fontFamily: "pixel10-r",
+    fontSize: 25,
+    margin: 'auto'
+  });
 
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_2__.useState(false),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -27340,7 +27345,9 @@ function Home() {
                     checked: checked,
                     onChange: checkBoxChange
                   }),
-                  label: "\u7570\u4E16\u754C\u8EE2\u751F\u30FB\u53EC\u559A\u3092\u542B\u3080",
+                  label: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(IsekaiP, {
+                    children: "\u7570\u4E16\u754C\u8EE2\u751F\u30FB\u53EC\u559A\u3092\u542B\u3080"
+                  }),
                   labelPlacement: "end"
                 })
               })
@@ -27899,6 +27906,10 @@ function Search(_ref2) {
       if (novelAverageRate >= response[1].max_average_rate - rateUpScale * _i3) {
         novelRankNum.push(11 - _i3);
         break;
+      }
+
+      if (_i3 == 10) {
+        novelRankNum.push(1);
       }
     }
 
