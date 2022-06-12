@@ -207,6 +207,14 @@ export default function Search({
         }
       }
     }
+    //平均評価点の計算だけ他とは微妙に違う。
+    for (let i = 1; i < 11; i++) {
+      if (novelAverageRate >= response[1].max_average_rate - rateUpScale*i) {
+        novelRankNum.push(11-i);
+        break;
+      }
+    }
+
     for (let i = 1; i < 7; i++) {
       if (novel.impression_cnt >= response[1].max_comment_count - comUpScale*i) {
         novelRankNum.push(11-i);
@@ -215,20 +223,15 @@ export default function Search({
       if (i == 6) {
         for (let j = 1; j < 5; j++) {
           if (novel.impression_cnt >= response[1].comment_count - comDownScale*j) {
+            console.log(novel.impression_cnt, response[1].comment_count - comDownScale*j, 5-j)
             novelRankNum.push(5-j);
             break;
           }
         }
       }
     }
+    console.log(novelRankNum);
 
-    for (let i = 1; i < 11; i++) {
-      if (novelAverageRate >= response[1].max_average_rate - rateUpScale*i) {
-        console.log(11-i, response[1].max_average_rate - rateUpScale*i)
-        novelRankNum.push(11-i);
-        break;
-      }
-    }
     //ランクをアルファベットにして格納
     let styleRank = [];
     novelRankNum.forEach(function(rank){

@@ -6,6 +6,7 @@
 	<title>なろーせんとーりょく！</title>
 	<link href="{{ asset('css/app.css') }}" rel="stylesheet" />
 	<link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+	
 </head>
 <body>
 <div class="container py-5">

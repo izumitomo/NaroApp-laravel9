@@ -1,4 +1,30 @@
 .FindInPageIcon .MuiButton-startIcon {
-    margin-left: 0px;
-    margin-right: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
+/* better than 12 */
+@font-face {
+  font-family: "pixel10-b";
+  src: url(../fonts/PixelMplus10-Bold.ttf);
+}
+
+@font-face {
+  font-family: "pixel10-r";
+  src: url(../fonts/PixelMplus10-Regular.ttf);
+}
+
+@font-face {
+  font-family: "pixel12-b";
+  src: url(../fonts/PixelMplus12-Bold.ttf);
+}
+
+@font-face {
+  font-family: "pixel12-r";
+  src: url(../fonts/PixelMplus12-Regular.ttf);
+}
+
+
+
+
+
+

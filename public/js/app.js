@@ -27095,8 +27095,15 @@ function Home() {
   });
   var TitleStyle = (0,_mui_system__WEBPACK_IMPORTED_MODULE_5__["default"])('div')({
     textAlign: "center",
+    fontFamily: "pixel10-b",
     color: "black",
-    fontSize: 40
+    fontSize: 50
+  });
+  var GenreP = (0,_mui_system__WEBPACK_IMPORTED_MODULE_5__["default"])('p')({
+    style: "inline",
+    fontFamily: "pixel10-r",
+    fontSize: 25,
+    margin: 'auto'
   });
 
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_2__.useState(false),
@@ -27203,67 +27210,109 @@ function Home() {
                 onChange: genreSelect,
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 101,
-                  children: "\u7570\u4E16\u754C(\u604B\u611B)"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u7570\u4E16\u754C(\u604B\u611B)"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 102,
-                  children: "\u73FE\u5B9F\u4E16\u754C\uFF08\u604B\u611B\uFF09"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u73FE\u5B9F\u4E16\u754C(\u604B\u611B)"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 201,
-                  children: "\u30CF\u30A4\u30D5\u30A1\u30F3\u30BF\u30B8\u30FC"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u30CF\u30A4\u30D5\u30A1\u30F3\u30BF\u30B8\u30FC"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 202,
-                  children: "\u30ED\u30FC\u30D5\u30A1\u30F3\u30BF\u30B8\u30FC"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u30ED\u30FC\u30D5\u30A1\u30F3\u30BF\u30B8\u30FC"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 301,
-                  children: "\u7D14\u6587\u5B66"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u7D14\u6587\u5B66"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 302,
-                  children: "\u30D2\u30E5\u30FC\u30DE\u30F3\u30C9\u30E9\u30DE"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u30D2\u30E5\u30FC\u30DE\u30F3\u30C9\u30E9\u30DE"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 303,
-                  children: "\u6B74\u53F2"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u6B74\u53F2"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 304,
-                  children: "\u63A8\u7406"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u63A8\u7406"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 305,
-                  children: "\u30DB\u30E9\u30FC"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u30DB\u30E9\u30FC"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 306,
-                  children: "\u30A2\u30AF\u30B7\u30E7\u30F3"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u30A2\u30AF\u30B7\u30E7\u30F3"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 307,
-                  children: "\u30B3\u30E1\u30C7\u30A3\uFF0D"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u30B3\u30E1\u30C7\u30A3\uFF0D"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 401,
-                  children: "VR\u30B2\u30FC\u30E0"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "VR\u30B2\u30FC\u30E0"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 402,
-                  children: "\u5B87\u5B99"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u5B87\u5B99"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 403,
-                  children: "\u7A7A\u60F3\u79D1\u5B66"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u7A7A\u60F3\u79D1\u5B66"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 404,
-                  children: "\u30D1\u30CB\u30C3\u30AF"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u30D1\u30CB\u30C3\u30AF"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 9901,
-                  children: "\u7AE5\u8A71"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u7AE5\u8A71"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 9902,
-                  children: "\u8A69"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u8A69"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 9903,
-                  children: "\u30A8\u30C3\u30BB\u30A4"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u30A8\u30C3\u30BB\u30A4"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 9904,
-                  children: "\u30EA\u30D7\u30EC\u30A4"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u30EA\u30D7\u30EC\u30A4"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 9999,
-                  children: "\u305D\u306E\u4ED6"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u305D\u306E\u4ED6"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 9801,
-                  children: "\u30CE\u30F3\u30B8\u30E3\u30F3\u30EB"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u30CE\u30F3\u30B8\u30E3\u30F3\u30EB"
+                  })
                 })]
               })]
             })
@@ -27843,17 +27892,26 @@ function Search(_ref2) {
           }
         }
       }
-    }
+    } //平均評価点の計算だけ他とは微妙に違う。
 
-    for (var _i3 = 1; _i3 < 7; _i3++) {
-      if (novel.impression_cnt >= response[1].max_comment_count - comUpScale * _i3) {
+
+    for (var _i3 = 1; _i3 < 11; _i3++) {
+      if (novelAverageRate >= response[1].max_average_rate - rateUpScale * _i3) {
         novelRankNum.push(11 - _i3);
         break;
       }
+    }
 
-      if (_i3 == 6) {
+    for (var _i4 = 1; _i4 < 7; _i4++) {
+      if (novel.impression_cnt >= response[1].max_comment_count - comUpScale * _i4) {
+        novelRankNum.push(11 - _i4);
+        break;
+      }
+
+      if (_i4 == 6) {
         for (var _j3 = 1; _j3 < 5; _j3++) {
           if (novel.impression_cnt >= response[1].comment_count - comDownScale * _j3) {
+            console.log(novel.impression_cnt, response[1].comment_count - comDownScale * _j3, 5 - _j3);
             novelRankNum.push(5 - _j3);
             break;
           }
@@ -27861,14 +27919,7 @@ function Search(_ref2) {
       }
     }
 
-    for (var _i4 = 1; _i4 < 11; _i4++) {
-      if (novelAverageRate >= response[1].max_average_rate - rateUpScale * _i4) {
-        console.log(11 - _i4, response[1].max_average_rate - rateUpScale * _i4);
-        novelRankNum.push(11 - _i4);
-        break;
-      }
-    } //ランクをアルファベットにして格納
-
+    console.log(novelRankNum); //ランクをアルファベットにして格納
 
     var styleRank = [];
     novelRankNum.forEach(function (rank) {
