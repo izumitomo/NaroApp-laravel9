@@ -21,15 +21,6 @@ import { ThemeProvider,
 import { styled } from '@mui/system';
 import WifiFindIcon from '@mui/icons-material/WifiFind';
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-  
-}));
-
 const Centering = styled(Paper)(({ theme }) => ({
   backgroundColor: '#e6e6e6',
   ...theme.typography.body2,
@@ -50,8 +41,16 @@ export default function Home() {
 
   const TitleStyle = styled('div')({
     textAlign: "center",
+    fontFamily: "pixel10-b",
     color: "black",
-    fontSize: 40,
+    fontSize: 50,
+  });
+
+  const GenreP = styled('p')({
+    style: "inline",
+    fontFamily: "pixel10-r",
+    fontSize: 25,
+    margin: 'auto',
   });
   
 
@@ -129,27 +128,27 @@ export default function Home() {
               value={genre}
               onChange={genreSelect}
               >
-                <MenuItem value={101}>異世界(恋愛)</MenuItem>
-                <MenuItem value={102}>現実世界（恋愛）</MenuItem>
-                <MenuItem value={201}>ハイファンタジー</MenuItem>
-                <MenuItem value={202}>ローファンタジー</MenuItem>
-                <MenuItem value={301}>純文学</MenuItem>
-                <MenuItem value={302}>ヒューマンドラマ</MenuItem>
-                <MenuItem value={303}>歴史</MenuItem>
-                <MenuItem value={304}>推理</MenuItem>
-                <MenuItem value={305}>ホラー</MenuItem>
-                <MenuItem value={306}>アクション</MenuItem>
-                <MenuItem value={307}>コメディ－</MenuItem>
-                <MenuItem value={401}>VRゲーム</MenuItem>
-                <MenuItem value={402}>宇宙</MenuItem>
-                <MenuItem value={403}>空想科学</MenuItem>
-                <MenuItem value={404}>パニック</MenuItem>
-                <MenuItem value={9901}>童話</MenuItem>
-                <MenuItem value={9902}>詩</MenuItem>
-                <MenuItem value={9903}>エッセイ</MenuItem>
-                <MenuItem value={9904}>リプレイ</MenuItem>
-                <MenuItem value={9999}>その他</MenuItem>
-                <MenuItem value={9801}>ノンジャンル</MenuItem>
+                <MenuItem value={101}><GenreP>異世界(恋愛)</GenreP></MenuItem>
+                <MenuItem value={102}><GenreP>現実世界(恋愛)</GenreP></MenuItem>
+                <MenuItem value={201}><GenreP>ハイファンタジー</GenreP></MenuItem>
+                <MenuItem value={202}><GenreP>ローファンタジー</GenreP></MenuItem>
+                <MenuItem value={301}><GenreP>純文学</GenreP></MenuItem>
+                <MenuItem value={302}><GenreP>ヒューマンドラマ</GenreP></MenuItem>
+                <MenuItem value={303}><GenreP>歴史</GenreP></MenuItem>
+                <MenuItem value={304}><GenreP>推理</GenreP></MenuItem>
+                <MenuItem value={305}><GenreP>ホラー</GenreP></MenuItem>
+                <MenuItem value={306}><GenreP>アクション</GenreP></MenuItem>
+                <MenuItem value={307}><GenreP>コメディ－</GenreP></MenuItem>
+                <MenuItem value={401}><GenreP>VRゲーム</GenreP></MenuItem>
+                <MenuItem value={402}><GenreP>宇宙</GenreP></MenuItem>
+                <MenuItem value={403}><GenreP>空想科学</GenreP></MenuItem>
+                <MenuItem value={404}><GenreP>パニック</GenreP></MenuItem>
+                <MenuItem value={9901}><GenreP>童話</GenreP></MenuItem>
+                <MenuItem value={9902}><GenreP>詩</GenreP></MenuItem>
+                <MenuItem value={9903}><GenreP>エッセイ</GenreP></MenuItem>
+                <MenuItem value={9904}><GenreP>リプレイ</GenreP></MenuItem>
+                <MenuItem value={9999}><GenreP>その他</GenreP></MenuItem>
+                <MenuItem value={9801}><GenreP>ノンジャンル</GenreP></MenuItem>
               </Select>
             </FormControl>
             </Centering>

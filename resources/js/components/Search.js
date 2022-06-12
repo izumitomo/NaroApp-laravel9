@@ -16,7 +16,8 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { Radar } from 'react-chartjs-2';
+import { pink } from "@mui/material/colors";
+
 
 ChartJS.register(
 RadialLinearScale,
@@ -56,6 +57,56 @@ const pointOption ={
   }
 };
 
+const styleSSS = {
+  textAlign: "center",
+  color: "#FF99FF",
+  fontSize: 30,
+}
+const styleSS = {
+  textAlign: "center",
+  color: "#FF99FF",
+  fontSize: 30,
+}
+const styleS = {
+  textAlign: "center",
+  color: "#FF99FF",
+  fontSize: 30,
+}
+const styleA = {
+  textAlign: "center",
+  color: "#FF33CC",
+  fontSize: 30,
+}
+const styleB = {
+  textAlign: "center",
+  color: "#FF0000",
+  fontSize: 30,
+}
+const styleC = {
+  textAlign: "center",
+  color: "#FFC000",
+  fontSize: 30,
+}
+const styleD = {
+  textAlign: "center",
+  color: "#FFD966",
+  fontSize: 30,
+}
+const styleE = {
+  textAlign: "center",
+  color: "#70AD47",
+  fontSize: 30,
+}
+const styleF = {
+  textAlign: "center",
+  color: "#4472C4",
+  fontSize: 30,
+}
+const styleG = {
+  textAlign: "center",
+  color: "#A5A5A5",
+  fontSize: 30,
+}
 
 const novelUrl = "https://ncode.syosetu.com/"
 
@@ -67,6 +118,11 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
+const Score = styled('p')({
+  textAlign: "center",
+  color: "red",
+  fontSize: 40,
+});
 
 export default function Search({
   base_url,
@@ -91,7 +147,7 @@ export default function Search({
   const comUpScale = (response[1].max_comment_count - response[1].comment_count) / 6;
   const comDownScale = response[1].comment_count / 4;
   //平均評価点は０にならないのでupscaleを採用する。
-  const rateUpScale = (response[1].max_favorite_count - response[1].favorite_count) / 6
+  const rateUpScale = (response[1].max_average_rate - response[1].average_rate) / 6;
 
 
   const novelDataList = response[0].map(novel => {
@@ -106,7 +162,7 @@ export default function Search({
       Math.floor(novel.impression_cnt / response[1].max_comment_count * 100)
     ]
 
-    const averageRate = Math.round(novel.all_point/novel.all_hyoka_cnt * 100) / 100
+    const novelAverageRate = Math.round(novel.all_point/novel.all_hyoka_cnt * 100) / 100
 
     for (let i = 1; i < 7; i++) {
       if (novel.global_point >= response[1].max_global_point - pointUpScale*i) {
@@ -151,18 +207,11 @@ export default function Search({
         }
       }
     }
-    for (let i = 1; i < 7; i++) {
-      if (novel.impression_cnt >= response[1].max_comment_count - comUpScale*i) {
+    //平均評価点の計算だけ他とは微妙に違う。
+    for (let i = 1; i < 11; i++) {
+      if (novelAverageRate >= response[1].max_average_rate - rateUpScale*i) {
         novelRankNum.push(11-i);
         break;
-      }
-      if (i == 6) {
-        for (let j = 1; j < 5; j++) {
-          if (novel.impression_cnt >= response[1].comment_count - comDownScale*j) {
-            novelRankNum.push(5-j);
-            break;
-          }
-        }
       }
     }
 
@@ -174,24 +223,28 @@ export default function Search({
       if (i == 6) {
         for (let j = 1; j < 5; j++) {
           if (novel.impression_cnt >= response[1].comment_count - comDownScale*j) {
+            console.log(novel.impression_cnt, response[1].comment_count - comDownScale*j, 5-j)
             novelRankNum.push(5-j);
             break;
           }
         }
       }
     }
+    console.log(novelRankNum);
+
     //ランクをアルファベットにして格納
+    let styleRank = [];
     novelRankNum.forEach(function(rank){
-      if (rank == 10){novelRankAlpha.push("SSS")}
-      else if (rank == 9){novelRankAlpha.push("SS")}
-      else if (rank == 8){novelRankAlpha.push("S")}
-      else if (rank == 7){novelRankAlpha.push("A")}
-      else if (rank == 6){novelRankAlpha.push("B")}
-      else if (rank == 5){novelRankAlpha.push("C")}
-      else if (rank == 4){novelRankAlpha.push("D")}
-      else if (rank == 3){novelRankAlpha.push("E")}
-      else if (rank == 2){novelRankAlpha.push("F")}
-      else {novelRankAlpha.push("G")}
+      if (rank == 10){novelRankAlpha.push("SSS"); styleRank.push(styleSSS)}
+      else if (rank == 9){novelRankAlpha.push("SS"); styleRank.push(styleSS)}
+      else if (rank == 8){novelRankAlpha.push("S"); styleRank.push(styleS)}
+      else if (rank == 7){novelRankAlpha.push("A"); styleRank.push(styleA)}
+      else if (rank == 6){novelRankAlpha.push("B"); styleRank.push(styleB)}
+      else if (rank == 5){novelRankAlpha.push("C"); styleRank.push(styleC)}
+      else if (rank == 4){novelRankAlpha.push("D"); styleRank.push(styleD)}
+      else if (rank == 3){novelRankAlpha.push("E"); styleRank.push(styleE)}
+      else if (rank == 2){novelRankAlpha.push("F"); styleRank.push(styleF)}
+      else {novelRankAlpha.push("G"); styleRank.push(styleG)}
     })
 
 
@@ -209,31 +262,25 @@ export default function Search({
               <Item onClick={() => console.log("aaaa")}><RankChart rank={novelRankNum}/></Item>
             </Grid>
             <Grid item xs={3}>
-              <Item>ポイント<br/>{novelRankAlpha[0]}<br/>{novel.global_point}</Item>
+              <Item>ポイント<br/><p style={styleRank[0]}>{novelRankAlpha[0]}</p>{novel.global_point}</Item>
             </Grid>
             <Grid item xs={3}>
-              <Item>ブクマ<br/>{novelRankAlpha[1]}<br/>{novel.fav_novel_cnt}</Item>
+              <Item>ブクマ<br/><p style={styleRank[1]}>{novelRankAlpha[1]}</p>{novel.fav_novel_cnt}</Item>
             </Grid>
             <Grid item xs={3}>
-              <Item>評価者数<br/>{novelRankAlpha[2]}<br/>{novel.all_hyoka_cnt}</Item>
+              <Item>評価者数<br/><p style={styleRank[2]}>{novelRankAlpha[2]}</p>{novel.all_hyoka_cnt}</Item>
             </Grid>
             <Grid item xs={3}>
-              <Item>平均評価<br/>{novelRankAlpha[3]}<br/>{averageRate}</Item>
+              <Item>平均評価<br/><p style={styleRank[3]}>{novelRankAlpha[3]}</p>{novelAverageRate}</Item>
             </Grid>
             <Grid item xs={3}>
-              <Item>感想数<br/>{novelRankAlpha[4]}<br/>{novel.impression_cnt}</Item>
+              <Item>感想数<br/><p style={styleRank[4]}>{novelRankAlpha[4]}</p>{novel.impression_cnt}</Item>
             </Grid>
           </Grid>
         </Grid>
       </Box>
 
-      <div>
-        <PointChart 
-          title = {novel.title}
-          averagePoint = {averagePoint}
-          novelPoint = {novelPoint}
-          />
-      </div>
+      
     </div>
     );
   });

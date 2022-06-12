@@ -27074,18 +27074,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-var Item = (0,_mui_system__WEBPACK_IMPORTED_MODULE_5__["default"])(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"])(function (_ref) {
+var Centering = (0,_mui_system__WEBPACK_IMPORTED_MODULE_5__["default"])(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"])(function (_ref) {
   var theme = _ref.theme;
-  return _objectSpread(_objectSpread({
-    backgroundColor: '#fff'
-  }, theme.typography.body2), {}, {
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary
-  });
-});
-var Centering = (0,_mui_system__WEBPACK_IMPORTED_MODULE_5__["default"])(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"])(function (_ref2) {
-  var theme = _ref2.theme;
   return _objectSpread(_objectSpread({
     backgroundColor: '#e6e6e6'
   }, theme.typography.body2), {}, {
@@ -27105,8 +27095,15 @@ function Home() {
   });
   var TitleStyle = (0,_mui_system__WEBPACK_IMPORTED_MODULE_5__["default"])('div')({
     textAlign: "center",
+    fontFamily: "pixel10-b",
     color: "black",
-    fontSize: 40
+    fontSize: 50
+  });
+  var GenreP = (0,_mui_system__WEBPACK_IMPORTED_MODULE_5__["default"])('p')({
+    style: "inline",
+    fontFamily: "pixel10-r",
+    fontSize: 25,
+    margin: 'auto'
   });
 
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_2__.useState(false),
@@ -27213,67 +27210,109 @@ function Home() {
                 onChange: genreSelect,
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 101,
-                  children: "\u7570\u4E16\u754C(\u604B\u611B)"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u7570\u4E16\u754C(\u604B\u611B)"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 102,
-                  children: "\u73FE\u5B9F\u4E16\u754C\uFF08\u604B\u611B\uFF09"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u73FE\u5B9F\u4E16\u754C(\u604B\u611B)"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 201,
-                  children: "\u30CF\u30A4\u30D5\u30A1\u30F3\u30BF\u30B8\u30FC"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u30CF\u30A4\u30D5\u30A1\u30F3\u30BF\u30B8\u30FC"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 202,
-                  children: "\u30ED\u30FC\u30D5\u30A1\u30F3\u30BF\u30B8\u30FC"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u30ED\u30FC\u30D5\u30A1\u30F3\u30BF\u30B8\u30FC"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 301,
-                  children: "\u7D14\u6587\u5B66"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u7D14\u6587\u5B66"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 302,
-                  children: "\u30D2\u30E5\u30FC\u30DE\u30F3\u30C9\u30E9\u30DE"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u30D2\u30E5\u30FC\u30DE\u30F3\u30C9\u30E9\u30DE"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 303,
-                  children: "\u6B74\u53F2"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u6B74\u53F2"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 304,
-                  children: "\u63A8\u7406"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u63A8\u7406"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 305,
-                  children: "\u30DB\u30E9\u30FC"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u30DB\u30E9\u30FC"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 306,
-                  children: "\u30A2\u30AF\u30B7\u30E7\u30F3"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u30A2\u30AF\u30B7\u30E7\u30F3"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 307,
-                  children: "\u30B3\u30E1\u30C7\u30A3\uFF0D"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u30B3\u30E1\u30C7\u30A3\uFF0D"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 401,
-                  children: "VR\u30B2\u30FC\u30E0"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "VR\u30B2\u30FC\u30E0"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 402,
-                  children: "\u5B87\u5B99"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u5B87\u5B99"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 403,
-                  children: "\u7A7A\u60F3\u79D1\u5B66"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u7A7A\u60F3\u79D1\u5B66"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 404,
-                  children: "\u30D1\u30CB\u30C3\u30AF"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u30D1\u30CB\u30C3\u30AF"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 9901,
-                  children: "\u7AE5\u8A71"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u7AE5\u8A71"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 9902,
-                  children: "\u8A69"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u8A69"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 9903,
-                  children: "\u30A8\u30C3\u30BB\u30A4"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u30A8\u30C3\u30BB\u30A4"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 9904,
-                  children: "\u30EA\u30D7\u30EC\u30A4"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u30EA\u30D7\u30EC\u30A4"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 9999,
-                  children: "\u305D\u306E\u4ED6"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u305D\u306E\u4ED6"
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   value: 9801,
-                  children: "\u30CE\u30F3\u30B8\u30E3\u30F3\u30EB"
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(GenreP, {
+                    children: "\u30CE\u30F3\u30B8\u30E3\u30F3\u30EB"
+                  })
                 })]
               })]
             })
@@ -27719,6 +27758,56 @@ var pointOption = {
     }
   }
 };
+var styleSSS = {
+  textAlign: "center",
+  color: "#FF99FF",
+  fontSize: 30
+};
+var styleSS = {
+  textAlign: "center",
+  color: "#FF99FF",
+  fontSize: 30
+};
+var styleS = {
+  textAlign: "center",
+  color: "#FF99FF",
+  fontSize: 30
+};
+var styleA = {
+  textAlign: "center",
+  color: "#FF33CC",
+  fontSize: 30
+};
+var styleB = {
+  textAlign: "center",
+  color: "#FF0000",
+  fontSize: 30
+};
+var styleC = {
+  textAlign: "center",
+  color: "#FFC000",
+  fontSize: 30
+};
+var styleD = {
+  textAlign: "center",
+  color: "#FFD966",
+  fontSize: 30
+};
+var styleE = {
+  textAlign: "center",
+  color: "#70AD47",
+  fontSize: 30
+};
+var styleF = {
+  textAlign: "center",
+  color: "#4472C4",
+  fontSize: 30
+};
+var styleG = {
+  textAlign: "center",
+  color: "#A5A5A5",
+  fontSize: 30
+};
 var novelUrl = "https://ncode.syosetu.com/";
 var Item = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_5__["default"])(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"])(function (_ref) {
   var theme = _ref.theme;
@@ -27729,6 +27818,11 @@ var Item = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_5__["default"])(_mui
     textAlign: 'center',
     color: theme.palette.text.secondary
   });
+});
+var Score = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_5__["default"])('p')({
+  textAlign: "center",
+  color: "red",
+  fontSize: 40
 });
 function Search(_ref2) {
   var base_url = _ref2.base_url,
@@ -27745,12 +27839,12 @@ function Search(_ref2) {
   var comUpScale = (response[1].max_comment_count - response[1].comment_count) / 6;
   var comDownScale = response[1].comment_count / 4; //平均評価点は０にならないのでupscaleを採用する。
 
-  var rateUpScale = (response[1].max_favorite_count - response[1].favorite_count) / 6;
+  var rateUpScale = (response[1].max_average_rate - response[1].average_rate) / 6;
   var novelDataList = response[0].map(function (novel) {
     var novelRankNum = [];
     var novelRankAlpha = [];
     var novelPoint = [Math.floor(novel.global_point / response[1].max_global_point * 100), Math.floor(novel.fav_novel_cnt / response[1].max_favorite_count * 100), Math.floor(novel.all_hyoka_cnt / response[1].max_reviewer_count * 100), novel.all_point / novel.all_hyoka_cnt / response[1].max_average_rate * 100, Math.floor(novel.impression_cnt / response[1].max_comment_count * 100)];
-    var averageRate = Math.round(novel.all_point / novel.all_hyoka_cnt * 100) / 100;
+    var novelAverageRate = Math.round(novel.all_point / novel.all_hyoka_cnt * 100) / 100;
 
     for (var i = 1; i < 7; i++) {
       if (novel.global_point >= response[1].max_global_point - pointUpScale * i) {
@@ -27798,21 +27892,13 @@ function Search(_ref2) {
           }
         }
       }
-    }
+    } //平均評価点の計算だけ他とは微妙に違う。
 
-    for (var _i3 = 1; _i3 < 7; _i3++) {
-      if (novel.impression_cnt >= response[1].max_comment_count - comUpScale * _i3) {
+
+    for (var _i3 = 1; _i3 < 11; _i3++) {
+      if (novelAverageRate >= response[1].max_average_rate - rateUpScale * _i3) {
         novelRankNum.push(11 - _i3);
         break;
-      }
-
-      if (_i3 == 6) {
-        for (var _j3 = 1; _j3 < 5; _j3++) {
-          if (novel.impression_cnt >= response[1].comment_count - comDownScale * _j3) {
-            novelRankNum.push(5 - _j3);
-            break;
-          }
-        }
       }
     }
 
@@ -27823,44 +27909,57 @@ function Search(_ref2) {
       }
 
       if (_i4 == 6) {
-        for (var _j4 = 1; _j4 < 5; _j4++) {
-          if (novel.impression_cnt >= response[1].comment_count - comDownScale * _j4) {
-            novelRankNum.push(5 - _j4);
+        for (var _j3 = 1; _j3 < 5; _j3++) {
+          if (novel.impression_cnt >= response[1].comment_count - comDownScale * _j3) {
+            console.log(novel.impression_cnt, response[1].comment_count - comDownScale * _j3, 5 - _j3);
+            novelRankNum.push(5 - _j3);
             break;
           }
         }
       }
-    } //ランクをアルファベットにして格納
+    }
 
+    console.log(novelRankNum); //ランクをアルファベットにして格納
 
+    var styleRank = [];
     novelRankNum.forEach(function (rank) {
       if (rank == 10) {
         novelRankAlpha.push("SSS");
+        styleRank.push(styleSSS);
       } else if (rank == 9) {
         novelRankAlpha.push("SS");
+        styleRank.push(styleSS);
       } else if (rank == 8) {
         novelRankAlpha.push("S");
+        styleRank.push(styleS);
       } else if (rank == 7) {
         novelRankAlpha.push("A");
+        styleRank.push(styleA);
       } else if (rank == 6) {
         novelRankAlpha.push("B");
+        styleRank.push(styleB);
       } else if (rank == 5) {
         novelRankAlpha.push("C");
+        styleRank.push(styleC);
       } else if (rank == 4) {
         novelRankAlpha.push("D");
+        styleRank.push(styleD);
       } else if (rank == 3) {
         novelRankAlpha.push("E");
+        styleRank.push(styleE);
       } else if (rank == 2) {
         novelRankAlpha.push("F");
+        styleRank.push(styleF);
       } else {
         novelRankAlpha.push("G");
+        styleRank.push(styleG);
       }
     });
     return (
       /*#__PURE__*/
       //gridで整形
-      (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_7__["default"], {
+      (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_7__["default"], {
           sx: {
             flexGrow: 1
           },
@@ -27896,42 +27995,51 @@ function Search(_ref2) {
                 item: true,
                 xs: 3,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(Item, {
-                  children: ["\u30DD\u30A4\u30F3\u30C8", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), novelRankAlpha[0], /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), novel.global_point]
+                  children: ["\u30DD\u30A4\u30F3\u30C8", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+                    style: styleRank[0],
+                    children: novelRankAlpha[0]
+                  }), novel.global_point]
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
                 item: true,
                 xs: 3,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(Item, {
-                  children: ["\u30D6\u30AF\u30DE", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), novelRankAlpha[1], /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), novel.fav_novel_cnt]
+                  children: ["\u30D6\u30AF\u30DE", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+                    style: styleRank[1],
+                    children: novelRankAlpha[1]
+                  }), novel.fav_novel_cnt]
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
                 item: true,
                 xs: 3,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(Item, {
-                  children: ["\u8A55\u4FA1\u8005\u6570", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), novelRankAlpha[2], /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), novel.all_hyoka_cnt]
+                  children: ["\u8A55\u4FA1\u8005\u6570", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+                    style: styleRank[2],
+                    children: novelRankAlpha[2]
+                  }), novel.all_hyoka_cnt]
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
                 item: true,
                 xs: 3,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(Item, {
-                  children: ["\u5E73\u5747\u8A55\u4FA1", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), novelRankAlpha[3], /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), averageRate]
+                  children: ["\u5E73\u5747\u8A55\u4FA1", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+                    style: styleRank[3],
+                    children: novelRankAlpha[3]
+                  }), novelAverageRate]
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
                 item: true,
                 xs: 3,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(Item, {
-                  children: ["\u611F\u60F3\u6570", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), novelRankAlpha[4], /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), novel.impression_cnt]
+                  children: ["\u611F\u60F3\u6570", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+                    style: styleRank[4],
+                    children: novelRankAlpha[4]
+                  }), novel.impression_cnt]
                 })
               })]
             })]
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_PointChart__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            title: novel.title,
-            averagePoint: averagePoint,
-            novelPoint: novelPoint
-          })
-        })]
+        })
       }, novel.ncode)
     );
   });
