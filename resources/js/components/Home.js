@@ -44,14 +44,27 @@ export default function Home() {
     fontFamily: "pixel10-b",
     color: "black",
     fontSize: 50,
+    whiteSpace: "nowrap",
   });
 
   const GenreP = styled('p')({
-    style: "inline",
     fontFamily: "pixel10-r",
     fontSize: 25,
     margin: 'auto',
+    color: "black",
   });
+  const IsekaiP = styled("p")({
+    fontFamily: "pixel10-r",
+    fontSize: 22,
+    margin: 'auto',
+    color: "black",
+  })
+  const SearchP = styled("p")({
+    fontFamily: "pixel10-r",
+    fontSize: 22,
+    margin: 'auto',
+    color: "black",
+  })
   
 
   const [open, setOpen] = React.useState(false);
@@ -163,7 +176,7 @@ export default function Home() {
                     color="pink"//secondaryなどを指定する時はこの方法で色を変える
                     checked={checked}
                     onChange={checkBoxChange}/>}
-                  label="異世界転生・召喚を含む"
+                  label={<IsekaiP>異世界転生・召喚を含む</IsekaiP>}
                   labelPlacement="end"
                 />
               </FormGroup>
@@ -171,28 +184,27 @@ export default function Home() {
             </Centering>
           </Grid>
           <Grid item xs={4}>
-          <Centering>
           <div style={{
             height: '100%',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center'
             }}>
-              <Button
-                style={{
+              <Button className="WifiFindIcon" style={{
                   color:"black",//styleを使えばCSSの記法が通用する？
                   backgroundColor: "#4feff7",
+                  display:"block",
+                  fontSize:20
                 }}
                 variant="contained"
                 size="large"
-                startIcon={<WifiFindIcon/>}
+                startIcon={<div><WifiFindIcon style={{fontSize:40}}/></div>}
                 onClick={handleSearch}
                 //component={ Link } to={"/search"}
               >
-                <b>計測</b>
+                <SearchP>計測</SearchP>
               </Button>
             </div>
-            </Centering>
           </Grid>
         </Grid>
       </Box>

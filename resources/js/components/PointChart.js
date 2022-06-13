@@ -48,8 +48,7 @@ export default function PointChart({
     datasets: [
       {
         label: title.length < 50 ?
-          title :
-          title.substring(0, 50) + "……",
+          title : title.substring(0, 50) + "……",
         data: novelPoint,
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         borderColor: 'rgba(255, 99, 132, 1)',

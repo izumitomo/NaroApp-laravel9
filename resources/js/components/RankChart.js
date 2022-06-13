@@ -21,7 +21,7 @@ ChartJS.register(
 const rankOption ={
   scales: {
     r: {
-      angleLines: {
+      ticks: {
         display: false
       },
       suggestedMin: 0,
@@ -50,6 +50,11 @@ export default function RankChart({
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1,
       },
+      {data: [5,5,5,5,5],
+        backgroundColor: 'rgba(242,232,141,0.5)',
+        borderColor: 'rgba(242,232,141,0.8)',
+        borderWidth: 1,
+      }
     ]
   }
 
