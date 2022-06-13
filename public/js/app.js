@@ -27173,6 +27173,7 @@ function Home() {
       setNovels = _React$useState12[1];
 
   var handleSearch = function handleSearch() {
+    setLoading(true);
     var data = {
       genre: genre,
       notIsekai: notIsekai
@@ -27183,8 +27184,14 @@ function Home() {
       console.log(res.data); //dataはbodyとかheaderのやつ。
 
       setSearch(true);
+      setLoading(false);
     });
-  }; //setNovelsでnovelsにres.data[0]が入るタイミングが遅すぎることによって、searchに
+  };
+
+  var _React$useState13 = react__WEBPACK_IMPORTED_MODULE_2__.useState(false),
+      _React$useState14 = _slicedToArray(_React$useState13, 2),
+      loading = _React$useState14[0],
+      setLoading = _React$useState14[1]; //setNovelsでnovelsにres.data[0]が入るタイミングが遅すぎることによって、searchに
   //responseとしてnovelsを格納した時にnovelsの中身が空のまま送られ、遅れてnovelsに値が入った後に再びsearchが呼ばれているように見える。
   //元々67行目あたりのsetCheckedの実行時からset系の処理が遅すぎるので色々工夫はしていたが……。
 
@@ -27397,6 +27404,10 @@ function Home() {
           })
         })]
       })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      children: loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(TitleStyle, {
+        children: "Loading..."
+      }) : null
     }), search ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Search__WEBPACK_IMPORTED_MODULE_0__["default"] //左が渡す名前で右が渡す変数
     , {
       response: novels

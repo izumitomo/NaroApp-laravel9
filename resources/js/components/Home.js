@@ -96,6 +96,7 @@ export default function Home() {
   const [search, setSearch] = React.useState(false);
   const [novels, setNovels] = React.useState([]);
   const handleSearch = () => {
+    setLoading(true);
     const data = {
       genre : genre,
       notIsekai : notIsekai,
@@ -104,12 +105,14 @@ export default function Home() {
     .then(res => {
       setNovels(res.data);
       //console.log(Array.isArray(res.data[0]))
-
       console.log(res.data)//dataはbodyとかheaderのやつ。
       setSearch(true);
+      setLoading(false)
     }
     );
   };
+
+  const [loading, setLoading] = React.useState(false);
   
   //setNovelsでnovelsにres.data[0]が入るタイミングが遅すぎることによって、searchに
   //responseとしてnovelsを格納した時にnovelsの中身が空のまま送られ、遅れてnovelsに値が入った後に再びsearchが呼ばれているように見える。
@@ -205,6 +208,9 @@ export default function Home() {
           </Grid>
         </Grid>
       </Box>
+      <div>
+        {loading ? <TitleStyle>Loading...</TitleStyle> : null }
+      </div>
 
       {search ? (
       <Search
