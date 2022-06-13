@@ -44,6 +44,7 @@ export default function Home() {
     fontFamily: "pixel10-b",
     color: "black",
     fontSize: 50,
+    whiteSpace: "nowrap",
   });
 
   const GenreP = styled('p')({

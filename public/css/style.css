@@ -27,6 +27,16 @@
   src: url(../fonts/PixelMplus12-Regular.ttf);
 }
 
+@font-face {
+  font-family: "milk-b";
+  src: url(../fonts/JF-Dot-milkjf16B.ttf);
+}
+
+@font-face {
+  font-family: "milk-r";
+  src: url(../fonts/JF-Dot-milkjf16.ttf);
+}
+
 .pixel10b {
   font-family: "pixel10-b";
 }
