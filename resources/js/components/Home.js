@@ -115,9 +115,6 @@ export default function Home() {
   //responseとしてnovelsを格納した時にnovelsの中身が空のまま送られ、遅れてnovelsに値が入った後に再びsearchが呼ばれているように見える。
   //元々67行目あたりのsetCheckedの実行時からset系の処理が遅すぎるので色々工夫はしていたが……。
 
-  let base_url = "https://api.syosetu.com/novelapi/api/?lim=50&out=json&order=weekly" + "&genre=" + genre + "&nottensei=" + notIsekai + "&nottenni=" + notIsekai;
-
-
   const title = "なろーせんとーりょく！";
 
   return (
@@ -208,17 +205,10 @@ export default function Home() {
           </Grid>
         </Grid>
       </Box>
-      <div>
 
-      </div>
-      <div>
-
-      </div>
-      
-      <p>{base_url}</p>
       {search ? (
       <Search
-        base_url = {base_url}//左が渡す名前で右が渡す変数
+        //左が渡す名前で右が渡す変数
         response = {novels}
       />
     ) : null

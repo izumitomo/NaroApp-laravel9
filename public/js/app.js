@@ -27189,7 +27189,6 @@ function Home() {
   //元々67行目あたりのsetCheckedの実行時からset系の処理が遅すぎるので色々工夫はしていたが……。
 
 
-  var base_url = "https://api.syosetu.com/novelapi/api/?lim=50&out=json&order=weekly" + "&genre=" + genre + "&nottensei=" + notIsekai + "&nottenni=" + notIsekai;
   var title = "なろーせんとーりょく！";
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material_styles__WEBPACK_IMPORTED_MODULE_8__["default"], {
     theme: theme,
@@ -27398,11 +27397,8 @@ function Home() {
           })
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-      children: base_url
-    }), search ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Search__WEBPACK_IMPORTED_MODULE_0__["default"], {
-      base_url: base_url //左が渡す名前で右が渡す変数
-      ,
+    }), search ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Search__WEBPACK_IMPORTED_MODULE_0__["default"] //左が渡す名前で右が渡す変数
+    , {
       response: novels
     }) : null]
   });
@@ -27674,17 +27670,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ RankChart)
 /* harmony export */ });
 /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/chart.esm.js");
-/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-chartjs-2 */ "./node_modules/react-chartjs-2/dist/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-chartjs-2 */ "./node_modules/react-chartjs-2/dist/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
 chart_js__WEBPACK_IMPORTED_MODULE_0__.Chart.register(chart_js__WEBPACK_IMPORTED_MODULE_0__.RadialLinearScale, chart_js__WEBPACK_IMPORTED_MODULE_0__.PointElement, chart_js__WEBPACK_IMPORTED_MODULE_0__.LineElement, chart_js__WEBPACK_IMPORTED_MODULE_0__.Filler, chart_js__WEBPACK_IMPORTED_MODULE_0__.Tooltip, chart_js__WEBPACK_IMPORTED_MODULE_0__.Legend);
+chart_js__WEBPACK_IMPORTED_MODULE_0__.defaults.font.family = "pixel10-r";
 var rankOption = {
   scales: {
     r: {
       ticks: {
         display: false
+      },
+      pointLabels: {
+        color: "black",
+        font: {
+          size: 15
+        }
       },
       suggestedMin: 0,
       suggestedMax: 10
@@ -27692,28 +27698,40 @@ var rankOption = {
   },
   plugins: {
     legend: {
-      display: false
+      display: false,
+      labels: {
+        font: {
+          size: 20
+        }
+      }
     }
   }
 };
 function RankChart(_ref) {
   var rank = _ref.rank;
+
+  /* const el = React.useRef(null);
+  console.log(el.current);
+  React.useEffect(() => {
+      console.log(el.current);
+  }, []); */
+  //console.log(rect.top + window.pageYOffset); // y座標(絶対座標)
   var rankData = {
-    labels: ['Pt', 'Fav', 'Rev', 'Rate', 'Com'],
+    labels: ["Pt", "Fav", "Rev", "Rate", "Com"],
     datasets: [{
       //label: novel.title,
       data: rank,
-      backgroundColor: 'rgba(255, 99, 132, 0.2)',
-      borderColor: 'rgba(255, 99, 132, 1)',
+      backgroundColor: "rgba(255, 99, 132, 0.2)",
+      borderColor: "rgba(255, 99, 132, 1)",
       borderWidth: 1
     }, {
-      data: [5, 5, 5, 5, 5],
-      backgroundColor: 'rgba(242,232,141,0.5)',
-      borderColor: 'rgba(242,232,141,0.8)',
+      data: [4, 4, 4, 4, 4],
+      backgroundColor: "rgba(242,232,141,0.5)",
+      borderColor: "rgba(242,232,141,0.8)",
       borderWidth: 1
     }]
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_2__.Radar, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_3__.Radar, {
     data: rankData,
     options: rankOption
   });
@@ -27883,12 +27901,10 @@ var NovelTitle = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_5__["default"]
   textAlign: "center",
   color: "black",
   fontSize: 25,
-  fontFamily: "milk-b",
-  target: "_blank"
+  fontFamily: "milk-b"
 });
 function Search(_ref3) {
-  var base_url = _ref3.base_url,
-      response = _ref3.response;
+  var response = _ref3.response;
 
   /* const averagePoint = [
     response[1].global_point / response[1].max_global_point * 100,
@@ -28045,6 +28061,16 @@ function Search(_ref3) {
         styleRank.push(styleN);
       }
     });
+    var wy = window.pageYOffset;
+    var wb = wy + screen.height; // スクリーンの最下部位置を取得
+    //let wb = wy + window.innerHeight;// ブラウザの最下部位置を取得
+
+    var el = react__WEBPACK_IMPORTED_MODULE_2__.useRef(null);
+    console.log(el.current);
+    react__WEBPACK_IMPORTED_MODULE_2__.useEffect(function () {
+      console.log(el.current);
+      console.log(JSON.stringify(el.current.getBoundingClientRect()));
+    }, []);
     return (
       /*#__PURE__*/
       //gridで整形
@@ -28060,9 +28086,17 @@ function Search(_ref3) {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
               item: true,
               xs: 20,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(NovelTitle, {
-                href: novelUrl + novel.ncode,
-                children: novel.title
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                style: {
+                  textAlign: "center",
+                  marginBottom: 10,
+                  marginTop: 10
+                },
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(NovelTitle, {
+                  href: novelUrl + novel.ncode,
+                  target: "_blank",
+                  children: novel.title
+                })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
                 container: true,
                 spacing: 1,
@@ -28078,8 +28112,11 @@ function Search(_ref3) {
                     onClick: function onClick() {
                       return console.log("aaaa");
                     },
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_RankChart__WEBPACK_IMPORTED_MODULE_0__["default"], {
-                      rank: novelRankNum
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                      ref: el,
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_RankChart__WEBPACK_IMPORTED_MODULE_0__["default"], {
+                        rank: novelRankNum
+                      })
                     })
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
@@ -28150,10 +28187,8 @@ function Search(_ref3) {
       }, novel.ncode)
     );
   });
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-      children: base_url
-    }), novelDataList]
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    children: novelDataList
   });
 }
 /* export default function Search({
