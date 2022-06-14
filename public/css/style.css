@@ -1,6 +1,10 @@
 /*htmlの文字サイズを10pxにしてrem を使いやすくする*/
-html {
+/* html {
   font-size: 62.5%;
+} */
+
+body{
+  font-family: "pixel10-b";
 }
 
 .WifiFindIcon .MuiButton-startIcon {

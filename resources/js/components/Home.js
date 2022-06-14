@@ -3,6 +3,7 @@ import Loading from "./Loading";
 import axios from 'axios';
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
+import styled from "styled-components";
 import {
   Box,
   Paper,
@@ -14,25 +15,30 @@ import {
   FormGroup,
   FormControl,
   FormControlLabel,
-  Checkbox
+  Checkbox,
+  useMediaQuery,
 } from '@mui/material';
 import { ThemeProvider,
   createTheme
 } from '@mui/material/styles';
-import { styled } from '@mui/system';
+import { styled as styledmui} from '@mui/system';
 import WifiFindIcon from '@mui/icons-material/WifiFind';
 
-
-const Centering = styled(Paper)(({ theme }) => ({
-  backgroundColor: '#e6e6e6',
+const Centering = styledmui(Paper)(({ theme }) => ({
+  backgroundColor: "#e6e6e6",
   ...theme.typography.body2,
   padding: theme.spacing(1),
-  textAlign: 'center',
+  textAlign: "center",
   color: theme.palette.text.secondary,
-  height: "100%"
+  height: "100%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 }));
 
 export default function Home() {
+  const matches = useMediaQuery('(min-width:600px)');
+  console.log(matches)
   const theme = createTheme({
     palette: {
       pink: {
@@ -41,32 +47,27 @@ export default function Home() {
     },
   });
 
-  const TitleStyle = styled('div')({
-    textAlign: "center",
-    fontFamily: "pixel10-b",
-    color: "black",
-    fontSize: 50,
-    whiteSpace: "nowrap",
-  });
-
-  const GenreP = styled('p')({
-    fontFamily: "pixel10-r",
-    fontSize: 25,
-    margin: 'auto',
-    color: "black",
-  });
-  const IsekaiP = styled("p")({
-    fontFamily: "pixel10-r",
-    fontSize: 22,
-    margin: 'auto',
-    color: "black",
-  })
-  const SearchP = styled("p")({
-    fontFamily: "pixel10-r",
-    fontSize: 22,
-    margin: 'auto',
-    color: "black",
-  })
+  const Title = styled.p`
+    text-align: center;
+    font-family: "pixel10-b";
+    font-size: 50px;
+    
+    @media(max-width: 600px){
+      font-size: 30px;
+    }
+  `;
+  const GenreP = styled.p`
+    color: black;
+    font-family: "pixel10-r";
+    font-size: 25px;
+    margin: auto;
+  `;
+  const IsekaiP = styled(GenreP)`
+    fontSize: 22px;
+  `;
+  const SearchP = styled(GenreP)`
+    fontsize: 22px;
+  `;
   
 
   const [open, setOpen] = React.useState(false);
@@ -124,83 +125,140 @@ export default function Home() {
 
   return (
     <ThemeProvider theme={theme}>
-      <TitleStyle>{title}</TitleStyle>
-       <Box sx={{}}>
-        <Grid container spacing={1} columns={20}>
-          <Grid item xs={8}>
-          <Centering>
-            <FormControl sx={{
-            m: 1,
-            minWidth: 190,
-          }}>
-            <InputLabel id="demo-controlled-open-select-label">ジャンル</InputLabel>
-            <Select
-              labelId="demo-controlled-open-select-label"
-              id="demo-controlled-open-select"
-              open={open}
-              onClose={handleClose}
-              onOpen={handleOpen}
-              value={genre}
-              onChange={genreSelect}
+      <Title>{title}</Title>
+      <Box sx={{}}>
+        <Grid container spacing={1} columns={10}>
+          <Grid item xs={10} sm={4}>
+            <Centering>
+              <FormControl
+                sx={{
+                  margin: "auto",
+                  minWidth: 190,
+                }}
               >
-                <MenuItem value={101}><GenreP>異世界(恋愛)</GenreP></MenuItem>
-                <MenuItem value={102}><GenreP>現実世界(恋愛)</GenreP></MenuItem>
-                <MenuItem value={201}><GenreP>ハイファンタジー</GenreP></MenuItem>
-                <MenuItem value={202}><GenreP>ローファンタジー</GenreP></MenuItem>
-                <MenuItem value={301}><GenreP>純文学</GenreP></MenuItem>
-                <MenuItem value={302}><GenreP>ヒューマンドラマ</GenreP></MenuItem>
-                <MenuItem value={303}><GenreP>歴史</GenreP></MenuItem>
-                <MenuItem value={304}><GenreP>推理</GenreP></MenuItem>
-                <MenuItem value={305}><GenreP>ホラー</GenreP></MenuItem>
-                <MenuItem value={306}><GenreP>アクション</GenreP></MenuItem>
-                <MenuItem value={307}><GenreP>コメディ－</GenreP></MenuItem>
-                <MenuItem value={401}><GenreP>VRゲーム</GenreP></MenuItem>
-                <MenuItem value={402}><GenreP>宇宙</GenreP></MenuItem>
-                <MenuItem value={403}><GenreP>空想科学</GenreP></MenuItem>
-                <MenuItem value={404}><GenreP>パニック</GenreP></MenuItem>
-                <MenuItem value={9901}><GenreP>童話</GenreP></MenuItem>
-                <MenuItem value={9902}><GenreP>詩</GenreP></MenuItem>
-                <MenuItem value={9903}><GenreP>エッセイ</GenreP></MenuItem>
-                <MenuItem value={9904}><GenreP>リプレイ</GenreP></MenuItem>
-                <MenuItem value={9999}><GenreP>その他</GenreP></MenuItem>
-                <MenuItem value={9801}><GenreP>ノンジャンル</GenreP></MenuItem>
-              </Select>
-            </FormControl>
+                <InputLabel id="demo-controlled-open-select-label">
+                  ジャンル
+                </InputLabel>
+                <Select
+                  labelId="demo-controlled-open-select-label"
+                  id="demo-controlled-open-select"
+                  open={open}
+                  onClose={handleClose}
+                  onOpen={handleOpen}
+                  value={genre}
+                  onChange={genreSelect}
+                >
+                  <MenuItem value={101}>
+                    <GenreP>異世界(恋愛)</GenreP>
+                  </MenuItem>
+                  <MenuItem value={102}>
+                    <GenreP>現実世界(恋愛)</GenreP>
+                  </MenuItem>
+                  <MenuItem value={201}>
+                    <GenreP>ハイファンタジー</GenreP>
+                  </MenuItem>
+                  <MenuItem value={202}>
+                    <GenreP>ローファンタジー</GenreP>
+                  </MenuItem>
+                  <MenuItem value={301}>
+                    <GenreP>純文学</GenreP>
+                  </MenuItem>
+                  <MenuItem value={302}>
+                    <GenreP>ヒューマンドラマ</GenreP>
+                  </MenuItem>
+                  <MenuItem value={303}>
+                    <GenreP>歴史</GenreP>
+                  </MenuItem>
+                  <MenuItem value={304}>
+                    <GenreP>推理</GenreP>
+                  </MenuItem>
+                  <MenuItem value={305}>
+                    <GenreP>ホラー</GenreP>
+                  </MenuItem>
+                  <MenuItem value={306}>
+                    <GenreP>アクション</GenreP>
+                  </MenuItem>
+                  <MenuItem value={307}>
+                    <GenreP>コメディ－</GenreP>
+                  </MenuItem>
+                  <MenuItem value={401}>
+                    <GenreP>VRゲーム</GenreP>
+                  </MenuItem>
+                  <MenuItem value={402}>
+                    <GenreP>宇宙</GenreP>
+                  </MenuItem>
+                  <MenuItem value={403}>
+                    <GenreP>空想科学</GenreP>
+                  </MenuItem>
+                  <MenuItem value={404}>
+                    <GenreP>パニック</GenreP>
+                  </MenuItem>
+                  <MenuItem value={9901}>
+                    <GenreP>童話</GenreP>
+                  </MenuItem>
+                  <MenuItem value={9902}>
+                    <GenreP>詩</GenreP>
+                  </MenuItem>
+                  <MenuItem value={9903}>
+                    <GenreP>エッセイ</GenreP>
+                  </MenuItem>
+                  <MenuItem value={9904}>
+                    <GenreP>リプレイ</GenreP>
+                  </MenuItem>
+                  <MenuItem value={9999}>
+                    <GenreP>その他</GenreP>
+                  </MenuItem>
+                  <MenuItem value={9801}>
+                    <GenreP>ノンジャンル</GenreP>
+                  </MenuItem>
+                </Select>
+              </FormControl>
             </Centering>
           </Grid>
-          <Grid item xs={8}>
-          <Centering>
-            <FormControl component="fieldset" sx={{width: 1, height: 1}}>
-              <FormGroup aria-label="position" sx={{ margin: 'auto' }}>
-                <FormControlLabel
-                  value="end"
-                  control={<Checkbox 
-                    color="pink"//secondaryなどを指定する時はこの方法で色を変える
-                    checked={checked}
-                    onChange={checkBoxChange}/>}
-                  label={<IsekaiP>異世界転生・召喚を含む</IsekaiP>}
-                  labelPlacement="end"
-                />
-              </FormGroup>
-            </FormControl>
+          <Grid item xs={10} sm={4}>
+            <Centering>
+              <FormControl component="fieldset" sx={{ width: 1, height: 1 }}>
+                <FormGroup aria-label="position" sx={{ margin: "auto" }}>
+                  <FormControlLabel
+                    value="end"
+                    control={
+                      <Checkbox
+                        color="pink" //secondaryなどを指定する時はこの方法で色を変える
+                        checked={checked}
+                        onChange={checkBoxChange}
+                      />
+                    }
+                    label={<IsekaiP>異世界転生・召喚を含む</IsekaiP>}
+                    labelPlacement="end"
+                  />
+                </FormGroup>
+              </FormControl>
             </Centering>
           </Grid>
-          <Grid item xs={4}>
-          <div style={{
-            height: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-            }}>
-              <Button className="WifiFindIcon" style={{
-                  color:"black",//styleを使えばCSSの記法が通用する？
+          <Grid item xs={10} sm={2}>
+            <div
+              style={{
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Button
+                className="WifiFindIcon"
+                style={{
+                  color: "black", //styleを使えばCSSの記法が通用する？
                   backgroundColor: "#4feff7",
-                  display:"block",
-                  fontSize:20
+                  display: "block",
+                  fontSize: 20,
                 }}
                 variant="contained"
                 size="large"
-                startIcon={<div><WifiFindIcon style={{fontSize:40}}/></div>}
+                startIcon={
+                  <div>
+                    <WifiFindIcon style={{ fontSize: 40 }} />
+                  </div>
+                }
                 onClick={handleSearch}
                 //component={ Link } to={"/search"}
               >
@@ -210,17 +268,14 @@ export default function Home() {
           </Grid>
         </Grid>
       </Box>
-      <div>
-        {loading ? <Loading/> : null }
-      </div>
+      <div>{loading ? <Loading /> : null}</div>
 
       {search ? (
-      <Search
-        //左が渡す名前で右が渡す変数
-        response = {novels}
-      />
-    ) : null
-    }
+        <Search
+          //左が渡す名前で右が渡す変数
+          response={novels}
+        />
+      ) : null}
     </ThemeProvider>
   );
 }

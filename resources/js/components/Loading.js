@@ -1,7 +1,7 @@
 import ReactLoading from "react-loading";
 import { styled } from "@mui/system";
 
-const LoadingStyle = styled("p")({
+const LoadingStyle = styled("div")({
   textAlign: "center",
   fontFamily: "pixel10-b",
   color: "black",

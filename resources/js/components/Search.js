@@ -1,7 +1,8 @@
 import RankChart from "./RankChart";
 import PointChart from "./PointChart"
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
+import styled from "styled-components";
+import { styled as styledmui } from '@mui/material/styles';
 import {
   Box,
   Paper,
@@ -62,7 +63,7 @@ const styleSSS = {
   textAlign: "center",
   color: "#FF99FF",
   fontSize: 30,
-  margin: "auto"
+  margin: "auto",
 }
 const styleSS = {
   textAlign: "center",
@@ -132,7 +133,7 @@ const stylePoint = {
 
 const novelUrl = "https://ncode.syosetu.com/"
 
-const Item = styled(Paper)(({ theme }) => ({
+const Item = styledmui(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
   padding: theme.spacing(1),
@@ -140,18 +141,24 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const DotItem = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  fontSize: 15,
-  fontFamily: "pixel10-b",
-  whiteSpace: "nowrap",
-}));
+const DotItem = styled(Paper)`
+  text-align: center;
+  font-size: 15px;
+  white-space: nowrap;
+  color: violet;
+
+  @media (max-width: 600px) {
+    font-size: 3px;
+    color: violet;
+  }
+  @media (max-width: 767px and min-width: 601px) {
+    font-size: 10px;
+  }
+`;
 
 
-const NovelTitle = styled('a')({
+
+const NovelTitle = styledmui('a')({
   textAlign: "center",
   color: "black",
   fontSize: 25,
@@ -304,36 +311,35 @@ export default function Search({
       //gridで整形
       <div key={novel.ncode}>
         <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={0} columns={20}>
-          <Grid item xs={20}>
-            <div style={{textAlign: "center", marginBottom: 10, marginTop: 10,}}><NovelTitle href={novelUrl + novel.ncode} target="_blank">{novel.title}</NovelTitle></div>
-            <Grid container spacing={1} columns={20}>
-              <Grid item xs={5} sx={{
-                minHeight: 60,
-                minWidth: 60,
-              }}>
-                  <Item onClick={() => console.log("aaaa")}><div ref={el}><RankChart rank={novelRankNum}/></div></Item>
-              </Grid>
-              <Grid item xs={3}>
-                <DotItem>ポイント<br/><p style={styleRank[0]}>{novelRankAlpha[0]}</p><p style={stylePoint}>{novel.global_point}</p></DotItem>
-              </Grid>
-              <Grid item xs={3}>
-                <DotItem>ブクマ<br/><p style={styleRank[1]}>{novelRankAlpha[1]}</p><p style={stylePoint}>{novel.fav_novel_cnt}</p></DotItem>
-              </Grid>
-              <Grid item xs={3}>
-                <DotItem>ひょうかしゃ<br/><p style={styleRank[2]}>{novelRankAlpha[2]}</p><p style={stylePoint}>{novel.all_hyoka_cnt}</p></DotItem>
-              </Grid>
-              <Grid item xs={3}>
-                <DotItem>へいきんてん<br/><p style={styleRank[3]}>{novelRankAlpha[3]}</p><p style={stylePoint}>{novelAverageRate}</p></DotItem>
-              </Grid>
-              <Grid item xs={3}>
-                <DotItem>かんそう<br/><p style={styleRank[4]}>{novelRankAlpha[4]}</p><p style={stylePoint}>{novel.impression_cnt}</p></DotItem>
+          <Grid container spacing={0} columns={20}>
+            <Grid item xs={20}>
+              <div style={{textAlign: "center", marginBottom: 10, marginTop: 10,}}><NovelTitle href={novelUrl + novel.ncode} target="_blank">{novel.title}</NovelTitle></div>
+              <Grid container spacing={1} columns={20}>
+                <Grid item xs={5} sx={{
+                  minHeight: 60,
+                  minWidth: 60,
+                }}>
+                    <Item onClick={() => console.log("aaaa")}><div ref={el}><RankChart rank={novelRankNum}/></div></Item>
+                </Grid>
+                <Grid item xs={3}>
+                  <DotItem>ポイント<br/><p style={styleRank[0]}>{novelRankAlpha[0]}</p><p style={stylePoint}>{novel.global_point}</p></DotItem>
+                </Grid>
+                <Grid item xs={3}>
+                  <DotItem>ブクマ<br/><p style={styleRank[1]}>{novelRankAlpha[1]}</p><p style={stylePoint}>{novel.fav_novel_cnt}</p></DotItem>
+                </Grid>
+                <Grid item xs={3}>
+                  <DotItem>ひょうかしゃ<br/><p style={styleRank[2]}>{novelRankAlpha[2]}</p><p style={stylePoint}>{novel.all_hyoka_cnt}</p></DotItem>
+                </Grid>
+                <Grid item xs={3}>
+                  <DotItem>へいきんてん<br/><p style={styleRank[3]}>{novelRankAlpha[3]}</p><p style={stylePoint}>{novelAverageRate}</p></DotItem>
+                </Grid>
+                <Grid item xs={3}>
+                  <DotItem>かんそう<br/><p style={styleRank[4]}>{novelRankAlpha[4]}</p><p style={stylePoint}>{novel.impression_cnt}</p></DotItem>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
-        </Grid>
-      </Box>
-
+        </Box>
       
     </div>
     );
