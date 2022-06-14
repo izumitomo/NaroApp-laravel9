@@ -16,6 +16,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+
 import { pink } from "@mui/material/colors";
 
 
@@ -155,11 +156,9 @@ const NovelTitle = styled('a')({
   color: "black",
   fontSize: 25,
   fontFamily: "milk-b",
-  target: "_blank",
 });
 
 export default function Search({
-  base_url,
   response,
 }) {
   /* const averagePoint = [
@@ -290,7 +289,16 @@ export default function Search({
       else {novelRankAlpha.push("N"); styleRank.push(styleN)}
     })
 
+    let wy = window.pageYOffset;
+    let wb = wy + screen.height; // スクリーンの最下部位置を取得
+    //let wb = wy + window.innerHeight;// ブラウザの最下部位置を取得
 
+    const el = React.useRef(null);
+    console.log(el.current);
+    React.useEffect(() => {
+      console.log(el.current);
+      console.log(JSON.stringify(el.current.getBoundingClientRect()));
+    }, []);
     
     return (
       //gridで整形
@@ -298,13 +306,13 @@ export default function Search({
         <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={0} columns={20}>
           <Grid item xs={20}>
-            <NovelTitle href={novelUrl + novel.ncode}>{novel.title}</NovelTitle>
+            <div style={{textAlign: "center", marginBottom: 10, marginTop: 10,}}><NovelTitle href={novelUrl + novel.ncode} target="_blank">{novel.title}</NovelTitle></div>
             <Grid container spacing={1} columns={20}>
               <Grid item xs={5} sx={{
                 minHeight: 60,
                 minWidth: 60,
               }}>
-                <Item onClick={() => console.log("aaaa")}><RankChart rank={novelRankNum}/></Item>
+                  <Item onClick={() => console.log("aaaa")}><div ref={el}><RankChart rank={novelRankNum}/></div></Item>
               </Grid>
               <Grid item xs={3}>
                 <DotItem>ポイント<br/><p style={styleRank[0]}>{novelRankAlpha[0]}</p><p style={stylePoint}>{novel.global_point}</p></DotItem>
@@ -333,7 +341,6 @@ export default function Search({
 
   return (
     <div>
-      <p>{base_url}</p>
       {novelDataList}
 
     </div>

@@ -1,4 +1,5 @@
 import Search from "./Search";
+import Loading from "./Loading";
 import axios from 'axios';
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
@@ -20,6 +21,7 @@ import { ThemeProvider,
 } from '@mui/material/styles';
 import { styled } from '@mui/system';
 import WifiFindIcon from '@mui/icons-material/WifiFind';
+
 
 const Centering = styled(Paper)(({ theme }) => ({
   backgroundColor: '#e6e6e6',
@@ -96,6 +98,7 @@ export default function Home() {
   const [search, setSearch] = React.useState(false);
   const [novels, setNovels] = React.useState([]);
   const handleSearch = () => {
+    setLoading(true);
     const data = {
       genre : genre,
       notIsekai : notIsekai,
@@ -104,19 +107,18 @@ export default function Home() {
     .then(res => {
       setNovels(res.data);
       //console.log(Array.isArray(res.data[0]))
-
       console.log(res.data)//dataはbodyとかheaderのやつ。
       setSearch(true);
+      setLoading(false)
     }
     );
   };
+
+  const [loading, setLoading] = React.useState(false);
   
   //setNovelsでnovelsにres.data[0]が入るタイミングが遅すぎることによって、searchに
   //responseとしてnovelsを格納した時にnovelsの中身が空のまま送られ、遅れてnovelsに値が入った後に再びsearchが呼ばれているように見える。
   //元々67行目あたりのsetCheckedの実行時からset系の処理が遅すぎるので色々工夫はしていたが……。
-
-  let base_url = "https://api.syosetu.com/novelapi/api/?lim=50&out=json&order=weekly" + "&genre=" + genre + "&nottensei=" + notIsekai + "&nottenni=" + notIsekai;
-
 
   const title = "なろーせんとーりょく！";
 
@@ -209,16 +211,12 @@ export default function Home() {
         </Grid>
       </Box>
       <div>
-
+        {loading ? <TitleStyle>けいそくちゅう...<Loading/></TitleStyle> : null }
       </div>
-      <div>
 
-      </div>
-      
-      <p>{base_url}</p>
       {search ? (
       <Search
-        base_url = {base_url}//左が渡す名前で右が渡す変数
+        //左が渡す名前で右が渡す変数
         response = {novels}
       />
     ) : null
