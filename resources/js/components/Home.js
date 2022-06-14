@@ -211,7 +211,7 @@ export default function Home() {
         </Grid>
       </Box>
       <div>
-        {loading ? <TitleStyle>けいそくちゅう...<Loading/></TitleStyle> : null }
+        {loading ? <TitleStyle>Loading...<Loading/></TitleStyle> : null }
       </div>
 
       {search ? (
