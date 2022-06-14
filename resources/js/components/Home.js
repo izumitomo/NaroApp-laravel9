@@ -1,4 +1,5 @@
 import Search from "./Search";
+import Loading from "./Loading";
 import axios from 'axios';
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
@@ -20,6 +21,7 @@ import { ThemeProvider,
 } from '@mui/material/styles';
 import { styled } from '@mui/system';
 import WifiFindIcon from '@mui/icons-material/WifiFind';
+
 
 const Centering = styled(Paper)(({ theme }) => ({
   backgroundColor: '#e6e6e6',
@@ -209,7 +211,7 @@ export default function Home() {
         </Grid>
       </Box>
       <div>
-        {loading ? <TitleStyle>Loading...</TitleStyle> : null }
+        {loading ? <TitleStyle>けいそくちゅう...<Loading/></TitleStyle> : null }
       </div>
 
       {search ? (
