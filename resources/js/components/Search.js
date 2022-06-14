@@ -315,25 +315,25 @@ export default function Search({
             <Grid item xs={20}>
               <div style={{textAlign: "center", marginBottom: 10, marginTop: 10,}}><NovelTitle href={novelUrl + novel.ncode} target="_blank">{novel.title}</NovelTitle></div>
               <Grid container spacing={1} columns={20}>
-                <Grid item xs={5} sx={{
+                <Grid item xs={20}sm={5} sx={{
                   minHeight: 60,
                   minWidth: 60,
                 }}>
                     <Item onClick={() => console.log("aaaa")}><div ref={el}><RankChart rank={novelRankNum}/></div></Item>
                 </Grid>
-                <Grid item xs={3}>
+                <Grid item xs={4} sm={3}>
                   <DotItem>ポイント<br/><p style={styleRank[0]}>{novelRankAlpha[0]}</p><p style={stylePoint}>{novel.global_point}</p></DotItem>
                 </Grid>
-                <Grid item xs={3}>
+                <Grid item xs={4} sm={3}>
                   <DotItem>ブクマ<br/><p style={styleRank[1]}>{novelRankAlpha[1]}</p><p style={stylePoint}>{novel.fav_novel_cnt}</p></DotItem>
                 </Grid>
-                <Grid item xs={3}>
+                <Grid item xs={4} sm={3}>
                   <DotItem>ひょうかしゃ<br/><p style={styleRank[2]}>{novelRankAlpha[2]}</p><p style={stylePoint}>{novel.all_hyoka_cnt}</p></DotItem>
                 </Grid>
-                <Grid item xs={3}>
+                <Grid item xs={4} sm={3}>
                   <DotItem>へいきんてん<br/><p style={styleRank[3]}>{novelRankAlpha[3]}</p><p style={stylePoint}>{novelAverageRate}</p></DotItem>
                 </Grid>
-                <Grid item xs={3}>
+                <Grid item xs={4} sm={3}>
                   <DotItem>かんそう<br/><p style={styleRank[4]}>{novelRankAlpha[4]}</p><p style={stylePoint}>{novel.impression_cnt}</p></DotItem>
                 </Grid>
               </Grid>
