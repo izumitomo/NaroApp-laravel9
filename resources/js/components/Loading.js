@@ -1,12 +1,25 @@
 import ReactLoading from "react-loading";
-export default function () {
+import { styled } from "@mui/system";
+
+const LoadingStyle = styled("p")({
+  textAlign: "center",
+  fontFamily: "pixel10-b",
+  color: "black",
+  fontSize: 60,
+  whiteSpace: "nowrap",
+});
+
+export default function Loading() {
   return (
-    <ReactLoading
-      type="bars"
-      color="black"
-      height="100px"
-      width="100px"
-      className="mx-auto"
-    />
+    <LoadingStyle>
+      Loading...
+      <ReactLoading
+        type="bars"
+        color="black"
+        height="100px"
+        width="100px"
+        className="mx-auto"
+      />
+    </LoadingStyle>
   );
 }

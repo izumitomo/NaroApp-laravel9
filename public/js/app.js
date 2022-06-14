@@ -27407,9 +27407,7 @@ function Home() {
         })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-      children: loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(TitleStyle, {
-        children: ["Loading...", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Loading__WEBPACK_IMPORTED_MODULE_1__["default"], {})]
-      }) : null
+      children: loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Loading__WEBPACK_IMPORTED_MODULE_1__["default"], {}) : null
     }), search ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Search__WEBPACK_IMPORTED_MODULE_0__["default"] //左が渡す名前で右が渡す変数
     , {
       response: novels
@@ -27622,20 +27620,32 @@ export default function Home(){
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (/* binding */ Loading)
 /* harmony export */ });
 /* harmony import */ var react_loading__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-loading */ "./node_modules/react-loading/dist/react-loading.js");
 /* harmony import */ var react_loading__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_loading__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _mui_system__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/system */ "./node_modules/@mui/system/esm/styled.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
-/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)((react_loading__WEBPACK_IMPORTED_MODULE_0___default()), {
-    type: "bars",
-    color: "black",
-    height: "100px",
-    width: "100px",
-    className: "mx-auto"
+
+
+var LoadingStyle = (0,_mui_system__WEBPACK_IMPORTED_MODULE_2__["default"])("p")({
+  textAlign: "center",
+  fontFamily: "pixel10-b",
+  color: "black",
+  fontSize: 60,
+  whiteSpace: "nowrap"
+});
+function Loading() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(LoadingStyle, {
+    children: ["Loading...", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)((react_loading__WEBPACK_IMPORTED_MODULE_0___default()), {
+      type: "bars",
+      color: "black",
+      height: "100px",
+      width: "100px",
+      className: "mx-auto"
+    })]
   });
 }
 

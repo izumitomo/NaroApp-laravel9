@@ -211,7 +211,7 @@ export default function Home() {
         </Grid>
       </Box>
       <div>
-        {loading ? <TitleStyle>Loading...<Loading/></TitleStyle> : null }
+        {loading ? <Loading/> : null }
       </div>
 
       {search ? (
