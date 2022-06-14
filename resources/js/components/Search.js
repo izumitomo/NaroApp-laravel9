@@ -148,7 +148,7 @@ const DotItem = styled(Paper)`
   color: violet;
 
   @media (max-width: 600px) {
-    font-size: 6px;
+    font-size: 9px;
     color: violet;
   }
   @media (max-width: 767px and min-width: 601px) {

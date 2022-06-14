@@ -28709,7 +28709,7 @@ var Item = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_5__["default"])(_mui
     color: theme.palette.text.secondary
   });
 });
-var DotItem = (0,styled_components__WEBPACK_IMPORTED_MODULE_7__["default"])(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  text-align: center;\n  font-size: 15px;\n  white-space: nowrap;\n  color: violet;\n\n  @media (max-width: 600px) {\n    font-size: 6px;\n    color: violet;\n  }\n  @media (max-width: 767px and min-width: 601px) {\n    font-size: 10px;\n  }\n"])));
+var DotItem = (0,styled_components__WEBPACK_IMPORTED_MODULE_7__["default"])(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  text-align: center;\n  font-size: 15px;\n  white-space: nowrap;\n  color: violet;\n\n  @media (max-width: 600px) {\n    font-size: 9px;\n    color: violet;\n  }\n  @media (max-width: 767px and min-width: 601px) {\n    font-size: 10px;\n  }\n"])));
 var NovelTitle = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_5__["default"])('a')({
   textAlign: "center",
   color: "black",
