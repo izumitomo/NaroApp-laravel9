@@ -24,7 +24,7 @@ import { ThemeProvider,
 import { styled as styledmui} from '@mui/system';
 import WifiFindIcon from '@mui/icons-material/WifiFind';
 
-const Centering = styledmui(Paper)(({ theme }) => ({
+export const Centering = styledmui(Paper)(({ theme }) => ({
   backgroundColor: "#e6e6e6",
   ...theme.typography.body2,
   padding: theme.spacing(1),
@@ -50,7 +50,7 @@ export default function Home() {
   const Title = styled.p`
     text-align: center;
     font-family: "pixel10-b";
-    font-size: 50px;
+    font-size: 46px;
     
     @media(max-width: 600px){
       font-size: 30px;
@@ -59,7 +59,7 @@ export default function Home() {
   const GenreP = styled.p`
     color: black;
     font-family: "pixel10-r";
-    font-size: 25px;
+    font-size: 24px;
     margin: auto;
   `;
   const IsekaiP = styled(GenreP)`
