@@ -8,63 +8,6 @@ import {
 	Paper,
 	Grid
  } from '@mui/material/';
-import { defaults } from "chart.js";
-import { Radar } from "react-chartjs-2";
-
-defaults.font.family = "pixel10-r";
-
-const rankData0 = {
-  labels: ["Pt", "Fav", "Rev", "Rate", "Com"],
-  datasets: [
-    {
-      data: [4, 4, 4, 4, 4],
-      backgroundColor: "rgba(242,232,141,0.5)",
-      borderColor: "rgba(242,232,141,0.8)",
-      borderWidth: 1,
-    },
-  ],
-};
-
-const rankOption = {
-  scales: {
-    r: {
-      ticks: {
-        display: false,
-      },
-      pointLabels: {
-        color: "black",
-        font: {
-          size: 15,
-        },
-      },
-      suggestedMin: 0,
-      suggestedMax: 10,
-    },
-  },
-  plugins: {
-    legend: {
-      display: false,
-      labels: {
-        font: {
-          size: 20,
-        },
-      },
-    },
-  },
-};
-
-
-/* const pointOption = {
-	scales: {
-		r: {
-			angleLines: {
-				display: false,
-			},
-			suggestedMin: 0,
-			suggestedMax: 100,
-		},
-	},
-}; */
 
 const styleSSS = {
 	color: "#FF99FF",
@@ -410,25 +353,6 @@ export default function Search({
 			else {novelRankAlpha.push("N"); styleRank.push(styleN)}
 		})
 		
-		const rankData = {
-      labels: ["Pt", "Fav", "Rev", "Rate", "Com"],
-      datasets: [
-        {
-          //label: novel.title,
-          data: novelRankNum,
-          backgroundColor: "rgba(255, 99, 132, 0.2)",
-          borderColor: "rgba(255, 99, 132, 1)",
-          borderWidth: 1,
-        },
-        {
-          data: [4, 4, 4, 4, 4],
-          backgroundColor: "rgba(242,232,141,0.5)",
-          borderColor: "rgba(242,232,141,0.8)",
-          borderWidth: 1,
-        },
-      ],
-    };
-
 		//更新状態を判別
 		let novelState;
 		if (novel.end == 0 && novel.novel_type == 1) {
@@ -538,9 +462,9 @@ export default function Search({
                 <Item onClick={() => console.log("aaaa")}>
                   <div ref={el}>
                     {chartFlag ? (
-                      <Radar data={rankData} options={rankOption} />
+                      <RankChart rank={novelRankNum} />
                     ) : (
-                      <Radar data={rankData0} options={rankOption} />
+                      <RankChart rank={null} />
                     )}
                   </div>
                 </Item>
