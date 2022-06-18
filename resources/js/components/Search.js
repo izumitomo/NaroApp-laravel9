@@ -8,51 +8,6 @@ import {
 	Paper,
 	Grid
  } from '@mui/material/';
-import { defaults } from "chart.js";
-import { Radar } from "react-chartjs-2";
-
-defaults.font.family = "pixel10-r";
-
-const rankOption = {
-  scales: {
-    r: {
-      ticks: {
-        display: false,
-      },
-      pointLabels: {
-        color: "black",
-        font: {
-          size: 15,
-        },
-      },
-      suggestedMin: 0,
-      suggestedMax: 10,
-    },
-  },
-  plugins: {
-    legend: {
-      display: false,
-      labels: {
-        font: {
-          size: 20,
-        },
-      },
-    },
-  },
-};
-
-
-/* const pointOption = {
-	scales: {
-		r: {
-			angleLines: {
-				display: false,
-			},
-			suggestedMin: 0,
-			suggestedMax: 100,
-		},
-	},
-}; */
 
 const styleSSS = {
 	color: "#FF99FF",
@@ -398,25 +353,6 @@ export default function Search({
 			else {novelRankAlpha.push("N"); styleRank.push(styleN)}
 		})
 		
-		const rankData = {
-      labels: ["Pt", "Fav", "Rev", "Rate", "Com"],
-      datasets: [
-        {
-          //label: novel.title,
-          data: novelRankNum,
-          backgroundColor: "rgba(255, 99, 132, 0.2)",
-          borderColor: "rgba(255, 99, 132, 1)",
-          borderWidth: 1,
-        },
-        {
-          data: [4, 4, 4, 4, 4],
-          backgroundColor: "rgba(242,232,141,0.5)",
-          borderColor: "rgba(242,232,141,0.8)",
-          borderWidth: 1,
-        },
-      ],
-    };
-
 		//更新状態を判別
 		let novelState;
 		if (novel.end == 0 && novel.novel_type == 1) {
@@ -479,10 +415,10 @@ export default function Search({
 
 		//スクロール処理
 		let graphAnim = function () {
-			let wy = window.pageYOffset;
-			let wb = wy + window.innerHeight;// ブラウザの最下部位置を取得     
+			let wy = window.pageYOffset;//Y軸スクロール量
+			let wb = wy + window.innerHeight*3/4;// ブラウザの大きさを基に調整。     
 			// チャートの位置を取得
-			let chartPos = wy + el.current.getBoundingClientRect().top;
+			let chartPos = wy + el.current.getBoundingClientRect().bottom;
 
 			// チャートの位置がウィンドウの最下部位置を超えたら起動
 			if (wb > chartPos && chartFlag == false) {
@@ -525,7 +461,11 @@ export default function Search({
               >
                 <Item onClick={() => console.log("aaaa")}>
                   <div ref={el}>
-										{chartFlag ? <RankChart rank={novelRankNum} /> : <RankChart rank={null}/>}
+                    {chartFlag ? (
+                      <RankChart rank={novelRankNum} />
+                    ) : (
+                      <RankChart rank={null} />
+                    )}
                   </div>
                 </Item>
               </Grid>
@@ -592,7 +532,7 @@ export default function Search({
             </Grid>
           </div>
         </Box>
-				{/* <Radar data={rankData} options={rankOption} /> */}
+        {/* <Radar data={rankData} options={rankOption} /> */}
       </div>
     );
 	});
