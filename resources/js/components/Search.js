@@ -220,6 +220,7 @@ const StoryP = styled.p`
   return elemTop <= docBottom && docTop <= elemBottom;
 } */
 
+
 export default function Search({
 	response,
 }) {
@@ -435,6 +436,13 @@ export default function Search({
 			//console.log(el.current);
 			console.log(JSON.stringify(el.current.getBoundingClientRect()));
 		}, []);
+
+		const [story, setStory] = React.useState(
+      novel.story.length < 210
+        ? novel.story
+        : novel.story.substring(0, 210) + "……"
+		);
+		
 		
 		return (
       <div key={novel.ncode}>
@@ -523,10 +531,8 @@ export default function Search({
                 <LengthDiv>もじ：{novel.length}</LengthDiv>
               </Grid>
               <Grid item xs={20}>
-                <StoryP>
-                  {novel.story.length < 210
-                    ? novel.story
-                    : novel.story.substring(0, 210) + "……"}
+								<StoryP onClick={() => setStory(novel.story)}>
+                  {story}
                 </StoryP>
               </Grid>
             </Grid>

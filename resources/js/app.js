@@ -13,3 +13,5 @@ require('./bootstrap');
  */
 
 require('./components/Home');
+require("./components/Search");
+require("./components/RankChart");
