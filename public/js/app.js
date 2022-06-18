@@ -28918,11 +28918,12 @@ function Search(_ref2) {
 
 
     var graphAnim = function graphAnim() {
-      var wy = window.pageYOffset;
-      var wb = wy + window.innerHeight; // ブラウザの最下部位置を取得     
+      var wy = window.pageYOffset; //Y軸スクロール量
+
+      var wb = wy + window.innerHeight * 3 / 4; // ブラウザの大きさを基に調整。     
       // チャートの位置を取得
 
-      var chartPos = wy + el.current.getBoundingClientRect().top; // チャートの位置がウィンドウの最下部位置を超えたら起動
+      var chartPos = wy + el.current.getBoundingClientRect().bottom; // チャートの位置がウィンドウの最下部位置を超えたら起動
 
       if (wb > chartPos && chartFlag == false) {
         setChartFlag(true);

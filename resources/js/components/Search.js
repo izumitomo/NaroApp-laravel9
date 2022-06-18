@@ -415,10 +415,10 @@ export default function Search({
 
 		//スクロール処理
 		let graphAnim = function () {
-			let wy = window.pageYOffset;
-			let wb = wy + window.innerHeight;// ブラウザの最下部位置を取得     
+			let wy = window.pageYOffset;//Y軸スクロール量
+			let wb = wy + window.innerHeight*3/4;// ブラウザの大きさを基に調整。     
 			// チャートの位置を取得
-			let chartPos = wy + el.current.getBoundingClientRect().top;
+			let chartPos = wy + el.current.getBoundingClientRect().bottom;
 
 			// チャートの位置がウィンドウの最下部位置を超えたら起動
 			if (wb > chartPos && chartFlag == false) {
