@@ -27748,10 +27748,6 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./components/Home */ "./resources/js/components/Home.js");
 
-__webpack_require__(/*! ./components/Search */ "./resources/js/components/Search.js");
-
-__webpack_require__(/*! ./components/RankChart */ "./resources/js/components/RankChart.js");
-
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
