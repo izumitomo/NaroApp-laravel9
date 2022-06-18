@@ -417,7 +417,7 @@ export default function Search({
 		//スクロール処理
 		let graphAnim = function () {
 			let wy = window.pageYOffset;//Y軸スクロール量
-			let wb = wy + window.innerHeight*3/4;// ブラウザの大きさを基に調整。     
+			let wb = wy + window.innerHeight*4/5;// ブラウザの大きさを基に調整。     
 			// チャートの位置を取得
 			let chartPos = wy + el.current.getBoundingClientRect().bottom;
 
@@ -432,10 +432,10 @@ export default function Search({
 		
 
 		const el = React.useRef(null);
-		React.useEffect(() => {
+/* 		React.useEffect(() => {
 			//console.log(el.current);
 			console.log(JSON.stringify(el.current.getBoundingClientRect()));
-		}, []);
+		}, []); */
 
 		const [story, setStory] = React.useState(
       novel.story.length < 210
@@ -467,7 +467,7 @@ export default function Search({
                   minWidth: 60,
                 }}
               >
-                <Item onClick={() => console.log("aaaa")}>
+                <Item>
                   <div ref={el}>
                     {chartFlag ? (
                       <RankChart rank={novelRankNum} />

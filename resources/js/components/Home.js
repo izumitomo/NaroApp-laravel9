@@ -16,7 +16,6 @@ import {
   FormControl,
   FormControlLabel,
   Checkbox,
-  useMediaQuery,
 } from '@mui/material';
 import { ThemeProvider,
   createTheme
@@ -46,8 +45,6 @@ const Centering = styled(Paper)`
 `;
 
 export default function Home() {
-  const matches = useMediaQuery('(min-width:600px)');
-  console.log(matches)
   const theme = createTheme({
     palette: {
       pink: {
