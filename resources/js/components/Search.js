@@ -13,6 +13,18 @@ import { Radar } from "react-chartjs-2";
 
 defaults.font.family = "pixel10-r";
 
+const rankData0 = {
+  labels: ["Pt", "Fav", "Rev", "Rate", "Com"],
+  datasets: [
+    {
+      data: [4, 4, 4, 4, 4],
+      backgroundColor: "rgba(242,232,141,0.5)",
+      borderColor: "rgba(242,232,141,0.8)",
+      borderWidth: 1,
+    },
+  ],
+};
+
 const rankOption = {
   scales: {
     r: {
@@ -525,7 +537,11 @@ export default function Search({
               >
                 <Item onClick={() => console.log("aaaa")}>
                   <div ref={el}>
-										{chartFlag ? <RankChart rank={novelRankNum} /> : <RankChart rank={null}/>}
+                    {chartFlag ? (
+                      <Radar data={rankData} options={rankOption} />
+                    ) : (
+                      <Radar data={rankData0} options={rankOption} />
+                    )}
                   </div>
                 </Item>
               </Grid>
@@ -592,7 +608,7 @@ export default function Search({
             </Grid>
           </div>
         </Box>
-				{/* <Radar data={rankData} options={rankOption} /> */}
+        {/* <Radar data={rankData} options={rankOption} /> */}
       </div>
     );
 	});

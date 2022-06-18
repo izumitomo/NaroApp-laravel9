@@ -28577,6 +28577,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Box/Box.js");
 /* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Grid/Grid.js");
 /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/chart.esm.js");
+/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-chartjs-2 */ "./node_modules/react-chartjs-2/dist/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11, _templateObject12, _templateObject13;
 
@@ -28611,6 +28612,15 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 chart_js__WEBPACK_IMPORTED_MODULE_3__.defaults.font.family = "pixel10-r";
+var rankData0 = {
+  labels: ["Pt", "Fav", "Rev", "Rate", "Com"],
+  datasets: [{
+    data: [4, 4, 4, 4, 4],
+    backgroundColor: "rgba(242,232,141,0.5)",
+    borderColor: "rgba(242,232,141,0.8)",
+    borderWidth: 1
+  }]
+};
 var rankOption = {
   scales: {
     r: {
@@ -29040,10 +29050,12 @@ function Search(_ref2) {
                 },
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                   ref: el,
-                  children: chartFlag ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_RankChart__WEBPACK_IMPORTED_MODULE_0__["default"], {
-                    rank: novelRankNum
-                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_RankChart__WEBPACK_IMPORTED_MODULE_0__["default"], {
-                    rank: null
+                  children: chartFlag ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_10__.Radar, {
+                    data: rankData,
+                    options: rankOption
+                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_10__.Radar, {
+                    data: rankData0,
+                    options: rankOption
                   })
                 })
               })
