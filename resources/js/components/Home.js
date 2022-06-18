@@ -1,7 +1,7 @@
 import Search from "./Search";
 import Loading from "./Loading";
 import axios from 'axios';
-import * as React from 'react';
+import React from 'react';
 import { createRoot } from 'react-dom/client';
 import styled from "styled-components";
 import {

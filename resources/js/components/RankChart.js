@@ -1,24 +1,6 @@
-import {
-  Chart as ChartJS,
-  RadialLinearScale,
-  PointElement,
-  LineElement,
-  Filler,
-  Tooltip,
-  Legend,
-  defaults,
-} from "chart.js";
+import { defaults } from "chart.js";
 import { Radar } from "react-chartjs-2";
-import * as React from "react";
-
-ChartJS.register(
-  RadialLinearScale,
-  PointElement,
-  LineElement,
-  Filler,
-  Tooltip,
-  Legend
-);
+import React from "react";
 
 defaults.font.family = "pixel10-r";
 
@@ -51,12 +33,11 @@ const rankOption = {
 };
 
 export default function RankChart({ rank }) {
-  /* const el = React.useRef(null);
-  console.log(el.current);
+/*   const el = React.useRef(null);
   React.useEffect(() => {
-      console.log(el.current);
+    //console.log(el.current);
+    console.log(JSON.stringify(el.current.getBoundingClientRect()));
   }, []); */
-  //console.log(rect.top + window.pageYOffset); // y座標(絶対座標)
 
   const rankData = {
     labels: ["Pt", "Fav", "Rev", "Rate", "Com"],

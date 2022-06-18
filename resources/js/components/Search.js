@@ -1,6 +1,6 @@
 import RankChart from "./RankChart";
 import PointChart from "./PointChart"
-import * as React from 'react';
+import React from 'react';
 import styled from "styled-components";
 import { styled as styledmui } from '@mui/material/styles';
 import {
@@ -8,44 +8,41 @@ import {
 	Paper,
 	Grid
  } from '@mui/material/';
- import {
-	Chart as ChartJS,
-	RadialLinearScale,
-	PointElement,
-	LineElement,
-	Filler,
-	Tooltip,
-	Legend,
-} from 'chart.js';
+import { defaults } from "chart.js";
+import { Radar } from "react-chartjs-2";
 
-
-ChartJS.register(
-RadialLinearScale,
-PointElement,
-LineElement,
-Filler,
-Tooltip,
-Legend
-);
+defaults.font.family = "pixel10-r";
 
 const rankOption = {
-	scales: {
-		r: {
-			angleLines: {
-				display: false,
-			},
-			suggestedMin: 0,
-			suggestedMax: 10,
-		},
-	},
-	plugins: {
-		legend: {
-			display: false,
-		},
-	},
+  scales: {
+    r: {
+      ticks: {
+        display: false,
+      },
+      pointLabels: {
+        color: "black",
+        font: {
+          size: 15,
+        },
+      },
+      suggestedMin: 0,
+      suggestedMax: 10,
+    },
+  },
+  plugins: {
+    legend: {
+      display: false,
+      labels: {
+        font: {
+          size: 20,
+        },
+      },
+    },
+  },
 };
 
-const pointOption = {
+
+/* const pointOption = {
 	scales: {
 		r: {
 			angleLines: {
@@ -55,7 +52,7 @@ const pointOption = {
 			suggestedMax: 100,
 		},
 	},
-};
+}; */
 
 const styleSSS = {
 	color: "#FF99FF",
@@ -255,6 +252,19 @@ const StoryP = styled.p`
 	font-family: "milk-b";
 `;
 
+/* function conditional(id) {
+  // ウィンドウ上端の位置を取得
+  let docTop = $(window).scrollTop();
+  // ウィンドウ下端の位置を取得
+  let docBottom = docTop + $(window).height();
+  // チャート上端の位置を取得
+  let elemTop = $(id).offset().top;
+  // チャート下端の位置を取得
+  let elemBottom = elemTop + $(id).height();
+  // 「チャートを表示する要素がウィンドウ内にある場合に真となる式」を返す
+  return elemTop <= docBottom && docTop <= elemBottom;
+} */
+
 export default function Search({
 	response,
 }) {
@@ -265,6 +275,7 @@ export default function Search({
 		response[1].average_rate / response[1].max_average_rate * 100,
 		response[1].comment_count / response[1].max_comment_count * 100
 		] */
+	
 	
 	//中心をランクC（5点）としてC,B,A,S,SS,SSSに分けるために6で割る。
 	const pointUpScale = (response[1].max_global_point - response[1].global_point) / 6;
@@ -281,6 +292,7 @@ export default function Search({
 
 
 	const novelDataList = response[0].map(novel => {
+		const [chartFlag, setChartFlag] = React.useState(false);
 		let novelRankNum = [];
 		let novelRankAlpha = [];
 
@@ -386,6 +398,25 @@ export default function Search({
 			else {novelRankAlpha.push("N"); styleRank.push(styleN)}
 		})
 		
+		const rankData = {
+      labels: ["Pt", "Fav", "Rev", "Rate", "Com"],
+      datasets: [
+        {
+          //label: novel.title,
+          data: novelRankNum,
+          backgroundColor: "rgba(255, 99, 132, 0.2)",
+          borderColor: "rgba(255, 99, 132, 1)",
+          borderWidth: 1,
+        },
+        {
+          data: [4, 4, 4, 4, 4],
+          backgroundColor: "rgba(242,232,141,0.5)",
+          borderColor: "rgba(242,232,141,0.8)",
+          borderWidth: 1,
+        },
+      ],
+    };
+
 		//更新状態を判別
 		let novelState;
 		if (novel.end == 0 && novel.novel_type == 1) {
@@ -446,9 +477,22 @@ export default function Search({
 			);
 		}
 
-		let wy = window.pageYOffset;
-		let wb = wy + screen.height; // スクリーンの最下部位置を取得
-		//let wb = wy + window.innerHeight;// ブラウザの最下部位置を取得
+		//スクロール処理
+		let graphAnim = function () {
+			let wy = window.pageYOffset;
+			let wb = wy + window.innerHeight;// ブラウザの最下部位置を取得     
+			// チャートの位置を取得
+			let chartPos = wy + el.current.getBoundingClientRect().top;
+
+			// チャートの位置がウィンドウの最下部位置を超えたら起動
+			if (wb > chartPos && chartFlag == false) {
+				setChartFlag(true);
+/* 				console.log("chartFlag" + chartFlag); */
+			}
+		}
+		window.addEventListener('load', graphAnim); // 読み込み時の処理
+		window.addEventListener('scroll', graphAnim); // スクロール時の処理
+		
 
 		const el = React.useRef(null);
 		React.useEffect(() => {
@@ -481,7 +525,7 @@ export default function Search({
               >
                 <Item onClick={() => console.log("aaaa")}>
                   <div ref={el}>
-                    <RankChart rank={novelRankNum} />
+										{chartFlag ? <RankChart rank={novelRankNum} /> : <RankChart rank={null}/>}
                   </div>
                 </Item>
               </Grid>
@@ -548,6 +592,7 @@ export default function Search({
             </Grid>
           </div>
         </Box>
+				{/* <Radar data={rankData} options={rankOption} /> */}
       </div>
     );
 	});
