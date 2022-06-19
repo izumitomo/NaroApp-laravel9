@@ -1,12 +1,12 @@
 import RankChart from "./RankChart";
-import PointChart from "./PointChart"
+/* import PointChart from "./PointChart"; */
 import React from 'react';
 import styled from "styled-components";
-import { styled as styledmui } from '@mui/material/styles';
 import {
 	Box,
 	Paper,
-	Grid
+	Grid,
+	Button,
  } from '@mui/material/';
 
 const styleSSS = {
@@ -66,13 +66,12 @@ const PointP = styled(RankP)`
 
 const novelUrl = "https://ncode.syosetu.com/"
 
-const Item = styledmui(Paper)(({ theme }) => ({
-	backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-	...theme.typography.body2,
-	padding: theme.spacing(1),
-	textAlign: 'center',
-	color: theme.palette.text.secondary,
-}));
+const Item = styled(Paper)`
+  &&&{
+		padding: 8px;
+		text-align center;
+	}
+`;
 
 const DotItem = styled(Paper)`
   text-align: center;
@@ -537,7 +536,6 @@ export default function Search({
             </Grid>
           </div>
         </Box>
-        {/* <Radar data={rankData} options={rankOption} /> */}
       </div>
     );
 	});
@@ -546,58 +544,10 @@ export default function Search({
 
 	return (
 		<div>
+
 			{novelDataList}
 
 		</div>
 	);
 }
-
-
-
-/* export default function Search({
-	base_url,
-	response,
-}) {
-	const data = {
-		labels: ['Thing 1', 'Thing 2', 'Thing 3', 'Thing 4', 'Thing 5', 'Thing 6'],
-		datasets: [
-			{
-				label: '# of Votes',
-				data: [response[1][max_global_point], 9, 3, 5, 2, 3],
-				backgroundColor: 'rgba(255, 99, 132, 0.2)',
-				borderColor: 'rgba(255, 99, 132, 1)',
-				borderWidth: 1,
-			},
-		],
-	};
-
-	//console.log(Array.isArray(response[0]));
-	const novelData = response[0].map(novel => {
-		//novelというresponse[0]をコピーした配列を用意してreturnをnovelの要素ごとに処理を走らせてreturnするイメージ？
-		//計算処理を書く
-		return (
-			//gridで整形
-			<p key={novel.title}>{novel.title}</p>
-		);
-	});
-	let result = [];
-	for (const i in response[1]) {
-		result.push(<p key={i}>{i}:{response[1][i]}</p>);
-	}
-	//resultにpタグごと格納している
-
-	return (
-		<div>
-			<p>{base_url}</p>
-			<Radar data={data} />
-			{novelData}
-			<p>------</p>
-			{result}
-
-		</div>
-	);
-}
-
- */
-
 

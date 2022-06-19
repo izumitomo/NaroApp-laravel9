@@ -28269,64 +28269,6 @@ function Loading() {
 
 /***/ }),
 
-/***/ "./resources/js/components/PointChart.js":
-/*!***********************************************!*\
-  !*** ./resources/js/components/PointChart.js ***!
-  \***********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ PointChart)
-/* harmony export */ });
-/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/chart.esm.js");
-/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-chartjs-2 */ "./node_modules/react-chartjs-2/dist/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-chart_js__WEBPACK_IMPORTED_MODULE_0__.Chart.register(chart_js__WEBPACK_IMPORTED_MODULE_0__.RadialLinearScale, chart_js__WEBPACK_IMPORTED_MODULE_0__.PointElement, chart_js__WEBPACK_IMPORTED_MODULE_0__.LineElement, chart_js__WEBPACK_IMPORTED_MODULE_0__.Filler, chart_js__WEBPACK_IMPORTED_MODULE_0__.Tooltip, chart_js__WEBPACK_IMPORTED_MODULE_0__.Legend);
-var pointOption = {
-  scales: {
-    r: {
-      angleLines: {
-        display: false
-      },
-      suggestedMin: 0,
-      suggestedMax: 100
-    }
-  }
-};
-function PointChart(_ref) {
-  var averagePoint = _ref.averagePoint,
-      novelPoint = _ref.novelPoint,
-      title = _ref.title;
-  var averageData = {
-    label: "平均戦闘力",
-    data: averagePoint,
-    backgroundColor: 'rgba(50,17,240,0.4)',
-    borderColor: 'rgba(50,17,240,1)',
-    borderWidth: 1
-  };
-  var novelData = {
-    labels: ['ポイント', 'ブクマ数', '評価者数', '平均評価点', '感想数'],
-    datasets: [{
-      label: title.length < 50 ? title : title.substring(0, 50) + "……",
-      data: novelPoint,
-      backgroundColor: 'rgba(255, 99, 132, 0.2)',
-      borderColor: 'rgba(255, 99, 132, 1)',
-      borderWidth: 1
-    }, averageData]
-  };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_2__.Radar, {
-    data: novelData,
-    options: pointOption
-  });
-}
-
-/***/ }),
-
 /***/ "./resources/js/components/RankChart.js":
 /*!**********************************************!*\
   !*** ./resources/js/components/RankChart.js ***!
@@ -28346,10 +28288,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/* defaults.font.family = "pixel10-r";
- */
 
-
+chart_js__WEBPACK_IMPORTED_MODULE_0__.Chart.register(chart_js__WEBPACK_IMPORTED_MODULE_0__.RadialLinearScale, chart_js__WEBPACK_IMPORTED_MODULE_0__.PointElement, chart_js__WEBPACK_IMPORTED_MODULE_0__.LineElement, chart_js__WEBPACK_IMPORTED_MODULE_0__.Filler, chart_js__WEBPACK_IMPORTED_MODULE_0__.Tooltip, chart_js__WEBPACK_IMPORTED_MODULE_0__.Legend);
+chart_js__WEBPACK_IMPORTED_MODULE_0__.defaults.font.family = "pixel10-r";
 var rankOption = {
   scales: {
     r: {
@@ -28382,10 +28323,10 @@ function RankChart(_ref) {
   var rank = _ref.rank;
 
   /*   const el = React.useRef(null);
-    React.useEffect(() => {
-      //console.log(el.current);
-      console.log(JSON.stringify(el.current.getBoundingClientRect()));
-    }, []); */
+  React.useEffect(() => {
+    //console.log(el.current);
+    console.log(JSON.stringify(el.current.getBoundingClientRect()));
+  }, []); */
   var rankData = {
     labels: ["Pt", "Fav", "Rev", "Rate", "Com"],
     datasets: [{
@@ -28421,16 +28362,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Search)
 /* harmony export */ });
 /* harmony import */ var _RankChart__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RankChart */ "./resources/js/components/RankChart.js");
-/* harmony import */ var _PointChart__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PointChart */ "./resources/js/components/PointChart.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _mui_material_styles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material/styles */ "./node_modules/@mui/material/styles/styled.js");
-/* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Paper/Paper.js");
-/* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Box/Box.js");
-/* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Grid/Grid.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11, _templateObject12, _templateObject13;
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Paper/Paper.js");
+/* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Box/Box.js");
+/* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Grid/Grid.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11, _templateObject12, _templateObject13, _templateObject14;
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -28444,16 +28383,10 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
-
+/* import PointChart from "./PointChart"; */
 
 
 
@@ -28494,32 +28427,23 @@ var styleN = {
   textAlign: "center",
   color: "black"
 };
-var RankP = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].p(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n\ttext-align: center;\n\tfont-size: 44px;\n\tmargin: auto;\n\t@media (min-width: 1200px){\n\t\tfont-size: 60px;\n\t}\n"])));
-var PointP = (0,styled_components__WEBPACK_IMPORTED_MODULE_4__["default"])(RankP)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  font-size: 40px;\n  font-family: \"pixel10-r\";\n  @media (max-width: 767px) {\n    font-size: 15px;\n  }\n  @media (max-width: 991px) and (min-width: 768px) {\n    font-size: 25px;\n  }\n"])));
+var RankP = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].p(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n\ttext-align: center;\n\tfont-size: 44px;\n\tmargin: auto;\n\t@media (min-width: 1200px){\n\t\tfont-size: 60px;\n\t}\n"])));
+var PointP = (0,styled_components__WEBPACK_IMPORTED_MODULE_3__["default"])(RankP)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  font-size: 40px;\n  font-family: \"pixel10-r\";\n  @media (max-width: 767px) {\n    font-size: 15px;\n  }\n  @media (max-width: 991px) and (min-width: 768px) {\n    font-size: 25px;\n  }\n"])));
 var novelUrl = "https://ncode.syosetu.com/";
-var Item = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_5__["default"])(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"])(function (_ref) {
-  var theme = _ref.theme;
-  return _objectSpread(_objectSpread({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff'
-  }, theme.typography.body2), {}, {
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary
-  });
-});
-var DotItem = (0,styled_components__WEBPACK_IMPORTED_MODULE_4__["default"])(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"])(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  text-align: center;\n  font-size: 20px;\n  white-space: nowrap;\n\n  @media (max-width: 600px) {\n    font-size: 9px;\n  }\n  @media (max-width: 767px) and (min-width: 601px) {\n    font-size: 10px;\n  }\n  @media (max-width: 991px) and (min-width: 768px) {\n    font-size: 15px;\n  }\n"])));
-var NovelTitle = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].a(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n\ttext-align: center;\n\tcolor: black;\n\tfont-size: 25px;\n\tfont-family: \"milk-b\";\n\t\n\t@media (max-width: 600px) {\n\t\tfont-size: 18px;\n\t}\n"])));
-var StateP = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].p(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n\tbackground\n  text-align: center;\n  color: black;\n  font-size: 25px;\n  font-family: \"milk-b\";\n"])));
-var KoshinDiv = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n  display: block;\n  text-align: center;\n  font-size: 20px;\n  background: linear-gradient(\n    #99ffffde,\n    #fff 50%,\n    #0dcaf03d 50%,\n    #66fff4 70%,\n    #99f6ff\n  );\n  border-color: #9330;\n  box-shadow: inset 0 0 0 2px rgb(0 82 204 / 42%);\n  text-indent: 0.5em;\n  letter-spacing: 0.25em;\n  border-width: thin;\n  border-style: solid;\n  border-radius: 8px;\n  text-shadow: 1px 1px 0 rgba(100%, 100%, 100%, 0.75);\n\n\n"])));
-var KanketsuDiv = (0,styled_components__WEBPACK_IMPORTED_MODULE_4__["default"])(KoshinDiv)(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n  background: linear-gradient(\n    #ffdb9ba6,\n    #ffef6f85 50%,\n    #e7d440bf 50%,\n    #ddd84280 70%,\n    #edff589e\n  );\n  border-color: #9330;\n  box-shadow: inset 0 0 0 2px rgb(190 145 31 / 71%);\n"])));
-var MikanDiv = (0,styled_components__WEBPACK_IMPORTED_MODULE_4__["default"])(KoshinDiv)(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["\n  background: linear-gradient(\n    #ee53234a,\n    #ee3a3a1a 50%,\n    #f00d0d3d 50%,\n    #ff666657 70%,\n    #ff99999e\n  );\n  border-color: #9330;\n  box-shadow: inset 0 0 0 2px rgb(204 0 0 / 35%);\n"])));
-var TanpenDiv = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral(["\n  display: block;\n  text-align: center;\n  font-size: 20px;\n  background: linear-gradient(\n      to bottom,\n      rgb(255 255 255 / 50%),\n      rgb(255 255 255 / 75%),\n      rgb(255 255 255 / 50%)\n    ),\n    linear-gradient(to right, #00ecff, #f00d0db8);\n  border-color: #9330;\n  box-shadow: inset 0 0 0 2px rgb(0 82 204 / 42%);\n  text-indent: 0.5em;\n  letter-spacing: 0.25em;\n  border-width: thin;\n  border-radius: 8px;\n  text-shadow: 1px 1px 0 rgba(100%, 100%, 100%, 0.75);\n"])));
-var ReviewDiv = (0,styled_components__WEBPACK_IMPORTED_MODULE_4__["default"])(KoshinDiv)(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["\n"])));
-var NoReviewDiv = (0,styled_components__WEBPACK_IMPORTED_MODULE_4__["default"])(KoshinDiv)(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral(["\n  background: linear-gradient(\n    #99ffff5e,\n    #fff 50%,\n    #0dcaf005 50%,\n    #66fff442 70%,\n    #f1f1f1\n  );\n  box-shadow: inset 0 0 0 2px rgb(0 82 204 / 19%);\n  color: #cccccc;\n"])));
-var LengthDiv = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(_templateObject12 || (_templateObject12 = _taggedTemplateLiteral(["\n  font-family: \"pixel10-r\";\n  font-size: 20px;\n  margin: auto;\n  text-align: center;\n  height: 100%;\n\twidth: 100%;\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n"])));
-var StoryP = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].p(_templateObject13 || (_templateObject13 = _taggedTemplateLiteral(["\n\tfont-family: \"milk-b\";\n"])));
-function Search(_ref2) {
-  var response = _ref2.response;
+var Item = (0,styled_components__WEBPACK_IMPORTED_MODULE_3__["default"])(_mui_material___WEBPACK_IMPORTED_MODULE_4__["default"])(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  &&&{\n\t\tpadding: 8px;\n\t\ttext-align center;\n\t}\n"])));
+var DotItem = (0,styled_components__WEBPACK_IMPORTED_MODULE_3__["default"])(_mui_material___WEBPACK_IMPORTED_MODULE_4__["default"])(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n  text-align: center;\n  font-size: 20px;\n  white-space: nowrap;\n\n  @media (max-width: 600px) {\n    font-size: 9px;\n  }\n  @media (max-width: 767px) and (min-width: 601px) {\n    font-size: 10px;\n  }\n  @media (max-width: 991px) and (min-width: 768px) {\n    font-size: 15px;\n  }\n"])));
+var NovelTitle = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].a(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n\ttext-align: center;\n\tcolor: black;\n\tfont-size: 25px;\n\tfont-family: \"milk-b\";\n\t\n\t@media (max-width: 600px) {\n\t\tfont-size: 18px;\n\t}\n"])));
+var StateP = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].p(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n\tbackground\n  text-align: center;\n  color: black;\n  font-size: 25px;\n  font-family: \"milk-b\";\n"])));
+var KoshinDiv = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n  display: block;\n  text-align: center;\n  font-size: 20px;\n  background: linear-gradient(\n    #99ffffde,\n    #fff 50%,\n    #0dcaf03d 50%,\n    #66fff4 70%,\n    #99f6ff\n  );\n  border-color: #9330;\n  box-shadow: inset 0 0 0 2px rgb(0 82 204 / 42%);\n  text-indent: 0.5em;\n  letter-spacing: 0.25em;\n  border-width: thin;\n  border-style: solid;\n  border-radius: 8px;\n  text-shadow: 1px 1px 0 rgba(100%, 100%, 100%, 0.75);\n\n\n"])));
+var KanketsuDiv = (0,styled_components__WEBPACK_IMPORTED_MODULE_3__["default"])(KoshinDiv)(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["\n  background: linear-gradient(\n    #ffdb9ba6,\n    #ffef6f85 50%,\n    #e7d440bf 50%,\n    #ddd84280 70%,\n    #edff589e\n  );\n  border-color: #9330;\n  box-shadow: inset 0 0 0 2px rgb(190 145 31 / 71%);\n"])));
+var MikanDiv = (0,styled_components__WEBPACK_IMPORTED_MODULE_3__["default"])(KoshinDiv)(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral(["\n  background: linear-gradient(\n    #ee53234a,\n    #ee3a3a1a 50%,\n    #f00d0d3d 50%,\n    #ff666657 70%,\n    #ff99999e\n  );\n  border-color: #9330;\n  box-shadow: inset 0 0 0 2px rgb(204 0 0 / 35%);\n"])));
+var TanpenDiv = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["\n  display: block;\n  text-align: center;\n  font-size: 20px;\n  background: linear-gradient(\n      to bottom,\n      rgb(255 255 255 / 50%),\n      rgb(255 255 255 / 75%),\n      rgb(255 255 255 / 50%)\n    ),\n    linear-gradient(to right, #00ecff, #f00d0db8);\n  border-color: #9330;\n  box-shadow: inset 0 0 0 2px rgb(0 82 204 / 42%);\n  text-indent: 0.5em;\n  letter-spacing: 0.25em;\n  border-width: thin;\n  border-radius: 8px;\n  text-shadow: 1px 1px 0 rgba(100%, 100%, 100%, 0.75);\n"])));
+var ReviewDiv = (0,styled_components__WEBPACK_IMPORTED_MODULE_3__["default"])(KoshinDiv)(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral(["\n"])));
+var NoReviewDiv = (0,styled_components__WEBPACK_IMPORTED_MODULE_3__["default"])(KoshinDiv)(_templateObject12 || (_templateObject12 = _taggedTemplateLiteral(["\n  background: linear-gradient(\n    #99ffff5e,\n    #fff 50%,\n    #0dcaf005 50%,\n    #66fff442 70%,\n    #f1f1f1\n  );\n  box-shadow: inset 0 0 0 2px rgb(0 82 204 / 19%);\n  color: #cccccc;\n"])));
+var LengthDiv = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject13 || (_templateObject13 = _taggedTemplateLiteral(["\n  font-family: \"pixel10-r\";\n  font-size: 20px;\n  margin: auto;\n  text-align: center;\n  height: 100%;\n\twidth: 100%;\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n"])));
+var StoryP = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].p(_templateObject14 || (_templateObject14 = _taggedTemplateLiteral(["\n\tfont-family: \"milk-b\";\n"])));
+function Search(_ref) {
+  var response = _ref.response;
 
   /* const averagePoint = [
   	response[1].global_point / response[1].max_global_point * 100,
@@ -28542,7 +28466,7 @@ function Search(_ref2) {
   var rateUpScale = (response[1].max_average_rate - response[1].average_rate) / 6;
   var sortList = [];
   var novelDataList = response[0].map(function (novel, index) {
-    var _React$useState = react__WEBPACK_IMPORTED_MODULE_2___default().useState(false),
+    var _React$useState = react__WEBPACK_IMPORTED_MODULE_1___default().useState(false),
         _React$useState2 = _slicedToArray(_React$useState, 2),
         chartFlag = _React$useState2[0],
         setChartFlag = _React$useState2[1];
@@ -28686,8 +28610,8 @@ function Search(_ref2) {
     var novelState;
 
     if (novel.end == 0 && novel.novel_type == 1) {
-      novelState = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(KanketsuDiv, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+      novelState = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(KanketsuDiv, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
           style: {
             margin: 0
           },
@@ -28695,8 +28619,8 @@ function Search(_ref2) {
         })
       });
     } else if (novel.end == 0 && novel.novel_type == 2) {
-      novelState = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(TanpenDiv, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+      novelState = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(TanpenDiv, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
           style: {
             margin: 0
           },
@@ -28704,12 +28628,12 @@ function Search(_ref2) {
         })
       });
     } else if (novel.isstop == 0) {
-      novelState = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(KoshinDiv, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
+      novelState = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(KoshinDiv, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("p", {
           style: {
             margin: 0
           },
-          children: ["\u3053\u3046\u3057\u3093", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+          children: ["\u3053\u3046\u3057\u3093", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
             style: {
               fontFamily: "メイリオ",
               fontWeight: "bold"
@@ -28719,12 +28643,12 @@ function Search(_ref2) {
         })
       });
     } else {
-      novelState = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(MikanDiv, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
+      novelState = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(MikanDiv, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("p", {
           style: {
             margin: 0
           },
-          children: ["\u3053\u3046\u3057\u3093", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+          children: ["\u3053\u3046\u3057\u3093", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
             style: {
               fontFamily: "Sawarabi Mincho",
               fontWeight: "bold"
@@ -28738,8 +28662,8 @@ function Search(_ref2) {
     var novelReview; //レビュー有か判別
 
     if (novel.review_cnt > 0) {
-      novelReview = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(ReviewDiv, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+      novelReview = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(ReviewDiv, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
           style: {
             margin: 0
           },
@@ -28747,8 +28671,8 @@ function Search(_ref2) {
         })
       });
     } else {
-      novelReview = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(NoReviewDiv, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+      novelReview = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(NoReviewDiv, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
           style: {
             margin: 0
           },
@@ -28776,18 +28700,18 @@ function Search(_ref2) {
 
     window.addEventListener('scroll', graphAnim); // スクロール時の処理
 
-    var el = react__WEBPACK_IMPORTED_MODULE_2___default().useRef(null);
+    var el = react__WEBPACK_IMPORTED_MODULE_1___default().useRef(null);
     /* 		React.useEffect(() => {
     			//console.log(el.current);
     			console.log(JSON.stringify(el.current.getBoundingClientRect()));
     		}, []); */
 
-    var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_2___default().useState(novel.story.length < 210 ? novel.story : novel.story.substring(0, 210) + "……"),
+    var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_1___default().useState(novel.story.length < 210 ? novel.story : novel.story.substring(0, 210) + "……"),
         _React$useState4 = _slicedToArray(_React$useState3, 2),
         story = _React$useState4[0],
         setStory = _React$useState4[1];
 
-    react__WEBPACK_IMPORTED_MODULE_2___default().useEffect(function () {
+    react__WEBPACK_IMPORTED_MODULE_1___default().useEffect(function () {
       var list = {
         index: index,
         Pt: novel.global_point,
@@ -28798,36 +28722,36 @@ function Search(_ref2) {
       };
       sortList.push(list);
     });
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_7__["default"], {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_5__["default"], {
         sx: {
           flexGrow: 1
         },
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
           container: true,
           spacing: 1,
           columns: 20,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
             item: true,
             xs: 20,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
               style: {
                 textAlign: "center",
                 marginBottom: 10,
                 marginTop: 10
               },
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(NovelTitle, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(NovelTitle, {
                 href: novelUrl + novel.ncode,
                 target: "_blank",
                 children: novel.title
               })
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
             container: true,
             spacing: 1,
             columns: 20,
             alignItems: "center",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
               item: true,
               xs: 20,
               sm: 5,
@@ -28835,110 +28759,110 @@ function Search(_ref2) {
                 minHeight: 60,
                 minWidth: 60
               },
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Item, {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Item, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                   ref: el,
-                  children: chartFlag ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_RankChart__WEBPACK_IMPORTED_MODULE_0__["default"], {
+                  children: chartFlag ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_RankChart__WEBPACK_IMPORTED_MODULE_0__["default"], {
                     rank: novelRankNum
-                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_RankChart__WEBPACK_IMPORTED_MODULE_0__["default"], {
+                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_RankChart__WEBPACK_IMPORTED_MODULE_0__["default"], {
                     rank: null
                   })
                 })
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
               item: true,
               xs: 4,
               sm: 3,
               alignItems: "stretch",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(DotItem, {
-                children: ["\u30DD\u30A4\u30F3\u30C8", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(RankP, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(DotItem, {
+                children: ["\u30DD\u30A4\u30F3\u30C8", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(RankP, {
                   style: styleRank[0],
                   children: novelRankAlpha[0]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(PointP, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(PointP, {
                   children: novel.global_point
                 })]
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
               item: true,
               xs: 4,
               sm: 3,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(DotItem, {
-                children: ["\u30D6\u30AF\u30DE", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(RankP, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(DotItem, {
+                children: ["\u30D6\u30AF\u30DE", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(RankP, {
                   style: styleRank[1],
                   children: novelRankAlpha[1]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(PointP, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(PointP, {
                   children: novel.fav_novel_cnt
                 })]
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
               item: true,
               xs: 4,
               sm: 3,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(DotItem, {
-                children: ["\u3072\u3087\u3046\u304B\u3057\u3083", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(RankP, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(DotItem, {
+                children: ["\u3072\u3087\u3046\u304B\u3057\u3083", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(RankP, {
                   style: styleRank[2],
                   children: novelRankAlpha[2]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(PointP, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(PointP, {
                   children: novel.all_hyoka_cnt
                 })]
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
               item: true,
               xs: 4,
               sm: 3,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(DotItem, {
-                children: ["\u3078\u3044\u304D\u3093\u3066\u3093", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(RankP, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(DotItem, {
+                children: ["\u3078\u3044\u304D\u3093\u3066\u3093", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(RankP, {
                   style: styleRank[3],
                   children: novelRankAlpha[3]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(PointP, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(PointP, {
                   children: novelAverageRate
                 })]
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
               item: true,
               xs: 4,
               sm: 3,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(DotItem, {
-                children: ["\u304B\u3093\u305D\u3046", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(RankP, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(DotItem, {
+                children: ["\u304B\u3093\u305D\u3046", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(RankP, {
                   style: styleRank[4],
                   children: novelRankAlpha[4]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(PointP, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(PointP, {
                   children: novel.impression_cnt
                 })]
               })
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
           style: {
             textAlign: "center",
             marginTop: 10,
             width: "100%"
           },
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
             container: true,
             spacing: 1,
             columns: 20,
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
               item: true,
               xs: 10,
               sm: 7,
               children: novelState
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
               item: true,
               xs: 10,
               sm: 7,
               children: novelReview
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
               item: true,
               xs: 20,
               sm: 6,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(LengthDiv, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(LengthDiv, {
                 children: ["\u3082\u3058\uFF1A", novel.length]
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
               item: true,
               xs: 20,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(StoryP, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(StoryP, {
                 onClick: function onClick() {
                   return setStory(novel.story);
                 },
@@ -28951,55 +28875,10 @@ function Search(_ref2) {
     }, novel.ncode);
   });
   console.log(sortList);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
     children: novelDataList
   });
 }
-/* export default function Search({
-	base_url,
-	response,
-}) {
-	const data = {
-		labels: ['Thing 1', 'Thing 2', 'Thing 3', 'Thing 4', 'Thing 5', 'Thing 6'],
-		datasets: [
-			{
-				label: '# of Votes',
-				data: [response[1][max_global_point], 9, 3, 5, 2, 3],
-				backgroundColor: 'rgba(255, 99, 132, 0.2)',
-				borderColor: 'rgba(255, 99, 132, 1)',
-				borderWidth: 1,
-			},
-		],
-	};
-
-	//console.log(Array.isArray(response[0]));
-	const novelData = response[0].map(novel => {
-		//novelというresponse[0]をコピーした配列を用意してreturnをnovelの要素ごとに処理を走らせてreturnするイメージ？
-		//計算処理を書く
-		return (
-			//gridで整形
-			<p key={novel.title}>{novel.title}</p>
-		);
-	});
-	let result = [];
-	for (const i in response[1]) {
-		result.push(<p key={i}>{i}:{response[1][i]}</p>);
-	}
-	//resultにpタグごと格納している
-
-	return (
-		<div>
-			<p>{base_url}</p>
-			<Radar data={data} />
-			{novelData}
-			<p>------</p>
-			{result}
-
-		</div>
-	);
-}
-
- */
 
 /***/ }),
 

@@ -1,9 +1,27 @@
-import { Chart, defaults } from "chart.js";
+import {
+  Chart as ChartJS,
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  Legend,
+  defaults,
+} from "chart.js";
 import { Radar } from "react-chartjs-2";
 import React from "react";
 
-/* defaults.font.family = "pixel10-r";
- */
+ChartJS.register(
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  Legend
+);
+
+defaults.font.family = "pixel10-r";
+
 const rankOption = {
   scales: {
     r: {
@@ -22,7 +40,7 @@ const rankOption = {
   },
   plugins: {
     legend: {
-        display: false,
+      display: false,
       labels: {
         font: {
           size: 20,
@@ -34,7 +52,7 @@ const rankOption = {
 };
 
 export default function RankChart({ rank }) {
-/*   const el = React.useRef(null);
+  /*   const el = React.useRef(null);
   React.useEffect(() => {
     //console.log(el.current);
     console.log(JSON.stringify(el.current.getBoundingClientRect()));
