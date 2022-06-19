@@ -1,9 +1,9 @@
-import { defaults } from "chart.js";
+import { Chart, defaults } from "chart.js";
 import { Radar } from "react-chartjs-2";
 import React from "react";
 
-defaults.font.family = "pixel10-r";
-
+/* defaults.font.family = "pixel10-r";
+ */
 const rankOption = {
   scales: {
     r: {
@@ -26,6 +26,7 @@ const rankOption = {
       labels: {
         font: {
           size: 20,
+          family: "pixel10-r",
         },
       },
     },

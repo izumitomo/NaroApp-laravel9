@@ -12,6 +12,7 @@ import {
 
 import { getRelativePosition } from "chart.js/helpers";
 
+
 Chart.register(
   RadialLinearScale,
   PointElement,

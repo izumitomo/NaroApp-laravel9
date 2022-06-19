@@ -16,15 +16,13 @@ import {
   FormControl,
   FormControlLabel,
   Checkbox,
-  useMediaQuery,
 } from '@mui/material';
 import { ThemeProvider,
   createTheme
 } from '@mui/material/styles';
-import { styled as styledmui} from '@mui/system';
 import WifiFindIcon from '@mui/icons-material/WifiFind';
 
-export const Centering = styledmui(Paper)(({ theme }) => ({
+/* const Centering = styledmui(Paper)(({ theme }) => ({
   backgroundColor: "#e6e6e6",
   ...theme.typography.body2,
   padding: theme.spacing(1),
@@ -35,10 +33,18 @@ export const Centering = styledmui(Paper)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
 }));
+ */
+const Centering = styled(Paper)`
+  &&&{background-color: #e6e6e6;
+	padding: 8px;
+	text-align center;
+	height: 100%;
+	display flex;
+	align-items: center;
+	justify-content: center;}
+`;
 
 export default function Home() {
-  const matches = useMediaQuery('(min-width:600px)');
-  console.log(matches)
   const theme = createTheme({
     palette: {
       pink: {
@@ -98,7 +104,11 @@ export default function Home() {
 
   const [search, setSearch] = React.useState(false);
   const [novels, setNovels] = React.useState([]);
-  const handleSearch = () => {
+	const handleSearch = () => {
+		if (genre == "") {
+			window.alert("ジャンル指定を忘れずに……");
+			return false;
+		}
     setLoading(true);
     const data = {
       genre : genre,
