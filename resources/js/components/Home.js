@@ -283,7 +283,8 @@ export default function Home() {
       {search ? (
         <Search
           //左が渡す名前で右が渡す変数
-          response={novels}
+					novels={novels}
+					setNovels={setNovels}
         />
       ) : null}
     </ThemeProvider>

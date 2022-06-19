@@ -28028,7 +28028,8 @@ function Home() {
       children: loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Loading__WEBPACK_IMPORTED_MODULE_1__["default"], {}) : null
     }), search ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Search__WEBPACK_IMPORTED_MODULE_0__["default"] //左が渡す名前で右が渡す変数
     , {
-      response: novels
+      novels: novels,
+      setNovels: setNovels
     }) : null]
   });
 }
@@ -28291,42 +28292,46 @@ __webpack_require__.r(__webpack_exports__);
 
 chart_js__WEBPACK_IMPORTED_MODULE_0__.Chart.register(chart_js__WEBPACK_IMPORTED_MODULE_0__.RadialLinearScale, chart_js__WEBPACK_IMPORTED_MODULE_0__.PointElement, chart_js__WEBPACK_IMPORTED_MODULE_0__.LineElement, chart_js__WEBPACK_IMPORTED_MODULE_0__.Filler, chart_js__WEBPACK_IMPORTED_MODULE_0__.Tooltip, chart_js__WEBPACK_IMPORTED_MODULE_0__.Legend);
 chart_js__WEBPACK_IMPORTED_MODULE_0__.defaults.font.family = "pixel10-r";
-var rankOption = {
-  scales: {
-    r: {
-      ticks: {
-        display: false
-      },
-      pointLabels: {
-        color: "black",
-        font: {
-          size: 15
-        }
-      },
-      suggestedMin: 0,
-      suggestedMax: 10
-    }
-  },
-  plugins: {
-    legend: {
-      display: false,
-      labels: {
-        font: {
-          size: 20,
-          family: "pixel10-r"
-        }
-      }
-    }
-  }
-};
 function RankChart(_ref) {
-  var rank = _ref.rank;
+  var rank = _ref.rank,
+      animation = _ref.animation;
 
   /*   const el = React.useRef(null);
   React.useEffect(() => {
     //console.log(el.current);
     console.log(JSON.stringify(el.current.getBoundingClientRect()));
   }, []); */
+  var rankOption = {
+    scales: {
+      r: {
+        ticks: {
+          display: false
+        },
+        pointLabels: {
+          color: "black",
+          font: {
+            size: 15
+          }
+        },
+        suggestedMin: 0,
+        suggestedMax: 10
+      }
+    },
+    plugins: {
+      legend: {
+        display: false,
+        labels: {
+          font: {
+            size: 20,
+            family: "pixel10-r"
+          }
+        }
+      }
+    },
+    animations: {
+      animation: animation
+    }
+  };
   var rankData = {
     labels: ["Pt", "Fav", "Rev", "Rate", "Com"],
     datasets: [{
@@ -28362,14 +28367,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Search)
 /* harmony export */ });
 /* harmony import */ var _RankChart__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RankChart */ "./resources/js/components/RankChart.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Paper/Paper.js");
-/* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Box/Box.js");
-/* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Grid/Grid.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+Object(function webpackMissingModule() { var e = new Error("Cannot find module './Sort'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Paper/Paper.js");
+/* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Button/Button.js");
+/* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Box/Box.js");
+/* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Grid/Grid.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
 var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11, _templateObject12, _templateObject13, _templateObject14;
+
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return generator._invoke = function (innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; }(innerFn, self, context), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; this._invoke = function (method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); }; } function maybeInvokeDelegate(delegate, context) { var method = delegate.iterator[context.method]; if (undefined === method) { if (context.delegate = null, "throw" === context.method) { if (delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method)) return ContinueSentinel; context.method = "throw", context.arg = new TypeError("The iterator does not provide a 'throw' method"); } return ContinueSentinel; } var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) { if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; } return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, define(Gp, "constructor", GeneratorFunctionPrototype), define(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (object) { var keys = []; for (var key in object) { keys.push(key); } return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) { "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); } }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -28384,6 +28399,7 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
 
 
 /* import PointChart from "./PointChart"; */
@@ -28427,58 +28443,76 @@ var styleN = {
   textAlign: "center",
   color: "black"
 };
-var RankP = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].p(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n\ttext-align: center;\n\tfont-size: 44px;\n\tmargin: auto;\n\t@media (min-width: 1200px){\n\t\tfont-size: 60px;\n\t}\n"])));
-var PointP = (0,styled_components__WEBPACK_IMPORTED_MODULE_3__["default"])(RankP)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  font-size: 40px;\n  font-family: \"pixel10-r\";\n  @media (max-width: 767px) {\n    font-size: 15px;\n  }\n  @media (max-width: 991px) and (min-width: 768px) {\n    font-size: 25px;\n  }\n"])));
+var RankP = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].p(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n\ttext-align: center;\n\tfont-size: 44px;\n\tmargin: auto;\n\t@media (min-width: 1200px){\n\t\tfont-size: 60px;\n\t}\n"])));
+var PointP = (0,styled_components__WEBPACK_IMPORTED_MODULE_4__["default"])(RankP)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  font-size: 40px;\n  font-family: \"pixel10-r\";\n  @media (max-width: 767px) {\n    font-size: 15px;\n  }\n  @media (max-width: 991px) and (min-width: 768px) {\n    font-size: 25px;\n  }\n"])));
 var novelUrl = "https://ncode.syosetu.com/";
-var Item = (0,styled_components__WEBPACK_IMPORTED_MODULE_3__["default"])(_mui_material___WEBPACK_IMPORTED_MODULE_4__["default"])(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  &&&{\n\t\tpadding: 8px;\n\t\ttext-align center;\n\t}\n"])));
-var DotItem = (0,styled_components__WEBPACK_IMPORTED_MODULE_3__["default"])(_mui_material___WEBPACK_IMPORTED_MODULE_4__["default"])(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n  text-align: center;\n  font-size: 20px;\n  white-space: nowrap;\n\n  @media (max-width: 600px) {\n    font-size: 9px;\n  }\n  @media (max-width: 767px) and (min-width: 601px) {\n    font-size: 10px;\n  }\n  @media (max-width: 991px) and (min-width: 768px) {\n    font-size: 15px;\n  }\n"])));
-var NovelTitle = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].a(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n\ttext-align: center;\n\tcolor: black;\n\tfont-size: 25px;\n\tfont-family: \"milk-b\";\n\t\n\t@media (max-width: 600px) {\n\t\tfont-size: 18px;\n\t}\n"])));
-var StateP = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].p(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n\tbackground\n  text-align: center;\n  color: black;\n  font-size: 25px;\n  font-family: \"milk-b\";\n"])));
-var KoshinDiv = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n  display: block;\n  text-align: center;\n  font-size: 20px;\n  background: linear-gradient(\n    #99ffffde,\n    #fff 50%,\n    #0dcaf03d 50%,\n    #66fff4 70%,\n    #99f6ff\n  );\n  border-color: #9330;\n  box-shadow: inset 0 0 0 2px rgb(0 82 204 / 42%);\n  text-indent: 0.5em;\n  letter-spacing: 0.25em;\n  border-width: thin;\n  border-style: solid;\n  border-radius: 8px;\n  text-shadow: 1px 1px 0 rgba(100%, 100%, 100%, 0.75);\n\n\n"])));
-var KanketsuDiv = (0,styled_components__WEBPACK_IMPORTED_MODULE_3__["default"])(KoshinDiv)(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["\n  background: linear-gradient(\n    #ffdb9ba6,\n    #ffef6f85 50%,\n    #e7d440bf 50%,\n    #ddd84280 70%,\n    #edff589e\n  );\n  border-color: #9330;\n  box-shadow: inset 0 0 0 2px rgb(190 145 31 / 71%);\n"])));
-var MikanDiv = (0,styled_components__WEBPACK_IMPORTED_MODULE_3__["default"])(KoshinDiv)(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral(["\n  background: linear-gradient(\n    #ee53234a,\n    #ee3a3a1a 50%,\n    #f00d0d3d 50%,\n    #ff666657 70%,\n    #ff99999e\n  );\n  border-color: #9330;\n  box-shadow: inset 0 0 0 2px rgb(204 0 0 / 35%);\n"])));
-var TanpenDiv = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["\n  display: block;\n  text-align: center;\n  font-size: 20px;\n  background: linear-gradient(\n      to bottom,\n      rgb(255 255 255 / 50%),\n      rgb(255 255 255 / 75%),\n      rgb(255 255 255 / 50%)\n    ),\n    linear-gradient(to right, #00ecff, #f00d0db8);\n  border-color: #9330;\n  box-shadow: inset 0 0 0 2px rgb(0 82 204 / 42%);\n  text-indent: 0.5em;\n  letter-spacing: 0.25em;\n  border-width: thin;\n  border-radius: 8px;\n  text-shadow: 1px 1px 0 rgba(100%, 100%, 100%, 0.75);\n"])));
-var ReviewDiv = (0,styled_components__WEBPACK_IMPORTED_MODULE_3__["default"])(KoshinDiv)(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral(["\n"])));
-var NoReviewDiv = (0,styled_components__WEBPACK_IMPORTED_MODULE_3__["default"])(KoshinDiv)(_templateObject12 || (_templateObject12 = _taggedTemplateLiteral(["\n  background: linear-gradient(\n    #99ffff5e,\n    #fff 50%,\n    #0dcaf005 50%,\n    #66fff442 70%,\n    #f1f1f1\n  );\n  box-shadow: inset 0 0 0 2px rgb(0 82 204 / 19%);\n  color: #cccccc;\n"])));
-var LengthDiv = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject13 || (_templateObject13 = _taggedTemplateLiteral(["\n  font-family: \"pixel10-r\";\n  font-size: 20px;\n  margin: auto;\n  text-align: center;\n  height: 100%;\n\twidth: 100%;\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n"])));
-var StoryP = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].p(_templateObject14 || (_templateObject14 = _taggedTemplateLiteral(["\n\tfont-family: \"milk-b\";\n"])));
-function Search(_ref) {
-  var response = _ref.response;
+var Item = (0,styled_components__WEBPACK_IMPORTED_MODULE_4__["default"])(_mui_material___WEBPACK_IMPORTED_MODULE_5__["default"])(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  &&&{\n\t\tpadding: 8px;\n\t\ttext-align center;\n\t}\n"])));
+var DotItem = (0,styled_components__WEBPACK_IMPORTED_MODULE_4__["default"])(_mui_material___WEBPACK_IMPORTED_MODULE_5__["default"])(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n  text-align: center;\n  font-size: 20px;\n  white-space: nowrap;\n\n  @media (max-width: 600px) {\n    font-size: 9px;\n  }\n  @media (max-width: 767px) and (min-width: 601px) {\n    font-size: 10px;\n  }\n  @media (max-width: 991px) and (min-width: 768px) {\n    font-size: 15px;\n  }\n"])));
+var NovelTitle = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].a(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n\ttext-align: center;\n\tcolor: black;\n\tfont-size: 25px;\n\tfont-family: \"milk-b\";\n\t\n\t@media (max-width: 600px) {\n\t\tfont-size: 18px;\n\t}\n"])));
+/* const StateP = styled.p`
+	background
+  text-align: center;
+  color: black;
+  font-size: 25px;
+  font-family: "milk-b";
+`; */
 
+var KoshinDiv = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n  display: block;\n  text-align: center;\n  font-size: 20px;\n  background: linear-gradient(\n    #99ffffde,\n    #fff 50%,\n    #0dcaf03d 50%,\n    #66fff4 70%,\n    #99f6ff\n  );\n  border-color: #9330;\n  box-shadow: inset 0 0 0 2px rgb(0 82 204 / 42%);\n  text-indent: 0.5em;\n  letter-spacing: 0.25em;\n  border-width: thin;\n  border-style: solid;\n  border-radius: 8px;\n  text-shadow: 1px 1px 0 rgba(100%, 100%, 100%, 0.75);\n\n\n"])));
+var KanketsuDiv = (0,styled_components__WEBPACK_IMPORTED_MODULE_4__["default"])(KoshinDiv)(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n  background: linear-gradient(\n    #ffdb9ba6,\n    #ffef6f85 50%,\n    #e7d440bf 50%,\n    #ddd84280 70%,\n    #edff589e\n  );\n  border-color: #9330;\n  box-shadow: inset 0 0 0 2px rgb(190 145 31 / 71%);\n"])));
+var MikanDiv = (0,styled_components__WEBPACK_IMPORTED_MODULE_4__["default"])(KoshinDiv)(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["\n  background: linear-gradient(\n    #ee53234a,\n    #ee3a3a1a 50%,\n    #f00d0d3d 50%,\n    #ff666657 70%,\n    #ff99999e\n  );\n  border-color: #9330;\n  box-shadow: inset 0 0 0 2px rgb(204 0 0 / 35%);\n"])));
+var TanpenDiv = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral(["\n  display: block;\n  text-align: center;\n  font-size: 20px;\n  background: linear-gradient(\n      to bottom,\n      rgb(255 255 255 / 50%),\n      rgb(255 255 255 / 75%),\n      rgb(255 255 255 / 50%)\n    ),\n    linear-gradient(to right, #00ecff, #f00d0db8);\n  border-color: #9330;\n  box-shadow: inset 0 0 0 2px rgb(0 82 204 / 42%);\n  text-indent: 0.5em;\n  letter-spacing: 0.25em;\n  border-width: thin;\n  border-radius: 8px;\n  text-shadow: 1px 1px 0 rgba(100%, 100%, 100%, 0.75);\n"])));
+var ReviewDiv = (0,styled_components__WEBPACK_IMPORTED_MODULE_4__["default"])(KoshinDiv)(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["\n"])));
+var NoReviewDiv = (0,styled_components__WEBPACK_IMPORTED_MODULE_4__["default"])(KoshinDiv)(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral(["\n  background: linear-gradient(\n    #99ffff5e,\n    #fff 50%,\n    #0dcaf005 50%,\n    #66fff442 70%,\n    #f1f1f1\n  );\n  box-shadow: inset 0 0 0 2px rgb(0 82 204 / 19%);\n  color: #cccccc;\n"])));
+var LengthDiv = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(_templateObject12 || (_templateObject12 = _taggedTemplateLiteral(["\n  font-family: \"pixel10-r\";\n  font-size: 20px;\n  margin: auto;\n  text-align: center;\n  height: 100%;\n\twidth: 100%;\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n"])));
+var StoryP = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].p(_templateObject13 || (_templateObject13 = _taggedTemplateLiteral(["\n\tfont-family: \"milk-b\";\n"])));
+var PtButton = (0,styled_components__WEBPACK_IMPORTED_MODULE_4__["default"])(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"])(_templateObject14 || (_templateObject14 = _taggedTemplateLiteral(["\n  &&&{\n\t\tcolor: black;\n\t\tbackground-color: rgb(227 255 98);\n\t\tfont-family: \"pixel10-r\";\n\t\tfont-size: 20px;\n\t}"])));
+var ptSortNovels, favSortNovels; // sortNovelsの初期化を関数コンポーネント内のスコープに入れると、chartFlagの変化による再レンダリング時に初期化されてしまい、useEffect内のソートしたsortNovelsが上書きされてしまう。
+
+function Search(_ref) {
+  var novels = _ref.novels,
+      setNovels = _ref.setNovels;
+
+  var handlePt = function handlePt() {
+    //novelsを変更することで、Searchコンポーネントの再レンダリングを行う。
+    setNovels([ptSortNovels, novels[1]]);
+    console.log("handlePt Working!");
+    console.log(ptSortNovels);
+  };
+
+  var handleFav = function handleFav() {
+    setNovels([favSortNovels, novels[1]]);
+  };
   /* const averagePoint = [
-  	response[1].global_point / response[1].max_global_point * 100,
-  	response[1].favorite_count / response[1].max_favorite_count * 100,
-  	response[1].reviewer_count / response[1].max_reviewer_count * 100,
-  	response[1].average_rate / response[1].max_average_rate * 100,
-  	response[1].comment_count / response[1].max_comment_count * 100
+  	novels[1].global_point / novels[1].max_global_point * 100,
+  	novels[1].favorite_count / novels[1].max_favorite_count * 100,
+  	novels[1].reviewer_count / novels[1].max_reviewer_count * 100,
+  	novels[1].average_rate / novels[1].max_average_rate * 100,
+  	novels[1].comment_count / novels[1].max_comment_count * 100
   	] */
   //中心をランクC（5点）としてC,B,A,S,SS,SSSに分けるために6で割る。
-  var pointUpScale = (response[1].max_global_point - response[1].global_point) / 6; //平均から0までをD,E,F,Gに分けるために4で割る。
 
-  var pointDownScale = response[1].global_point / 4;
-  var favUpScale = (response[1].max_favorite_count - response[1].favorite_count) / 6;
-  var favDownScale = response[1].favorite_count / 4;
-  var revUpScale = (response[1].max_reviewer_count - response[1].reviewer_count) / 6;
-  var revDownScale = response[1].reviewer_count / 4;
-  var comUpScale = (response[1].max_comment_count - response[1].comment_count) / 6;
-  var comDownScale = response[1].comment_count / 4; //平均評価点は０にならないのでupscaleを採用する。
 
-  var rateUpScale = (response[1].max_average_rate - response[1].average_rate) / 6;
+  var pointUpScale = (novels[1].max_global_point - novels[1].global_point) / 6; //平均から0までをD,E,F,Gに分けるために4で割る。
+
+  var pointDownScale = novels[1].global_point / 4;
+  var favUpScale = (novels[1].max_favorite_count - novels[1].favorite_count) / 6;
+  var favDownScale = novels[1].favorite_count / 4;
+  var revUpScale = (novels[1].max_reviewer_count - novels[1].reviewer_count) / 6;
+  var revDownScale = novels[1].reviewer_count / 4;
+  var comUpScale = (novels[1].max_comment_count - novels[1].comment_count) / 6;
+  var comDownScale = novels[1].comment_count / 4; //平均評価点は０にならないのでupscaleを採用する。
+
+  var rateUpScale = (novels[1].max_average_rate - novels[1].average_rate) / 6;
   var sortList = [];
-  var novelDataList = response[0].map(function (novel, index) {
-    var _React$useState = react__WEBPACK_IMPORTED_MODULE_1___default().useState(false),
-        _React$useState2 = _slicedToArray(_React$useState, 2),
-        chartFlag = _React$useState2[0],
-        setChartFlag = _React$useState2[1];
-
+  var novelDataList = novels[0].map(function (novel, index) {
     var novelRankNum = [];
     var novelRankAlpha = [];
     /* const novelPoint = [
-    	Math.floor(novel.global_point / response[1].max_global_point * 100),
-    	Math.floor(novel.fav_novel_cnt / response[1].max_favorite_count * 100),
-    	Math.floor(novel.all_hyoka_cnt / response[1].max_reviewer_count * 100),
-    	(novel.all_point/novel.all_hyoka_cnt) / response[1].max_average_rate * 100,
-    	Math.floor(novel.impression_cnt / response[1].max_comment_count * 100)
+    	Math.floor(novel.global_point / novels[1].max_global_point * 100),
+    	Math.floor(novel.fav_novel_cnt / novels[1].max_favorite_count * 100),
+    	Math.floor(novel.all_hyoka_cnt / novels[1].max_reviewer_count * 100),
+    	(novel.all_point/novel.all_hyoka_cnt) / novels[1].max_average_rate * 100,
+    	Math.floor(novel.impression_cnt / novels[1].max_comment_count * 100)
     ] */
     //novel.all_hyoka_cntが0だった場合、平均評価を0にする。
 
@@ -28489,14 +28523,14 @@ function Search(_ref) {
     }
 
     for (var i = 1; i < 7; i++) {
-      if (novel.global_point >= response[1].max_global_point - pointUpScale * i) {
+      if (novel.global_point >= novels[1].max_global_point - pointUpScale * i) {
         novelRankNum.push(11 - i);
         break;
       }
 
       if (i == 6) {
         for (var j = 1; j < 5; j++) {
-          if (novel.global_point >= response[1].global_point - pointDownScale * j) {
+          if (novel.global_point >= novels[1].global_point - pointDownScale * j) {
             novelRankNum.push(5 - j);
             break;
           }
@@ -28504,15 +28538,15 @@ function Search(_ref) {
       }
     }
 
-    for (var _i2 = 1; _i2 < 7; _i2++) {
-      if (novel.fav_novel_cnt >= response[1].max_favorite_count - favUpScale * _i2) {
-        novelRankNum.push(11 - _i2);
+    for (var _i = 1; _i < 7; _i++) {
+      if (novel.fav_novel_cnt >= novels[1].max_favorite_count - favUpScale * _i) {
+        novelRankNum.push(11 - _i);
         break;
       }
 
-      if (_i2 == 6) {
+      if (_i == 6) {
         for (var _j = 1; _j < 5; _j++) {
-          if (novel.fav_novel_cnt >= response[1].favorite_count - favDownScale * _j) {
+          if (novel.fav_novel_cnt >= novels[1].favorite_count - favDownScale * _j) {
             novelRankNum.push(5 - _j);
             break;
           }
@@ -28520,15 +28554,15 @@ function Search(_ref) {
       }
     }
 
-    for (var _i3 = 1; _i3 < 7; _i3++) {
-      if (novel.all_hyoka_cnt >= response[1].max_reviewer_count - revUpScale * _i3) {
-        novelRankNum.push(11 - _i3);
+    for (var _i2 = 1; _i2 < 7; _i2++) {
+      if (novel.all_hyoka_cnt >= novels[1].max_reviewer_count - revUpScale * _i2) {
+        novelRankNum.push(11 - _i2);
         break;
       }
 
-      if (_i3 == 6) {
+      if (_i2 == 6) {
         for (var _j2 = 1; _j2 < 5; _j2++) {
-          if (novel.all_hyoka_cnt >= response[1].reviewer_count - revDownScale * _j2) {
+          if (novel.all_hyoka_cnt >= novels[1].reviewer_count - revDownScale * _j2) {
             novelRankNum.push(5 - _j2);
             break;
           }
@@ -28537,30 +28571,30 @@ function Search(_ref) {
     } //平均評価点の計算だけ他とは微妙に違う。
 
 
-    if (response[1].average_rate == null) {
+    if (novels[1].average_rate == null) {
       novelRankNum.push(0);
     } else {
-      for (var _i4 = 1; _i4 < 11; _i4++) {
-        if (novelAverageRate >= response[1].max_average_rate - rateUpScale * _i4) {
-          novelRankNum.push(11 - _i4);
+      for (var _i3 = 1; _i3 < 11; _i3++) {
+        if (novelAverageRate >= novels[1].max_average_rate - rateUpScale * _i3) {
+          novelRankNum.push(11 - _i3);
           break;
         }
 
-        if (_i4 == 10) {
+        if (_i3 == 10) {
           novelRankNum.push(1);
         }
       }
     }
 
-    for (var _i5 = 1; _i5 < 7; _i5++) {
-      if (novel.impression_cnt >= response[1].max_comment_count - comUpScale * _i5) {
-        novelRankNum.push(11 - _i5);
+    for (var _i4 = 1; _i4 < 7; _i4++) {
+      if (novel.impression_cnt >= novels[1].max_comment_count - comUpScale * _i4) {
+        novelRankNum.push(11 - _i4);
         break;
       }
 
-      if (_i5 == 6) {
+      if (_i4 == 6) {
         for (var _j3 = 1; _j3 < 5; _j3++) {
-          if (novel.impression_cnt >= response[1].comment_count - comDownScale * _j3) {
+          if (novel.impression_cnt >= novels[1].comment_count - comDownScale * _j3) {
             novelRankNum.push(5 - _j3);
             break;
           }
@@ -28610,8 +28644,8 @@ function Search(_ref) {
     var novelState;
 
     if (novel.end == 0 && novel.novel_type == 1) {
-      novelState = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(KanketsuDiv, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+      novelState = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(KanketsuDiv, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
           style: {
             margin: 0
           },
@@ -28619,8 +28653,8 @@ function Search(_ref) {
         })
       });
     } else if (novel.end == 0 && novel.novel_type == 2) {
-      novelState = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(TanpenDiv, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+      novelState = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(TanpenDiv, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
           style: {
             margin: 0
           },
@@ -28628,12 +28662,12 @@ function Search(_ref) {
         })
       });
     } else if (novel.isstop == 0) {
-      novelState = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(KoshinDiv, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("p", {
+      novelState = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(KoshinDiv, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
           style: {
             margin: 0
           },
-          children: ["\u3053\u3046\u3057\u3093", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+          children: ["\u3053\u3046\u3057\u3093", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
             style: {
               fontFamily: "メイリオ",
               fontWeight: "bold"
@@ -28643,12 +28677,12 @@ function Search(_ref) {
         })
       });
     } else {
-      novelState = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(MikanDiv, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("p", {
+      novelState = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(MikanDiv, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
           style: {
             margin: 0
           },
-          children: ["\u3053\u3046\u3057\u3093", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+          children: ["\u3053\u3046\u3057\u3093", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
             style: {
               fontFamily: "Sawarabi Mincho",
               fontWeight: "bold"
@@ -28662,8 +28696,8 @@ function Search(_ref) {
     var novelReview; //レビュー有か判別
 
     if (novel.review_cnt > 0) {
-      novelReview = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(ReviewDiv, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+      novelReview = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(ReviewDiv, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
           style: {
             margin: 0
           },
@@ -28671,15 +28705,20 @@ function Search(_ref) {
         })
       });
     } else {
-      novelReview = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(NoReviewDiv, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+      novelReview = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(NoReviewDiv, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
           style: {
             margin: 0
           },
           children: "\u30EC\u30D3\u30E5\u30FC"
         })
       });
-    } //スクロール処理
+    }
+
+    var _React$useState = react__WEBPACK_IMPORTED_MODULE_2___default().useState(false),
+        _React$useState2 = _slicedToArray(_React$useState, 2),
+        chartFlag = _React$useState2[0],
+        setChartFlag = _React$useState2[1]; //スクロール処理
 
 
     var graphAnim = function graphAnim() {
@@ -28690,9 +28729,14 @@ function Search(_ref) {
 
       var chartPos = wy + el.current.getBoundingClientRect().bottom; // チャートの位置がウィンドウの最下部位置を超えたら起動
 
-      if (wb > chartPos && chartFlag == false) {
+      /* if (chartPos <= wb && chartFlag == false) {
+      	setChartFlag(true);
+      } */
+
+      if (wb <= chartPos + window.innerHeight * 1 / 2 && chartPos <= wb && chartFlag == false) {
         setChartFlag(true);
-        /* 				console.log("chartFlag" + chartFlag); */
+      } else if (wb < chartPos || chartPos + window.innerHeight * 2 / 3 < wb) {
+        setChartFlag(false);
       }
     };
 
@@ -28700,58 +28744,118 @@ function Search(_ref) {
 
     window.addEventListener('scroll', graphAnim); // スクロール時の処理
 
-    var el = react__WEBPACK_IMPORTED_MODULE_1___default().useRef(null);
+    var el = react__WEBPACK_IMPORTED_MODULE_2___default().useRef(null);
     /* 		React.useEffect(() => {
     			//console.log(el.current);
     			console.log(JSON.stringify(el.current.getBoundingClientRect()));
     		}, []); */
 
-    var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_1___default().useState(novel.story.length < 210 ? novel.story : novel.story.substring(0, 210) + "……"),
+    var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_2___default().useState(novel.story.length < 210 ? novel.story : novel.story.substring(0, 210) + "……"),
         _React$useState4 = _slicedToArray(_React$useState3, 2),
         story = _React$useState4[0],
         setStory = _React$useState4[1];
 
-    react__WEBPACK_IMPORTED_MODULE_1___default().useEffect(function () {
+    react__WEBPACK_IMPORTED_MODULE_2___default().useEffect(function () {
+      setStory(novel.story.length < 210 ? novel.story : novel.story.substring(0, 210) + "……");
+    }, [novels]);
+    react__WEBPACK_IMPORTED_MODULE_2___default().useEffect(function () {
       var list = {
         index: index,
+        title: novel.title,
+        story: novel.story,
+        ncode: novel.ncode,
         Pt: novel.global_point,
         Fav: novel.fav_novel_cnt,
         Rev: novel.all_hyoka_cnt,
         Rate: novelAverageRate,
-        Com: novel.impression_cnt
+        Com: novel.impression_cnt,
+        RankNum: novelRankNum,
+        RankAlpha: novelRankAlpha,
+        length: novel.length,
+        state: novelState,
+        review: novelReview
       };
       sortList.push(list);
-    });
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_5__["default"], {
+
+      if (index == 49) {
+        var main = /*#__PURE__*/function () {
+          var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+            return _regeneratorRuntime().wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    console.log('start');
+                    _context.next = 3;
+                    return _sleep(10 * 1000);
+
+                  case 3:
+                    console.log("end");
+
+                  case 4:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee);
+          }));
+
+          return function main() {
+            return _ref2.apply(this, arguments);
+          };
+        }();
+
+        sortList.sort(function (a, b) {
+          return b.Pt - a.Pt;
+        });
+        ptSortNovels = novels[0].concat();
+        ptSortNovels.sort(function (a, b) {
+          return b.global_point - a.global_point;
+        });
+        favSortNovels = novels[0].concat();
+        favSortNovels.sort(function (a, b) {
+          return b.fav_novel_cnt - a.fav_novel_cnt;
+        }); //console.log(ptSortNovels);
+
+        var _sleep = function _sleep(ms) {
+          return new Promise(function (resolve) {
+            return setTimeout(resolve, ms);
+          });
+        };
+
+        main();
+        console.log("useEffect sort working");
+      }
+    }, [novels]);
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_7__["default"], {
         sx: {
           flexGrow: 1
         },
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
           container: true,
           spacing: 1,
           columns: 20,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
             item: true,
             xs: 20,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
               style: {
                 textAlign: "center",
                 marginBottom: 10,
                 marginTop: 10
               },
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(NovelTitle, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(NovelTitle, {
                 href: novelUrl + novel.ncode,
                 target: "_blank",
                 children: novel.title
               })
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
             container: true,
             spacing: 1,
             columns: 20,
             alignItems: "center",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
               item: true,
               xs: 20,
               sm: 5,
@@ -28759,110 +28863,112 @@ function Search(_ref) {
                 minHeight: 60,
                 minWidth: 60
               },
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Item, {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Item, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                   ref: el,
-                  children: chartFlag ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_RankChart__WEBPACK_IMPORTED_MODULE_0__["default"], {
-                    rank: novelRankNum
-                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_RankChart__WEBPACK_IMPORTED_MODULE_0__["default"], {
-                    rank: null
+                  children: chartFlag ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_RankChart__WEBPACK_IMPORTED_MODULE_0__["default"], {
+                    rank: novelRankNum,
+                    animation: true
+                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_RankChart__WEBPACK_IMPORTED_MODULE_0__["default"], {
+                    rank: null,
+                    animation: false
                   })
                 })
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
               item: true,
               xs: 4,
               sm: 3,
               alignItems: "stretch",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(DotItem, {
-                children: ["\u30DD\u30A4\u30F3\u30C8", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(RankP, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(DotItem, {
+                children: ["\u30DD\u30A4\u30F3\u30C8", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(RankP, {
                   style: styleRank[0],
                   children: novelRankAlpha[0]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(PointP, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(PointP, {
                   children: novel.global_point
                 })]
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
               item: true,
               xs: 4,
               sm: 3,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(DotItem, {
-                children: ["\u30D6\u30AF\u30DE", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(RankP, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(DotItem, {
+                children: ["\u30D6\u30AF\u30DE", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(RankP, {
                   style: styleRank[1],
                   children: novelRankAlpha[1]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(PointP, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(PointP, {
                   children: novel.fav_novel_cnt
                 })]
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
               item: true,
               xs: 4,
               sm: 3,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(DotItem, {
-                children: ["\u3072\u3087\u3046\u304B\u3057\u3083", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(RankP, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(DotItem, {
+                children: ["\u3072\u3087\u3046\u304B\u3057\u3083", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(RankP, {
                   style: styleRank[2],
                   children: novelRankAlpha[2]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(PointP, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(PointP, {
                   children: novel.all_hyoka_cnt
                 })]
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
               item: true,
               xs: 4,
               sm: 3,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(DotItem, {
-                children: ["\u3078\u3044\u304D\u3093\u3066\u3093", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(RankP, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(DotItem, {
+                children: ["\u3078\u3044\u304D\u3093\u3066\u3093", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(RankP, {
                   style: styleRank[3],
                   children: novelRankAlpha[3]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(PointP, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(PointP, {
                   children: novelAverageRate
                 })]
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
               item: true,
               xs: 4,
               sm: 3,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(DotItem, {
-                children: ["\u304B\u3093\u305D\u3046", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(RankP, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(DotItem, {
+                children: ["\u304B\u3093\u305D\u3046", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(RankP, {
                   style: styleRank[4],
                   children: novelRankAlpha[4]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(PointP, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(PointP, {
                   children: novel.impression_cnt
                 })]
               })
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           style: {
             textAlign: "center",
             marginTop: 10,
             width: "100%"
           },
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
             container: true,
             spacing: 1,
             columns: 20,
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
               item: true,
               xs: 10,
               sm: 7,
               children: novelState
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
               item: true,
               xs: 10,
               sm: 7,
               children: novelReview
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
               item: true,
               xs: 20,
               sm: 6,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(LengthDiv, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(LengthDiv, {
                 children: ["\u3082\u3058\uFF1A", novel.length]
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_8__["default"], {
               item: true,
               xs: 20,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(StoryP, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(StoryP, {
                 onClick: function onClick() {
                   return setStory(novel.story);
                 },
@@ -28874,9 +28980,32 @@ function Search(_ref) {
       })
     }, novel.ncode);
   });
-  console.log(sortList);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-    children: novelDataList
+  /* 	ptSortNovels.sort((a, b) => {
+      return b.global_point - a.global_point;
+  	}); */
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(PtButton, {
+      variant: "contained",
+      onClick: handlePt,
+      children: "Pt\u305D\u30FC\u3068"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(PtButton, {
+      variant: "contained",
+      onClick: handleFav,
+      children: "Fav\u305D\u30FC\u3068"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(PtButton, {
+      variant: "contained",
+      onClick: handlePt,
+      children: "Rev\u305D\u30FC\u3068"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(PtButton, {
+      variant: "contained",
+      onClick: handlePt,
+      children: "Rate\u305D\u30FC\u3068"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(PtButton, {
+      variant: "contained",
+      onClick: handlePt,
+      children: "Com\u305D\u30FC\u3068"
+    }), novelDataList]
   });
 }
 

@@ -22,41 +22,45 @@ ChartJS.register(
 
 defaults.font.family = "pixel10-r";
 
-const rankOption = {
-  scales: {
-    r: {
-      ticks: {
-        display: false,
-      },
-      pointLabels: {
-        color: "black",
-        font: {
-          size: 15,
-        },
-      },
-      suggestedMin: 0,
-      suggestedMax: 10,
-    },
-  },
-  plugins: {
-    legend: {
-      display: false,
-      labels: {
-        font: {
-          size: 20,
-          family: "pixel10-r",
-        },
-      },
-    },
-  },
-};
 
-export default function RankChart({ rank }) {
+export default function RankChart({
+  rank,
+  animation,
+}) {
   /*   const el = React.useRef(null);
   React.useEffect(() => {
     //console.log(el.current);
     console.log(JSON.stringify(el.current.getBoundingClientRect()));
   }, []); */
+  const rankOption = {
+    scales: {
+      r: {
+        ticks: {
+          display: false,
+        },
+        pointLabels: {
+          color: "black",
+          font: {
+            size: 15,
+          },
+        },
+        suggestedMin: 0,
+        suggestedMax: 10,
+      },
+    },
+    plugins: {
+      legend: {
+        display: false,
+        labels: {
+          font: {
+            size: 20,
+            family: "pixel10-r",
+          },
+        },
+      },
+    },
+    animations: { animation },
+  };
 
   const rankData = {
     labels: ["Pt", "Fav", "Rev", "Rate", "Com"],
