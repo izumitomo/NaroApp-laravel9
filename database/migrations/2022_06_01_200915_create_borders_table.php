@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBordersTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -23,11 +23,11 @@ class CreateBordersTable extends Migration
             $table->float('average_rate', 4, 2)->nullable(true);
             $table->integer('comment_count');
             $table->float('length_per_point', 7, 3);
-            $table -> integer("max_global_point");
-            $table -> integer("max_favorite_count");
-            $table -> integer("max_reviewer_count");
-            $table -> float("max_average_rate", 4, 2)->nullable(true);
-            $table -> integer("max_comment_count");
+            $table->integer("max_global_point");
+            $table->integer("max_favorite_count");
+            $table->integer("max_reviewer_count");
+            $table->float("max_average_rate", 4, 2)->nullable(true);
+            $table->integer("max_comment_count");
         });
     }
 
@@ -40,4 +40,4 @@ class CreateBordersTable extends Migration
     {
         Schema::dropIfExists('borders');
     }
-}
+};
