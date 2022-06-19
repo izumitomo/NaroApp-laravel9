@@ -28346,8 +28346,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+/* defaults.font.family = "pixel10-r";
+ */
 
-chart_js__WEBPACK_IMPORTED_MODULE_0__.defaults.font.family = "pixel10-r";
+
 var rankOption = {
   scales: {
     r: {
@@ -28369,7 +28371,8 @@ var rankOption = {
       display: false,
       labels: {
         font: {
-          size: 20
+          size: 20,
+          family: "pixel10-r"
         }
       }
     }
@@ -28515,19 +28518,6 @@ var ReviewDiv = (0,styled_components__WEBPACK_IMPORTED_MODULE_4__["default"])(Ko
 var NoReviewDiv = (0,styled_components__WEBPACK_IMPORTED_MODULE_4__["default"])(KoshinDiv)(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral(["\n  background: linear-gradient(\n    #99ffff5e,\n    #fff 50%,\n    #0dcaf005 50%,\n    #66fff442 70%,\n    #f1f1f1\n  );\n  box-shadow: inset 0 0 0 2px rgb(0 82 204 / 19%);\n  color: #cccccc;\n"])));
 var LengthDiv = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(_templateObject12 || (_templateObject12 = _taggedTemplateLiteral(["\n  font-family: \"pixel10-r\";\n  font-size: 20px;\n  margin: auto;\n  text-align: center;\n  height: 100%;\n\twidth: 100%;\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n"])));
 var StoryP = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].p(_templateObject13 || (_templateObject13 = _taggedTemplateLiteral(["\n\tfont-family: \"milk-b\";\n"])));
-/* function conditional(id) {
-  // ウィンドウ上端の位置を取得
-  let docTop = $(window).scrollTop();
-  // ウィンドウ下端の位置を取得
-  let docBottom = docTop + $(window).height();
-  // チャート上端の位置を取得
-  let elemTop = $(id).offset().top;
-  // チャート下端の位置を取得
-  let elemBottom = elemTop + $(id).height();
-  // 「チャートを表示する要素がウィンドウ内にある場合に真となる式」を返す
-  return elemTop <= docBottom && docTop <= elemBottom;
-} */
-
 function Search(_ref2) {
   var response = _ref2.response;
 
@@ -28550,7 +28540,8 @@ function Search(_ref2) {
   var comDownScale = response[1].comment_count / 4; //平均評価点は０にならないのでupscaleを採用する。
 
   var rateUpScale = (response[1].max_average_rate - response[1].average_rate) / 6;
-  var novelDataList = response[0].map(function (novel) {
+  var sortList = [];
+  var novelDataList = response[0].map(function (novel, index) {
     var _React$useState = react__WEBPACK_IMPORTED_MODULE_2___default().useState(false),
         _React$useState2 = _slicedToArray(_React$useState, 2),
         chartFlag = _React$useState2[0],
@@ -28796,6 +28787,17 @@ function Search(_ref2) {
         story = _React$useState4[0],
         setStory = _React$useState4[1];
 
+    react__WEBPACK_IMPORTED_MODULE_2___default().useEffect(function () {
+      var list = {
+        index: index,
+        Pt: novel.global_point,
+        Fav: novel.fav_novel_cnt,
+        Rev: novel.all_hyoka_cnt,
+        Rate: novelAverageRate,
+        Com: novel.impression_cnt
+      };
+      sortList.push(list);
+    });
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_7__["default"], {
         sx: {
@@ -28948,6 +28950,7 @@ function Search(_ref2) {
       })
     }, novel.ncode);
   });
+  console.log(sortList);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     children: novelDataList
   });

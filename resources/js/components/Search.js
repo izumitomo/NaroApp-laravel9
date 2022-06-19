@@ -207,19 +207,6 @@ const StoryP = styled.p`
 	font-family: "milk-b";
 `;
 
-/* function conditional(id) {
-  // ウィンドウ上端の位置を取得
-  let docTop = $(window).scrollTop();
-  // ウィンドウ下端の位置を取得
-  let docBottom = docTop + $(window).height();
-  // チャート上端の位置を取得
-  let elemTop = $(id).offset().top;
-  // チャート下端の位置を取得
-  let elemBottom = elemTop + $(id).height();
-  // 「チャートを表示する要素がウィンドウ内にある場合に真となる式」を返す
-  return elemTop <= docBottom && docTop <= elemBottom;
-} */
-
 
 export default function Search({
 	response,
@@ -246,8 +233,9 @@ export default function Search({
 	//平均評価点は０にならないのでupscaleを採用する。
 	const rateUpScale = (response[1].max_average_rate - response[1].average_rate) / 6;
 
+	let sortList = [];
 
-	const novelDataList = response[0].map(novel => {
+	const novelDataList = response[0].map((novel, index) => {
 		const [chartFlag, setChartFlag] = React.useState(false);
 		let novelRankNum = [];
 		let novelRankAlpha = [];
@@ -442,6 +430,17 @@ export default function Search({
         ? novel.story
         : novel.story.substring(0, 210) + "……"
 		);
+		React.useEffect(() => {
+			const list = {
+				index: index,
+				Pt: novel.global_point,
+				Fav: novel.fav_novel_cnt,
+				Rev: novel.all_hyoka_cnt,
+				Rate: novelAverageRate,
+				Com: novel.impression_cnt,
+			};
+			sortList.push(list);
+		});
 		
 		
 		return (
@@ -542,6 +541,8 @@ export default function Search({
       </div>
     );
 	});
+
+	console.log(sortList);
 
 	return (
 		<div>
