@@ -1,5 +1,4 @@
 import RankChart from "./RankChart";
-import Sort from "./Sort";
 /* import PointChart from "./PointChart"; */
 import React, { useEffect } from 'react';
 import styled from "styled-components";
@@ -215,7 +214,7 @@ const PtButton = styled(Button)`
 		font-size: 20px;
 	}`;
 
-let ptSortNovels, favSortNovels;
+let ptSortNovels, favSortNovels, revSortNovels, rateSortNovels, comSortNovels;
 // sortNovelsの初期化を関数コンポーネント内のスコープに入れると、chartFlagの変化による再レンダリング時に初期化されてしまい、useEffect内のソートしたsortNovelsが上書きされてしまう。
 export default function Search({
 	novels,
@@ -230,6 +229,15 @@ export default function Search({
 	}
 	const handleFav = () => {
 		setNovels([favSortNovels, novels[1]]);
+	}
+	const handleRev = () => {
+		setNovels([revSortNovels, novels[1]]);
+	}
+	const handleRate = () => {
+		setNovels([rateSortNovels, novels[1]]);
+	}
+	const handleCom = () => {
+		setNovels([comSortNovels, novels[1]]);
 	}
 	/* const averagePoint = [
 		novels[1].global_point / novels[1].max_global_point * 100,
@@ -269,9 +277,11 @@ export default function Search({
 		] */
 		//novel.all_hyoka_cntが0だった場合、平均評価を0にする。
 		let novelAverageRate = Math.round(novel.all_point / novel.all_hyoka_cnt * 100) / 100;
+		//評価者が0人の時.
 		if (isNaN(novelAverageRate)) {
 			novelAverageRate = 0;
 		}
+		novels[0][index].average_rate = novelAverageRate;
 
 		for (let i = 1; i < 7; i++) {
 			if (novel.global_point >= novels[1].max_global_point - pointUpScale * i) {
@@ -495,16 +505,20 @@ export default function Search({
 				favSortNovels.sort((a, b) => {
 					return b.fav_novel_cnt - a.fav_novel_cnt;
 				})
+				revSortNovels = novels[0].concat();
+				revSortNovels.sort((a, b) => {
+					return b.all_hyoka_cnt - a.all_hyoka_cnt;
+				})
+				comSortNovels = novels[0].concat();
+				comSortNovels.sort((a, b) => {
+					return b.impression_cnt - a.impression_cnt;
+				})
+				rateSortNovels = novels[0].concat();
+				rateSortNovels.sort((a, b) => {
+					return b.average_rate - a.average_rate;
+				})
 				//console.log(ptSortNovels);
-				const _sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-				async function main() {
-					console.log('start');
-					await _sleep(10 * 1000);
-					console.log("end");
-				}
-				main();
-				console.log("useEffect sort working")
-
+				console.log("useEffect sort complete!")
 			}
 		}, [novels]);
 		
@@ -607,9 +621,6 @@ export default function Search({
 		);
 	});
 
-/* 	ptSortNovels.sort((a, b) => {
-    return b.global_point - a.global_point;
-	}); */
 	
 	return (
     <div>
@@ -619,13 +630,13 @@ export default function Search({
       <PtButton variant="contained" onClick={handleFav}>
         Favそーと
       </PtButton>
-      <PtButton variant="contained" onClick={handlePt}>
+      <PtButton variant="contained" onClick={handleRev}>
         Revそーと
       </PtButton>
-      <PtButton variant="contained" onClick={handlePt}>
+      <PtButton variant="contained" onClick={handleRate}>
         Rateそーと
       </PtButton>
-      <PtButton variant="contained" onClick={handlePt}>
+      <PtButton variant="contained" onClick={handleCom}>
         Comそーと
       </PtButton>
       {novelDataList}
