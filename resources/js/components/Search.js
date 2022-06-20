@@ -434,29 +434,6 @@ export default function Search({
 			);
 		}
 
-		const [chartFlag, setChartFlag] = React.useState(false);
-		//スクロール処理
-		let graphAnim = function () {
-			let wy = window.pageYOffset;//Y軸スクロール量
-			let wb = wy + window.innerHeight*4/5;// ブラウザの大きさを基に調整。     
-			// チャートの位置を取得
-			let chartPos = wy + el.current.getBoundingClientRect().bottom;
-
-			// チャートの位置がウィンドウの最下部位置を超えたら起動
-			/* if (chartPos <= wb && chartFlag == false) {
-				setChartFlag(true);
-			} */
-			if (wb <= chartPos + window.innerHeight*1/2 && chartPos <= wb && chartFlag == false) {
-				setChartFlag(true);
-			} else if (wb < chartPos || chartPos + window.innerHeight*2/3 < wb ) {
-				setChartFlag(false);
-			}
-		}
-		window.addEventListener('load', graphAnim); // 読み込み時の処理
-		window.addEventListener('scroll', graphAnim); // スクロール時の処理
-		
-
-		const el = React.useRef(null);
 		/* 		React.useEffect(() => {
 					//console.log(el.current);
 					console.log(JSON.stringify(el.current.getBoundingClientRect()));
@@ -547,13 +524,7 @@ export default function Search({
 								}}
 							>
 								<Item>
-									<div ref={el}>
-										{chartFlag ? (
-											<RankChart rank={novelRankNum} animation={true}/>
-										) : (
-											<RankChart rank={null} animation={false}/>
-										)}
-									</div>
+									<RankChart rank={novelRankNum}/>
 								</Item>
 							</Grid>
 							<Grid item xs={4} sm={3} alignItems="stretch">

@@ -28286,52 +28286,119 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
 
 chart_js__WEBPACK_IMPORTED_MODULE_0__.Chart.register(chart_js__WEBPACK_IMPORTED_MODULE_0__.RadialLinearScale, chart_js__WEBPACK_IMPORTED_MODULE_0__.PointElement, chart_js__WEBPACK_IMPORTED_MODULE_0__.LineElement, chart_js__WEBPACK_IMPORTED_MODULE_0__.Filler, chart_js__WEBPACK_IMPORTED_MODULE_0__.Tooltip, chart_js__WEBPACK_IMPORTED_MODULE_0__.Legend);
 chart_js__WEBPACK_IMPORTED_MODULE_0__.defaults.font.family = "pixel10-r";
-function RankChart(_ref) {
-  var rank = _ref.rank,
-      animation = _ref.animation;
-
-  /*   const el = React.useRef(null);
-  React.useEffect(() => {
-    //console.log(el.current);
-    console.log(JSON.stringify(el.current.getBoundingClientRect()));
-  }, []); */
-  var rankOption = {
-    scales: {
-      r: {
-        ticks: {
-          display: false
-        },
-        pointLabels: {
-          color: "black",
-          font: {
-            size: 15
-          }
-        },
-        suggestedMin: 0,
-        suggestedMax: 10
-      }
-    },
-    plugins: {
-      legend: {
-        display: false,
-        labels: {
-          font: {
-            size: 20,
-            family: "pixel10-r"
-          }
+var animation = {
+  scales: {
+    r: {
+      ticks: {
+        display: false
+      },
+      pointLabels: {
+        color: "black",
+        font: {
+          size: 15
+        }
+      },
+      suggestedMin: 0,
+      suggestedMax: 10
+    }
+  },
+  plugins: {
+    legend: {
+      display: false,
+      labels: {
+        font: {
+          size: 20,
+          family: "pixel10-r"
         }
       }
-    },
-    animations: {
-      animation: animation
+    }
+  }
+};
+var nonAnimation = {
+  scales: {
+    r: {
+      ticks: {
+        display: false
+      },
+      pointLabels: {
+        color: "black",
+        font: {
+          size: 15
+        }
+      },
+      suggestedMin: 0,
+      suggestedMax: 10
+    }
+  },
+  plugins: {
+    legend: {
+      display: false,
+      labels: {
+        font: {
+          size: 20,
+          family: "pixel10-r"
+        }
+      }
+    }
+  },
+  animations: false
+};
+var averageData = {
+  labels: ["Pt", "Fav", "Rev", "Rate", "Com"],
+  datasets: [{
+    data: [4, 4, 4, 4, 4],
+    backgroundColor: "rgba(242,232,141,0.5)",
+    borderColor: "rgba(242,232,141,0.8)",
+    borderWidth: 1
+  }]
+};
+function RankChart(_ref) {
+  var rank = _ref.rank;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_1___default().useState(false),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      chartFlag = _React$useState2[0],
+      setChartFlag = _React$useState2[1]; //スクロール処理
+
+
+  var graphAnim = function graphAnim() {
+    var wy = window.pageYOffset; //Y軸スクロール量
+
+    var wb = wy + window.innerHeight * 4 / 5; // ブラウザの大きさを基に調整。     
+    // チャートの位置を取得
+
+    var chartPos = wy + el.current.getBoundingClientRect().bottom; // チャートの位置がウィンドウ中央付近になったら起動
+
+    if (wb <= chartPos + window.innerHeight * 1 / 2 && chartPos <= wb && chartFlag == false) {
+      setChartFlag(true);
+    } else if (wb < chartPos || chartPos + window.innerHeight * 2 / 3 < wb) {
+      setChartFlag(false);
     }
   };
+
+  window.addEventListener('load', graphAnim); // 読み込み時の処理
+
+  window.addEventListener('scroll', graphAnim); // スクロール時の処理
+
+  var el = react__WEBPACK_IMPORTED_MODULE_1___default().useRef(null);
   var rankData = {
     labels: ["Pt", "Fav", "Rev", "Rate", "Com"],
     datasets: [{
@@ -28347,9 +28414,15 @@ function RankChart(_ref) {
       borderWidth: 1
     }]
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_3__.Radar, {
-    data: rankData,
-    options: rankOption
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    ref: el,
+    children: chartFlag ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_3__.Radar, {
+      data: rankData,
+      options: animation
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_3__.Radar, {
+      data: averageData,
+      options: nonAnimation
+    })
   });
 }
 
@@ -28718,46 +28791,16 @@ function Search(_ref) {
         })
       });
     }
-
-    var _React$useState = react__WEBPACK_IMPORTED_MODULE_1___default().useState(false),
-        _React$useState2 = _slicedToArray(_React$useState, 2),
-        chartFlag = _React$useState2[0],
-        setChartFlag = _React$useState2[1]; //スクロール処理
-
-
-    var graphAnim = function graphAnim() {
-      var wy = window.pageYOffset; //Y軸スクロール量
-
-      var wb = wy + window.innerHeight * 4 / 5; // ブラウザの大きさを基に調整。     
-      // チャートの位置を取得
-
-      var chartPos = wy + el.current.getBoundingClientRect().bottom; // チャートの位置がウィンドウの最下部位置を超えたら起動
-
-      /* if (chartPos <= wb && chartFlag == false) {
-      	setChartFlag(true);
-      } */
-
-      if (wb <= chartPos + window.innerHeight * 1 / 2 && chartPos <= wb && chartFlag == false) {
-        setChartFlag(true);
-      } else if (wb < chartPos || chartPos + window.innerHeight * 2 / 3 < wb) {
-        setChartFlag(false);
-      }
-    };
-
-    window.addEventListener('load', graphAnim); // 読み込み時の処理
-
-    window.addEventListener('scroll', graphAnim); // スクロール時の処理
-
-    var el = react__WEBPACK_IMPORTED_MODULE_1___default().useRef(null);
     /* 		React.useEffect(() => {
     			//console.log(el.current);
     			console.log(JSON.stringify(el.current.getBoundingClientRect()));
     		}, []); */
 
-    var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_1___default().useState(novel.story.length < 210 ? novel.story : novel.story.substring(0, 210) + "……"),
-        _React$useState4 = _slicedToArray(_React$useState3, 2),
-        story = _React$useState4[0],
-        setStory = _React$useState4[1];
+
+    var _React$useState = react__WEBPACK_IMPORTED_MODULE_1___default().useState(novel.story.length < 210 ? novel.story : novel.story.substring(0, 210) + "……"),
+        _React$useState2 = _slicedToArray(_React$useState, 2),
+        story = _React$useState2[0],
+        setStory = _React$useState2[1];
 
     react__WEBPACK_IMPORTED_MODULE_1___default().useEffect(function () {
       setStory(novel.story.length < 210 ? novel.story : novel.story.substring(0, 210) + "……");
@@ -28847,15 +28890,8 @@ function Search(_ref) {
                 minWidth: 60
               },
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Item, {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                  ref: el,
-                  children: chartFlag ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_RankChart__WEBPACK_IMPORTED_MODULE_0__["default"], {
-                    rank: novelRankNum,
-                    animation: true
-                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_RankChart__WEBPACK_IMPORTED_MODULE_0__["default"], {
-                    rank: null,
-                    animation: false
-                  })
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_RankChart__WEBPACK_IMPORTED_MODULE_0__["default"], {
+                  rank: novelRankNum
                 })
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_7__["default"], {
