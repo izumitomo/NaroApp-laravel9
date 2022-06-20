@@ -28371,7 +28371,8 @@ var averageData = {
   }]
 };
 function RankChart(_ref) {
-  var rank = _ref.rank;
+  var rank = _ref.rank,
+      novels = _ref.novels;
 
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_1___default().useState(false),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -28382,16 +28383,18 @@ function RankChart(_ref) {
   var graphAnim = function graphAnim() {
     var wy = window.pageYOffset; //Y軸スクロール量
 
-    var wb = wy + window.innerHeight * 4 / 5; // ブラウザの大きさを基に調整。     
+    var wb = wy + window.innerHeight * 3 / 4; // ブラウザの大きさを基に調整。     
     // チャートの位置を取得
 
     var chartPos = wy + el.current.getBoundingClientRect().bottom; // チャートの位置がウィンドウ中央付近になったら起動
 
-    if (wb <= chartPos + window.innerHeight * 1 / 2 && chartPos <= wb && chartFlag == false) {
+    if (chartPos <= wb && chartFlag == false) {
       setChartFlag(true);
-    } else if (wb < chartPos || chartPos + window.innerHeight * 2 / 3 < wb) {
-      setChartFlag(false);
     }
+    /* else if (wb < chartPos || chartPos + window.innerHeight * 1/2 < wb) {
+    setChartFlag(false);
+    } */
+
   };
 
   window.addEventListener('load', graphAnim); // 読み込み時の処理
@@ -28399,6 +28402,9 @@ function RankChart(_ref) {
   window.addEventListener('scroll', graphAnim); // スクロール時の処理
 
   var el = react__WEBPACK_IMPORTED_MODULE_1___default().useRef(null);
+  react__WEBPACK_IMPORTED_MODULE_1___default().useEffect(function () {
+    setChartFlag(false);
+  }, [novels]);
   var rankData = {
     labels: ["Pt", "Fav", "Rev", "Rate", "Com"],
     datasets: [{
@@ -28806,51 +28812,28 @@ function Search(_ref) {
       setStory(novel.story.length < 210 ? novel.story : novel.story.substring(0, 210) + "……");
     }, [novels]);
     react__WEBPACK_IMPORTED_MODULE_1___default().useEffect(function () {
-      var list = {
-        index: index,
-        title: novel.title,
-        story: novel.story,
-        ncode: novel.ncode,
-        Pt: novel.global_point,
-        Fav: novel.fav_novel_cnt,
-        Rev: novel.all_hyoka_cnt,
-        Rate: novelAverageRate,
-        Com: novel.impression_cnt,
-        RankNum: novelRankNum,
-        RankAlpha: novelRankAlpha,
-        length: novel.length,
-        state: novelState,
-        review: novelReview
-      };
-      sortList.push(list);
+      ptSortNovels = novels[0].concat();
+      ptSortNovels.sort(function (a, b) {
+        return b.global_point - a.global_point;
+      });
+      favSortNovels = novels[0].concat();
+      favSortNovels.sort(function (a, b) {
+        return b.fav_novel_cnt - a.fav_novel_cnt;
+      });
+      revSortNovels = novels[0].concat();
+      revSortNovels.sort(function (a, b) {
+        return b.all_hyoka_cnt - a.all_hyoka_cnt;
+      });
+      comSortNovels = novels[0].concat();
+      comSortNovels.sort(function (a, b) {
+        return b.impression_cnt - a.impression_cnt;
+      });
+      rateSortNovels = novels[0].concat();
+      rateSortNovels.sort(function (a, b) {
+        return b.average_rate - a.average_rate;
+      }); //console.log(ptSortNovels);
 
-      if (index == 49) {
-        sortList.sort(function (a, b) {
-          return b.Pt - a.Pt;
-        });
-        ptSortNovels = novels[0].concat();
-        ptSortNovels.sort(function (a, b) {
-          return b.global_point - a.global_point;
-        });
-        favSortNovels = novels[0].concat();
-        favSortNovels.sort(function (a, b) {
-          return b.fav_novel_cnt - a.fav_novel_cnt;
-        });
-        revSortNovels = novels[0].concat();
-        revSortNovels.sort(function (a, b) {
-          return b.all_hyoka_cnt - a.all_hyoka_cnt;
-        });
-        comSortNovels = novels[0].concat();
-        comSortNovels.sort(function (a, b) {
-          return b.impression_cnt - a.impression_cnt;
-        });
-        rateSortNovels = novels[0].concat();
-        rateSortNovels.sort(function (a, b) {
-          return b.average_rate - a.average_rate;
-        }); //console.log(ptSortNovels);
-
-        console.log("useEffect sort complete!");
-      }
+      console.log("useEffect sort complete!");
     }, [novels]);
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
@@ -28891,7 +28874,8 @@ function Search(_ref) {
               },
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Item, {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_RankChart__WEBPACK_IMPORTED_MODULE_0__["default"], {
-                  rank: novelRankNum
+                  rank: novelRankNum,
+                  novels: novels
                 })
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_7__["default"], {
