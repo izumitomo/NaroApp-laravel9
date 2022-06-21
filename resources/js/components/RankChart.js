@@ -9,7 +9,7 @@ import {
   defaults,
 } from "chart.js";
 import { Radar } from "react-chartjs-2";
-import React from "react";
+import React, { useEffect } from "react";
 
 ChartJS.register(
   RadialLinearScale,
@@ -95,26 +95,30 @@ const averageData = {
 
 export default function RankChart({
   rank,
+  novels,
 }) {
   const [chartFlag, setChartFlag] = React.useState(false);
   //スクロール処理
   let graphAnim = function () {
     let wy = window.pageYOffset;//Y軸スクロール量
-    let wb = wy + window.innerHeight * 4 / 5;// ブラウザの大きさを基に調整。     
+    let wb = wy + window.innerHeight * 3/4;// ブラウザの大きさを基に調整。     
     // チャートの位置を取得
     let chartPos = wy + el.current.getBoundingClientRect().bottom;
 
     // チャートの位置がウィンドウ中央付近になったら起動
-    if (wb <= chartPos + window.innerHeight * 1 / 2 && chartPos <= wb && chartFlag == false) {
+    if (chartPos <= wb && chartFlag == false) {
       setChartFlag(true);
-    } else if (wb < chartPos || chartPos + window.innerHeight * 2 / 3 < wb) {
+    } /* else if (wb < chartPos || chartPos + window.innerHeight * 1/2 < wb) {
       setChartFlag(false);
-    }
+    } */
   }
   window.addEventListener('load', graphAnim); // 読み込み時の処理
   window.addEventListener('scroll', graphAnim); // スクロール時の処理
   
   const el = React.useRef(null);
+  React.useEffect(() => {
+    setChartFlag(false);
+  }, [novels])
 
   const rankData = {
     labels: ["Pt", "Fav", "Rev", "Rate", "Com"],

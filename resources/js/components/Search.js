@@ -453,50 +453,28 @@ export default function Search({
 		}, [novels])
 		
 		React.useEffect(() => {
-			const list = {
-				index: index,
-				title: novel.title,
-				story: novel.story,
-				ncode: novel.ncode,
-				Pt: novel.global_point,
-				Fav: novel.fav_novel_cnt,
-				Rev: novel.all_hyoka_cnt,
-				Rate: novelAverageRate,
-				Com: novel.impression_cnt,
-				RankNum: novelRankNum,
-				RankAlpha: novelRankAlpha,
-				length: novel.length,
-				state: novelState,
-				review: novelReview,
-			};
-			sortList.push(list);
-			if (index == 49) {
-				sortList.sort((a, b) => {
-					return b.Pt - a.Pt;
-				});
-				ptSortNovels = novels[0].concat();
-				ptSortNovels.sort((a, b) => {
-					return b.global_point - a.global_point;
-				})
-				favSortNovels = novels[0].concat();
-				favSortNovels.sort((a, b) => {
-					return b.fav_novel_cnt - a.fav_novel_cnt;
-				})
-				revSortNovels = novels[0].concat();
-				revSortNovels.sort((a, b) => {
-					return b.all_hyoka_cnt - a.all_hyoka_cnt;
-				})
-				comSortNovels = novels[0].concat();
-				comSortNovels.sort((a, b) => {
-					return b.impression_cnt - a.impression_cnt;
-				})
-				rateSortNovels = novels[0].concat();
-				rateSortNovels.sort((a, b) => {
-					return b.average_rate - a.average_rate;
-				})
-				//console.log(ptSortNovels);
-				console.log("useEffect sort complete!")
-			}
+			ptSortNovels = novels[0].concat();
+			ptSortNovels.sort((a, b) => {
+				return b.global_point - a.global_point;
+			})
+			favSortNovels = novels[0].concat();
+			favSortNovels.sort((a, b) => {
+				return b.fav_novel_cnt - a.fav_novel_cnt;
+			})
+			revSortNovels = novels[0].concat();
+			revSortNovels.sort((a, b) => {
+				return b.all_hyoka_cnt - a.all_hyoka_cnt;
+			})
+			comSortNovels = novels[0].concat();
+			comSortNovels.sort((a, b) => {
+				return b.impression_cnt - a.impression_cnt;
+			})
+			rateSortNovels = novels[0].concat();
+			rateSortNovels.sort((a, b) => {
+				return b.average_rate - a.average_rate;
+			})
+			//console.log(ptSortNovels);
+			console.log("useEffect sort complete!")
 		}, [novels]);
 		
 		
@@ -524,7 +502,7 @@ export default function Search({
 								}}
 							>
 								<Item>
-									<RankChart rank={novelRankNum}/>
+									<RankChart rank={novelRankNum} novels={novels} />
 								</Item>
 							</Grid>
 							<Grid item xs={4} sm={3} alignItems="stretch">
