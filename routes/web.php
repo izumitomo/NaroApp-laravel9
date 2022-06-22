@@ -20,6 +20,8 @@ Route::get('/', function () {
 Route::post('/search', "App\Http\Controllers\SearchController@call");
 
 Route::get("/{any}", function(){
-    return view('home');
+    //return abort(404, "");
+    return redirect("/");
+    // return view('home');
 });
 
