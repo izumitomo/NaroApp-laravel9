@@ -136,7 +136,7 @@ export default function Home() {
   return (
     <ThemeProvider theme={theme}>
       <Title>{title}</Title>
-      <Box sx={{}}>
+      <Box marginBottom={3}>
         <Grid container spacing={1} columns={10}>
           <Grid item xs={10} sm={4}>
             <Centering>

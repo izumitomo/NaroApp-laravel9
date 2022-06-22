@@ -27819,7 +27819,7 @@ function Home() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(Title, {
       children: title
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      sx: {},
+      marginBottom: 3,
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_11__["default"], {
         container: true,
         spacing: 1,
@@ -28454,7 +28454,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Box/Box.js");
 /* harmony import */ var _mui_material___WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/material/ */ "./node_modules/@mui/material/Grid/Grid.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11, _templateObject12, _templateObject13, _templateObject14;
+var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11, _templateObject12, _templateObject13, _templateObject14, _templateObject15;
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -28470,6 +28470,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
+ //import SortButton from "./SortButton";
 
 /* import PointChart from "./PointChart"; */
 
@@ -28534,7 +28535,8 @@ var ReviewDiv = (0,styled_components__WEBPACK_IMPORTED_MODULE_3__["default"])(Ko
 var NoReviewDiv = (0,styled_components__WEBPACK_IMPORTED_MODULE_3__["default"])(KoshinDiv)(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral(["\n  background: linear-gradient(\n    #99ffff5e,\n    #fff 50%,\n    #0dcaf005 50%,\n    #66fff442 70%,\n    #f1f1f1\n  );\n  box-shadow: inset 0 0 0 2px rgb(0 82 204 / 19%);\n  color: #cccccc;\n"])));
 var LengthDiv = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject12 || (_templateObject12 = _taggedTemplateLiteral(["\n  font-family: \"pixel10-r\";\n  font-size: 20px;\n  margin: auto;\n  text-align: center;\n  height: 100%;\n\twidth: 100%;\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n"])));
 var StoryP = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].p(_templateObject13 || (_templateObject13 = _taggedTemplateLiteral(["\n\tfont-family: \"milk-b\";\n"])));
-var PtButton = (0,styled_components__WEBPACK_IMPORTED_MODULE_3__["default"])(_mui_material___WEBPACK_IMPORTED_MODULE_5__["default"])(_templateObject14 || (_templateObject14 = _taggedTemplateLiteral(["\n  &&&{\n\t\tcolor: black;\n\t\tbackground-color: rgb(227 255 98);\n\t\tfont-family: \"pixel10-r\";\n\t\tfont-size: 20px;\n\t}"])));
+var SortingButton = (0,styled_components__WEBPACK_IMPORTED_MODULE_3__["default"])(_mui_material___WEBPACK_IMPORTED_MODULE_5__["default"])(_templateObject14 || (_templateObject14 = _taggedTemplateLiteral(["\n  &&& {\n    color: black;\n    background-color: rgb(227 255 98);\n    font-family: \"pixel10-r\";\n    font-size: 25px;\n    text-transform: capitalize;\n    @media (max-width: 600px) {\n      font-size: 15px;\n    }\n    @media (max-width: 767px) and (min-width: 601px) {\n      font-size: 20px;\n    }\n    @media (max-width: 991px) and (min-width: 768px) {\n      font-size: 20px;\n    }\n  }\n"])));
+var SortP = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].p(_templateObject15 || (_templateObject15 = _taggedTemplateLiteral(["\n  &&& {\n    font-size: 35px;\n    text-align: center;\n    @media (max-width: 600px) {\n      font-size: 20px;\n    }\n    @media (max-width: 767px) and (min-width: 601px) {\n      font-size: 20px;\n    }\n    @media (max-width: 991px) and (min-width: 768px) {\n      font-size: 25px;\n    }\n  }\n"])));
 var ptSortNovels, favSortNovels, revSortNovels, rateSortNovels, comSortNovels; // sortNovelsの初期化を関数コンポーネント内のスコープに入れると、chartFlagの変化による再レンダリング時に初期化されてしまい、useEffect内のソートしたsortNovelsが上書きされてしまう。
 
 function Search(_ref) {
@@ -28544,8 +28546,6 @@ function Search(_ref) {
   var handlePt = function handlePt() {
     //novelsを変更することで、Searchコンポーネントの再レンダリングを行う。
     setNovels([ptSortNovels, novels[1]]);
-    console.log("handlePt Working!");
-    console.log(ptSortNovels);
   };
 
   var handleFav = function handleFav() {
@@ -28984,26 +28984,69 @@ function Search(_ref) {
     }, novel.ncode);
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(PtButton, {
-      variant: "contained",
-      onClick: handlePt,
-      children: "Pt\u305D\u30FC\u3068"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(PtButton, {
-      variant: "contained",
-      onClick: handleFav,
-      children: "Fav\u305D\u30FC\u3068"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(PtButton, {
-      variant: "contained",
-      onClick: handleRev,
-      children: "Rev\u305D\u30FC\u3068"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(PtButton, {
-      variant: "contained",
-      onClick: handleRate,
-      children: "Rate\u305D\u30FC\u3068"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(PtButton, {
-      variant: "contained",
-      onClick: handleCom,
-      children: "Com\u305D\u30FC\u3068"
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_6__["default"], {
+      sx: {
+        flexGrow: 1
+      },
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_mui_material___WEBPACK_IMPORTED_MODULE_7__["default"], {
+        container: true,
+        spacing: 1,
+        columns: 20,
+        textAlign: "center",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_7__["default"], {
+          item: true,
+          xs: 20,
+          md: 5,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(SortP, {
+            children: "\u306A\u3089\u3073\u304B\u3048"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_7__["default"], {
+          item: true,
+          xs: 4,
+          md: 3,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(SortingButton, {
+            variant: "contained",
+            onClick: handlePt,
+            children: "Pt"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_7__["default"], {
+          item: true,
+          xs: 4,
+          md: 3,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(SortingButton, {
+            variant: "contained",
+            onClick: handleFav,
+            children: "Fav"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_7__["default"], {
+          item: true,
+          xs: 4,
+          md: 3,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(SortingButton, {
+            variant: "contained",
+            onClick: handleRev,
+            children: "Rev"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_7__["default"], {
+          item: true,
+          xs: 4,
+          md: 3,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(SortingButton, {
+            variant: "contained",
+            onClick: handleRate,
+            children: "Rate"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material___WEBPACK_IMPORTED_MODULE_7__["default"], {
+          item: true,
+          xs: 4,
+          md: 3,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(SortingButton, {
+            variant: "contained",
+            onClick: handleCom,
+            children: "Com"
+          })
+        })]
+      })
     }), novelDataList]
   });
 }

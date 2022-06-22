@@ -1,4 +1,5 @@
 import RankChart from "./RankChart";
+//import SortButton from "./SortButton";
 /* import PointChart from "./PointChart"; */
 import React, { useEffect } from 'react';
 import styled from "styled-components";
@@ -206,13 +207,41 @@ const StoryP = styled.p`
 	font-family: "milk-b";
 `;
 
-const PtButton = styled(Button)`
-  &&&{
-		color: black;
-		background-color: rgb(227 255 98);
-		font-family: "pixel10-r";
-		font-size: 20px;
-	}`;
+const SortingButton = styled(Button)`
+  &&& {
+    color: black;
+    background-color: rgb(227 255 98);
+    font-family: "pixel10-r";
+    font-size: 25px;
+    text-transform: capitalize;
+    @media (max-width: 600px) {
+      font-size: 15px;
+    }
+    @media (max-width: 767px) and (min-width: 601px) {
+      font-size: 20px;
+    }
+    @media (max-width: 991px) and (min-width: 768px) {
+      font-size: 20px;
+    }
+  }
+`;
+
+const SortP = styled.p`
+  &&& {
+    font-size: 35px;
+    text-align: center;
+    @media (max-width: 600px) {
+      font-size: 20px;
+    }
+    @media (max-width: 767px) and (min-width: 601px) {
+      font-size: 20px;
+    }
+    @media (max-width: 991px) and (min-width: 768px) {
+      font-size: 25px;
+    }
+  }
+`;
+
 
 let ptSortNovels, favSortNovels, revSortNovels, rateSortNovels, comSortNovels;
 // sortNovelsの初期化を関数コンポーネント内のスコープに入れると、chartFlagの変化による再レンダリング時に初期化されてしまい、useEffect内のソートしたsortNovelsが上書きされてしまう。
@@ -224,8 +253,6 @@ export default function Search({
 	const handlePt = () => {
 		//novelsを変更することで、Searchコンポーネントの再レンダリングを行う。
 		setNovels([ptSortNovels, novels[1]]);
-		console.log("handlePt Working!");
-		console.log(ptSortNovels);
 	}
 	const handleFav = () => {
 		setNovels([favSortNovels, novels[1]]);
@@ -573,21 +600,38 @@ export default function Search({
 	
 	return (
     <div>
-      <PtButton variant="contained" onClick={handlePt}>
-        Ptそーと
-      </PtButton>
-      <PtButton variant="contained" onClick={handleFav}>
-        Favそーと
-      </PtButton>
-      <PtButton variant="contained" onClick={handleRev}>
-        Revそーと
-      </PtButton>
-      <PtButton variant="contained" onClick={handleRate}>
-        Rateそーと
-      </PtButton>
-      <PtButton variant="contained" onClick={handleCom}>
-        Comそーと
-      </PtButton>
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid container spacing={1} columns={20} textAlign="center">
+          <Grid item xs={20} md={5}>
+            <SortP>ならびかえ</SortP>
+          </Grid>
+          <Grid item xs={4} md={3}>
+            <SortingButton variant="contained" onClick={handlePt}>
+              Pt
+            </SortingButton>
+          </Grid>
+          <Grid item xs={4} md={3}>
+            <SortingButton variant="contained" onClick={handleFav}>
+              Fav
+            </SortingButton>
+          </Grid>
+          <Grid item xs={4} md={3}>
+            <SortingButton variant="contained" onClick={handleRev}>
+              Rev
+            </SortingButton>
+          </Grid>
+          <Grid item xs={4} md={3}>
+            <SortingButton variant="contained" onClick={handleRate}>
+              Rate
+            </SortingButton>
+          </Grid>
+          <Grid item xs={4} md={3}>
+            <SortingButton variant="contained" onClick={handleCom}>
+              Com
+            </SortingButton>
+          </Grid>
+        </Grid>
+      </Box>
       {novelDataList}
     </div>
   );
