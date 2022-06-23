@@ -117,7 +117,6 @@ export default function Home() {
     axios.post("/search", data)
     .then(res => {
       setNovels(res.data);
-      //console.log(Array.isArray(res.data[0]))
       console.log(res.data)//dataはbodyとかheaderのやつ。
       setSearch(true);
       setLoading(false)
@@ -283,8 +282,11 @@ export default function Home() {
       {search ? (
         <Search
           //左が渡す名前で右が渡す変数
-					novels={novels}
-					setNovels={setNovels}
+          novels={novels}
+          setNovels={setNovels}
+/*           handleOpen={handleOpen}
+          handleClose={handleClose}
+          checkBoxChange={checkBoxChange} */
         />
       ) : null}
     </ThemeProvider>

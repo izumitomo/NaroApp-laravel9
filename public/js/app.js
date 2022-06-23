@@ -27796,8 +27796,7 @@ function Home() {
       notIsekai: notIsekai
     };
     axios__WEBPACK_IMPORTED_MODULE_2___default().post("/search", data).then(function (res) {
-      setNovels(res.data); //console.log(Array.isArray(res.data[0]))
-
+      setNovels(res.data);
       console.log(res.data); //dataはbodyとかheaderのやつ。
 
       setSearch(true);
@@ -28030,6 +28029,10 @@ function Home() {
     , {
       novels: novels,
       setNovels: setNovels
+      /*           handleOpen={handleOpen}
+                handleClose={handleClose}
+                checkBoxChange={checkBoxChange} */
+
     }) : null]
   });
 }
@@ -28443,7 +28446,7 @@ function RankChart(_ref) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Search)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _RankChart__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RankChart */ "./resources/js/components/RankChart.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -28539,7 +28542,7 @@ var SortingButton = (0,styled_components__WEBPACK_IMPORTED_MODULE_3__["default"]
 var SortP = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].p(_templateObject15 || (_templateObject15 = _taggedTemplateLiteral(["\n  &&& {\n    font-size: 35px;\n    text-align: center;\n    @media (max-width: 600px) {\n      font-size: 20px;\n    }\n    @media (max-width: 767px) and (min-width: 601px) {\n      font-size: 20px;\n    }\n    @media (max-width: 991px) and (min-width: 768px) {\n      font-size: 25px;\n    }\n  }\n"])));
 var ptSortNovels, favSortNovels, revSortNovels, rateSortNovels, comSortNovels; // sortNovelsの初期化を関数コンポーネント内のスコープに入れると、chartFlagの変化による再レンダリング時に初期化されてしまい、useEffect内のソートしたsortNovelsが上書きされてしまう。
 
-function Search(_ref) {
+var Search = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().memo(function (_ref) {
   var novels = _ref.novels,
       setNovels = _ref.setNovels;
 
@@ -29049,7 +29052,8 @@ function Search(_ref) {
       })
     }), novelDataList]
   });
-}
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Search);
 
 /***/ }),
 

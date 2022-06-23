@@ -245,10 +245,10 @@ const SortP = styled.p`
 
 let ptSortNovels, favSortNovels, revSortNovels, rateSortNovels, comSortNovels;
 // sortNovelsの初期化を関数コンポーネント内のスコープに入れると、chartFlagの変化による再レンダリング時に初期化されてしまい、useEffect内のソートしたsortNovelsが上書きされてしまう。
-export default function Search({
+const Search = React.memo(({
 	novels,
 	setNovels,
-}) {
+}) =>{
 
 	const handlePt = () => {
 		//novelsを変更することで、Searchコンポーネントの再レンダリングを行う。
@@ -635,5 +635,7 @@ export default function Search({
       {novelDataList}
     </div>
   );
-}
+})
+
+export default Search;
 
