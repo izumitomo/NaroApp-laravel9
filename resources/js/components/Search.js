@@ -1,247 +1,12 @@
 import RankChart from "./RankChart";
 //import SortButton from "./SortButton";
 /* import PointChart from "./PointChart"; */
-import React, { useEffect } from 'react';
-import styled from "styled-components";
-import {
-	Box,
-	Paper,
-	Grid,
-	Button,
- } from '@mui/material/';
+import React from 'react';
+import {Box, Grid} from '@mui/material/';
+import { styleS, styleA, styleB, styleC, styleD, styleE, styleF, styleG } from "../styles/Search";
+import {RankP, PointP, Item, DotItem, NovelTitle, KoshinDiv, KanketsuDiv, MikanDiv, TanpenDiv, ReviewDiv, NoReviewDiv, LengthDiv, StoryP, SortingButton, SortP} from "../styles/Search"
 
-const styleSSS = {
-	color: "#FF99FF",
-}
-const styleSS = {
-	color: "#FF99FF",
-}
-const styleS = {
-	color: "#FF99FF",
-}
-const styleA = {
-	color: "#FF33CC",
-}
-const styleB = {
-	color: "#FF0000",
-}
-const styleC = {
-	color: "#FFC000",
-}
-const styleD = {
-	color: "#FFD966",
-}
-const styleE = {
-	color: "#70AD47",
-}
-const styleF = {
-	color: "#4472C4",
-}
-const styleG = {
-	color: "#A5A5A5",
-}
-const styleN = {
-	textAlign: "center",
-	color: "black",
-}
-
-const RankP = styled.p`
-	text-align: center;
-	font-size: 44px;
-	margin: auto;
-	@media (min-width: 1200px){
-		font-size: 60px;
-	}
-`;
-
-const PointP = styled(RankP)`
-  font-size: 40px;
-  font-family: "pixel10-r";
-  @media (max-width: 767px) {
-    font-size: 15px;
-  }
-  @media (max-width: 991px) and (min-width: 768px) {
-    font-size: 25px;
-  }
-`;
-
-const novelUrl = "https://ncode.syosetu.com/"
-
-const Item = styled(Paper)`
-  &&&{
-		padding: 8px;
-		text-align center;
-	}
-`;
-
-const DotItem = styled(Paper)`
-  text-align: center;
-  font-size: 20px;
-  white-space: nowrap;
-
-  @media (max-width: 600px) {
-    font-size: 9px;
-  }
-  @media (max-width: 767px) and (min-width: 601px) {
-    font-size: 10px;
-  }
-  @media (max-width: 991px) and (min-width: 768px) {
-    font-size: 15px;
-  }
-`;
-
-const NovelTitle = styled.a`
-	text-align: center;
-	color: black;
-	font-size: 25px;
-	font-family: "milk-b";
-	
-	@media (max-width: 600px) {
-		font-size: 18px;
-	}
-`;
-
-/* const StateP = styled.p`
-	background
-  text-align: center;
-  color: black;
-  font-size: 25px;
-  font-family: "milk-b";
-`; */
-
-const KoshinDiv = styled.div`
-  display: block;
-  text-align: center;
-  font-size: 20px;
-  background: linear-gradient(
-    #99ffffde,
-    #fff 50%,
-    #0dcaf03d 50%,
-    #66fff4 70%,
-    #99f6ff
-  );
-  border-color: #9330;
-  box-shadow: inset 0 0 0 2px rgb(0 82 204 / 42%);
-  text-indent: 0.5em;
-  letter-spacing: 0.25em;
-  border-width: thin;
-  border-style: solid;
-  border-radius: 8px;
-  text-shadow: 1px 1px 0 rgba(100%, 100%, 100%, 0.75);
-
-
-`;
-
-const KanketsuDiv = styled(KoshinDiv)`
-  background: linear-gradient(
-    #ffdb9ba6,
-    #ffef6f85 50%,
-    #e7d440bf 50%,
-    #ddd84280 70%,
-    #edff589e
-  );
-  border-color: #9330;
-  box-shadow: inset 0 0 0 2px rgb(190 145 31 / 71%);
-`;
-
-const MikanDiv = styled(KoshinDiv)`
-  background: linear-gradient(
-    #ee53234a,
-    #ee3a3a1a 50%,
-    #f00d0d3d 50%,
-    #ff666657 70%,
-    #ff99999e
-  );
-  border-color: #9330;
-  box-shadow: inset 0 0 0 2px rgb(204 0 0 / 35%);
-`;
-
-const TanpenDiv = styled.div`
-  display: block;
-  text-align: center;
-  font-size: 20px;
-  background: linear-gradient(
-      to bottom,
-      rgb(255 255 255 / 50%),
-      rgb(255 255 255 / 75%),
-      rgb(255 255 255 / 50%)
-    ),
-    linear-gradient(to right, #00ecff, #f00d0db8);
-  border-color: #9330;
-  box-shadow: inset 0 0 0 2px rgb(0 82 204 / 42%);
-  text-indent: 0.5em;
-  letter-spacing: 0.25em;
-  border-width: thin;
-  border-radius: 8px;
-  text-shadow: 1px 1px 0 rgba(100%, 100%, 100%, 0.75);
-`;
-
-const ReviewDiv = styled(KoshinDiv)`
-`;
-
-const NoReviewDiv = styled(KoshinDiv)`
-  background: linear-gradient(
-    #99ffff5e,
-    #fff 50%,
-    #0dcaf005 50%,
-    #66fff442 70%,
-    #f1f1f1
-  );
-  box-shadow: inset 0 0 0 2px rgb(0 82 204 / 19%);
-  color: #cccccc;
-`;
-
-const LengthDiv = styled.div`
-  font-family: "pixel10-r";
-  font-size: 20px;
-  margin: auto;
-  text-align: center;
-  height: 100%;
-	width: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-`;
-
-const StoryP = styled.p`
-	font-family: "milk-b";
-`;
-
-const SortingButton = styled(Button)`
-  &&& {
-    color: black;
-    background-color: rgb(227 255 98);
-    font-family: "pixel10-r";
-    font-size: 25px;
-    text-transform: capitalize;
-    @media (max-width: 600px) {
-      font-size: 15px;
-    }
-    @media (max-width: 767px) and (min-width: 601px) {
-      font-size: 20px;
-    }
-    @media (max-width: 991px) and (min-width: 768px) {
-      font-size: 20px;
-    }
-  }
-`;
-
-const SortP = styled.p`
-  &&& {
-    font-size: 35px;
-    text-align: center;
-    @media (max-width: 600px) {
-      font-size: 20px;
-    }
-    @media (max-width: 767px) and (min-width: 601px) {
-      font-size: 20px;
-    }
-    @media (max-width: 991px) and (min-width: 768px) {
-      font-size: 25px;
-    }
-  }
-`;
-
+const novelUrl = "https://ncode.syosetu.com/";
 
 let ptSortNovels, favSortNovels, revSortNovels, rateSortNovels, comSortNovels;
 // sortNovelsの初期化を関数コンポーネント内のスコープに入れると、chartFlagの変化による再レンダリング時に初期化されてしまい、useEffect内のソートしたsortNovelsが上書きされてしまう。
@@ -249,7 +14,7 @@ const Search = React.memo(({
 	novels,
 	setNovels,
 }) =>{
-
+	console.log("AAAAA")
 	const handlePt = () => {
 		//novelsを変更することで、Searchコンポーネントの再レンダリングを行う。
 		setNovels([ptSortNovels, novels[1]]);
@@ -266,13 +31,6 @@ const Search = React.memo(({
 	const handleCom = () => {
 		setNovels([comSortNovels, novels[1]]);
 	}
-	/* const averagePoint = [
-		novels[1].global_point / novels[1].max_global_point * 100,
-		novels[1].favorite_count / novels[1].max_favorite_count * 100,
-		novels[1].reviewer_count / novels[1].max_reviewer_count * 100,
-		novels[1].average_rate / novels[1].max_average_rate * 100,
-		novels[1].comment_count / novels[1].max_comment_count * 100
-		] */
 	
 	
 	//中心をランクC（5点）としてC,B,A,S,SS,SSSに分けるために6で割る。
@@ -288,20 +46,10 @@ const Search = React.memo(({
 	//平均評価点は０にならないのでupscaleを採用する。
 	const rateUpScale = (novels[1].max_average_rate - novels[1].average_rate) / 6;
 
-	let sortList = [];
-
-
 	const novelDataList = novels[0].map((novel, index) => {
 		let novelRankNum = [];
 		let novelRankAlpha = [];
 
-		/* const novelPoint = [
-			Math.floor(novel.global_point / novels[1].max_global_point * 100),
-			Math.floor(novel.fav_novel_cnt / novels[1].max_favorite_count * 100),
-			Math.floor(novel.all_hyoka_cnt / novels[1].max_reviewer_count * 100),
-			(novel.all_point/novel.all_hyoka_cnt) / novels[1].max_average_rate * 100,
-			Math.floor(novel.impression_cnt / novels[1].max_comment_count * 100)
-		] */
 		//novel.all_hyoka_cntが0だった場合、平均評価を0にする。
 		let novelAverageRate = Math.round(novel.all_point / novel.all_hyoka_cnt * 100) / 100;
 		//評価者が0人の時.
@@ -386,8 +134,8 @@ const Search = React.memo(({
 		//ランクをアルファベットにして格納
 		let styleRank = [];
 		novelRankNum.forEach(function (rank) {
-			if (rank == 10) { novelRankAlpha.push("SSS"); styleRank.push(styleSSS) }
-			else if (rank == 9) { novelRankAlpha.push("SS"); styleRank.push(styleSS) }
+			if (rank == 10) { novelRankAlpha.push("SSS"); styleRank.push(styleS) }
+			else if (rank == 9) { novelRankAlpha.push("SS"); styleRank.push(styleS) }
 			else if (rank == 8) { novelRankAlpha.push("S"); styleRank.push(styleS) }
 			else if (rank == 7) { novelRankAlpha.push("A"); styleRank.push(styleA) }
 			else if (rank == 6) { novelRankAlpha.push("B"); styleRank.push(styleB) }
