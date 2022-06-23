@@ -3,10 +3,8 @@ import Loading from "./Loading";
 import axios from 'axios';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import styled from "styled-components";
 import {
   Box,
-  Paper,
   Grid,
   Button,
   InputLabel,
@@ -17,32 +15,10 @@ import {
   FormControlLabel,
   Checkbox,
 } from '@mui/material';
-import { ThemeProvider,
-  createTheme
-} from '@mui/material/styles';
+import { ThemeProvider, createTheme} from '@mui/material/styles';
 import WifiFindIcon from '@mui/icons-material/WifiFind';
 
-/* const Centering = styledmui(Paper)(({ theme }) => ({
-  backgroundColor: "#e6e6e6",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-  height: "100%",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
- */
-const Centering = styled(Paper)`
-  &&&{background-color: #e6e6e6;
-	padding: 8px;
-	text-align center;
-	height: 100%;
-	display flex;
-	align-items: center;
-	justify-content: center;}
-`;
+import { Centering, TitleP, GenreP, IsekaiP, SearchP } from "../styles/Home";
 
 export default function Home() {
   const theme = createTheme({
@@ -52,29 +28,6 @@ export default function Home() {
       },
     },
   });
-
-  const Title = styled.p`
-    text-align: center;
-    font-family: "pixel10-b";
-    font-size: 46px;
-    
-    @media(max-width: 600px){
-      font-size: 30px;
-    }
-  `;
-  const GenreP = styled.p`
-    color: black;
-    font-family: "pixel10-r";
-    font-size: 24px;
-    margin: auto;
-  `;
-  const IsekaiP = styled(GenreP)`
-    fontSize: 22px;
-  `;
-  const SearchP = styled(GenreP)`
-    fontsize: 22px;
-  `;
-  
 
   const [open, setOpen] = React.useState(false);
   const handleClose = () => {
@@ -117,7 +70,6 @@ export default function Home() {
     axios.post("/search", data)
     .then(res => {
       setNovels(res.data);
-      //console.log(Array.isArray(res.data[0]))
       console.log(res.data)//dataはbodyとかheaderのやつ。
       setSearch(true);
       setLoading(false)
@@ -135,8 +87,8 @@ export default function Home() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Title>{title}</Title>
-      <Box sx={{}}>
+      <TitleP>{title}</TitleP>
+      <Box marginBottom={3}>
         <Grid container spacing={1} columns={10}>
           <Grid item xs={10} sm={4}>
             <Centering>
@@ -283,8 +235,11 @@ export default function Home() {
       {search ? (
         <Search
           //左が渡す名前で右が渡す変数
-					novels={novels}
-					setNovels={setNovels}
+          novels={novels}
+          setNovels={setNovels}
+/*           handleOpen={handleOpen}
+          handleClose={handleClose}
+          checkBoxChange={checkBoxChange} */
         />
       ) : null}
     </ThemeProvider>

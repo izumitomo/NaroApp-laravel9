@@ -24,4 +24,3 @@ Route::get("/{any}", function(){
     return redirect("/");
     // return view('home');
 });
-
