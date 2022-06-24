@@ -1,3 +1,29 @@
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Register from "./Register";
+import Login from "./Login";
+import Mypage from "./Mypage"
+import { createRoot } from "react-dom/client";
+
+const App = () => {
+  return (
+    <div className="container">
+      <BrowserRouter>
+        <Routes>
+          <Route path={`/register/`} element={<Register />} />
+          <Route path={`/login/`} element={<Login />} />
+          <Route path={`/`} element={<Mypage />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
+};
+
+const container = document.getElementById("app");
+const root = createRoot(container);
+root.render(<App />);
+
+export default App;
 
 /* 
 import React from 'react';
