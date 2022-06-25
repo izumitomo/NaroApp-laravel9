@@ -5,7 +5,10 @@ const Mypage = () => {
     <>
       <h1>ホーム</h1>
       <div>
-        新規登録は<Link to={`/register/`}>こちら</Link>
+        <p>新規登録は<Link to="/register">こちら</Link></p>
+        <p>ログインは<Link to="/login">こちら</Link></p>
+        <p><Link to="/top">top</Link></p>
+        
       </div>
     </>
   );

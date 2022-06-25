@@ -4,15 +4,17 @@ import Register from "./Register";
 import Login from "./Login";
 import Mypage from "./Mypage"
 import { createRoot } from "react-dom/client";
+import Top from "./Top";
 
 const App = () => {
   return (
     <div className="container">
       <BrowserRouter>
         <Routes>
-          <Route path={`/register/`} element={<Register />} />
-          <Route path={`/login/`} element={<Login />} />
-          <Route path={`/`} element={<Mypage />} />
+          <Route path={"/register"} element={<Register />} />
+          <Route path={"/login"} element={<Login />} />
+          <Route path={"/"} element={<Mypage />} />
+          <Route path={"/top/"} element={<Top />} />
         </Routes>
       </BrowserRouter>
     </div>
