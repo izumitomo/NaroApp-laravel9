@@ -29,7 +29,6 @@ const Home = () => {
 //      setLoading(false);
     });
   }, []);
-  console.log(user);
 
   const navigate = useNavigate();
   const logout = async () => {

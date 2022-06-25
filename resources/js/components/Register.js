@@ -67,7 +67,7 @@ const Register = () => {
             </div>
             <button>登録する</button>
             <p>
-              ログインは<Link to={`/login/`}>こちら</Link>
+              ログインは<Link to={"/login"}>こちら</Link>
             </p>
           </form>
         </>
