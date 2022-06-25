@@ -22,5 +22,5 @@ Route::post('/search', "App\Http\Controllers\SearchController@call");
 Route::get("/{any}", function(){
     //return abort(404, "");
     return redirect("/");
-    // return view('home');
+    //return view('home');
 });

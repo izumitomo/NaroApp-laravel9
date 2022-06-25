@@ -1,26 +1,16 @@
-import Search from "./Search";
+import Result from "./Result";
 import Loading from "./Loading";
 import axios from 'axios';
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import {
-  Box,
-  Grid,
-  Button,
-  InputLabel,
-  Select,
-  MenuItem,
-  FormGroup,
-  FormControl,
-  FormControlLabel,
-  Checkbox,
-} from '@mui/material';
+import React, { useState, useEffect } from "react";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "../firebase/Config";
+import {Box, Grid, Button, InputLabel, Select, MenuItem, FormGroup, FormControl, FormControlLabel, Checkbox} from '@mui/material';
 import { ThemeProvider, createTheme} from '@mui/material/styles';
 import WifiFindIcon from '@mui/icons-material/WifiFind';
-
 import { Centering, TitleP, GenreP, IsekaiP, SearchP } from "../styles/Home";
 
-export default function Home() {
+const Home = () => {
   const theme = createTheme({
     palette: {
       pink: {
@@ -29,21 +19,39 @@ export default function Home() {
     },
   });
 
-  const [open, setOpen] = React.useState(false);
+  const [user, setUser] = useState("");
+//  const [loading, setLoading] = useState(true);
+
+    /* ↓ログインしているかどうかを判定する */
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+//      setLoading(false);
+    });
+  }, []);
+  console.log(user);
+
+  const navigate = useNavigate();
+  const logout = async () => {
+    await signOut(auth);
+    navigate("/");
+  };
+
+  const [open, setOpen] = useState(false);
   const handleClose = () => {
     setOpen(false);
   };
   const handleOpen = () => {
     setOpen(true);
   };
-  const [genre, setGenre] = React.useState('');
+  const [genre, setGenre] = useState('');
   const genreSelect = (event) => {
     setGenre(event.target.value);
   };
 
 
-  const [checked, setChecked] = React.useState(false);
-  const [notIsekai, setNotIsekai] = React.useState(1);
+  const [checked, setChecked] = useState(false);
+  const [notIsekai, setNotIsekai] = useState(1);
 
   const checkBoxChange = (event) => {
     if (checked == false){
@@ -55,8 +63,8 @@ export default function Home() {
     setChecked(event.target.checked);//処理に時間がかかるのか、どこに入れても最後に実行される。
   };
 
-  const [search, setSearch] = React.useState(false);
-  const [novels, setNovels] = React.useState([]);
+  const [search, setSearch] = useState(false);
+  const [novels, setNovels] = useState([]);
 	const handleSearch = () => {
 		if (genre == "") {
 			window.alert("ジャンル指定を忘れずに……");
@@ -77,7 +85,7 @@ export default function Home() {
     );
   };
 
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = useState(false);
   
   //setNovelsでnovelsにres.data[0]が入るタイミングが遅すぎることによって、searchに
   //responseとしてnovelsを格納した時にnovelsの中身が空のまま送られ、遅れてnovelsに値が入った後に再びsearchが呼ばれているように見える。
@@ -88,6 +96,9 @@ export default function Home() {
   return (
     <ThemeProvider theme={theme}>
       <TitleP>{title}</TitleP>
+      <Link to="/register">とうろく</Link>
+      <Link to="/login">ログイン</Link>
+      <button onClick={logout}>ログアウト</button>
       <Box marginBottom={3}>
         <Grid container spacing={1} columns={10}>
           <Grid item xs={10} sm={4}>
@@ -233,11 +244,12 @@ export default function Home() {
       <div>{loading ? <Loading /> : null}</div>
 
       {search ? (
-        <Search
+        <Result
           //左が渡す名前で右が渡す変数
           novels={novels}
           setNovels={setNovels}
-/*           handleOpen={handleOpen}
+          user={user}
+          /*           handleOpen={handleOpen}
           handleClose={handleClose}
           checkBoxChange={checkBoxChange} */
         />
@@ -246,10 +258,11 @@ export default function Home() {
   );
 }
 
+export default Home;
 
-const container = document.getElementById('app');
+/* const container = document.getElementById('app');
 const root = createRoot(container);
-root.render(<Home/>);
+root.render(<Home/>); */
 
 
 
