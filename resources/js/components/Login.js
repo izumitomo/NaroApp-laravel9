@@ -5,6 +5,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../firebase/Config";
 import { Navigate, Link } from "react-router-dom";
+import useAuthState from "../hooks/useAuthState";
 
 const Login = () => {
   /* ↓state変数を定義 */
@@ -23,18 +24,23 @@ const Login = () => {
   };
 
   /* ↓ログインを判定する設定 */
-  const [user, setUser] = useState();
-
-  useEffect(() => {
+//  const [user, setUser] = useState();
+  
+  /*   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });
-  });
+  }); */
+
+  console.log(useAuthState().isLogin);
+  //{}で括ることで、連想配列名を指定しているっぽい。{}が無かったらエラーが起こる
+  const { isLogin } = useAuthState();
+
 
   return (
     <>
       {/* ↓ログインしている場合、マイページにリダイレクトする設定 */}
-      {user ? (
+      {isLogin ? (
         <Navigate to={`/top`} />
       ) : (
         <>
