@@ -1,22 +1,22 @@
 import RankChart from "./RankChart";
 //import SortButton from "./SortButton";
 /* import PointChart from "./PointChart"; */
-import React from 'react';
+import React, { useState, useEffect, memo } from "react";
 import {Box, Grid} from '@mui/material/';
-import { styleS, styleA, styleB, styleC, styleD, styleE, styleF, styleG } from "../styles/Search";
-import {RankP, PointP, Item, DotItem, NovelTitle, KoshinDiv, KanketsuDiv, MikanDiv, TanpenDiv, ReviewDiv, NoReviewDiv, LengthDiv, StoryP, SortingButton, SortP} from "../styles/Search"
+import { styleS, styleA, styleB, styleC, styleD, styleE, styleF, styleG } from "../styles/Result";
+import {RankP, PointP, Item, DotItem, NovelTitle, KoshinDiv, KanketsuDiv, MikanDiv, TanpenDiv, ReviewDiv, NoReviewDiv, LengthDiv, StoryP, SortingButton, SortP} from "../styles/Result"
 
 const novelUrl = "https://ncode.syosetu.com/";
 
 let ptSortNovels, favSortNovels, revSortNovels, rateSortNovels, comSortNovels;
 // sortNovelsの初期化を関数コンポーネント内のスコープに入れると、chartFlagの変化による再レンダリング時に初期化されてしまい、useEffect内のソートしたsortNovelsが上書きされてしまう。
-const Search = React.memo(({
+const Result = memo(({
 	novels,
 	setNovels,
 }) =>{
 	console.log("AAAAA")
 	const handlePt = () => {
-		//novelsを変更することで、Searchコンポーネントの再レンダリングを行う。
+		//novelsを変更することで、Resultコンポーネントの再レンダリングを行う。
 		setNovels([ptSortNovels, novels[1]]);
 	}
 	const handleFav = () => {
@@ -209,17 +209,17 @@ const Search = React.memo(({
 			);
 		}
 
-		/* 		React.useEffect(() => {
+		/* 		useEffect(() => {
 					//console.log(el.current);
 					console.log(JSON.stringify(el.current.getBoundingClientRect()));
 				}, []); */
 
-		const [story, setStory] = React.useState(
+		const [story, setStory] = useState(
 			novel.story.length < 210
 				? novel.story
 				: novel.story.substring(0, 210) + "……"
 		);
-		React.useEffect(() => {
+		useEffect(() => {
 			setStory(
         novel.story.length < 210
           ? novel.story
@@ -227,7 +227,7 @@ const Search = React.memo(({
       );
 		}, [novels])
 		
-		React.useEffect(() => {
+		useEffect(() => {
 			ptSortNovels = novels[0].concat();
 			ptSortNovels.sort((a, b) => {
 				return b.global_point - a.global_point;
@@ -385,5 +385,5 @@ const Search = React.memo(({
   );
 })
 
-export default Search;
+export default Result;
 

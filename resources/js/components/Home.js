@@ -1,8 +1,7 @@
-import Search from "./Search";
+import Result from "./Result";
 import Loading from "./Loading";
 import axios from 'axios';
-import React from 'react';
-import { createRoot } from 'react-dom/client';
+import React, { useState } from "react";
 import {
   Box,
   Grid,
@@ -17,7 +16,6 @@ import {
 } from '@mui/material';
 import { ThemeProvider, createTheme} from '@mui/material/styles';
 import WifiFindIcon from '@mui/icons-material/WifiFind';
-
 import { Centering, TitleP, GenreP, IsekaiP, SearchP } from "../styles/Home";
 
 export default function Home() {
@@ -29,21 +27,21 @@ export default function Home() {
     },
   });
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleClose = () => {
     setOpen(false);
   };
   const handleOpen = () => {
     setOpen(true);
   };
-  const [genre, setGenre] = React.useState('');
+  const [genre, setGenre] = useState('');
   const genreSelect = (event) => {
     setGenre(event.target.value);
   };
 
 
-  const [checked, setChecked] = React.useState(false);
-  const [notIsekai, setNotIsekai] = React.useState(1);
+  const [checked, setChecked] = useState(false);
+  const [notIsekai, setNotIsekai] = useState(1);
 
   const checkBoxChange = (event) => {
     if (checked == false){
@@ -55,8 +53,8 @@ export default function Home() {
     setChecked(event.target.checked);//処理に時間がかかるのか、どこに入れても最後に実行される。
   };
 
-  const [search, setSearch] = React.useState(false);
-  const [novels, setNovels] = React.useState([]);
+  const [search, setSearch] = useState(false);
+  const [novels, setNovels] = useState([]);
 	const handleSearch = () => {
 		if (genre == "") {
 			window.alert("ジャンル指定を忘れずに……");
@@ -77,7 +75,7 @@ export default function Home() {
     );
   };
 
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = useState(false);
   
   //setNovelsでnovelsにres.data[0]が入るタイミングが遅すぎることによって、searchに
   //responseとしてnovelsを格納した時にnovelsの中身が空のまま送られ、遅れてnovelsに値が入った後に再びsearchが呼ばれているように見える。
@@ -233,7 +231,7 @@ export default function Home() {
       <div>{loading ? <Loading /> : null}</div>
 
       {search ? (
-        <Search
+        <Result
           //左が渡す名前で右が渡す変数
           novels={novels}
           setNovels={setNovels}
@@ -247,9 +245,9 @@ export default function Home() {
 }
 
 
-const container = document.getElementById('app');
+/* const container = document.getElementById('app');
 const root = createRoot(container);
-root.render(<Home/>);
+root.render(<Home/>); */
 
 
 

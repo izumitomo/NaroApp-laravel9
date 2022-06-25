@@ -1,4 +1,31 @@
 import React from "react";
+import Home from "./Home";
+import Register from "./Register";
+import Login from "./Login";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { createRoot } from "react-dom/client";
+
+//import Search from "./Search";
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path={"/register"} element={<Register />} />
+        <Route path={"/login"} element={<Login />} />{" "}
+      </Routes>
+    </BrowserRouter>
+  );
+};
+
+export default App;
+
+const container = document.getElementById("app");
+const root = createRoot(container);
+root.render(<App />);
+
+/* import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Register from "./Register";
 import Login from "./Login";
@@ -25,30 +52,4 @@ const container = document.getElementById("app");
 const root = createRoot(container);
 root.render(<App />);
 
-export default App;
-
-/* 
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./Home";
-import Search from "./Search";
-
-const App = () =>{
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/search" element={<Search />} />
-      </Routes>
-    </BrowserRouter>
-  );
-};
-
-export default App;
-
-if (document.getElementById('app')) {
-  ReactDOM.render(<App />, document.getElementById('app'));
-}
- */
+export default App; */

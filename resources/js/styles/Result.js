@@ -40,6 +40,7 @@ export const RankP = styled.p`
   text-align: center;
   font-size: 44px;
   margin: auto;
+  font-family: "pixel10-b";
   @media (min-width: 1200px) {
     font-size: 60px;
   }
@@ -58,12 +59,14 @@ export const PointP = styled(RankP)`
 
 export const Item = styled(Paper)`
   &&&{
+    font-family: "pixel10-b";
 		padding: 8px;
 		text-align center;
 	}
 `;
 
 export const DotItem = styled(Paper)`
+  font-family: "pixel10-b";
   text-align: center;
   font-size: 20px;
   white-space: nowrap;
@@ -91,6 +94,7 @@ export const NovelTitle = styled.a`
 `;
 
 export const KoshinDiv = styled.div`
+  font-family: "pixel10-b";
   display: block;
   text-align: center;
   font-size: 20px;
@@ -136,6 +140,7 @@ export const MikanDiv = styled(KoshinDiv)`
 `;
 
 export const TanpenDiv = styled.div`
+  font-family: "pixel10-b";
   display: block;
   text-align: center;
   font-size: 20px;
@@ -206,6 +211,7 @@ export const SortingButton = styled(Button)`
 
 export const SortP = styled.p`
   &&& {
+    font-family: "pixel10-b";
     font-size: 35px;
     text-align: center;
     @media (max-width: 600px) {
