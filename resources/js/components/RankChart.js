@@ -93,10 +93,10 @@ const averageData = {
   ],
 };
 
-export default function RankChart({
+const RankChart = ({
   rank,
   novels,
-}) {
+}) => {
   const [chartFlag, setChartFlag] = React.useState(false);
   //スクロール処理
   let graphAnim = function () {
@@ -148,3 +148,5 @@ export default function RankChart({
     </div>
   );
 }
+
+export default RankChart;

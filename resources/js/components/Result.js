@@ -1,37 +1,18 @@
 import RankChart from "./RankChart";
-//import SortButton from "./SortButton";
+import SortButton from "./SortButton";
 /* import PointChart from "./PointChart"; */
 import React, { useState, useEffect, memo } from "react";
 import {Box, Grid} from '@mui/material/';
 import { styleS, styleA, styleB, styleC, styleD, styleE, styleF, styleG } from "../styles/Result";
-import {RankP, PointP, Item, DotItem, NovelTitle, KoshinDiv, KanketsuDiv, MikanDiv, TanpenDiv, ReviewDiv, NoReviewDiv, LengthDiv, StoryP, SortingButton, SortP} from "../styles/Result"
+import {RankP, PointP, Item, DotItem, NovelTitle, KoshinDiv, KanketsuDiv, MikanDiv, TanpenDiv, ReviewDiv, NoReviewDiv, LengthDiv, StoryP,} from "../styles/Result"
 
 const novelUrl = "https://ncode.syosetu.com/";
 
-let ptSortNovels, favSortNovels, revSortNovels, rateSortNovels, comSortNovels;
-// sortNovelsの初期化を関数コンポーネント内のスコープに入れると、chartFlagの変化による再レンダリング時に初期化されてしまい、useEffect内のソートしたsortNovelsが上書きされてしまう。
 const Result = memo(({
 	novels,
 	setNovels,
-}) =>{
-	console.log("AAAAA")
-	const handlePt = () => {
-		//novelsを変更することで、Resultコンポーネントの再レンダリングを行う。
-		setNovels([ptSortNovels, novels[1]]);
-	}
-	const handleFav = () => {
-		setNovels([favSortNovels, novels[1]]);
-	}
-	const handleRev = () => {
-		setNovels([revSortNovels, novels[1]]);
-	}
-	const handleRate = () => {
-		setNovels([rateSortNovels, novels[1]]);
-	}
-	const handleCom = () => {
-		setNovels([comSortNovels, novels[1]]);
-	}
-	
+	user,
+}) => {
 	
 	//中心をランクC（5点）としてC,B,A,S,SS,SSSに分けるために6で割る。
 	const pointUpScale = (novels[1].max_global_point - novels[1].global_point) / 6;
@@ -225,33 +206,7 @@ const Result = memo(({
           ? novel.story
           : novel.story.substring(0, 210) + "……"
       );
-		}, [novels])
-		
-		useEffect(() => {
-			ptSortNovels = novels[0].concat();
-			ptSortNovels.sort((a, b) => {
-				return b.global_point - a.global_point;
-			})
-			favSortNovels = novels[0].concat();
-			favSortNovels.sort((a, b) => {
-				return b.fav_novel_cnt - a.fav_novel_cnt;
-			})
-			revSortNovels = novels[0].concat();
-			revSortNovels.sort((a, b) => {
-				return b.all_hyoka_cnt - a.all_hyoka_cnt;
-			})
-			comSortNovels = novels[0].concat();
-			comSortNovels.sort((a, b) => {
-				return b.impression_cnt - a.impression_cnt;
-			})
-			rateSortNovels = novels[0].concat();
-			rateSortNovels.sort((a, b) => {
-				return b.average_rate - a.average_rate;
-			})
-			//console.log(ptSortNovels);
-			console.log("useEffect sort complete!")
-		}, [novels]);
-		
+		}, [novels])		
 		
 		return (
 			<div key={novel.ncode}>
@@ -348,38 +303,7 @@ const Result = memo(({
 	
 	return (
     <div>
-      <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={1} columns={20} textAlign="center">
-          <Grid item xs={20} md={5}>
-            <SortP>ならびかえ</SortP>
-          </Grid>
-          <Grid item xs={4} md={3}>
-            <SortingButton variant="contained" onClick={handlePt}>
-              Pt
-            </SortingButton>
-          </Grid>
-          <Grid item xs={4} md={3}>
-            <SortingButton variant="contained" onClick={handleFav}>
-              Fav
-            </SortingButton>
-          </Grid>
-          <Grid item xs={4} md={3}>
-            <SortingButton variant="contained" onClick={handleRev}>
-              Rev
-            </SortingButton>
-          </Grid>
-          <Grid item xs={4} md={3}>
-            <SortingButton variant="contained" onClick={handleRate}>
-              Rate
-            </SortingButton>
-          </Grid>
-          <Grid item xs={4} md={3}>
-            <SortingButton variant="contained" onClick={handleCom}>
-              Com
-            </SortingButton>
-          </Grid>
-        </Grid>
-      </Box>
+			<SortButton novels={novels} setNovels={setNovels} user={user} />
       {novelDataList}
     </div>
   );

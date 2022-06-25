@@ -1,24 +1,16 @@
 import Result from "./Result";
 import Loading from "./Loading";
 import axios from 'axios';
-import React, { useState } from "react";
-import {
-  Box,
-  Grid,
-  Button,
-  InputLabel,
-  Select,
-  MenuItem,
-  FormGroup,
-  FormControl,
-  FormControlLabel,
-  Checkbox,
-} from '@mui/material';
+import React, { useState, useEffect } from "react";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "../firebase/Config";
+import {Box, Grid, Button, InputLabel, Select, MenuItem, FormGroup, FormControl, FormControlLabel, Checkbox} from '@mui/material';
 import { ThemeProvider, createTheme} from '@mui/material/styles';
 import WifiFindIcon from '@mui/icons-material/WifiFind';
 import { Centering, TitleP, GenreP, IsekaiP, SearchP } from "../styles/Home";
 
-export default function Home() {
+const Home = () => {
   const theme = createTheme({
     palette: {
       pink: {
@@ -26,6 +18,24 @@ export default function Home() {
       },
     },
   });
+
+  const [user, setUser] = useState("");
+//  const [loading, setLoading] = useState(true);
+
+    /* ↓ログインしているかどうかを判定する */
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+//      setLoading(false);
+    });
+  }, []);
+  console.log(user);
+
+  const navigate = useNavigate();
+  const logout = async () => {
+    await signOut(auth);
+    navigate("/");
+  };
 
   const [open, setOpen] = useState(false);
   const handleClose = () => {
@@ -86,6 +96,9 @@ export default function Home() {
   return (
     <ThemeProvider theme={theme}>
       <TitleP>{title}</TitleP>
+      <Link to="/register">とうろく</Link>
+      <Link to="/login">ログイン</Link>
+      <button onClick={logout}>ログアウト</button>
       <Box marginBottom={3}>
         <Grid container spacing={1} columns={10}>
           <Grid item xs={10} sm={4}>
@@ -235,7 +248,8 @@ export default function Home() {
           //左が渡す名前で右が渡す変数
           novels={novels}
           setNovels={setNovels}
-/*           handleOpen={handleOpen}
+          user={user}
+          /*           handleOpen={handleOpen}
           handleClose={handleClose}
           checkBoxChange={checkBoxChange} */
         />
@@ -244,6 +258,7 @@ export default function Home() {
   );
 }
 
+export default Home;
 
 /* const container = document.getElementById('app');
 const root = createRoot(container);

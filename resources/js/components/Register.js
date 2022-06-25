@@ -42,7 +42,7 @@ const Register = () => {
     <>
       {/* ↓ログインしていればマイページを表示 */}
       {user ? (
-        <Navigate to={"/top"} />
+        <Navigate to={"/"} />
       ) : (
         <>
           <h1>新規登録</h1>
