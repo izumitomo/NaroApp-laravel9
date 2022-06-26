@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import {
   signInWithEmailAndPassword,
-  onAuthStateChanged
+  onAuthStateChanged,
+  signInWithPopup,
 } from "firebase/auth";
-import { auth } from "../firebase/Config";
+import { auth, provider } from "../firebase/Config";
 import { Navigate, Link } from "react-router-dom";
 
 const Login = () => {
@@ -14,11 +15,20 @@ const Login = () => {
   /* ↓関数「handleSubmit」を定義 */
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
     } catch (error) {
       alert("メールアドレスまたはパスワードが間違っています");
+    }
+  };
+
+  //console.log(auth);
+  const handleLogin = async (e) => {
+    try {
+      await signInWithPopup(auth, provider);
+      alert("success : " + user.user.displayName + "さんでログインしました");
+    } catch (error) {
+      console.log(error.message);
     }
   };
 
@@ -62,9 +72,10 @@ const Login = () => {
             </div>
             <button>ログイン</button>
             <p>
-              新規登録は<Link to={`/register/`}>こちら</Link>
+              新規登録は<Link to={"/register"}>こちら</Link>
             </p>
           </form>
+          <button onClick={handleLogin}>Googleログイン</button>
         </>
       )}
     </>
