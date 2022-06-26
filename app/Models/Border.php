@@ -7,35 +7,64 @@ use Illuminate\Database\Eloquent\Model;
 
 class Border extends Model
 {
-    protected $fillable = [
-        "genre",
-        "tensei_or_tenni",
-        "global_point",
-        "favorite_count",
-        "reviewer_count",
-        "comment_count",
-        "length_per_point",
-        "max_global_point",
-        "max_favorite_count",
-        "max_reviewer_count",
-        "max_average_rate",
-        "max_comment_count",
-    ];
-    //タイムスタンプ無効化
-    public $timestamps = false;
-    
-    public function setBorder (int $genre, int $not_isekai)
+	protected $fillable = [
+		"genre",
+		"tensei_or_tenni",
+		"global_point",
+		"favorite_count",
+		"reviewer_count",
+		"comment_count",
+		"length_per_point",
+		"max_global_point",
+		"max_favorite_count",
+		"max_reviewer_count",
+		"max_average_rate",
+		"max_comment_count",
+	];
+	//タイムスタンプ無効化
+	public $timestamps = false;
+	
+	public function setBorder (array $results)
+	{
+//		$results = call_user_func($method, $order, $genre, $not_isekai);
+		//得られた値をDBに格納
+		$border = new Border();
+		$border -> order = $results["order"];
+		$border -> genre = $results["genre"];
+		$border -> tensei_or_tenni = $results["tensei_or_tenni"];
+		$border ->global_point = $results["global_point"];
+		$border -> favorite_count = $results["favorite_count"];
+		$border -> reviewer_count = $results["reviewer_count"];
+		$border -> average_rate = $results["average_rate"];
+		$border -> comment_count = $results["comment_count"];
+		$border -> length_per_point = $results["length_per_point"];
+		$border -> max_global_point = $results["max_global_point"];
+		$border -> max_favorite_count = $results["max_favorite_count"];
+		$border -> max_reviewer_count = $results["max_reviewer_count"];
+		$border -> max_average_rate = $results["max_average_rate"];
+		$border -> max_comment_count = $results["max_comment_count"];
+		
+		$border -> save();
+	}
+	
+	public function dropBorder()
+	{
+		//bordersテーブルの全レコードを削除
+		Border::query() ->  delete();
+	}
+
+	public function calcBorder (string $order, int $genre, int $not_isekai)
     //$not_isekaiをbool型にするとURLに文字列として入れる時に弊害あり。not系パラメータは1かどうかしか見ていないが便宜上0を入れておく。
     {
-        $url= 'https://api.syosetu.com/novelapi/api/?lim=100&genre=' . $genre . '&nottensei=' . $not_isekai . '&nottenni=' . $not_isekai . '&order=weekly&out=json';
+        $url= "https://api.syosetu.com/novelapi/api/?lim=100&genre=$genre&nottensei=$not_isekai&nottenni=$not_isekai&order=$order&out=json";
         //var_dump($url);
         // ストリームコンテキストのオプションを作成
         $options = array(
             // HTTPコンテキストオプションをセット
-            'http' => array(
-                'method' => 'GET',
-                'header' => 'User-Agent: *',
-                            //'Content-type: application/json; charset=UTF-8' //JSON形式で表示
+            "http" => array(
+                "method" => "GET",
+                "header" => "User-Agent: *",
+                            //"Content-type: application/json; charset=UTF-8" //JSON形式で表示
             )
         );
             
@@ -126,30 +155,25 @@ class Border extends Model
         var_dump($max_average_rate);
         var_dump($max_comment_count); */
         
-        //得られた値をDBに格納
-        $border = new Border();
-        
-        $border -> genre = $genre;
-        $border -> tensei_or_tenni = !($not_isekai);
-        $border ->global_point = $global_point;
-        $border -> favorite_count = $favorite_count;
-        $border -> reviewer_count = $reviewer_count;
-        $border -> average_rate = $average_rate;
-        $border -> comment_count = $comment_count;
-        $border -> length_per_point = $length_per_point;
-        $border -> max_global_point = $max_global_point;
-        $border -> max_favorite_count = $max_favorite_count;
-        $border -> max_reviewer_count = $max_reviewer_count;
-        $border -> max_average_rate = $max_average_rate;
-        $border -> max_comment_count = $max_comment_count;
-        
-        $border -> save();
+				$results = array(
+					"order" => $order,
+					"genre" => $genre,
+					"tensei_or_tenni" => !($not_isekai),
+					"global_point" => $global_point,
+					"favorite_count" => $favorite_count,
+					"reviewer_count" => $reviewer_count,
+					"average_rate" => $average_rate,
+					"comment_count" => $comment_count,
+					"length_per_point" => $length_per_point,
+					"max_global_point" => $max_global_point,
+					"max_favorite_count" => $max_favorite_count,
+					"max_reviewer_count" => $max_reviewer_count,
+					"max_average_rate" => $max_average_rate,
+					"max_comment_count" => $max_comment_count,
+				);
+				logger($results);
+        return $results;
     }
-    
-    public function dropBorder()
-    {
-        //bordersテーブルの全レコードを削除
-        Border::query() ->  delete();
-    }
+	
 }
 
