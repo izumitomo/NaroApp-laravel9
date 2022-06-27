@@ -1,12 +1,6 @@
 import styled from "styled-components";
-import {Paper, Button} from "@mui/material/";
+import {Paper,} from "@mui/material/";
 
-export const styleSSS = {
-  color: "#FF99FF",
-};
-export const styleSS = {
-  color: "#FF99FF",
-};
 export const styleS = {
   color: "#FF99FF",
 };
@@ -85,11 +79,10 @@ export const DotItem = styled(Paper)`
 export const NovelTitle = styled.a`
   text-align: center;
   color: black;
-  font-size: 20px;
+  font-size: 24px;
   font-family: "milk-b";
-
   @media (max-width: 600px) {
-    font-size: 15px;
+    font-size: 16px;
   }
 `;
 
@@ -195,4 +188,5 @@ export const OrderP = styled.p`
   font-size: 40px;
   padding: 0px;
   text-align: center;
+  margin: auto;
 `;

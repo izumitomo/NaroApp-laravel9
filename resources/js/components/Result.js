@@ -111,20 +111,28 @@ const Result = memo(({
 				}
 			}
 		}
+		//順位のstyleを格納
+		let styleOrder; 
+		if (index <= 10) { styleOrder = styleS; }
+		else if (index <= 20) { styleOrder = styleA; }
+		else if (index <= 30) { styleOrder = styleB; }
+		else if (index <= 40) { styleOrder = styleC; }
+		else if (index <= 50) { styleOrder = styleD; }
+		console.log(styleOrder)
 
 		//ランクをアルファベットにして格納
 		let styleRank = [];
 		novelRankNum.forEach(function (rank) {
-			if (rank == 10) { novelRankAlpha.push("SSS"); styleRank.push(styleS) }
-			else if (rank == 9) { novelRankAlpha.push("SS"); styleRank.push(styleS) }
-			else if (rank == 8) { novelRankAlpha.push("S"); styleRank.push(styleS) }
-			else if (rank == 7) { novelRankAlpha.push("A"); styleRank.push(styleA) }
-			else if (rank == 6) { novelRankAlpha.push("B"); styleRank.push(styleB) }
-			else if (rank == 5) { novelRankAlpha.push("C"); styleRank.push(styleC) }
-			else if (rank == 4) { novelRankAlpha.push("D"); styleRank.push(styleD) }
-			else if (rank == 3) { novelRankAlpha.push("E"); styleRank.push(styleE) }
-			else if (rank == 2) { novelRankAlpha.push("F"); styleRank.push(styleF) }
-			else if (rank == 1) { novelRankAlpha.push("G"); styleRank.push(styleG) }
+			if (rank == 10) { novelRankAlpha.push("SSS"); styleRank.push(styleS); }
+			else if (rank == 9) { novelRankAlpha.push("SS"); styleRank.push(styleS); }
+			else if (rank == 8) { novelRankAlpha.push("S"); styleRank.push(styleS); }
+			else if (rank == 7) { novelRankAlpha.push("A"); styleRank.push(styleA); }
+			else if (rank == 6) { novelRankAlpha.push("B"); styleRank.push(styleB); }
+			else if (rank == 5) { novelRankAlpha.push("C"); styleRank.push(styleC); }
+			else if (rank == 4) { novelRankAlpha.push("D"); styleRank.push(styleD); }
+			else if (rank == 3) { novelRankAlpha.push("E"); styleRank.push(styleE); }
+			else if (rank == 2) { novelRankAlpha.push("F"); styleRank.push(styleF); }
+			else if (rank == 1) { novelRankAlpha.push("G"); styleRank.push(styleG); }
 			else { novelRankAlpha.push("N"); styleRank.push(styleN) }
 		})
 		
@@ -190,11 +198,6 @@ const Result = memo(({
 			);
 		}
 
-		/* 		useEffect(() => {
-					//console.log(el.current);
-					console.log(JSON.stringify(el.current.getBoundingClientRect()));
-				}, []); */
-
 		const [story, setStory] = useState(
 			novel.story.length < 210
 				? novel.story
@@ -212,8 +215,8 @@ const Result = memo(({
 			<div key={novel.ncode}>
 				<Box sx={{ flexGrow: 1 }}>
 					<Grid container spacing={1} columns={20} marginBottom={1} marginTop={1} >
-						<Grid item xs={2} margin="auto">
-							<OrderP>{index + 1}</OrderP>
+						<Grid item xs={2}>
+							<OrderP styles={styleOrder}>{index + 1}</OrderP>
 						</Grid>
 						<Grid item xs={18} margin="auto">
 							<NovelTitle href={novelUrl + novel.ncode} target="_blank">
