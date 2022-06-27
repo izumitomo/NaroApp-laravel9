@@ -6,6 +6,7 @@
 	<title>なろーせんとーりょく！</title>
 	<link href="{{ asset('css/app.css') }}" rel="stylesheet" />
 	<link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+	<link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
 	<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
 
 	
