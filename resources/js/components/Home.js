@@ -69,7 +69,7 @@ const Home = () => {
 		if (genre == "") {
 			window.alert("ジャンル指定を忘れずに……");
 			return false;
-		}
+    }
     setLoading(true);
     const data = {
       genre : genre,
@@ -80,7 +80,7 @@ const Home = () => {
       setNovels(res.data);
       console.log(res.data)//dataはbodyとかheaderのやつ。
       setSearch(true);
-      setLoading(false)
+      setLoading(false);
     }
     );
   };

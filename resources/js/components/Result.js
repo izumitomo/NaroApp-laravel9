@@ -118,7 +118,6 @@ const Result = memo(({
 		else if (index <= 30) { styleOrder = styleB; }
 		else if (index <= 40) { styleOrder = styleC; }
 		else if (index <= 50) { styleOrder = styleD; }
-		console.log(styleOrder)
 
 		//ランクをアルファベットにして格納
 		let styleRank = [];
@@ -208,7 +207,7 @@ const Result = memo(({
         novel.story.length < 210
           ? novel.story
           : novel.story.substring(0, 210) + "……"
-      );
+			);
 		}, [novels])		
 		
 		return (
@@ -216,7 +215,7 @@ const Result = memo(({
 				<Box sx={{ flexGrow: 1 }}>
 					<Grid container spacing={1} columns={20} marginBottom={1} marginTop={1} >
 						<Grid item xs={2}>
-							<OrderP styles={styleOrder}>{index + 1}</OrderP>
+							<OrderP style={styleOrder}>{index + 1}</OrderP>
 						</Grid>
 						<Grid item xs={18} margin="auto">
 							<NovelTitle href={novelUrl + novel.ncode} target="_blank">
