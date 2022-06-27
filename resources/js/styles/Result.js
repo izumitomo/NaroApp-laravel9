@@ -85,11 +85,11 @@ export const DotItem = styled(Paper)`
 export const NovelTitle = styled.a`
   text-align: center;
   color: black;
-  font-size: 25px;
+  font-size: 20px;
   font-family: "milk-b";
 
   @media (max-width: 600px) {
-    font-size: 18px;
+    font-size: 15px;
   }
 `;
 
@@ -188,4 +188,11 @@ export const LengthDiv = styled.div`
 
 export const StoryP = styled.p`
   font-family: "milk-b";
+`;
+
+export const OrderP = styled.p`
+  font-family: "pixel10-b";
+  font-size: 40px;
+  padding: 0px;
+  text-align: center;
 `;

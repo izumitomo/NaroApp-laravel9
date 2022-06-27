@@ -3,7 +3,7 @@ import SortButton from "./SortButton";
 /* import PointChart from "./PointChart"; */
 import React, { useState, useEffect, memo } from "react";
 import {Box, Grid} from '@mui/material/';
-import { styleS, styleA, styleB, styleC, styleD, styleE, styleF, styleG } from "../styles/Result";
+import { styleS, styleA, styleB, styleC, styleD, styleE, styleF, styleG, OrderP } from "../styles/Result";
 import {RankP, PointP, Item, DotItem, NovelTitle, KoshinDiv, KanketsuDiv, MikanDiv, TanpenDiv, ReviewDiv, NoReviewDiv, LengthDiv, StoryP,} from "../styles/Result"
 
 const novelUrl = "https://ncode.syosetu.com/";
@@ -211,22 +211,17 @@ const Result = memo(({
 		return (
 			<div key={novel.ncode}>
 				<Box sx={{ flexGrow: 1 }}>
-					<Grid container spacing={1} columns={20}>
-						<Grid item xs={20}>
-							<div
-								style={{ textAlign: "center", marginBottom: 10, marginTop: 10 }}
-							>
-								<NovelTitle href={novelUrl + novel.ncode} target="_blank">
-									{novel.title}
-								</NovelTitle>
-							</div>
+					<Grid container spacing={1} columns={20} marginBottom={1} marginTop={1} >
+						<Grid item xs={2} margin="auto">
+							<OrderP>{index + 1}</OrderP>
+						</Grid>
+						<Grid item xs={18} margin="auto">
+							<NovelTitle href={novelUrl + novel.ncode} target="_blank">
+								{novel.title}
+							</NovelTitle>
 						</Grid>
 						<Grid container spacing={1} columns={20} alignItems="center">
-							<Grid
-								item
-								xs={20}
-								sm={5}
-								sx={{
+							<Grid item xs={20} sm={5}sx={{
 									minHeight: 60,
 									minWidth: 60,
 								}}
