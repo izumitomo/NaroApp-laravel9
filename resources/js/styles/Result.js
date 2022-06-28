@@ -1,49 +1,106 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import {Paper,} from "@mui/material/";
-
-export const styleSSS = {
-  color: "#FF99FF",
-};
-export const styleSS = {
-  color: "#FF99FF",
-};
-export const styleS = {
-  color: "#FF99FF",
-};
-export const styleA = {
-  color: "#FF33CC",
-};
-export const styleB = {
-  color: "#FF0000",
-};
-export const styleC = {
-  color: "#FFC000",
-};
-export const styleD = {
-  color: "#FFD966",
-};
-export const styleE = {
-  color: "#70AD47",
-};
-export const styleF = {
-  color: "#4472C4",
-};
-export const styleG = {
-  color: "#A5A5A5",
-};
-export const styleN = {
-  textAlign: "center",
-  color: "black",
-};
 
 export const RankP = styled.p`
   text-align: center;
-  font-size: 44px;
+  font-size: 40px;
   margin: auto;
   font-family: "pixel10-b";
-  @media (min-width: 1200px) {
+  @media (max-width: 1200px) and (min-width: 991px) {
     font-size: 60px;
   }
+  @media (min-width: 1201px) {
+    font-size: 70px;
+  }
+`;
+const shine = keyframes`
+  0% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+`;
+
+const shineSS = keyframes`
+  0% {
+		background-position: 100% 50%;
+	}
+  50% {
+    text-shadow: 0 0 10px #fff;
+  }
+	100% {
+		background-position: 0% 50%;
+	}
+`;
+const shineSSS = keyframes`
+  0% {
+		background-position: 100% 50%;
+	}
+  50% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff00de;
+  }
+	100% {
+		background-position: 0% 50%;
+	}
+`;
+
+export const SSSRankP = styled(RankP)`
+  background-image: linear-gradient(70deg, #ff99ff 48%, #fff 50%, #ff99ff 52%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: ${shineSSS} 3s infinite;
+`;
+export const SSRankP = styled(RankP)`
+  background-image: linear-gradient(70deg, #ff99ff 48%, #fff 50%, #ff99ff 52%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: ${shineSS} 3s infinite;
+`;
+export const SRankP = styled(RankP)`
+  background-image: linear-gradient(70deg, #ff99ff 48%, #fff 50%, #ff99ff 52%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: ${shine} 3s infinite;
+`;
+export const ARankP = styled(RankP)`
+  background-image: linear-gradient(70deg, #ff33cc 48%, #fff 50%, #ff33cc 52%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: ${shine} 3s infinite;
+`;
+export const BRankP = styled(RankP)`
+  background-image: linear-gradient(70deg, #ff0000 48%, #fff 50%, #ff0000 52%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: ${shine} 3s infinite;
+`;
+export const CRankP = styled(RankP)`
+  background-image: linear-gradient(70deg, #ffcc00 48%, #fff 50%, #ffcc00 52%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: ${shine} 3s infinite;
+`;
+export const DRankP = styled(RankP)`
+  color: #ffd966;
+`;
+export const ERankP = styled(RankP)`
+  color: #70ad47;
+`;
+export const FRankP = styled(RankP)`
+  color: #4472c4;
+`;
+export const GRankP = styled(RankP)`
+  color: #a5a5a5;
+`;
+export const NRankP = styled(RankP)`
+  color: black;
 `;
 
 export const PointP = styled(RankP)`

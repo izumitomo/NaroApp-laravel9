@@ -93,7 +93,6 @@ const averageData = {
   ],
 };
 
-let aniFlag = true;
 const RankChart = ({
   rank,
   novels,
@@ -114,10 +113,9 @@ const RankChart = ({
       setChartFlag(false);
     } */
     };
-    if (aniFlag) {
 //      window.addEventListener("load", graphAnim); // 読み込み時の処理
       window.addEventListener("scroll", graphAnim); // スクロール時の処理
-    }
+
     return () => {
       console.log("willunmount!!");
       removeEventListener("scroll", graphAnim);

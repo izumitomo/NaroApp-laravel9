@@ -3,8 +3,8 @@ import SortButton from "./SortButton";
 /* import PointChart from "./PointChart"; */
 import React, { useState, useEffect, memo } from "react";
 import {Box, Grid} from '@mui/material/';
-import { styleS, styleA, styleB, styleC, styleD, styleE, styleF, styleG, OrderP, styleSS, styleSSS } from "../styles/Result";
-import {RankP, PointP, Item, DotItem, NovelTitle, KoshinDiv, KanketsuDiv, MikanDiv, TanpenDiv, ReviewDiv, NoReviewDiv, LengthDiv, StoryP,} from "../styles/Result"
+import { ARankP, BRankP, CRankP, DRankP, ERankP, FRankP, GRankP, NRankP, SRankP, SSRankP, SSSRankP } from "../styles/Result";
+import { PointP, Item, DotItem, NovelTitle, KoshinDiv, KanketsuDiv, MikanDiv, TanpenDiv, ReviewDiv, NoReviewDiv, LengthDiv, StoryP, OrderP} from "../styles/Result"
 
 const novelUrl = "https://ncode.syosetu.com/";
 
@@ -113,33 +113,32 @@ const Result = memo(({
 		}
 		//順位のstyleを格納
 		let styleOrder; 
-		if (index <= 9) { styleOrder = styleSSS; }
-		else if (index <= 19) { styleOrder = styleSS; }
-		else if (index <= 29) { styleOrder = styleS; }
-		else if (index <= 39) { styleOrder = styleA; }
-		else if (index <= 49) { styleOrder = styleB; }
-		else if (index <= 59) { styleOrder = styleC; }
-		else if (index <= 69) { styleOrder = styleD; }
-		else if (index <= 79) { styleOrder = styleE; }
-		else if (index <= 89) { styleOrder = styleF; }
-		else { styleOrder = styleG; }
+		if (index <= 9) { styleOrder = <SSSRankP>{index + 1}</SSSRankP>; }
+		else if (index <= 19) { styleOrder = <SSRankP>{index + 1}</SSRankP>; }
+		else if (index <= 29) { styleOrder = <SRankP>{index + 1}</SRankP>; }
+		else if (index <= 39) { styleOrder = <ARankP>{index + 1}</ARankP>; }
+		else if (index <= 49) { styleOrder = <BRankP>{index + 1}</BRankP>; }
+		else if (index <= 59) { styleOrder = <CRankP>{index + 1}</CRankP>; }
+		else if (index <= 69) { styleOrder = <DRankP>{index + 1}</DRankP>; }
+		else if (index <= 79) { styleOrder = <ERankP>{index + 1}</ERankP>; }
+		else if (index <= 89) { styleOrder = <FRankP>{index + 1}</FRankP>; }
+		else { styleOrder = <GRankP>{index + 1}</GRankP>; } 
 
 
 
-		//ランクをアルファベットにして格納
-		let styleRank = [];
+		//ランクをアルファベットにしてタグごと格納
 		novelRankNum.forEach(function (rank) {
-			if (rank == 10) { novelRankAlpha.push("SSS"); styleRank.push(styleS); }
-			else if (rank == 9) { novelRankAlpha.push("SS"); styleRank.push(styleS); }
-			else if (rank == 8) { novelRankAlpha.push("S"); styleRank.push(styleS); }
-			else if (rank == 7) { novelRankAlpha.push("A"); styleRank.push(styleA); }
-			else if (rank == 6) { novelRankAlpha.push("B"); styleRank.push(styleB); }
-			else if (rank == 5) { novelRankAlpha.push("C"); styleRank.push(styleC); }
-			else if (rank == 4) { novelRankAlpha.push("D"); styleRank.push(styleD); }
-			else if (rank == 3) { novelRankAlpha.push("E"); styleRank.push(styleE); }
-			else if (rank == 2) { novelRankAlpha.push("F"); styleRank.push(styleF); }
-			else if (rank == 1) { novelRankAlpha.push("G"); styleRank.push(styleG); }
-			else { novelRankAlpha.push("N"); styleRank.push(styleN) }
+			if (rank == 10) { novelRankAlpha.push(<SSSRankP>SSS</SSSRankP >); }
+			else if (rank == 9) { novelRankAlpha.push(<SSRankP>SS</SSRankP>); }
+			else if (rank == 8) { novelRankAlpha.push(<SRankP>S</SRankP>);}
+			else if (rank == 7) { novelRankAlpha.push(<ARankP>A</ARankP>);}
+			else if (rank == 6) { novelRankAlpha.push(<BRankP>B</BRankP>);}
+			else if (rank == 5) { novelRankAlpha.push(<CRankP>C</CRankP>);}
+			else if (rank == 4) { novelRankAlpha.push(<DRankP>D</DRankP>);}
+			else if (rank == 3) { novelRankAlpha.push(<ERankP>E</ERankP>);}
+			else if (rank == 2) { novelRankAlpha.push(<FRankP>F</FRankP>);}
+			else if (rank == 1) { novelRankAlpha.push(<GRankP>G</GRankP>);}
+			else { novelRankAlpha.push(<NRankP>N</NRankP>);}
 		})
 		
 		//更新状態を判別
@@ -222,7 +221,7 @@ const Result = memo(({
 				<Box sx={{ flexGrow: 1 }}>
 					<Grid container spacing={1} columns={20} marginBottom={1} marginTop={1} >
 						<Grid item xs={2}>
-							<OrderP style={styleOrder}>{index + 1}</OrderP>
+							{styleOrder}
 						</Grid>
 						<Grid item xs={18} margin="auto">
 							<NovelTitle href={novelUrl + novel.ncode} target="_blank">
@@ -243,7 +242,7 @@ const Result = memo(({
 								<DotItem>
 									ポイント
 									<br />
-									<RankP style={styleRank[0]}>{novelRankAlpha[0]}</RankP>
+									{novelRankAlpha[0]}
 									<PointP>{novel.global_point}</PointP>
 								</DotItem>
 							</Grid>
@@ -251,7 +250,7 @@ const Result = memo(({
 								<DotItem>
 									ブクマ
 									<br />
-									<RankP style={styleRank[1]}>{novelRankAlpha[1]}</RankP>
+									{novelRankAlpha[1]}
 									<PointP>{novel.fav_novel_cnt}</PointP>
 								</DotItem>
 							</Grid>
@@ -259,7 +258,7 @@ const Result = memo(({
 								<DotItem>
 									ひょうかしゃ
 									<br />
-									<RankP style={styleRank[2]}>{novelRankAlpha[2]}</RankP>
+									{novelRankAlpha[2]}
 									<PointP>{novel.all_hyoka_cnt}</PointP>
 								</DotItem>
 							</Grid>
@@ -267,7 +266,7 @@ const Result = memo(({
 								<DotItem>
 									へいきんてん
 									<br />
-									<RankP style={styleRank[3]}>{novelRankAlpha[3]}</RankP>
+									{novelRankAlpha[3]}
 									<PointP>{novelAverageRate}</PointP>
 								</DotItem>
 							</Grid>
@@ -275,7 +274,7 @@ const Result = memo(({
 								<DotItem>
 									かんそう
 									<br />
-									<RankP style={styleRank[4]}>{novelRankAlpha[4]}</RankP>
+									{novelRankAlpha[4]}
 									<PointP>{novel.impression_cnt}</PointP>
 								</DotItem>
 							</Grid>
