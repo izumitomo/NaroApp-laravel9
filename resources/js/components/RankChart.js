@@ -93,27 +93,40 @@ const averageData = {
   ],
 };
 
+let aniFlag = true;
 const RankChart = ({
   rank,
   novels,
 }) => {
   const [chartFlag, setChartFlag] = React.useState(false);
-  //スクロール処理
-  let graphAnim = function () {
-    let wy = window.pageYOffset;//Y軸スクロール量
-    let wb = wy + window.innerHeight * 3/4;// ブラウザの大きさを基に調整。     
-    // チャートの位置を取得
-    let chartPos = wy + el.current.getBoundingClientRect().bottom;
 
-    // チャートの位置がウィンドウ中央付近になったら起動
-    if (chartPos <= wb && chartFlag == false) {
-      setChartFlag(true);
-    } /* else if (wb < chartPos || chartPos + window.innerHeight * 1/2 < wb) {
+  useEffect(() => {
+    let graphAnim = function () {
+      let wy = window.pageYOffset; //Y軸スクロール量
+      let wb = wy + (window.innerHeight * 3) / 4; // ブラウザの大きさを基に調整。
+      // チャートの位置を取得
+      let chartPos = wy + el.current.getBoundingClientRect().bottom;
+
+      // チャートの位置がウィンドウ中央付近になったら起動
+      if (chartPos <= wb && chartFlag == false) {
+        setChartFlag(true);
+      } /* else if (wb < chartPos || chartPos + window.innerHeight * 1/2 < wb) {
       setChartFlag(false);
     } */
-  }
-  window.addEventListener('load', graphAnim); // 読み込み時の処理
-  window.addEventListener('scroll', graphAnim); // スクロール時の処理
+    };
+    if (aniFlag) {
+//      window.addEventListener("load", graphAnim); // 読み込み時の処理
+      window.addEventListener("scroll", graphAnim); // スクロール時の処理
+    }
+    return () => {
+      console.log("willunmount!!");
+      removeEventListener("scroll", graphAnim);
+    };
+    
+  })
+  //スクロール処理
+  
+
   
   const el = React.useRef(null);
   React.useEffect(() => {

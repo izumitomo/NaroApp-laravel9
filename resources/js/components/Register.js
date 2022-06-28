@@ -23,7 +23,14 @@ const Register = () => {
         registerPassword
       );
     } catch (error) {
-      alert("正しく入力してください");
+      console.log(error);
+      if (error.message.indexOf("email-already-in-use") != -1) {
+        alert("すでに登録されているメールアドレスです");
+      } else if (error.message.indexOf("Password should be at least 6 characters") != -1) {
+        alert("6文字未満のパスワードは登録することはできません")
+      } else {
+        alert("有効な値を入力してください")
+       }
     }
   };
 
