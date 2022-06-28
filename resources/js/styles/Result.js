@@ -49,6 +49,7 @@ export const SSSRankP = styled(RankP)`
   background-image: linear-gradient(70deg, #ff99ff 48%, #fff 50%, #ff99ff 52%);
   background-size: 300% 100%;
   -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
   animation: ${shineSSS} 3s infinite;
 `;
@@ -81,14 +82,14 @@ export const BRankP = styled(RankP)`
   animation: ${shine} 3s infinite;
 `;
 export const CRankP = styled(RankP)`
-  background-image: linear-gradient(70deg, #ffcc00 48%, #fff 50%, #ffcc00 52%);
+  background-image: linear-gradient(70deg, #ffb900 48%, #fff 50%, #ffb900 52%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   color: transparent;
   animation: ${shine} 3s infinite;
 `;
 export const DRankP = styled(RankP)`
-  color: #ffd966;
+  color: #efd074;
 `;
 export const ERankP = styled(RankP)`
   color: #70ad47;
