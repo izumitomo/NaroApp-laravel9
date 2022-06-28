@@ -17,7 +17,7 @@ const shine = keyframes`
   0% {
 		background-position: 100% 50%;
 	}
-	100% {
+	99.9%, to {
 		background-position: 0% 50%;
 	}
 `;
@@ -29,7 +29,7 @@ const shineSS = keyframes`
   50% {
     text-shadow: 0 0 10px #fff;
   }
-	100% {
+	99.9%, to {
 		background-position: 0% 50%;
 	}
 `;
@@ -40,7 +40,7 @@ const shineSSS = keyframes`
   50% {
     text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff00de;
   }
-	100% {
+	99.9%, to {
 		background-position: 0% 50%;
 	}
 `;
