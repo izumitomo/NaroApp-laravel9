@@ -12,9 +12,10 @@ class SearchController extends Controller
         //var_dump($request["genre"]);
         $genre = $request["genre"];
         $not_isekai = $request["notIsekai"];
+        $order = $request["order"];
         header("Access-Control-Allow-Origin: *");  //CORS
         
-        $url= 'https://api.syosetu.com/novelapi/api/?lim=50&genre=' . $genre . '&nottensei=' . $not_isekai . '&nottenni=' . $not_isekai . '&order=weekly&out=json';
+        $url= "https://api.syosetu.com/novelapi/api/?lim=100&genre=$genre&nottensei=$not_isekai&nottenni=$not_isekai&order=$order&out=json";
         // ストリームコンテキストのオプションを作成
         $options = array(
             // HTTPコンテキストオプションをセット
@@ -38,7 +39,9 @@ class SearchController extends Controller
         $not_isekai = (boolean)$not_isekai;
         $isekai = !$not_isekai;
         $border = Border::where("genre", $genre)
-            ->where("tensei_or_tenni", $isekai)->first();
+            ->where("tensei_or_tenni", $isekai)
+            ->where("order", $order)
+            ->first();
         //return $raw_decode_data;
         return array($raw_decode_data, $border);
     }

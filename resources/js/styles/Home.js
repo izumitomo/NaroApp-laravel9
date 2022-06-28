@@ -1,13 +1,15 @@
 import styled from "styled-components";
 import {Paper, IconButton, Button} from "@mui/material";
 export const Centering = styled(Paper)`
-  &&&{background-color: #e6e6e6;
-	padding: 8px;
-	text-align center;
-	height: 100%;
-	display flex;
-	align-items: center;
-	justify-content: center;}
+  &&&{
+    background-color: #e6e6e6;
+    padding: 8px;
+    text-align center;
+    height: 100%;
+    display flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const TitleP = styled.p`
@@ -41,7 +43,6 @@ export const RegisterButton = styled(Button)`
     text-transform: capitalize;
     @media (max-width: 600px) {
       font-size: 15px;
-    }
     }
   }
 `;

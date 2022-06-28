@@ -10,6 +10,7 @@ import { ThemeProvider, createTheme} from '@mui/material/styles';
 import WifiFindIcon from '@mui/icons-material/WifiFind';
 import BuildRoundedIcon from "@mui/icons-material/BuildRounded";
 import { Centering, TitleP, GenreP, IsekaiP, SearchP, LoginButton, LogoutButton, RegisterButton, SearchButton } from "../styles/Home";
+import Order from "./Order";
 
 const Home = () => {
   const theme = createTheme({
@@ -73,7 +74,8 @@ const Home = () => {
     setLoading(true);
     const data = {
       genre : genre,
-      notIsekai : notIsekai,
+      notIsekai: notIsekai,
+      order: order,
     }
     axios.post("/search", data)
     .then(res => {
@@ -84,13 +86,10 @@ const Home = () => {
     }
     );
   };
+  const [hidden, setHidden] = useState(true);
+  const [order, setOrder] = useState("weekly");
 
   const [loading, setLoading] = useState(false);
-  
-  //setNovelsでnovelsにres.data[0]が入るタイミングが遅すぎることによって、searchに
-  //responseとしてnovelsを格納した時にnovelsの中身が空のまま送られ、遅れてnovelsに値が入った後に再びsearchが呼ばれているように見える。
-  //元々67行目あたりのsetCheckedの実行時からset系の処理が遅すぎるので色々工夫はしていたが……。
-
   const title = "なろーせんとーりょく！";
 
   return (
@@ -99,6 +98,9 @@ const Home = () => {
       {user ? (
         <>
           <LogoutButton onClick={logout}>ログアウト</LogoutButton>
+          <IconButton color="pink" size="large" onClick={() => setHidden(false)}>
+            <BuildRoundedIcon />
+          </IconButton>
         </>
       ) : (
         <>
@@ -107,10 +109,7 @@ const Home = () => {
           </LoginButton>
           <RegisterButton component={Link} to={"/register"}>
             とうろく
-            </RegisterButton>
-            <IconButton color="pink" size="large" component={Link} to={"/login"}>
-              <BuildRoundedIcon />
-            </IconButton>
+          </RegisterButton>
         </>
       )}
       <Box marginBottom={3}>
@@ -135,27 +134,69 @@ const Home = () => {
                   value={genre}
                   onChange={genreSelect}
                 >
-                  <MenuItem value={101}><GenreP>異世界(恋愛)</GenreP></MenuItem>
-                  <MenuItem value={102}><GenreP>現実世界(恋愛)</GenreP></MenuItem>
-                  <MenuItem value={201}><GenreP>ハイファンタジー</GenreP></MenuItem>
-                  <MenuItem value={202}><GenreP>ローファンタジー</GenreP></MenuItem>
-                  <MenuItem value={301}><GenreP>純文学</GenreP></MenuItem>
-                  <MenuItem value={302}><GenreP>ヒューマンドラマ</GenreP></MenuItem>
-                  <MenuItem value={303}><GenreP>歴史</GenreP></MenuItem>
-                  <MenuItem value={304}><GenreP>推理</GenreP></MenuItem>
-                  <MenuItem value={305}><GenreP>ホラー</GenreP></MenuItem>
-                  <MenuItem value={306}><GenreP>アクション</GenreP></MenuItem>
-                  <MenuItem value={307}><GenreP>コメディ－</GenreP></MenuItem>
-                  <MenuItem value={401}><GenreP>VRゲーム</GenreP></MenuItem>
-                  <MenuItem value={402}><GenreP>宇宙</GenreP></MenuItem>
-                  <MenuItem value={403}><GenreP>空想科学</GenreP></MenuItem>
-                  <MenuItem value={404}><GenreP>パニック</GenreP></MenuItem>
-                  <MenuItem value={9901}><GenreP>童話</GenreP></MenuItem>
-                  <MenuItem value={9902}><GenreP>詩</GenreP></MenuItem>
-                  <MenuItem value={9903}><GenreP>エッセイ</GenreP></MenuItem>
-                  <MenuItem value={9904}><GenreP>リプレイ</GenreP></MenuItem>
-                  <MenuItem value={9999}><GenreP>その他</GenreP></MenuItem>
-                  <MenuItem value={9801}><GenreP>ノンジャンル</GenreP></MenuItem>
+                  <MenuItem value={101}>
+                    <GenreP>異世界(恋愛)</GenreP>
+                  </MenuItem>
+                  <MenuItem value={102}>
+                    <GenreP>現実世界(恋愛)</GenreP>
+                  </MenuItem>
+                  <MenuItem value={201}>
+                    <GenreP>ハイファンタジー</GenreP>
+                  </MenuItem>
+                  <MenuItem value={202}>
+                    <GenreP>ローファンタジー</GenreP>
+                  </MenuItem>
+                  <MenuItem value={301}>
+                    <GenreP>純文学</GenreP>
+                  </MenuItem>
+                  <MenuItem value={302}>
+                    <GenreP>ヒューマンドラマ</GenreP>
+                  </MenuItem>
+                  <MenuItem value={303}>
+                    <GenreP>歴史</GenreP>
+                  </MenuItem>
+                  <MenuItem value={304}>
+                    <GenreP>推理</GenreP>
+                  </MenuItem>
+                  <MenuItem value={305}>
+                    <GenreP>ホラー</GenreP>
+                  </MenuItem>
+                  <MenuItem value={306}>
+                    <GenreP>アクション</GenreP>
+                  </MenuItem>
+                  <MenuItem value={307}>
+                    <GenreP>コメディ－</GenreP>
+                  </MenuItem>
+                  <MenuItem value={401}>
+                    <GenreP>VRゲーム</GenreP>
+                  </MenuItem>
+                  <MenuItem value={402}>
+                    <GenreP>宇宙</GenreP>
+                  </MenuItem>
+                  <MenuItem value={403}>
+                    <GenreP>空想科学</GenreP>
+                  </MenuItem>
+                  <MenuItem value={404}>
+                    <GenreP>パニック</GenreP>
+                  </MenuItem>
+                  <MenuItem value={9901}>
+                    <GenreP>童話</GenreP>
+                  </MenuItem>
+                  <MenuItem value={9902}>
+                    <GenreP>詩</GenreP>
+                  </MenuItem>
+                  <MenuItem value={9903}>
+                    <GenreP>エッセイ</GenreP>
+                  </MenuItem>
+                  <MenuItem value={9904}>
+                    <GenreP>リプレイ</GenreP>
+                  </MenuItem>
+                  <MenuItem value={9999}>
+                    <GenreP>その他</GenreP>
+                  </MenuItem>
+                  <MenuItem value={9801}>
+                    <GenreP>ノンジャンル</GenreP>
+                  </MenuItem>
                 </Select>
               </FormControl>
             </Centering>
@@ -205,6 +246,11 @@ const Home = () => {
               </SearchButton>
             </div>
           </Grid>
+          {!hidden && (
+            <Grid item xs={10}>
+              <Order setOrder={setOrder} />
+            </Grid>
+          )}
         </Grid>
       </Box>
       <div>{loading ? <Loading /> : null}</div>
