@@ -49,7 +49,6 @@ export const SSSRankP = styled(RankP)`
   background-image: linear-gradient(70deg, #ff99ff 48%, #fff 50%, #ff99ff 52%);
   background-size: 300% 100%;
   -webkit-background-clip: text;
-  background-clip: text;
   color: transparent;
   animation: ${shineSSS} 3s infinite;
 `;
