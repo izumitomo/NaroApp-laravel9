@@ -5,8 +5,9 @@ import { Centering, GenreP } from "../styles/Home";
 
 const OrderFormLabel = styled(FormLabel)`
   &&&{
-    font-family: "pixel10-b";
+    font-family: "milk-b";
     font-size: 20px;
+    color: blue;
   }
 `;
 
@@ -28,8 +29,8 @@ const Order = ({
   
   return (
     <OrderPaper>
-      <FormControl marginTop={2}>
-        <OrderFormLabel>秘密のオプション</OrderFormLabel>
+      <FormControl>
+        <OrderFormLabel>お宝を発見！ 中を開けるとそこには……</OrderFormLabel>
         <RadioGroup defaultValue="weekly" onChange={handleOrder}>
           <FormControlLabel
             value="weekly"

@@ -1,6 +1,12 @@
 import styled from "styled-components";
 import {Paper,} from "@mui/material/";
 
+export const styleSSS = {
+  color: "#FF99FF",
+};
+export const styleSS = {
+  color: "#FF99FF",
+};
 export const styleS = {
   color: "#FF99FF",
 };

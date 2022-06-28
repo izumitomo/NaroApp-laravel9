@@ -3,7 +3,7 @@ import SortButton from "./SortButton";
 /* import PointChart from "./PointChart"; */
 import React, { useState, useEffect, memo } from "react";
 import {Box, Grid} from '@mui/material/';
-import { styleS, styleA, styleB, styleC, styleD, styleE, styleF, styleG, OrderP } from "../styles/Result";
+import { styleS, styleA, styleB, styleC, styleD, styleE, styleF, styleG, OrderP, styleSS, styleSSS } from "../styles/Result";
 import {RankP, PointP, Item, DotItem, NovelTitle, KoshinDiv, KanketsuDiv, MikanDiv, TanpenDiv, ReviewDiv, NoReviewDiv, LengthDiv, StoryP,} from "../styles/Result"
 
 const novelUrl = "https://ncode.syosetu.com/";
@@ -113,11 +113,18 @@ const Result = memo(({
 		}
 		//順位のstyleを格納
 		let styleOrder; 
-		if (index <= 10) { styleOrder = styleS; }
-		else if (index <= 20) { styleOrder = styleA; }
-		else if (index <= 30) { styleOrder = styleB; }
-		else if (index <= 40) { styleOrder = styleC; }
-		else if (index <= 50) { styleOrder = styleD; }
+		if (index <= 9) { styleOrder = styleSSS; }
+		else if (index <= 19) { styleOrder = styleSS; }
+		else if (index <= 29) { styleOrder = styleS; }
+		else if (index <= 39) { styleOrder = styleA; }
+		else if (index <= 49) { styleOrder = styleB; }
+		else if (index <= 59) { styleOrder = styleC; }
+		else if (index <= 69) { styleOrder = styleD; }
+		else if (index <= 79) { styleOrder = styleE; }
+		else if (index <= 89) { styleOrder = styleF; }
+		else { styleOrder = styleG; }
+
+
 
 		//ランクをアルファベットにして格納
 		let styleRank = [];
