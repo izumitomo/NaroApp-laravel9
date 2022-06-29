@@ -145,7 +145,7 @@ export const NovelTitle = styled.a`
   font-size: 24px;
   font-family: "milk-b";
   @media (max-width: 600px) {
-    font-size: 16px;
+    font-size: 12px;
   }
 `;
 

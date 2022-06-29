@@ -220,10 +220,10 @@ const Result = memo(({
 			<div key={novel.ncode}>
 				<Box sx={{ flexGrow: 1 }}>
 					<Grid container spacing={1} columns={20} marginBottom={1} marginTop={1} >
-						<Grid item xs={2}>
+						<Grid item xs={4} sm={2}>
 							{styleOrder}
 						</Grid>
-						<Grid item xs={18} margin="auto">
+						<Grid item xs={16} sm={18} margin="auto">
 							<NovelTitle href={novelUrl + novel.ncode} target="_blank">
 								{novel.title}
 							</NovelTitle>
