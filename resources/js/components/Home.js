@@ -7,8 +7,7 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../firebase/Config";
 import {Box, Grid, InputLabel, IconButton, Select, MenuItem, FormGroup, FormControl, FormControlLabel, Checkbox} from '@mui/material';
 import { ThemeProvider, createTheme} from '@mui/material/styles';
-import WifiFindIcon from '@mui/icons-material/WifiFind';
-import BuildRoundedIcon from "@mui/icons-material/BuildRounded";
+import { WifiFind, BuildRounded, ErrorRounded } from "@mui/icons-material";
 import { Centering, TitleP, GenreP, IsekaiP, SearchP, LoginButton, LogoutButton, RegisterButton, SearchButton } from "../styles/Home";
 import Order from "./Order";
 
@@ -88,6 +87,10 @@ const Home = () => {
   };
   const [hidden, setHidden] = useState(true);
   const [order, setOrder] = useState("weekly");
+  useEffect(() => {
+    setHidden(true);
+    setOrder("weekly");
+  }, [user])
 
   const [loading, setLoading] = useState(false);
   const title = "なろーせんとーりょく！";
@@ -99,7 +102,7 @@ const Home = () => {
         <>
           <LogoutButton onClick={logout}>ログアウト</LogoutButton>
           <IconButton color="pink" size="large" onClick={() => setHidden(false)}>
-            <BuildRoundedIcon />
+            <ErrorRounded/>
           </IconButton>
         </>
       ) : (
@@ -236,7 +239,7 @@ const Home = () => {
                 size="large"
                 startIcon={
                   <div>
-                    <WifiFindIcon style={{ fontSize: 40 }} />
+                    <WifiFind style={{ fontSize: 40 }} />
                   </div>
                 }
                 onClick={handleSearch}
