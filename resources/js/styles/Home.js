@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import {Paper, IconButton, Button} from "@mui/material";
-export const Centering = styled(Paper)`
+export const GrayPaper = styled(Paper)`
   &&&{
     background-color: #e6e6e6;
     padding: 8px;
@@ -59,7 +59,7 @@ export const LogoutButton = styled(RegisterButton)`
   }
 `;
 
-export const SpecialButton = styled(IconButton)`
+/* export const SpecialButton = styled(IconButton)`
   &&& {
     color: white;
     background-color: #0d6efd;
@@ -70,7 +70,7 @@ export const SpecialButton = styled(IconButton)`
       font-size: 15px;
     }
   }
-`;
+`; */
 
 export const SearchButton = styled(Button)`
   &&&{

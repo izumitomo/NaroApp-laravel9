@@ -1,24 +1,6 @@
 import React, { setState } from "react";
 import { Radio, RadioGroup, FormControlLabel, FormControl, FormLabel } from "@mui/material";
-import styled from "styled-components";
-import { Centering, GenreP } from "../styles/Home";
-
-const OrderFormLabel = styled(FormLabel)`
-  &&&{
-    font-family: "milk-b";
-    font-size: 20px;
-    color: blue;
-  }
-`;
-
-const OrderPaper = styled(Centering)`
-  &&& {
-    background-color: #f8fb2c;
-  }
-`;
-
-const LabelP = styled(GenreP)`
-`;
+import { LabelP, OrderFormLabel, OrderPaper } from "../styles/Order";
 
 const Order = ({
   setOrder,  

@@ -1,81 +1,74 @@
 import React, { useState, useEffect } from "react";
+import { Box, Fab, Grid } from "@mui/material";
+import { AcUnitRounded, BoltRounded, Navigation } from "@mui/icons-material";
 import {
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signInWithPopup,
+	signInWithEmailAndPassword,
+	onAuthStateChanged,
+	signInWithPopup,
 } from "firebase/auth";
-import { auth, provider } from "../firebase/Config";
+import { auth, googleProvider, twitterProvider } from "../firebase/Config";
 import { Navigate, Link } from "react-router-dom";
+import { StoryP, AuthP} from "../styles/Login";
 
 const Login = () => {
-  /* ↓state変数を定義 */
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
+	const handleGoogleLogin = async (e) => {
+		try {
+			await signInWithPopup(auth, googleProvider);
+			alert("success : " + user.user.displayName + "さんでログインしました");
+		} catch (error) {
+			console.log(error.message);
+		}
+	};
+	const handleTwitterLogin = async (e) => {
+		try {
+			await signInWithPopup(auth, twitterProvider);
+		} catch (error) {
+			console.log(error.message);
+		}
+		
+	}
 
-  /* ↓関数「handleSubmit」を定義 */
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
-    } catch (error) {
-      alert("メールアドレスまたはパスワードが間違っています");
-    }
-  };
 
-  //console.log(auth);
-  const handleLogin = async (e) => {
-    try {
-      await signInWithPopup(auth, provider);
-      alert("success : " + user.user.displayName + "さんでログインしました");
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+	/* ↓ログインを判定する設定 */
+	const [user, setUser] = useState();
 
-  /* ↓ログインを判定する設定 */
-  const [user, setUser] = useState();
+	useEffect(() => {
+		onAuthStateChanged(auth, (currentUser) => {
+			setUser(currentUser);
+			console.log(currentUser)
+		});
+	});
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-  });
-
-  return (
+	return (
     <>
       {/* ↓ログインしている場合、マイページにリダイレクトする設定 */}
       {user ? (
         <Navigate to={`/`} />
       ) : (
         <>
-          <h1>ログインページ</h1>
-          <form onSubmit={handleSubmit}>
-            <div>
-              <label>メールアドレス</label>
-              {/* ↓「value」と「onChange」を追加 */}
-              <input
-                name="email"
-                type="email"
-                value={loginEmail}
-                onChange={(e) => setLoginEmail(e.target.value)}
-              />
-            </div>
-            <div>
-              <label>パスワード</label>
-              {/* ↓「value」と「onChange」を追加 */}
-              <input
-                name="password"
-                type="password"
-                value={loginPassword}
-                onChange={(e) => setLoginPassword(e.target.value)}
-              />
-            </div>
-            <button>ログイン</button>
-            <p>
-              新規登録は<Link to={"/register"}>こちら</Link>
-            </p>
-          </form>
-          <button onClick={handleLogin}>Googleログイン</button>
+          <StoryP>禁じられた力を見つけた……</StoryP>
+          <Box sx={{ mt: 4 }}>
+            <Grid
+              container
+              spacing={1}
+              columns={12}
+              justifyContent="space-evenly"
+              textAlign="center"
+            >
+              <Grid item xs={6}>
+                <Fab variant="extended" onClick={handleGoogleLogin}>
+                  <BoltRounded sx={{ mr: 1 }} fontSize="large" />
+                  <AuthP>なないろのぐーぐる</AuthP>
+                </Fab>
+              </Grid>
+              <Grid item xs={6}>
+                <Fab variant="extended" onClick={handleTwitterLogin}>
+                  <AcUnitRounded sx={{ mr: 1 }} fontSize="large" />
+                  <AuthP>こんぺきのついったー</AuthP>
+                </Fab>
+              </Grid>
+            </Grid>
+          </Box>
         </>
       )}
     </>
