@@ -1,5 +1,6 @@
 import Result from "./Result";
 import Loading from "./Loading";
+import Order from "./Order";
 import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -9,7 +10,8 @@ import {Box, Grid, InputLabel, IconButton, Select, MenuItem, FormGroup, FormCont
 import { ThemeProvider, createTheme} from '@mui/material/styles';
 import { WifiFind, ErrorRounded } from "@mui/icons-material";
 import { GrayPaper, TitleP, GenreP, IsekaiP, SearchP, LoginButton, LogoutButton, RegisterButton, SearchButton } from "../styles/Home";
-import Order from "./Order";
+import html2canvas from "html2canvas";
+
 
 const Home = () => {
   const theme = createTheme({
@@ -95,6 +97,33 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const title = "なろーせんとーりょく！";
 
+  const saveAsImage = (uri) => {
+    const downloadLink = document.createElement("a");
+
+    if (typeof downloadLink.download === "string") {
+      downloadLink.href = uri;
+      // ファイル名
+      downloadLink.download = "component.png";
+      // Firefox では body の中にダウンロードリンクがないといけないので一時的に追加
+      document.body.appendChild(downloadLink);
+      // ダウンロードリンクが設定された a タグをクリック
+      downloadLink.click();
+      // Firefox 対策で追加したリンクを削除しておく
+      document.body.removeChild(downloadLink);
+    } else {
+      window.open(uri);
+    }
+  };
+
+  const onClickExport = () => {
+    // 画像に変換する component の id を指定
+    const target = document.getElementById("test");
+    html2canvas(target).then((canvas) => {
+      const targetImgUri = canvas.toDataURL("img/png");
+      saveAsImage(targetImgUri);
+    });
+  };
+		
   return (
     <ThemeProvider theme={theme}>
       <TitleP>{title}</TitleP>
@@ -104,6 +133,7 @@ const Home = () => {
           <IconButton color="pink" size="large" onClick={() => setHidden(false)}>
             <ErrorRounded fontSize="large"/>
           </IconButton>
+          <button onClick={() => onClickExport()}>PNG出力</button>
         </>
       ) : (
         <>
@@ -115,7 +145,7 @@ const Home = () => {
           </RegisterButton> */}
         </>
       )}
-      <Box marginBottom={3}>
+      <Box marginBottom={3} id="test">
         <Grid container spacing={1} columns={10}>
           <Grid item xs={10} sm={4}>
             <GrayPaper>

@@ -114,7 +114,7 @@ export const PointP = styled(RankP)`
   }
 `;
 
-export const Item = styled(Paper)`
+export const ChartItem = styled(Paper)`
   &&&{
     font-family: "pixel10-b";
 		padding: 8px;
@@ -246,10 +246,10 @@ export const StoryP = styled.p`
   font-family: "milk-b";
 `;
 
-export const OrderP = styled.p`
+/* export const OrderP = styled.p`
   font-family: "pixel10-b";
   font-size: 40px;
   padding: 0px;
   text-align: center;
   margin: auto;
-`;
+`; */

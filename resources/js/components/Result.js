@@ -4,7 +4,8 @@ import SortButton from "./SortButton";
 import React, { useState, useEffect, memo } from "react";
 import {Box, Grid} from '@mui/material/';
 import { ARankP, BRankP, CRankP, DRankP, ERankP, FRankP, GRankP, NRankP, SRankP, SSRankP, SSSRankP } from "../styles/Result";
-import { PointP, Item, DotItem, NovelTitle, KoshinDiv, KanketsuDiv, MikanDiv, TanpenDiv, ReviewDiv, NoReviewDiv, LengthDiv, StoryP, OrderP} from "../styles/Result"
+import { PointP, DotItem, ChartItem, NovelTitle, KoshinDiv, KanketsuDiv, MikanDiv, TanpenDiv, ReviewDiv, NoReviewDiv, LengthDiv, StoryP} from "../styles/Result"
+import html2canvas from "html2canvas";
 
 const novelUrl = "https://ncode.syosetu.com/";
 
@@ -112,17 +113,17 @@ const Result = memo(({
 			}
 		}
 		//順位のstyleを格納
-		let styleOrder; 
-		if (index <= 9) { styleOrder = <SSSRankP>{index + 1}</SSSRankP>; }
-		else if (index <= 19) { styleOrder = <SSRankP>{index + 1}</SSRankP>; }
-		else if (index <= 29) { styleOrder = <SRankP>{index + 1}</SRankP>; }
-		else if (index <= 39) { styleOrder = <ARankP>{index + 1}</ARankP>; }
-		else if (index <= 49) { styleOrder = <BRankP>{index + 1}</BRankP>; }
-		else if (index <= 59) { styleOrder = <CRankP>{index + 1}</CRankP>; }
-		else if (index <= 69) { styleOrder = <DRankP>{index + 1}</DRankP>; }
-		else if (index <= 79) { styleOrder = <ERankP>{index + 1}</ERankP>; }
-		else if (index <= 89) { styleOrder = <FRankP>{index + 1}</FRankP>; }
-		else { styleOrder = <GRankP>{index + 1}</GRankP>; } 
+		let orderPara; 
+		if (index <= 9) { orderPara = <SSSRankP>{index + 1}</SSSRankP>; }
+		else if (index <= 19) { orderPara = <SSRankP>{index + 1}</SSRankP>; }
+		else if (index <= 29) { orderPara = <SRankP>{index + 1}</SRankP>; }
+		else if (index <= 39) { orderPara = <ARankP>{index + 1}</ARankP>; }
+		else if (index <= 49) { orderPara = <BRankP>{index + 1}</BRankP>; }
+		else if (index <= 59) { orderPara = <CRankP>{index + 1}</CRankP>; }
+		else if (index <= 69) { orderPara = <DRankP>{index + 1}</DRankP>; }
+		else if (index <= 79) { orderPara = <ERankP>{index + 1}</ERankP>; }
+		else if (index <= 89) { orderPara = <FRankP>{index + 1}</FRankP>; }
+		else { orderPara = <GRankP>{index + 1}</GRankP>; } 
 
 
 
@@ -214,14 +215,42 @@ const Result = memo(({
           ? novel.story
           : novel.story.substring(0, 210) + "……"
 			);
-		}, [novels])		
+			
+		}, [novels])
+
+		const saveAsImage = (uri) => {
+      const downloadLink = document.createElement("a");
+
+      if (typeof downloadLink.download === "string") {
+        downloadLink.href = uri;
+        // ファイル名
+        downloadLink.download = "component.png";
+        // Firefox では body の中にダウンロードリンクがないといけないので一時的に追加
+        document.body.appendChild(downloadLink);
+        // ダウンロードリンクが設定された a タグをクリック
+        downloadLink.click();
+        // Firefox 対策で追加したリンクを削除しておく
+        document.body.removeChild(downloadLink);
+      } else {
+        window.open(uri);
+      }
+    };
+
+    const onClickExport = () => {
+      // 画像に変換する component の id を指定
+			const target = document.getElementById(novel.ncode);
+      html2canvas(target).then((canvas) => {
+        const targetImgUri = canvas.toDataURL("img/png");
+        saveAsImage(targetImgUri);
+      });
+    };
 		
 		return (
 			<div key={novel.ncode}>
-				<Box sx={{ flexGrow: 1 }}>
+				<Box sx={{ flexGrow: 1 }} id={novel.ncode}>
 					<Grid container spacing={1} columns={20} marginBottom={1} marginTop={1} >
 						<Grid item xs={4} sm={2}>
-							{styleOrder}
+							{orderPara}
 						</Grid>
 						<Grid item xs={16} sm={18} margin="auto">
 							<NovelTitle href={novelUrl + novel.ncode} target="_blank">
@@ -234,9 +263,9 @@ const Result = memo(({
 									minWidth: 60,
 								}}
 							>
-								<Item>
+								<ChartItem>
 									<RankChart rank={novelRankNum} novels={novels} />
-								</Item>
+								</ChartItem>
 							</Grid>
 							<Grid item xs={4} sm={3} alignItems="stretch">
 								<DotItem>
@@ -298,6 +327,7 @@ const Result = memo(({
 							</Grid>
 						</Grid>
 					</div>
+					<button onClick={() => onClickExport()}>PNG出力</button>
 				</Box>
 			</div>
 		);
