@@ -1,10 +1,13 @@
 import RankChart from "./RankChart";
 import SortButton from "./SortButton";
+import Score from "./Score";
 /* import PointChart from "./PointChart"; */
 import React, { useState, useEffect, memo } from "react";
-import {Box, Grid} from '@mui/material/';
-import { ARankP, BRankP, CRankP, DRankP, ERankP, FRankP, GRankP, NRankP, SRankP, SSRankP, SSSRankP } from "../styles/Result";
-import { PointP, Item, DotItem, NovelTitle, KoshinDiv, KanketsuDiv, MikanDiv, TanpenDiv, ReviewDiv, NoReviewDiv, LengthDiv, StoryP, OrderP} from "../styles/Result"
+import { Box, Grid, Modal } from '@mui/material/';
+import { ARankP, BRankP, CRankP, DRankP, ERankP, FRankP, GRankP, NRankP, SRankP, SSRankP, SSSRankP } from "../styles/Common";
+import { ChartItem, NovelTitle, KoshinDiv, KanketsuDiv, MikanDiv, TanpenDiv, ReviewDiv, NoReviewDiv, LengthDiv, StoryP, modalStyle,} from "../styles/Result"
+import html2canvas from "html2canvas";
+
 
 const novelUrl = "https://ncode.syosetu.com/";
 
@@ -112,34 +115,17 @@ const Result = memo(({
 			}
 		}
 		//順位のstyleを格納
-		let styleOrder; 
-		if (index <= 9) { styleOrder = <SSSRankP>{index + 1}</SSSRankP>; }
-		else if (index <= 19) { styleOrder = <SSRankP>{index + 1}</SSRankP>; }
-		else if (index <= 29) { styleOrder = <SRankP>{index + 1}</SRankP>; }
-		else if (index <= 39) { styleOrder = <ARankP>{index + 1}</ARankP>; }
-		else if (index <= 49) { styleOrder = <BRankP>{index + 1}</BRankP>; }
-		else if (index <= 59) { styleOrder = <CRankP>{index + 1}</CRankP>; }
-		else if (index <= 69) { styleOrder = <DRankP>{index + 1}</DRankP>; }
-		else if (index <= 79) { styleOrder = <ERankP>{index + 1}</ERankP>; }
-		else if (index <= 89) { styleOrder = <FRankP>{index + 1}</FRankP>; }
-		else { styleOrder = <GRankP>{index + 1}</GRankP>; } 
-
-
-
-		//ランクをアルファベットにしてタグごと格納
-		novelRankNum.forEach(function (rank) {
-			if (rank == 10) { novelRankAlpha.push(<SSSRankP>SSS</SSSRankP >); }
-			else if (rank == 9) { novelRankAlpha.push(<SSRankP>SS</SSRankP>); }
-			else if (rank == 8) { novelRankAlpha.push(<SRankP>S</SRankP>);}
-			else if (rank == 7) { novelRankAlpha.push(<ARankP>A</ARankP>);}
-			else if (rank == 6) { novelRankAlpha.push(<BRankP>B</BRankP>);}
-			else if (rank == 5) { novelRankAlpha.push(<CRankP>C</CRankP>);}
-			else if (rank == 4) { novelRankAlpha.push(<DRankP>D</DRankP>);}
-			else if (rank == 3) { novelRankAlpha.push(<ERankP>E</ERankP>);}
-			else if (rank == 2) { novelRankAlpha.push(<FRankP>F</FRankP>);}
-			else if (rank == 1) { novelRankAlpha.push(<GRankP>G</GRankP>);}
-			else { novelRankAlpha.push(<NRankP>N</NRankP>);}
-		})
+		let orderPara; 
+		if (index <= 9) { orderPara = <SSSRankP>{index + 1}</SSSRankP>; }
+		else if (index <= 19) { orderPara = <SSRankP>{index + 1}</SSRankP>; }
+		else if (index <= 29) { orderPara = <SRankP>{index + 1}</SRankP>; }
+		else if (index <= 39) { orderPara = <ARankP>{index + 1}</ARankP>; }
+		else if (index <= 49) { orderPara = <BRankP>{index + 1}</BRankP>; }
+		else if (index <= 59) { orderPara = <CRankP>{index + 1}</CRankP>; }
+		else if (index <= 69) { orderPara = <DRankP>{index + 1}</DRankP>; }
+		else if (index <= 79) { orderPara = <ERankP>{index + 1}</ERankP>; }
+		else if (index <= 89) { orderPara = <FRankP>{index + 1}</FRankP>; }
+		else { orderPara = <GRankP>{index + 1}</GRankP>; } 
 		
 		//更新状態を判別
 		let novelState;
@@ -214,93 +200,105 @@ const Result = memo(({
           ? novel.story
           : novel.story.substring(0, 210) + "……"
 			);
-		}, [novels])		
+		}, [novels])
+
+		const saveAsImage = (uri) => {
+      const downloadLink = document.createElement("a");
+
+      if (typeof downloadLink.download === "string") {
+        downloadLink.href = uri;
+        // ファイル名
+        downloadLink.download = "component.png";
+        // Firefox では body の中にダウンロードリンクがないといけないので一時的に追加
+        document.body.appendChild(downloadLink);
+        // ダウンロードリンクが設定された a タグをクリック
+        downloadLink.click();
+        // Firefox 対策で追加したリンクを削除しておく
+        document.body.removeChild(downloadLink);
+      } else {
+        window.open(uri);
+      }
+    };
+
+    const onClickExport = () => {
+      // 画像に変換する component の id を指定
+			const target = document.getElementById(novel.ncode);
+      html2canvas(target).then((canvas) => {
+        const targetImgUri = canvas.toDataURL("img/png");
+        saveAsImage(targetImgUri);
+      });
+		};
+		
+		const [modal, setModal] = useState(false);
+		const handleModal = () => {
+			console.log(modal);
+			setModal(!modal);
+		}
 		
 		return (
-			<div key={novel.ncode}>
-				<Box sx={{ flexGrow: 1 }}>
-					<Grid container spacing={1} columns={20} marginBottom={1} marginTop={1} >
-						<Grid item xs={4} sm={2}>
-							{styleOrder}
-						</Grid>
-						<Grid item xs={16} sm={18} margin="auto">
-							<NovelTitle href={novelUrl + novel.ncode} target="_blank">
-								{novel.title}
-							</NovelTitle>
-						</Grid>
-						<Grid container spacing={1} columns={20} alignItems="center">
-							<Grid item xs={20} sm={5}sx={{
-									minHeight: 60,
-									minWidth: 60,
-								}}
-							>
-								<Item>
-									<RankChart rank={novelRankNum} novels={novels} />
-								</Item>
-							</Grid>
-							<Grid item xs={4} sm={3} alignItems="stretch">
-								<DotItem>
-									ポイント
-									<br />
-									{novelRankAlpha[0]}
-									<PointP>{novel.global_point}</PointP>
-								</DotItem>
-							</Grid>
-							<Grid item xs={4} sm={3}>
-								<DotItem>
-									ブクマ
-									<br />
-									{novelRankAlpha[1]}
-									<PointP>{novel.fav_novel_cnt}</PointP>
-								</DotItem>
-							</Grid>
-							<Grid item xs={4} sm={3}>
-								<DotItem>
-									ひょうかしゃ
-									<br />
-									{novelRankAlpha[2]}
-									<PointP>{novel.all_hyoka_cnt}</PointP>
-								</DotItem>
-							</Grid>
-							<Grid item xs={4} sm={3}>
-								<DotItem>
-									へいきんてん
-									<br />
-									{novelRankAlpha[3]}
-									<PointP>{novelAverageRate}</PointP>
-								</DotItem>
-							</Grid>
-							<Grid item xs={4} sm={3}>
-								<DotItem>
-									かんそう
-									<br />
-									{novelRankAlpha[4]}
-									<PointP>{novel.impression_cnt}</PointP>
-								</DotItem>
-							</Grid>
-						</Grid>
-					</Grid>
-					<div style={{ textAlign: "center", marginTop: 10, width: "100%" }}>
-						<Grid container spacing={1} columns={20}>
-							<Grid item xs={10} sm={7}>
-								{novelState}
-							</Grid>
-							<Grid item xs={10} sm={7}>
-								{novelReview}
-							</Grid>
-							<Grid item xs={20} sm={6}>
-								<LengthDiv>もじ：{novel.length}</LengthDiv>
-							</Grid>
-							<Grid item xs={20}>
-								<StoryP onClick={() => setStory(novel.story)}>
-									{story}
-								</StoryP>
-							</Grid>
-						</Grid>
-					</div>
-				</Box>
-			</div>
-		);
+      <div key={novel.ncode}>
+        <Box sx={{ flexGrow: 1 }} id={novel.ncode}>
+          <Grid
+            container
+            spacing={1}
+            columns={20}
+            marginBottom={1}
+            marginTop={1}
+            onClick={handleModal}
+          >
+            <Modal open={modal} onClose={handleModal}>
+							<Box sx={modalStyle}>
+								<BRankP>This is love!</BRankP>
+              </Box>
+            </Modal>
+            <Grid item xs={4} sm={2}>
+              {orderPara}
+            </Grid>
+            <Grid item xs={16} sm={18} margin="auto">
+              <NovelTitle href={novelUrl + novel.ncode} target="_blank">
+                {novel.title}
+              </NovelTitle>
+            </Grid>
+            <Grid container spacing={1} columns={20} alignItems="center">
+              <Grid
+                item
+                xs={20}
+                sm={5}
+                sx={{
+                  minHeight: 60,
+                  minWidth: 60,
+                }}
+              >
+                <ChartItem elevation={6}>
+                  <RankChart rank={novelRankNum} novels={novels} />
+                </ChartItem>
+              </Grid>
+              <Grid item xs={20} sm={15} alignItems="stretch">
+								<Score novelRankNum={novelRankNum} globalPoint={novel.global_point} favoriteCount={novel.fav_novel_cnt} reviewerCount={novel.review_cnt} averageRate={novelAverageRate} commentCount={novel.impression_cnt} />
+              </Grid>
+            </Grid>
+          </Grid>
+          <div style={{ textAlign: "center", marginTop: 10, width: "100%" }}>
+            <Grid container spacing={1} columns={20}>
+              <Grid item xs={10} sm={7}>
+                {novelState}
+              </Grid>
+              <Grid item xs={10} sm={7}>
+                {novelReview}
+              </Grid>
+              <Grid item xs={20} sm={6}>
+                <LengthDiv>もじ：{novel.length}</LengthDiv>
+              </Grid>
+              <Grid item xs={20}>
+                <StoryP onClick={() => setStory(novel.story)}>{story}</StoryP>
+              </Grid>
+            </Grid>
+          </div>
+
+          <button onClick={() => onClickExport()}>PNG出力</button>
+        </Box>
+      </div>
+    );
 	});
 
 	

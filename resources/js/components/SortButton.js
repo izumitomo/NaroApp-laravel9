@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import { Box, Grid } from "@mui/material/";
-import { SortingButton, SortP } from "../styles/SortButton";
+import { DisabledButton, SortingButton, SortP } from "../styles/SortButton";
 
 let ptSortNovels, favSortNovels, revSortNovels, rateSortNovels, comSortNovels;
 
@@ -30,8 +30,6 @@ const SortButton = ({
       rateSortNovels.sort((a, b) => {
         return b.average_rate - a.average_rate;
       });
-      //console.log(ptSortNovels);
-      console.log("useEffect sort complete!");
     }, [novels]);
   
   const handlePt = () => {
@@ -51,7 +49,7 @@ const SortButton = ({
     setNovels([comSortNovels, novels[1]]);
   };
   const handleDisable = () => {
-    console.log("Please Login!");
+    alert("パワーが足りない……");
   }
 
 
@@ -69,22 +67,38 @@ const SortButton = ({
               </SortingButton>
             </Grid>
             <Grid item xs={4} md={3}>
-              <SortingButton variant="contained" onClick={handleFav}>
+              <SortingButton
+                variant="contained"
+                color="warning"
+                onClick={handleFav}
+              >
                 Fav
               </SortingButton>
             </Grid>
             <Grid item xs={4} md={3}>
-              <SortingButton variant="contained" onClick={handleRev}>
+              <SortingButton
+                variant="contained"
+                color="success"
+                onClick={handleRev}
+              >
                 Rev
               </SortingButton>
             </Grid>
             <Grid item xs={4} md={3}>
-              <SortingButton variant="contained" onClick={handleRate}>
+              <SortingButton
+                variant="contained"
+                color="error"
+                onClick={handleRate}
+              >
                 Rate
               </SortingButton>
             </Grid>
             <Grid item xs={4} md={3}>
-              <SortingButton variant="contained" onClick={handleCom}>
+              <SortingButton
+                variant="contained"
+                color="secondary"
+                onClick={handleCom}
+              >
                 Com
               </SortingButton>
             </Grid>
@@ -92,29 +106,29 @@ const SortButton = ({
         ) : (
           <>
             <Grid item xs={4} md={3}>
-              <SortingButton variant="contained" onClick={handlePt}>
+              <DisabledButton variant="contained" onClick={handleDisable}>
                 Pt
-              </SortingButton>
+              </DisabledButton>
             </Grid>
             <Grid item xs={4} md={3}>
-              <SortingButton variant="contained" disabled onClick={handleDisable}>
+              <DisabledButton variant="contained" onClick={handleDisable}>
                 Fav
-              </SortingButton>
+              </DisabledButton>
             </Grid>
             <Grid item xs={4} md={3}>
-              <SortingButton variant="contained" disabled onClick={handleDisable}>
+              <DisabledButton variant="contained" onClick={handleDisable}>
                 Rev
-              </SortingButton>
+              </DisabledButton>
             </Grid>
             <Grid item xs={4} md={3}>
-              <SortingButton variant="contained" disabled onClick={handleDisable}>
+              <SortingButton variant="contained" onClick={handleRate}>
                 Rate
               </SortingButton>
             </Grid>
             <Grid item xs={4} md={3}>
-              <SortingButton variant="contained" disabled onClick={handleDisable}>
+              <DisabledButton variant="contained" onClick={handleDisable}>
                 Com
-              </SortingButton>
+              </DisabledButton>
             </Grid>
           </>
         )}

@@ -20,6 +20,11 @@ export const SortingButton = styled(Button)`
     }
   }
 `;
+export const DisabledButton = styled(SortingButton)`
+  &&& {
+    background-color: gray;
+  }
+`;
 
 export const SortP = styled.p`
   &&& {

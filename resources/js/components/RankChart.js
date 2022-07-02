@@ -9,7 +9,7 @@ import {
   defaults,
 } from "chart.js";
 import { Radar } from "react-chartjs-2";
-import React, { useEffect } from "react";
+import React, { useEffect, memo } from "react";
 
 ChartJS.register(
   RadialLinearScale,
@@ -93,7 +93,7 @@ const averageData = {
   ],
 };
 
-const RankChart = ({
+const RankChart = memo(({
   rank,
   novels,
 }) => {
@@ -158,6 +158,6 @@ const RankChart = ({
       )}
     </div>
   );
-}
+})
 
 export default RankChart;

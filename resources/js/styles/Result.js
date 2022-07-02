@@ -1,107 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import {Paper,} from "@mui/material/";
-
-export const RankP = styled.p`
-  text-align: center;
-  font-size: 40px;
-  margin: auto;
-  font-family: "pixel10-b";
-  @media (max-width: 1200px) and (min-width: 991px) {
-    font-size: 60px;
-  }
-  @media (min-width: 1201px) {
-    font-size: 70px;
-  }
-`;
-const shine = keyframes`
-  0% {
-		background-position: 100% 50%;
-	}
-	99.9%, to {
-		background-position: 0% 50%;
-	}
-`;
-
-const shineSS = keyframes`
-  0% {
-		background-position: 100% 50%;
-	}
-  50% {
-    text-shadow: 0 0 10px #fff;
-  }
-	99.9%, to {
-		background-position: 0% 50%;
-	}
-`;
-const shineSSS = keyframes`
-  0% {
-		background-position: 100% 50%;
-	}
-  50% {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff00de;
-  }
-	99.9%, to {
-		background-position: 0% 50%;
-	}
-`;
-
-export const SSSRankP = styled(RankP)`
-  background-image: linear-gradient(70deg, #ff99ff 48%, #fff 50%, #ff99ff 52%);
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  color: transparent;
-  animation: ${shineSSS} 3s infinite;
-`;
-export const SSRankP = styled(RankP)`
-  background-image: linear-gradient(70deg, #ff99ff 48%, #fff 50%, #ff99ff 52%);
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  color: transparent;
-  animation: ${shineSS} 3s infinite;
-`;
-export const SRankP = styled(RankP)`
-  background-image: linear-gradient(70deg, #ff99ff 48%, #fff 50%, #ff99ff 52%);
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  color: transparent;
-  animation: ${shine} 3s infinite;
-`;
-export const ARankP = styled(RankP)`
-  background-image: linear-gradient(70deg, #ff33cc 48%, #fff 50%, #ff33cc 52%);
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  color: transparent;
-  animation: ${shine} 3s infinite;
-`;
-export const BRankP = styled(RankP)`
-  background-image: linear-gradient(70deg, #ff0000 48%, #fff 50%, #ff0000 52%);
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  color: transparent;
-  animation: ${shine} 3s infinite;
-`;
-export const CRankP = styled(RankP)`
-  background-image: linear-gradient(70deg, #ffb900 48%, #fff 50%, #ffb900 52%);
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  color: transparent;
-  animation: ${shine} 3s infinite;
-`;
-export const DRankP = styled(RankP)`
-  color: #efd074;
-`;
-export const ERankP = styled(RankP)`
-  color: #70ad47;
-`;
-export const FRankP = styled(RankP)`
-  color: #4472c4;
-`;
-export const GRankP = styled(RankP)`
-  color: #a5a5a5;
-`;
-export const NRankP = styled(RankP)`
-  color: black;
-`;
+import { HoverPaper, RankP } from "./Common";
 
 export const PointP = styled(RankP)`
   font-size: 40px;
@@ -114,7 +12,7 @@ export const PointP = styled(RankP)`
   }
 `;
 
-export const Item = styled(Paper)`
+export const ChartItem = styled(HoverPaper)`
   &&&{
     font-family: "pixel10-b";
 		padding: 8px;
@@ -122,22 +20,6 @@ export const Item = styled(Paper)`
 	}
 `;
 
-export const DotItem = styled(Paper)`
-  font-family: "pixel10-b";
-  text-align: center;
-  font-size: 20px;
-  white-space: nowrap;
-
-  @media (max-width: 600px) {
-    font-size: 9px;
-  }
-  @media (max-width: 767px) and (min-width: 601px) {
-    font-size: 10px;
-  }
-  @media (max-width: 991px) and (min-width: 768px) {
-    font-size: 15px;
-  }
-`;
 
 export const NovelTitle = styled.a`
   text-align: center;
@@ -246,10 +128,22 @@ export const StoryP = styled.p`
   font-family: "milk-b";
 `;
 
-export const OrderP = styled.p`
+/* export const OrderP = styled.p`
   font-family: "pixel10-b";
   font-size: 40px;
   padding: 0px;
   text-align: center;
   margin: auto;
-`;
+`; */
+
+export const modalStyle = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
