@@ -1,11 +1,13 @@
 import RankChart from "./RankChart";
 import SortButton from "./SortButton";
+import Score from "./Score";
 /* import PointChart from "./PointChart"; */
 import React, { useState, useEffect, memo } from "react";
-import {Box, Grid} from '@mui/material/';
-import { ARankP, BRankP, CRankP, DRankP, ERankP, FRankP, GRankP, NRankP, SRankP, SSRankP, SSSRankP } from "../styles/Result";
-import { PointP, DotItem, ChartItem, NovelTitle, KoshinDiv, KanketsuDiv, MikanDiv, TanpenDiv, ReviewDiv, NoReviewDiv, LengthDiv, StoryP} from "../styles/Result"
+import { Box, Grid, Modal } from '@mui/material/';
+import { ARankP, BRankP, CRankP, DRankP, ERankP, FRankP, GRankP, NRankP, SRankP, SSRankP, SSSRankP } from "../styles/Common";
+import { ChartItem, NovelTitle, KoshinDiv, KanketsuDiv, MikanDiv, TanpenDiv, ReviewDiv, NoReviewDiv, LengthDiv, StoryP, modalStyle,} from "../styles/Result"
 import html2canvas from "html2canvas";
+
 
 const novelUrl = "https://ncode.syosetu.com/";
 
@@ -124,23 +126,6 @@ const Result = memo(({
 		else if (index <= 79) { orderPara = <ERankP>{index + 1}</ERankP>; }
 		else if (index <= 89) { orderPara = <FRankP>{index + 1}</FRankP>; }
 		else { orderPara = <GRankP>{index + 1}</GRankP>; } 
-
-
-
-		//ランクをアルファベットにしてタグごと格納
-		novelRankNum.forEach(function (rank) {
-			if (rank == 10) { novelRankAlpha.push(<SSSRankP>SSS</SSSRankP >); }
-			else if (rank == 9) { novelRankAlpha.push(<SSRankP>SS</SSRankP>); }
-			else if (rank == 8) { novelRankAlpha.push(<SRankP>S</SRankP>);}
-			else if (rank == 7) { novelRankAlpha.push(<ARankP>A</ARankP>);}
-			else if (rank == 6) { novelRankAlpha.push(<BRankP>B</BRankP>);}
-			else if (rank == 5) { novelRankAlpha.push(<CRankP>C</CRankP>);}
-			else if (rank == 4) { novelRankAlpha.push(<DRankP>D</DRankP>);}
-			else if (rank == 3) { novelRankAlpha.push(<ERankP>E</ERankP>);}
-			else if (rank == 2) { novelRankAlpha.push(<FRankP>F</FRankP>);}
-			else if (rank == 1) { novelRankAlpha.push(<GRankP>G</GRankP>);}
-			else { novelRankAlpha.push(<NRankP>N</NRankP>);}
-		})
 		
 		//更新状態を判別
 		let novelState;
@@ -215,7 +200,6 @@ const Result = memo(({
           ? novel.story
           : novel.story.substring(0, 210) + "……"
 			);
-			
 		}, [novels])
 
 		const saveAsImage = (uri) => {
@@ -245,99 +229,76 @@ const Result = memo(({
       });
 		};
 		
-		const [open, setOpen] = useState(false);
-		const handleMordal = () => {
-			console.log("aaa");
-			setOpen(!open);
+		const [modal, setModal] = useState(false);
+		const handleModal = () => {
+			console.log(modal);
+			setModal(!modal);
 		}
 		
 		return (
-			<div key={novel.ncode}>
-				<Box sx={{ flexGrow: 1 }} id={novel.ncode}>
-					<Grid container spacing={1} columns={20} marginBottom={1} marginTop={1} onClick={handleMordal}>
-						<Grid item xs={4} sm={2}>
-							{orderPara}
-						</Grid>
-						<Grid item xs={16} sm={18} margin="auto">
-							<NovelTitle href={novelUrl + novel.ncode} target="_blank">
-								{novel.title}
-							</NovelTitle>
-						</Grid>
-						<Grid container spacing={1} columns={20} alignItems="center">
-							<Grid item xs={20} sm={5}sx={{
-									minHeight: 60,
-									minWidth: 60,
-								}}
-							>
-								<ChartItem elevation={6}>
-									<RankChart rank={novelRankNum} novels={novels} />
-								</ChartItem>
-							</Grid>
-							<Grid item xs={4} sm={3} alignItems="stretch">
-								<DotItem elevation={6}>
-									ポイント
-									<br />
-									{novelRankAlpha[0]}
-									<PointP>{novel.global_point}</PointP>
-								</DotItem>
-							</Grid>
-							<Grid item xs={4} sm={3}>
-								<DotItem elevation={6}>
-									ブクマ
-									<br />
-									{novelRankAlpha[1]}
-									<PointP>{novel.fav_novel_cnt}</PointP>
-								</DotItem>
-							</Grid>
-							<Grid item xs={4} sm={3}>
-								<DotItem elevation={6}>
-									ひょうかしゃ
-									<br />
-									{novelRankAlpha[2]}
-									<PointP>{novel.all_hyoka_cnt}</PointP>
-								</DotItem>
-							</Grid>
-							<Grid item xs={4} sm={3}>
-								<DotItem elevation={6}>
-									へいきんてん
-									<br />
-									{novelRankAlpha[3]}
-									<PointP>{novelAverageRate}</PointP>
-								</DotItem>
-							</Grid>
-							<Grid item xs={4} sm={3}>
-								<DotItem  elevation={6}>
-									かんそう
-									<br />
-									{novelRankAlpha[4]}
-									<PointP>{novel.impression_cnt}</PointP>
-								</DotItem>
-							</Grid>
-						</Grid>
-					</Grid>
-					<div style={{ textAlign: "center", marginTop: 10, width: "100%" }}>
-						<Grid container spacing={1} columns={20}>
-							<Grid item xs={10} sm={7}>
-								{novelState}
-							</Grid>
-							<Grid item xs={10} sm={7}>
-								{novelReview}
-							</Grid>
-							<Grid item xs={20} sm={6}>
-								<LengthDiv>もじ：{novel.length}</LengthDiv>
-							</Grid>
-							<Grid item xs={20}>
-								<StoryP onClick={() => setStory(novel.story)}>
-									{story}
-								</StoryP>
-							</Grid>
-						</Grid>
-					</div>
+      <div key={novel.ncode}>
+        <Box sx={{ flexGrow: 1 }} id={novel.ncode}>
+          <Grid
+            container
+            spacing={1}
+            columns={20}
+            marginBottom={1}
+            marginTop={1}
+            onClick={handleModal}
+          >
+            <Modal open={modal} onClose={handleModal}>
+							<Box sx={modalStyle}>
+								<BRankP>This is love!</BRankP>
+              </Box>
+            </Modal>
+            <Grid item xs={4} sm={2}>
+              {orderPara}
+            </Grid>
+            <Grid item xs={16} sm={18} margin="auto">
+              <NovelTitle href={novelUrl + novel.ncode} target="_blank">
+                {novel.title}
+              </NovelTitle>
+            </Grid>
+            <Grid container spacing={1} columns={20} alignItems="center">
+              <Grid
+                item
+                xs={20}
+                sm={5}
+                sx={{
+                  minHeight: 60,
+                  minWidth: 60,
+                }}
+              >
+                <ChartItem elevation={6}>
+                  <RankChart rank={novelRankNum} novels={novels} />
+                </ChartItem>
+              </Grid>
+              <Grid item xs={20} sm={15} alignItems="stretch">
+								<Score novelRankNum={novelRankNum} globalPoint={novel.global_point} favoriteCount={novel.fav_novel_cnt} reviewerCount={novel.review_cnt} averageRate={novelAverageRate} commentCount={novel.impression_cnt} />
+              </Grid>
+            </Grid>
+          </Grid>
+          <div style={{ textAlign: "center", marginTop: 10, width: "100%" }}>
+            <Grid container spacing={1} columns={20}>
+              <Grid item xs={10} sm={7}>
+                {novelState}
+              </Grid>
+              <Grid item xs={10} sm={7}>
+                {novelReview}
+              </Grid>
+              <Grid item xs={20} sm={6}>
+                <LengthDiv>もじ：{novel.length}</LengthDiv>
+              </Grid>
+              <Grid item xs={20}>
+                <StoryP onClick={() => setStory(novel.story)}>{story}</StoryP>
+              </Grid>
+            </Grid>
+          </div>
 
-					<button onClick={() => onClickExport()}>PNG出力</button>
-				</Box>
-			</div>
-		);
+          <button onClick={() => onClickExport()}>PNG出力</button>
+        </Box>
+      </div>
+    );
 	});
 
 	
