@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Box, Fab, Grid } from "@mui/material";
-import { AcUnitRounded, BoltRounded, Navigation } from "@mui/icons-material";
+import { AcUnitRounded, BoltRounded } from "@mui/icons-material";
 import {
-	signInWithEmailAndPassword,
 	onAuthStateChanged,
 	signInWithPopup,
 } from "firebase/auth";

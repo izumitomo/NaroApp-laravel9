@@ -1,14 +1,11 @@
 import styled from "styled-components";
 import {Paper, IconButton, Button} from "@mui/material";
-export const GrayPaper = styled(Paper)`
-  &&&{
-    background-color: #e6e6e6;
-    padding: 8px;
-    text-align center;
+import { Centering } from "./Common";
+export const GrayPaper = styled(Centering)`
+  &&& {
+    background-color: #ededed;
     height: 100%;
     display flex;
-    align-items: center;
-    justify-content: center;
   }
 `;
 

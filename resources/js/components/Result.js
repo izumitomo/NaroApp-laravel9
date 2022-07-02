@@ -243,12 +243,18 @@ const Result = memo(({
         const targetImgUri = canvas.toDataURL("img/png");
         saveAsImage(targetImgUri);
       });
-    };
+		};
+		
+		const [open, setOpen] = useState(false);
+		const handleMordal = () => {
+			console.log("aaa");
+			setOpen(!open);
+		}
 		
 		return (
 			<div key={novel.ncode}>
 				<Box sx={{ flexGrow: 1 }} id={novel.ncode}>
-					<Grid container spacing={1} columns={20} marginBottom={1} marginTop={1} >
+					<Grid container spacing={1} columns={20} marginBottom={1} marginTop={1} onClick={handleMordal}>
 						<Grid item xs={4} sm={2}>
 							{orderPara}
 						</Grid>
@@ -263,12 +269,12 @@ const Result = memo(({
 									minWidth: 60,
 								}}
 							>
-								<ChartItem>
+								<ChartItem elevation={6}>
 									<RankChart rank={novelRankNum} novels={novels} />
 								</ChartItem>
 							</Grid>
 							<Grid item xs={4} sm={3} alignItems="stretch">
-								<DotItem>
+								<DotItem elevation={6}>
 									ポイント
 									<br />
 									{novelRankAlpha[0]}
@@ -276,7 +282,7 @@ const Result = memo(({
 								</DotItem>
 							</Grid>
 							<Grid item xs={4} sm={3}>
-								<DotItem>
+								<DotItem elevation={6}>
 									ブクマ
 									<br />
 									{novelRankAlpha[1]}
@@ -284,7 +290,7 @@ const Result = memo(({
 								</DotItem>
 							</Grid>
 							<Grid item xs={4} sm={3}>
-								<DotItem>
+								<DotItem elevation={6}>
 									ひょうかしゃ
 									<br />
 									{novelRankAlpha[2]}
@@ -292,7 +298,7 @@ const Result = memo(({
 								</DotItem>
 							</Grid>
 							<Grid item xs={4} sm={3}>
-								<DotItem>
+								<DotItem elevation={6}>
 									へいきんてん
 									<br />
 									{novelRankAlpha[3]}
@@ -300,7 +306,7 @@ const Result = memo(({
 								</DotItem>
 							</Grid>
 							<Grid item xs={4} sm={3}>
-								<DotItem>
+								<DotItem  elevation={6}>
 									かんそう
 									<br />
 									{novelRankAlpha[4]}
@@ -327,6 +333,7 @@ const Result = memo(({
 							</Grid>
 						</Grid>
 					</div>
+
 					<button onClick={() => onClickExport()}>PNG出力</button>
 				</Box>
 			</div>

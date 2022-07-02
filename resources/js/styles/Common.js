@@ -21,12 +21,17 @@ export const fade = keyframes`
 
 export const Centering = styled(Paper)`
   &&&{
-    background-color: #e6e6e6;
     padding: 8px;
     text-align center;
-    height: 100%;
-    display flex;
     align-items: center;
     justify-content: center;
+  }
+`;
+
+export const HoverPaper = styled(Centering)`
+  &&& {
+    &:hover {
+      cursor: zoom-in;
+    }
   }
 `;

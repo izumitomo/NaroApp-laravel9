@@ -1,5 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import {Paper,} from "@mui/material/";
+import { HoverPaper } from "./Common";
 
 export const RankP = styled.p`
   text-align: center;
@@ -114,7 +115,7 @@ export const PointP = styled(RankP)`
   }
 `;
 
-export const ChartItem = styled(Paper)`
+export const ChartItem = styled(HoverPaper)`
   &&&{
     font-family: "pixel10-b";
 		padding: 8px;
@@ -122,9 +123,8 @@ export const ChartItem = styled(Paper)`
 	}
 `;
 
-export const DotItem = styled(Paper)`
+export const DotItem = styled(HoverPaper)`
   font-family: "pixel10-b";
-  text-align: center;
   font-size: 20px;
   white-space: nowrap;
 
