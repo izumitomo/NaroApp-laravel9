@@ -9,7 +9,7 @@ import {
   defaults,
 } from "chart.js";
 import { Radar } from "react-chartjs-2";
-import React, { useEffect, memo } from "react";
+import React, { useState, useEffect, useRef, memo} from "react";
 
 ChartJS.register(
   RadialLinearScale,
@@ -98,8 +98,8 @@ const RankChart = memo(({
   novels,
   animationFlag,
 }) => {
-  const [chartFlag, setChartFlag] = React.useState(false);
-
+  const [chartFlag, setChartFlag] = useState(false);
+  console.log("Chart rerendering!")
   useEffect(() => {
     let graphAnim = function () {
       let wy = window.pageYOffset; //Y軸スクロール量
@@ -118,19 +118,17 @@ const RankChart = memo(({
       window.addEventListener("scroll", graphAnim); // スクロール時の処理
 
     return () => {
-      console.log("willunmount!!");
+      console.log("Chart willunmount!!");
       removeEventListener("scroll", graphAnim);
     };
     
   })
-  //スクロール処理
   
-
-  
-  const el = React.useRef(null);
-  React.useEffect(() => {
+  const el = useRef(null);
+  useEffect(() => {
     setChartFlag(false);
   }, [novels])
+  
 
   const rankData = {
     labels: ["Pt", "Fav", "Rev", "Rate", "Com"],

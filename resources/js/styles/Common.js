@@ -38,7 +38,7 @@ export const HoverPaper = styled(Centering)`
 
 export const RankP = styled.p`
   text-align: center;
-  font-size: 40px;
+  font-size: 38px;
   margin: auto;
   font-family: "pixel10-b";
   @media (max-width: 1200px) and (min-width: 991px) {

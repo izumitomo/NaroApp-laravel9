@@ -115,15 +115,15 @@ const Result = memo(({
 		}
 		//順位のstyleを格納
 		let orderPara; 
-		if (index <= 9) { orderPara = <SSSRankP>{index + 1}</SSSRankP>; }
-		else if (index <= 19) { orderPara = <SSRankP>{index + 1}</SSRankP>; }
-		else if (index <= 29) { orderPara = <SRankP>{index + 1}</SRankP>; }
-		else if (index <= 39) { orderPara = <ARankP>{index + 1}</ARankP>; }
-		else if (index <= 49) { orderPara = <BRankP>{index + 1}</BRankP>; }
-		else if (index <= 59) { orderPara = <CRankP>{index + 1}</CRankP>; }
-		else if (index <= 69) { orderPara = <DRankP>{index + 1}</DRankP>; }
-		else if (index <= 79) { orderPara = <ERankP>{index + 1}</ERankP>; }
-		else if (index <= 89) { orderPara = <FRankP>{index + 1}</FRankP>; }
+		if (index <= 5) { orderPara = <SSSRankP>{index + 1}</SSSRankP>; }
+		else if (index <= 9) { orderPara = <SRankP>{index + 1}</SRankP>; }
+		else if (index <= 19) { orderPara = <ARankP>{index + 1}</ARankP>; }
+		else if (index <= 29) { orderPara = <BRankP>{index + 1}</BRankP>; }
+		else if (index <= 39) { orderPara = <CRankP>{index + 1}</CRankP>; }
+		else if (index <= 49) { orderPara = <DRankP>{index + 1}</DRankP>; }
+		else if (index <= 59) { orderPara = <ERankP>{index + 1}</ERankP>; }
+		else if (index <= 69) { orderPara = <FRankP>{index + 1}</FRankP>; }
+		else if (index <= 79) { orderPara = <GRankP>{index + 1}</GRankP>; }
 		else { orderPara = <GRankP>{index + 1}</GRankP>; } 
 		
 		const saveAsImage = (uri) => {
