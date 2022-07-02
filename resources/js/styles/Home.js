@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import {Paper, IconButton, Button} from "@mui/material";
 import { Centering } from "./Common";
-export const GrayPaper = styled(Centering)`
+export const WhitePaper = styled(Centering)`
   &&& {
-    background-color: #ededed;
+    background-color: #ffffff;
     height: 100%;
     display flex;
   }

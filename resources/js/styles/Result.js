@@ -1,17 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { HoverPaper, RankP } from "./Common";
 
-export const PointP = styled(RankP)`
-  font-size: 40px;
-  font-family: "pixel10-r";
-  @media (max-width: 767px) {
-    font-size: 15px;
-  }
-  @media (max-width: 991px) and (min-width: 768px) {
-    font-size: 25px;
-  }
-`;
-
 export const ChartItem = styled(HoverPaper)`
   &&&{
     font-family: "pixel10-b";
@@ -44,9 +33,10 @@ export const modalStyle = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: "95%",
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
   p: 4,
 };
+

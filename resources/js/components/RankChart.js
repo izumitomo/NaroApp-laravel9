@@ -96,6 +96,7 @@ const averageData = {
 const RankChart = memo(({
   rank,
   novels,
+  animationFlag,
 }) => {
   const [chartFlag, setChartFlag] = React.useState(false);
 
@@ -151,10 +152,14 @@ const RankChart = memo(({
   };
   return (
     <div ref={el}>
-      {chartFlag ? (
-        <Radar data={rankData} options={animation} />
+      {animationFlag ? (
+        chartFlag ? (
+          <Radar data={rankData} options={animation} />
+        ) : (
+          <Radar data={averageData} options={nonAnimation} />
+        )
       ) : (
-        <Radar data={averageData} options={nonAnimation} />
+        <Radar data={rankData} options={nonAnimation} />
       )}
     </div>
   );

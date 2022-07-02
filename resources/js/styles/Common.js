@@ -87,6 +87,11 @@ export const SSSRankP = styled(RankP)`
   color: transparent;
   animation: ${shineSSS} 3s infinite;
 `;
+
+export const SRankNonAnimationP = styled(RankP)`
+  color: #ff99ff;
+`;
+
 export const SSRankP = styled(RankP)`
   background-image: linear-gradient(70deg, #ff99ff 48%, #fff 50%, #ff99ff 52%);
   background-size: 300% 100%;
@@ -108,6 +113,10 @@ export const ARankP = styled(RankP)`
   color: transparent;
   animation: ${shine} 3s infinite;
 `;
+export const ARankNonAnimationP = styled(RankP)`
+  color: #ff33cc;
+`;
+
 export const BRankP = styled(RankP)`
   background-image: linear-gradient(70deg, #ff0000 48%, #fff 50%, #ff0000 52%);
   background-size: 200% 100%;
@@ -115,6 +124,10 @@ export const BRankP = styled(RankP)`
   color: transparent;
   animation: ${shine} 3s infinite;
 `;
+export const BRankNonAnimationP = styled(RankP)`
+  color: #ff0000;
+`;
+
 export const CRankP = styled(RankP)`
   background-image: linear-gradient(70deg, #ffb900 48%, #fff 50%, #ffb900 52%);
   background-size: 200% 100%;
@@ -122,6 +135,10 @@ export const CRankP = styled(RankP)`
   color: transparent;
   animation: ${shine} 3s infinite;
 `;
+export const CRankNonAnimationP = styled(RankP)`
+  color: #ffb900;
+`;
+
 export const DRankP = styled(RankP)`
   color: #efd074;
 `;
@@ -137,3 +154,4 @@ export const GRankP = styled(RankP)`
 export const NRankP = styled(RankP)`
   color: black;
 `;
+

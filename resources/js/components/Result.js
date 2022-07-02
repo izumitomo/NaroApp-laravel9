@@ -3,9 +3,9 @@ import SortButton from "./SortButton";
 import Score from "./Score";
 import NovelState from "./NovelState";
 import React, { useState, useEffect, memo } from "react";
-import { Box, Grid, Modal } from '@mui/material/';
+import { Box, Button, Grid, Modal } from '@mui/material/';
 import { ARankP, BRankP, CRankP, DRankP, ERankP, FRankP, GRankP, NRankP, SRankP, SSRankP, SSSRankP } from "../styles/Common";
-import { ChartItem, NovelTitle, modalStyle,} from "../styles/Result"
+import { ChartItem, NovelTitle, modalStyle } from "../styles/Result";
 import html2canvas from "html2canvas";
 
 
@@ -127,30 +127,30 @@ const Result = memo(({
 		else { orderPara = <GRankP>{index + 1}</GRankP>; } 
 		
 		const saveAsImage = (uri) => {
-      const downloadLink = document.createElement("a");
+			const downloadLink = document.createElement("a");
 
-      if (typeof downloadLink.download === "string") {
-        downloadLink.href = uri;
-        // ファイル名
-        downloadLink.download = "component.png";
-        // Firefox では body の中にダウンロードリンクがないといけないので一時的に追加
-        document.body.appendChild(downloadLink);
-        // ダウンロードリンクが設定された a タグをクリック
-        downloadLink.click();
-        // Firefox 対策で追加したリンクを削除しておく
-        document.body.removeChild(downloadLink);
-      } else {
-        window.open(uri);
-      }
-    };
+			if (typeof downloadLink.download === "string") {
+				downloadLink.href = uri;
+				// ファイル名
+				downloadLink.download = "component.png";
+				// Firefox では body の中にダウンロードリンクがないといけないので一時的に追加
+				document.body.appendChild(downloadLink);
+				// ダウンロードリンクが設定された a タグをクリック
+				downloadLink.click();
+				// Firefox 対策で追加したリンクを削除しておく
+				document.body.removeChild(downloadLink);
+			} else {
+				window.open(uri);
+			}
+		};
 
-    const onClickExport = () => {
-      // 画像に変換する component の id を指定
+		const onClickExport = () => {
+			// 画像に変換する component の id を指定
 			const target = document.getElementById(novel.ncode);
-      html2canvas(target).then((canvas) => {
-        const targetImgUri = canvas.toDataURL("img/png");
-        saveAsImage(targetImgUri);
-      });
+			html2canvas(target).then((canvas) => {
+				const targetImgUri = canvas.toDataURL("img/png");
+				saveAsImage(targetImgUri);
+			});
 		};
 		
 		const [modal, setModal] = useState(false);
@@ -160,68 +160,96 @@ const Result = memo(({
 		}
 		
 		return (
-      <div key={novel.ncode}>
-        <Box sx={{ flexGrow: 1 }} id={novel.ncode}>
-          <Grid
-            container
-            spacing={1}
-            columns={20}
-            marginBottom={1}
-            marginTop={1}
-            onClick={handleModal}
-          >
-            <Modal open={modal} onClose={handleModal}>
-              <Box sx={modalStyle}>
-                <BRankP>This is love!</BRankP>
-              </Box>
-            </Modal>
-            <Grid item xs={4} sm={2}>
-              {orderPara}
-            </Grid>
-            <Grid item xs={16} sm={18} margin="auto">
-              <NovelTitle href={novelUrl + novel.ncode} target="_blank">
-                {novel.title}
-              </NovelTitle>
-            </Grid>
-            <Grid container spacing={1} columns={20} alignItems="center">
-              <Grid
-                item
-                xs={20}
-                sm={5}
-                sx={{
-                  minHeight: 60,
-                  minWidth: 60,
-                }}
-              >
-                <ChartItem elevation={6}>
-                  <RankChart rank={novelRankNum} novels={novels} />
-                </ChartItem>
-              </Grid>
-              <Grid item xs={20} sm={15} alignItems="stretch">
-                <Score
-                  novelRankNum={novelRankNum}
-                  globalPoint={novel.global_point}
-                  favoriteCount={novel.fav_novel_cnt}
-                  reviewerCount={novel.review_cnt}
-                  averageRate={novelAverageRate}
-                  commentCount={novel.impression_cnt}
-                />
-              </Grid>
-            </Grid>
-          </Grid>
+			<div key={novel.ncode}>
+				<Box sx={{ flexGrow: 1 }}>
+					<Grid
+						container
+						spacing={1}
+						columns={20}
+						marginBottom={1}
+						marginTop={1}
+						onClick={handleModal}
+					>
+						<Modal open={modal} onClose={handleModal}>
+							<Box sx={modalStyle} id={novel.ncode}>
+								<Grid
+									container
+									spacing={1}
+									columns={20}
+									marginBottom={1}
+									marginTop={1}
+									onClick={handleModal}
+								>
+									<Grid item xs={4} sm={2}>
+										<NRankP>{index + 1}</NRankP>
+									</Grid>
+									<Grid item xs={16} sm={18} margin="auto">
+										<NovelTitle href={novelUrl + novel.ncode} target="_blank">
+											{novel.title}
+										</NovelTitle>
+									</Grid>
+									<Grid container spacing={1} columns={20} alignItems="center">
+										<Grid item xs={20} sm={5}>
+											<ChartItem elevation={10}>
+												<RankChart rank={novelRankNum} novels={novels} animationFlag={false} />
+											</ChartItem>
+										</Grid>
+										<Grid item xs={20} sm={15} alignItems="stretch">
+											<Score
+												novelRankNum={novelRankNum}
+												globalPoint={novel.global_point}
+												favoriteCount={novel.fav_novel_cnt}
+												reviewerCount={novel.all_hyoka_cnt}
+												averageRate={novelAverageRate}
+												commentCount={novel.impression_cnt}
+												animationFlag={false}
+											/>
+										</Grid>
+									</Grid>
+								</Grid>
+								<NovelState novel={novel} />
+							</Box>
+						</Modal>
+						<Grid item xs={4} sm={2}>
+							{orderPara}
+						</Grid>
+						<Grid item xs={16} sm={18} margin="auto">
+							<NovelTitle href={novelUrl + novel.ncode} target="_blank">
+								{novel.title}
+							</NovelTitle>
+						</Grid>
+						<Grid container spacing={1} columns={20} alignItems="center">
+							<Grid item xs={20} sm={5}>
+								<ChartItem elevation={6}>
+									<RankChart rank={novelRankNum} novels={novels} animationFlag={true} />
+								</ChartItem>
+							</Grid>
+							<Grid item xs={20} sm={15} alignItems="stretch">
+								<Score
+									novelRankNum={novelRankNum}
+									globalPoint={novel.global_point}
+									favoriteCount={novel.fav_novel_cnt}
+									reviewerCount={novel.all_hyoka_cnt}
+									averageRate={novelAverageRate}
+									commentCount={novel.impression_cnt}
+									animationFlag={true}
+								/>
+							</Grid>
+						</Grid>
+					</Grid>
 					<NovelState novel={novel} />
-          <button onClick={() => onClickExport()}>PNG出力</button>
-        </Box>
-      </div>
-    );
+				</Box>
+{/* 				<button onClick={() => onClickExport()}>PNG出力</button> */}
+			</div>
+		);
 	});
 
 	return (
-    <div>
+		<div>
 			<SortButton novels={novels} setNovels={setNovels} user={user} />
-      {novelDataList}
-    </div>
-  );
+			{novelDataList}
+		</div>
+	);
 })
 
 export default Result;
