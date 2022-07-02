@@ -1,11 +1,11 @@
 import RankChart from "./RankChart";
 import SortButton from "./SortButton";
 import Score from "./Score";
-/* import PointChart from "./PointChart"; */
+import NovelState from "./NovelState";
 import React, { useState, useEffect, memo } from "react";
 import { Box, Grid, Modal } from '@mui/material/';
 import { ARankP, BRankP, CRankP, DRankP, ERankP, FRankP, GRankP, NRankP, SRankP, SSRankP, SSSRankP } from "../styles/Common";
-import { ChartItem, NovelTitle, KoshinDiv, KanketsuDiv, MikanDiv, TanpenDiv, ReviewDiv, NoReviewDiv, LengthDiv, StoryP, modalStyle,} from "../styles/Result"
+import { ChartItem, NovelTitle, modalStyle,} from "../styles/Result"
 import html2canvas from "html2canvas";
 
 
@@ -32,7 +32,6 @@ const Result = memo(({
 
 	const novelDataList = novels[0].map((novel, index) => {
 		let novelRankNum = [];
-		let novelRankAlpha = [];
 
 		//novel.all_hyoka_cntが0だった場合、平均評価を0にする。
 		let novelAverageRate = Math.round(novel.all_point / novel.all_hyoka_cnt * 100) / 100;
@@ -127,81 +126,6 @@ const Result = memo(({
 		else if (index <= 89) { orderPara = <FRankP>{index + 1}</FRankP>; }
 		else { orderPara = <GRankP>{index + 1}</GRankP>; } 
 		
-		//更新状態を判別
-		let novelState;
-		if (novel.end == 0 && novel.novel_type == 1) {
-			novelState = (
-				<KanketsuDiv>
-					<p style={{ margin: 0 }}>
-						かんけつ！
-					</p>
-				</KanketsuDiv>
-			);
-		} else if (novel.end == 0 && novel.novel_type == 2) {
-			novelState = (
-				<TanpenDiv>
-					<p style={{ margin: 0 }}>
-						たんぺん
-					</p>
-				</TanpenDiv>
-			);
-		} else if (novel.isstop == 0) {
-			novelState = (
-				<KoshinDiv>
-					<p style={{ margin: 0 }}>
-						こうしん
-						<span style={{ fontFamily: "メイリオ", fontWeight: "bold" }}>
-							〇
-						</span>
-					</p>
-				</KoshinDiv>
-			);
-		} else {
-			novelState = (
-				<MikanDiv>
-					<p style={{ margin: 0 }}>
-						こうしん
-						<span style={{ fontFamily: "Sawarabi Mincho", fontWeight: "bold" }}>
-							△
-						</span>
-					</p>
-				</MikanDiv>
-			);
-		}
-		
-		let novelReview;
-		//レビュー有か判別
-		if (novel.review_cnt > 0) {
-			novelReview = (
-				<ReviewDiv>
-					<p style={{ margin: 0 }}>
-						レビュー
-					</p>
-				</ReviewDiv>
-			);
-		} else {
-			novelReview = (
-				<NoReviewDiv>
-					<p style={{ margin: 0 }}>
-						レビュー
-					</p>
-				</NoReviewDiv>
-			);
-		}
-
-		const [story, setStory] = useState(
-			novel.story.length < 210
-				? novel.story
-				: novel.story.substring(0, 210) + "……"
-		);
-		useEffect(() => {
-			setStory(
-        novel.story.length < 210
-          ? novel.story
-          : novel.story.substring(0, 210) + "……"
-			);
-		}, [novels])
-
 		const saveAsImage = (uri) => {
       const downloadLink = document.createElement("a");
 
@@ -247,8 +171,8 @@ const Result = memo(({
             onClick={handleModal}
           >
             <Modal open={modal} onClose={handleModal}>
-							<Box sx={modalStyle}>
-								<BRankP>This is love!</BRankP>
+              <Box sx={modalStyle}>
+                <BRankP>This is love!</BRankP>
               </Box>
             </Modal>
             <Grid item xs={4} sm={2}>
@@ -274,34 +198,24 @@ const Result = memo(({
                 </ChartItem>
               </Grid>
               <Grid item xs={20} sm={15} alignItems="stretch">
-								<Score novelRankNum={novelRankNum} globalPoint={novel.global_point} favoriteCount={novel.fav_novel_cnt} reviewerCount={novel.review_cnt} averageRate={novelAverageRate} commentCount={novel.impression_cnt} />
+                <Score
+                  novelRankNum={novelRankNum}
+                  globalPoint={novel.global_point}
+                  favoriteCount={novel.fav_novel_cnt}
+                  reviewerCount={novel.review_cnt}
+                  averageRate={novelAverageRate}
+                  commentCount={novel.impression_cnt}
+                />
               </Grid>
             </Grid>
           </Grid>
-          <div style={{ textAlign: "center", marginTop: 10, width: "100%" }}>
-            <Grid container spacing={1} columns={20}>
-              <Grid item xs={10} sm={7}>
-                {novelState}
-              </Grid>
-              <Grid item xs={10} sm={7}>
-                {novelReview}
-              </Grid>
-              <Grid item xs={20} sm={6}>
-                <LengthDiv>もじ：{novel.length}</LengthDiv>
-              </Grid>
-              <Grid item xs={20}>
-                <StoryP onClick={() => setStory(novel.story)}>{story}</StoryP>
-              </Grid>
-            </Grid>
-          </div>
-
+					<NovelState novel={novel} />
           <button onClick={() => onClickExport()}>PNG出力</button>
         </Box>
       </div>
     );
 	});
 
-	
 	return (
     <div>
 			<SortButton novels={novels} setNovels={setNovels} user={user} />

@@ -15,7 +15,7 @@ class SearchController extends Controller
         $order = $request["order"];
         header("Access-Control-Allow-Origin: *");  //CORS
         
-        $url= "https://api.syosetu.com/novelapi/api/?lim=50&genre=$genre&nottensei=$not_isekai&nottenni=$not_isekai&order=$order&out=json";
+        $url= "https://api.syosetu.com/novelapi/api/?lim=100&genre=$genre&nottensei=$not_isekai&nottenni=$not_isekai&order=$order&out=json";
         // ストリームコンテキストのオプションを作成
         $options = array(
             // HTTPコンテキストオプションをセット

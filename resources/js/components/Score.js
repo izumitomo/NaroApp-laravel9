@@ -1,4 +1,4 @@
-import React, { useState, useEffect, memo } from "react";
+import React, { memo } from "react";
 import {Box, Grid,} from '@mui/material/';
 import { ARankP, BRankP, CRankP, DRankP, ERankP, FRankP, GRankP, NRankP, SRankP, SSRankP, SSSRankP } from "../styles/Common";
 import { PointP, DotItem } from "../styles/Score"
