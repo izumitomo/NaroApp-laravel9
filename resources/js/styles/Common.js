@@ -56,7 +56,6 @@ export const kiran = keyframes`
 
 export const Centering = styled(Paper)`
   &&&{
-    padding: 8px;
     text-align center;
     align-items: center;
     justify-content: center;
@@ -75,7 +74,7 @@ export const HoverPaper = styled(Centering)`
 
 export const RankP = styled.p`
   text-align: center;
-  font-size: 38px;
+  font-size: 36px;
   margin: auto;
   font-family: "pixel10-b";
   @media (max-width: 1200px) and (min-width: 991px) {
@@ -144,6 +143,9 @@ export const GRankP = styled(RankP)`
 export const NRankP = styled(RankP)`
   color: black;
 `;
+export const HiddenRankP = styled(RankP)`
+  opacity: 0;
+`
 
 export const ShineSSSRankP = styled(RankP)`
   background-image: linear-gradient(70deg, #ff99ff 48%, #fff 50%, #ff99ff 52%);

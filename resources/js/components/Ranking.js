@@ -1,5 +1,5 @@
 import React, {memo, useState, useEffect, useRef} from "react";
-import { FadeDRankP, FadeERankP, FadeFRankP, FadeGRankP, FadeNRankP, NRankP, ShineARankP, ShineBRankP, ShineCRankP, ShineSRankP, ShineSSRankP, ShineSSSRankP } from "../styles/Common";
+import { FadeDRankP, FadeERankP, FadeFRankP, FadeGRankP, FadeNRankP, HiddenRankP, NRankP, ShineARankP, ShineBRankP, ShineCRankP, ShineSRankP, ShineSSRankP, ShineSSSRankP } from "../styles/Common";
 
 
 const Ranking = ({
@@ -7,7 +7,7 @@ const Ranking = ({
 }) => {
 	//順位のstyleを格納
 	const [animation, setAnimation] = useState(false);
-	const [ranking, setRanking] = useState(<NRankP>?</NRankP>);
+	const [ranking, setRanking] = useState(<HiddenRankP>?</HiddenRankP>);
 	useEffect(() => {
 		if (animation == true) {
 			if (index <= 5) { setRanking(<ShineSSSRankP>{index + 1}</ShineSSSRankP>); }
@@ -21,7 +21,7 @@ const Ranking = ({
 			else if (index <= 79) { setRanking(<FadeGRankP>{index + 1}</FadeGRankP>); }
 			else { setRanking(<FadeNRankP>{index + 1}</FadeNRankP>); }
 		} else {
-			setRanking(<NRankP>?</NRankP>)
+			setRanking(<HiddenRankP>?</HiddenRankP>)
 		}
 	}, [animation]);
 	useEffect(() => {
@@ -30,10 +30,10 @@ const Ranking = ({
 			// elの相対位置を取得
 			const itemPos = (el.current.getBoundingClientRect().top + el.current.getBoundingClientRect().bottom) / 2;
 			// チャートの位置がブラウザ中央付近になったら起動
-			if (itemPos < windowY * 9/10 && 0 < itemPos && animation == false) {
+			if (itemPos < windowY * 9/10 && windowY * -1/10< itemPos && animation == false) {
 				setAnimation(true);
 				//console.log(animation, "true!!!!!")
-			} else if ((itemPos < 0 || windowY * 9/10 < itemPos) && animation == true){
+			} else if ((itemPos < windowY * -1/10|| windowY * 9/10 < itemPos) && animation == true){
 				setAnimation(false);
 			}
 		};
