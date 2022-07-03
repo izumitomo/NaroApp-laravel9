@@ -16,29 +16,25 @@ const Score = memo(({
 	const [animation, setAnimation] = useState(false);
 
 	useEffect(() => {
-		let graphAnim = function () {
-			let wy = window.pageYOffset; //Y軸スクロール量
-			let wb = wy + window.innerHeight; // ブラウザの大きさを基に調整。
-			// チャートの位置を取得
-			let itemPos = wy + el.current.getBoundingClientRect().bottom;
-//			console.log(wb, itemPos);
-
-			// チャートの位置がウィンドウ中央付近になったら起動
-			if (itemPos <= wb && animation == false) {
+		const graphAnim = function () {
+			const windowY = window.innerHeight; // ブラウザの大きさを取得。
+			// elの相対位置を取得
+			const itemPos = el.current.getBoundingClientRect().bottom;
+			// チャートの位置がブラウザ中央付近になったら起動
+			if (itemPos < windowY * 4/5 && windowY * 1/5 < itemPos && animation == false) {
 				setAnimation(true);
-				console.log("true!!!!!")
-			} /* else if (wb < itemPos || itemPos < wb + +window.innerHeight) {
-					setAnimation(false);
-				} */
+				//console.log(animation, "true!!!!!")
+			} else if (itemPos < windowY * 1/5 && animation == true){
+				setAnimation(false);
+			}
 		};
-		//      window.addEventListener("load", graphAnim); // 読み込み時の処理
 		window.addEventListener("scroll", graphAnim); // スクロール時の処理
 
 		return () => {
 			console.log("Score willunmount!!");
-			removeEventListener("scroll", graphAnim);
+			window.removeEventListener("scroll", graphAnim);
 		};
-	}, []);
+	});
 
 	const el = useRef(null);
 	useEffect(() => {
@@ -81,52 +77,50 @@ const Score = memo(({
 	}
 
 	return (
-    <div ref={el}>
-      <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={1} columns={5} alignItems="center">
-          <Grid item xs={1} alignItems="stretch">
-            <DotItem elevation={10}>
-              ポイント
-              <br />
-              {novelRankAlpha[0]}
-              <PointP>{globalPoint}</PointP>
-            </DotItem>
-          </Grid>
-          <Grid item xs={1}>
-            <DotItem elevation={10}>
-              ブクマ
-              <br />
-              {novelRankAlpha[1]}
-              <PointP>{favoriteCount}</PointP>
-            </DotItem>
-          </Grid>
-          <Grid item xs={1}>
-            <DotItem elevation={10}>
-              ひょうかしゃ
-              <br />
-              {novelRankAlpha[2]}
-              <PointP>{reviewerCount}</PointP>
-            </DotItem>
-          </Grid>
-          <Grid item xs={1}>
-            <DotItem elevation={10}>
-              へいきんてん
-              <br />
-              {novelRankAlpha[3]}
-              <PointP>{averageRate}</PointP>
-            </DotItem>
-          </Grid>
-          <Grid item xs={1}>
-            <DotItem elevation={10}>
-              かんそう
-              <br />
-              {novelRankAlpha[4]}
-              <PointP>{commentCount}</PointP>
-            </DotItem>
-          </Grid>
+    <Box sx={{ flexGrow: 1 }} ref={el}>
+      <Grid container spacing={1} columns={5} alignItems="center">
+        <Grid item xs={1} alignItems="stretch">
+          <DotItem elevation={10}>
+            ポイント
+            <br />
+            {novelRankAlpha[0]}
+            <PointP>{globalPoint}</PointP>
+          </DotItem>
         </Grid>
-      </Box>
-    </div>
+        <Grid item xs={1}>
+          <DotItem elevation={10}>
+            ブクマ
+            <br />
+            {novelRankAlpha[1]}
+            <PointP>{favoriteCount}</PointP>
+          </DotItem>
+        </Grid>
+        <Grid item xs={1}>
+          <DotItem elevation={10}>
+            ひょうかしゃ
+            <br />
+            {novelRankAlpha[2]}
+            <PointP>{reviewerCount}</PointP>
+          </DotItem>
+        </Grid>
+        <Grid item xs={1}>
+          <DotItem elevation={10}>
+            へいきんてん
+            <br />
+            {novelRankAlpha[3]}
+            <PointP>{averageRate}</PointP>
+          </DotItem>
+        </Grid>
+        <Grid item xs={1}>
+          <DotItem elevation={10}>
+            かんそう
+            <br />
+            {novelRankAlpha[4]}
+            <PointP>{commentCount}</PointP>
+          </DotItem>
+        </Grid>
+      </Grid>
+    </Box>
   );
 	});
 

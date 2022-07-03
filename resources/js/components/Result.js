@@ -2,11 +2,12 @@ import RankChart from "./RankChart";
 import SortButton from "./SortButton";
 import Score from "./Score";
 import NovelState from "./NovelState";
-import React, { useState, useEffect, memo } from "react";
+import React, { useState, useEffect, memo, useRef, useMemo } from "react";
 import { Box, Button, Grid, Modal } from '@mui/material/';
 import { ARankP, BRankP, CRankP, DRankP, ERankP, FRankP, GRankP, NRankP, SRankP, SSRankP, SSSRankP } from "../styles/Common";
 import { ChartItem, NovelTitle, modalStyle } from "../styles/Result";
 import html2canvas from "html2canvas";
+
 
 
 const novelUrl = "https://ncode.syosetu.com/";
@@ -31,10 +32,11 @@ const Result = memo(({
 	const rateUpScale = (novels[1].max_average_rate - novels[1].average_rate) / 6;
 
 	const novelDataList = novels[0].map((novel, index) => {
-		let novelRankNum = [];
-
-		//novel.all_hyoka_cntが0だった場合、平均評価を0にする。
 		let novelAverageRate = Math.round(novel.all_point / novel.all_hyoka_cnt * 100) / 100;
+		const novelRankNum = useMemo(() => {
+      let novelRankNum = [];
+
+     //novel.all_hyoka_cntが0だった場合、平均評価を0にする。
 		//評価者が0人の時.
 		if (isNaN(novelAverageRate)) {
 			novelAverageRate = 0;
@@ -113,22 +115,27 @@ const Result = memo(({
 				}
 			}
 		}
+			return novelRankNum;
+    },[novels]);
+
 		//順位のstyleを格納
+		const orderPara = useMemo(() => {
 		let orderPara; 
 		if (index <= 5) { orderPara = <SSSRankP>{index + 1}</SSSRankP>; }
-		else if (index <= 9) { orderPara = <SRankP>{index + 1}</SRankP>; }
-		else if (index <= 19) { orderPara = <ARankP>{index + 1}</ARankP>; }
-		else if (index <= 29) { orderPara = <BRankP>{index + 1}</BRankP>; }
-		else if (index <= 39) { orderPara = <CRankP>{index + 1}</CRankP>; }
-		else if (index <= 49) { orderPara = <DRankP>{index + 1}</DRankP>; }
-		else if (index <= 59) { orderPara = <ERankP>{index + 1}</ERankP>; }
-		else if (index <= 69) { orderPara = <FRankP>{index + 1}</FRankP>; }
-		else if (index <= 79) { orderPara = <GRankP>{index + 1}</GRankP>; }
-		else { orderPara = <GRankP>{index + 1}</GRankP>; } 
+			else if (index <= 9) { orderPara = <SRankP>{index + 1}</SRankP>; }
+			else if (index <= 19) { orderPara = <ARankP>{index + 1}</ARankP>; }
+			else if (index <= 29) { orderPara = <BRankP>{index + 1}</BRankP>; }
+			else if (index <= 39) { orderPara = <CRankP>{index + 1}</CRankP>; }
+			else if (index <= 49) { orderPara = <DRankP>{index + 1}</DRankP>; }
+			else if (index <= 59) { orderPara = <ERankP>{index + 1}</ERankP>; }
+			else if (index <= 69) { orderPara = <FRankP>{index + 1}</FRankP>; }
+			else if (index <= 79) { orderPara = <GRankP>{index + 1}</GRankP>; }
+			else { orderPara = <GRankP>{index + 1}</GRankP>; }
+			return orderPara;
+		}, [novels])
 		
 		const saveAsImage = (uri) => {
 			const downloadLink = document.createElement("a");
-
 			if (typeof downloadLink.download === "string") {
 				downloadLink.href = uri;
 				// ファイル名
@@ -221,7 +228,7 @@ const Result = memo(({
 						<Grid container spacing={1} columns={20} alignItems="center">
 							<Grid item xs={20} sm={5}>
 								<ChartItem elevation={6}>
-									<RankChart rank={novelRankNum} novels={novels} animationFlag={true} />
+									<RankChart rank={novelRankNum} novels={novels} animationFlag={true}/>
 								</ChartItem>
 							</Grid>
 							<Grid item xs={20} sm={15} alignItems="stretch">
