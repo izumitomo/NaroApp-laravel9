@@ -20,7 +20,7 @@ export const DotItem = styled(HoverPaper)`
   @media (max-width: 600px) {
     font-size: 9px;
   }
-  @media (max-width: 767px) and (min-width: 601px) {
+  @media (max-width: 768px) and (min-width: 600px) {
     font-size: 10px;
   }
   @media (max-width: 991px) and (min-width: 768px) {

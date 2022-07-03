@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useState, useRef } from "react";
 import {Box, Grid,} from '@mui/material/';
-import { NRankP,  FadeNRankP, FadeGRankP, FadeERankP, FadeDRankP, FadeFRankP, ShineCRankP, ShineBRankP, ShineARankP, ShineSRankP, ShineSSRankP, ShineSSSRankP } from "../styles/Common";
+import { NRankP,  FadeNRankP, FadeGRankP, FadeERankP, FadeDRankP, FadeFRankP, ShineCRankP, ShineBRankP, ShineARankP, ShineSRankP, ShineSSRankP, ShineSSSRankP, HiddenRankP } from "../styles/Common";
 import { PointP, DotItem } from "../styles/Score"
 
 const Score = memo(({
@@ -61,17 +61,17 @@ const Score = memo(({
 		})
 	} else {
 		novelRankNum.forEach(function (rank) {
-			if (rank == 10) { novelRankAlpha.push(<NRankP>?</NRankP>); }
-			else if (rank == 9) { novelRankAlpha.push(<NRankP>?</NRankP>); }
-			else if (rank == 8) { novelRankAlpha.push(<NRankP>?</NRankP>); }
-			else if (rank == 7) { novelRankAlpha.push(<NRankP>?</NRankP>); }
-			else if (rank == 6) { novelRankAlpha.push(<NRankP>?</NRankP>); }
-			else if (rank == 5) { novelRankAlpha.push(<NRankP>?</NRankP>); }
-			else if (rank == 4) { novelRankAlpha.push(<NRankP>?</NRankP>); }
-			else if (rank == 3) { novelRankAlpha.push(<NRankP>?</NRankP>); }
-			else if (rank == 2) { novelRankAlpha.push(<NRankP>?</NRankP>); }
-			else if (rank == 1) { novelRankAlpha.push(<NRankP>?</NRankP>); }
-			else { novelRankAlpha.push(<NRankP>?</NRankP>); }
+			if (rank == 10) { novelRankAlpha.push(<HiddenRankP>?</HiddenRankP>); }
+			else if (rank == 9) { novelRankAlpha.push(<HiddenRankP>?</HiddenRankP>); }
+			else if (rank == 8) { novelRankAlpha.push(<HiddenRankP>?</HiddenRankP>); }
+			else if (rank == 7) { novelRankAlpha.push(<HiddenRankP>?</HiddenRankP>); }
+			else if (rank == 6) { novelRankAlpha.push(<HiddenRankP>?</HiddenRankP>); }
+			else if (rank == 5) { novelRankAlpha.push(<HiddenRankP>?</HiddenRankP>); }
+			else if (rank == 4) { novelRankAlpha.push(<HiddenRankP>?</HiddenRankP>); }
+			else if (rank == 3) { novelRankAlpha.push(<HiddenRankP>?</HiddenRankP>); }
+			else if (rank == 2) { novelRankAlpha.push(<HiddenRankP>?</HiddenRankP>); }
+			else if (rank == 1) { novelRankAlpha.push(<HiddenRankP>?</HiddenRankP>); }
+			else { novelRankAlpha.push(<HiddenRankP>?</HiddenRankP>); }
 		})
 	}
 

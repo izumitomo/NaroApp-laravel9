@@ -21,11 +21,17 @@ export const TitleP = styled.p`
 export const GenreP = styled.p`
   color: black;
   font-family: "pixel10-r";
-  font-size: 24px;
+  font-size: 20px;
   margin: auto;
 `;
 export const IsekaiP = styled(GenreP)`
-  fontsize: 22px;
+  font-size: 20px;
+  @media (max-width: 768px) and (min-width: 600px) {
+    font-size: 22px;
+  }
+  @media (min-width: 768px) {
+    font-size: 20px;
+  }
 `;
 export const SearchP = styled(GenreP)`
   fontsize: 22px;
