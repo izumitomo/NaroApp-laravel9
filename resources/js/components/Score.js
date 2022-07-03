@@ -1,8 +1,7 @@
 import React, { memo, useEffect, useState, useRef } from "react";
 import {Box, Grid,} from '@mui/material/';
-import { ARankNonAnimationP, ARankP, BRankNonAnimationP, BRankP, CRankNonAnimationP, CRankP, DRankP, ERankP, FRankP, GRankP, NRankP, SRankNonAnimationP, SRankP, SSRankP, SSSRankP } from "../styles/Common";
+import { NRankP,  FadeNRankP, FadeGRankP, FadeERankP, FadeDRankP, FadeFRankP, ShineCRankP, ShineBRankP, ShineARankP, ShineSRankP, ShineSSRankP, ShineSSSRankP } from "../styles/Common";
 import { PointP, DotItem } from "../styles/Score"
-
 
 const Score = memo(({
 	novelRankNum,
@@ -21,10 +20,10 @@ const Score = memo(({
 			// elの相対位置を取得
 			const itemPos = (el.current.getBoundingClientRect().top + el.current.getBoundingClientRect().bottom) / 2;
 			// チャートの位置がブラウザ中央付近になったら起動
-			if (itemPos < windowY * 4/5 && 0 < itemPos && animation == false) {
+			if (itemPos < windowY * 9/10 && 0 < itemPos && animation == false) {
 				setAnimation(true);
 				//console.log(animation, "true!!!!!")
-			} else if ((itemPos < 0 || windowY * 4/5 < itemPos) && animation == true){
+			} else if ((itemPos < 0 || windowY * 9/10 < itemPos) && animation == true){
 				setAnimation(false);
 			}
 		};
@@ -48,31 +47,31 @@ const Score = memo(({
 	//ランクをアルファベットにしてタグごと格納
 	if (animationFlag == true && animation == true) {
 		novelRankNum.forEach(function (rank) {
-			if (rank == 10) { novelRankAlpha.push(<SSSRankP>SSS</SSSRankP >); }
-			else if (rank == 9) { novelRankAlpha.push(<SSRankP>SS</SSRankP>); }
-			else if (rank == 8) { novelRankAlpha.push(<SRankP>S</SRankP>); }
-			else if (rank == 7) { novelRankAlpha.push(<ARankP>A</ARankP>); }
-			else if (rank == 6) { novelRankAlpha.push(<BRankP>B</BRankP>); }
-			else if (rank == 5) { novelRankAlpha.push(<CRankP>C</CRankP>); }
-			else if (rank == 4) { novelRankAlpha.push(<DRankP>D</DRankP>); }
-			else if (rank == 3) { novelRankAlpha.push(<ERankP>E</ERankP>); }
-			else if (rank == 2) { novelRankAlpha.push(<FRankP>F</FRankP>); }
-			else if (rank == 1) { novelRankAlpha.push(<GRankP>G</GRankP>); }
-			else { novelRankAlpha.push(<NRankP>N</NRankP>); }
+			if (rank == 10) { novelRankAlpha.push(<ShineSSSRankP>SSS</ShineSSSRankP >); }
+			else if (rank == 9) { novelRankAlpha.push(<ShineSSRankP>SS</ShineSSRankP>); }
+			else if (rank == 8) { novelRankAlpha.push(<ShineSRankP>S</ShineSRankP>); }
+			else if (rank == 7) { novelRankAlpha.push(<ShineARankP>A</ShineARankP>); }
+			else if (rank == 6) { novelRankAlpha.push(<ShineBRankP>B</ShineBRankP>); }
+			else if (rank == 5) { novelRankAlpha.push(<ShineCRankP>C</ShineCRankP>); }
+			else if (rank == 4) { novelRankAlpha.push(<FadeDRankP>D</FadeDRankP>); }
+			else if (rank == 3) { novelRankAlpha.push(<FadeERankP>E</FadeERankP>); }
+			else if (rank == 2) { novelRankAlpha.push(<FadeFRankP>F</FadeFRankP>); }
+			else if (rank == 1) { novelRankAlpha.push(<FadeGRankP>G</FadeGRankP>); }
+			else { novelRankAlpha.push(<FadeNRankP>N</FadeNRankP>); }
 		})
 	} else {
 		novelRankNum.forEach(function (rank) {
-			if (rank == 10) { novelRankAlpha.push(<SRankNonAnimationP>SSS</SRankNonAnimationP>); }
-			else if (rank == 9) { novelRankAlpha.push(<SRankNonAnimationP>SS</SRankNonAnimationP>); }
-			else if (rank == 8) { novelRankAlpha.push(<SRankNonAnimationP>S</SRankNonAnimationP>); }
-			else if (rank == 7) { novelRankAlpha.push(<ARankNonAnimationP>A</ARankNonAnimationP>); }
-			else if (rank == 6) { novelRankAlpha.push(<BRankNonAnimationP>B</BRankNonAnimationP >); }
-			else if (rank == 5) { novelRankAlpha.push(<CRankNonAnimationP>C</CRankNonAnimationP >); }
-			else if (rank == 4) { novelRankAlpha.push(<DRankP>D</DRankP>); }
-			else if (rank == 3) { novelRankAlpha.push(<ERankP>E</ERankP>); }
-			else if (rank == 2) { novelRankAlpha.push(<FRankP>F</FRankP>); }
-			else if (rank == 1) { novelRankAlpha.push(<GRankP>G</GRankP>); }
-			else { novelRankAlpha.push(<NRankP>N</NRankP>); }
+			if (rank == 10) { novelRankAlpha.push(<NRankP>?</NRankP>); }
+			else if (rank == 9) { novelRankAlpha.push(<NRankP>?</NRankP>); }
+			else if (rank == 8) { novelRankAlpha.push(<NRankP>?</NRankP>); }
+			else if (rank == 7) { novelRankAlpha.push(<NRankP>?</NRankP>); }
+			else if (rank == 6) { novelRankAlpha.push(<NRankP>?</NRankP>); }
+			else if (rank == 5) { novelRankAlpha.push(<NRankP>?</NRankP>); }
+			else if (rank == 4) { novelRankAlpha.push(<NRankP>?</NRankP>); }
+			else if (rank == 3) { novelRankAlpha.push(<NRankP>?</NRankP>); }
+			else if (rank == 2) { novelRankAlpha.push(<NRankP>?</NRankP>); }
+			else if (rank == 1) { novelRankAlpha.push(<NRankP>?</NRankP>); }
+			else { novelRankAlpha.push(<NRankP>?</NRankP>); }
 		})
 	}
 

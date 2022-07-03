@@ -4,9 +4,10 @@ import Score from "./Score";
 import NovelState from "./NovelState";
 import React, { useState, useEffect, memo, useRef, useMemo } from "react";
 import { Box, Button, Grid, Modal } from '@mui/material/';
-import { ARankP, BRankP, CRankP, DRankP, ERankP, FRankP, GRankP, NRankP, SRankP, SSRankP, SSSRankP } from "../styles/Common";
+import { NRankP } from "../styles/Common";
 import { ChartItem, NovelTitle, modalStyle } from "../styles/Result";
-import html2canvas from "html2canvas";
+import Ranking from "./Ranking";
+//import html2canvas from "html2canvas";
 
 
 
@@ -116,23 +117,7 @@ const Result = memo(({
 			}
 		}
 			return novelRankNum;
-    },[novels]);
-
-		//順位のstyleを格納
-		const orderPara = useMemo(() => {
-		let orderPara; 
-		if (index <= 5) { orderPara = <SSSRankP>{index + 1}</SSSRankP>; }
-			else if (index <= 9) { orderPara = <SRankP>{index + 1}</SRankP>; }
-			else if (index <= 19) { orderPara = <ARankP>{index + 1}</ARankP>; }
-			else if (index <= 29) { orderPara = <BRankP>{index + 1}</BRankP>; }
-			else if (index <= 39) { orderPara = <CRankP>{index + 1}</CRankP>; }
-			else if (index <= 49) { orderPara = <DRankP>{index + 1}</DRankP>; }
-			else if (index <= 59) { orderPara = <ERankP>{index + 1}</ERankP>; }
-			else if (index <= 69) { orderPara = <FRankP>{index + 1}</FRankP>; }
-			else if (index <= 79) { orderPara = <GRankP>{index + 1}</GRankP>; }
-			else { orderPara = <GRankP>{index + 1}</GRankP>; }
-			return orderPara;
-		}, [novels])
+		}, [novels]);
 		
 		const saveAsImage = (uri) => {
 			const downloadLink = document.createElement("a");
@@ -177,48 +162,8 @@ const Result = memo(({
 						marginTop={1}
 						onClick={handleModal}
 					>
-						<Modal open={modal} onClose={handleModal}>
-							<Box sx={modalStyle} id={novel.ncode}>
-								<Grid
-									container
-									spacing={1}
-									columns={20}
-									marginBottom={1}
-									marginTop={1}
-									onClick={handleModal}
-								>
-									<Grid item xs={4} sm={2}>
-										<NRankP>{index + 1}</NRankP>
-									</Grid>
-									<Grid item xs={16} sm={18} margin="auto">
-										<NovelTitle href={novelUrl + novel.ncode} target="_blank">
-											{novel.title}
-										</NovelTitle>
-									</Grid>
-									<Grid container spacing={1} columns={20} alignItems="center">
-										<Grid item xs={20} sm={5}>
-											<ChartItem elevation={10}>
-												<RankChart rank={novelRankNum} novels={novels} animationFlag={false} />
-											</ChartItem>
-										</Grid>
-										<Grid item xs={20} sm={15} alignItems="stretch">
-											<Score
-												novelRankNum={novelRankNum}
-												globalPoint={novel.global_point}
-												favoriteCount={novel.fav_novel_cnt}
-												reviewerCount={novel.all_hyoka_cnt}
-												averageRate={novelAverageRate}
-												commentCount={novel.impression_cnt}
-												animationFlag={false}
-											/>
-										</Grid>
-									</Grid>
-								</Grid>
-								<NovelState novel={novel} />
-							</Box>
-						</Modal>
 						<Grid item xs={4} sm={2}>
-							{orderPara}
+							<Ranking index={index} />
 						</Grid>
 						<Grid item xs={16} sm={18} margin="auto">
 							<NovelTitle href={novelUrl + novel.ncode} target="_blank">
