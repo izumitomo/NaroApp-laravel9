@@ -107,7 +107,7 @@ const RankChart = memo(({
 	const graphAnim = function () {
 			const windowY = window.innerHeight; // ブラウザの大きさを取得。
 			// チャートの位置を取得
-			const chartPos = el.current.getBoundingClientRect().bottom;
+			const chartPos = (el.current.getBoundingClientRect().top + el.current.getBoundingClientRect().bottom) / 2;
 			// チャートの位置がウィンドウ中央付近になったら起動
 			if (chartPos < windowY * 4/5 && 0 < chartPos && chartFlag == false) {
         setChartFlag(true);
