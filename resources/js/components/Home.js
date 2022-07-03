@@ -9,7 +9,7 @@ import { auth } from "../firebase/Config";
 import {Box, Grid, InputLabel, IconButton, Select, MenuItem, FormGroup, FormControl, FormControlLabel, Checkbox} from '@mui/material';
 import { ThemeProvider, createTheme} from '@mui/material/styles';
 import { WifiFind, ErrorRounded } from "@mui/icons-material";
-import { GrayPaper, TitleP, GenreP, IsekaiP, SearchP, LoginButton, LogoutButton, RegisterButton, SearchButton } from "../styles/Home";
+import { WhitePaper, TitleP, GenreP, IsekaiP, SearchP, LoginButton, LogoutButton, RegisterButton, SearchButton } from "../styles/Home";
 import html2canvas from "html2canvas";
 
 
@@ -148,7 +148,7 @@ const Home = () => {
       <Box marginBottom={3} id="test">
         <Grid container spacing={1} columns={10}>
           <Grid item xs={10} sm={4}>
-            <GrayPaper>
+            <WhitePaper>
               <FormControl
                 sx={{
                   margin: "auto",
@@ -232,10 +232,10 @@ const Home = () => {
                   </MenuItem>
                 </Select>
               </FormControl>
-            </GrayPaper>
+            </WhitePaper>
           </Grid>
           <Grid item xs={10} sm={4}>
-            <GrayPaper>
+            <WhitePaper>
               <FormControl component="fieldset" sx={{ width: 1, height: 1 }}>
                 <FormGroup aria-label="position" sx={{ margin: "auto" }}>
                   <FormControlLabel
@@ -252,7 +252,7 @@ const Home = () => {
                   />
                 </FormGroup>
               </FormControl>
-            </GrayPaper>
+            </WhitePaper>
           </Grid>
           <Grid item xs={10} sm={2}>
             <div

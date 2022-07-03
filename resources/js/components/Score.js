@@ -1,80 +1,126 @@
-import React, { useState, useEffect, memo } from "react";
+import React, { memo, useEffect, useState, useRef } from "react";
 import {Box, Grid,} from '@mui/material/';
-import { ARankP, BRankP, CRankP, DRankP, ERankP, FRankP, GRankP, NRankP, SRankP, SSRankP, SSSRankP } from "../styles/Common";
+import { NRankP,  FadeNRankP, FadeGRankP, FadeERankP, FadeDRankP, FadeFRankP, ShineCRankP, ShineBRankP, ShineARankP, ShineSRankP, ShineSSRankP, ShineSSSRankP } from "../styles/Common";
 import { PointP, DotItem } from "../styles/Score"
 
-
 const Score = memo(({
-  novelRankNum,
-  globalPoint,
-  favoriteCount,
-  reviewerCount,
-  averageRate,
-  commentCount,
+	novelRankNum,
+	globalPoint,
+	favoriteCount,
+	reviewerCount,
+	averageRate,
+	commentCount,
+	animationFlag,
 }) => {
-	let novelRankAlpha = []
-		//ランクをアルファベットにしてタグごと格納
-		novelRankNum.forEach(function (rank) {
-			if (rank == 10) { novelRankAlpha.push(<SSSRankP>SSS</SSSRankP >); }
-			else if (rank == 9) { novelRankAlpha.push(<SSRankP>SS</SSRankP>); }
-			else if (rank == 8) { novelRankAlpha.push(<SRankP>S</SRankP>);}
-			else if (rank == 7) { novelRankAlpha.push(<ARankP>A</ARankP>);}
-			else if (rank == 6) { novelRankAlpha.push(<BRankP>B</BRankP>);}
-			else if (rank == 5) { novelRankAlpha.push(<CRankP>C</CRankP>);}
-			else if (rank == 4) { novelRankAlpha.push(<DRankP>D</DRankP>);}
-			else if (rank == 3) { novelRankAlpha.push(<ERankP>E</ERankP>);}
-			else if (rank == 2) { novelRankAlpha.push(<FRankP>F</FRankP>);}
-			else if (rank == 1) { novelRankAlpha.push(<GRankP>G</GRankP>);}
-			else { novelRankAlpha.push(<NRankP>N</NRankP>);}
-		})
-		
+	const [animation, setAnimation] = useState(false);
 
-		return (
-        <Box sx={{ flexGrow: 1 }}>
-            <Grid container spacing={1} columns={5} alignItems="center">
-              <Grid item xs={1} alignItems="stretch">
-                <DotItem elevation={6}>
-                  ポイント
-                  <br />
-                  {novelRankAlpha[0]}
-                  <PointP>{globalPoint}</PointP>
-                </DotItem>
-              </Grid>
-              <Grid item xs={1}>
-                <DotItem elevation={6}>
-                  ブクマ
-                  <br />
-                  {novelRankAlpha[1]}
-                  <PointP>{favoriteCount}</PointP>
-                </DotItem>
-              </Grid>
-              <Grid item xs={1}>
-                <DotItem elevation={6}>
-                  ひょうかしゃ
-                  <br />
-                  {novelRankAlpha[2]}
-                  <PointP>{reviewerCount}</PointP>
-                </DotItem>
-              </Grid>
-              <Grid item xs={1}>
-                <DotItem elevation={6}>
-                  へいきんてん
-                  <br />
-                  {novelRankAlpha[3]}
-                  <PointP>{averageRate}</PointP>
-                </DotItem>
-              </Grid>
-              <Grid item xs={1}>
-                <DotItem elevation={6}>
-                  かんそう
-                  <br />
-                  {novelRankAlpha[4]}
-                  <PointP>{commentCount}</PointP>
-                </DotItem>
-              </Grid>
-            </Grid>
-        </Box>
-    );
+	useEffect(() => {
+		const graphAnim = function () {
+			const windowY = window.innerHeight; // ブラウザの大きさを取得。
+			// elの相対位置を取得
+			const itemPos = (el.current.getBoundingClientRect().top + el.current.getBoundingClientRect().bottom) / 2;
+			// チャートの位置がブラウザ中央付近になったら起動
+			if (itemPos < windowY * 9/10 && 0 < itemPos && animation == false) {
+				setAnimation(true);
+				//console.log(animation, "true!!!!!")
+			} else if ((itemPos < 0 || windowY * 9/10 < itemPos) && animation == true){
+				setAnimation(false);
+			}
+		};
+		window.addEventListener("scroll", graphAnim); // スクロール時の処理
+
+		return () => {
+			console.log("Score willunmount!!");
+			window.removeEventListener("scroll", graphAnim);
+		};
+	});
+
+	const el = useRef(null);
+	useEffect(() => {
+		setAnimation(false);
+	}, [novelRankNum]);
+	
+	console.log("Score rerendering!");
+
+
+	let novelRankAlpha = []
+	//ランクをアルファベットにしてタグごと格納
+	if (animationFlag == true && animation == true) {
+		novelRankNum.forEach(function (rank) {
+			if (rank == 10) { novelRankAlpha.push(<ShineSSSRankP>SSS</ShineSSSRankP >); }
+			else if (rank == 9) { novelRankAlpha.push(<ShineSSRankP>SS</ShineSSRankP>); }
+			else if (rank == 8) { novelRankAlpha.push(<ShineSRankP>S</ShineSRankP>); }
+			else if (rank == 7) { novelRankAlpha.push(<ShineARankP>A</ShineARankP>); }
+			else if (rank == 6) { novelRankAlpha.push(<ShineBRankP>B</ShineBRankP>); }
+			else if (rank == 5) { novelRankAlpha.push(<ShineCRankP>C</ShineCRankP>); }
+			else if (rank == 4) { novelRankAlpha.push(<FadeDRankP>D</FadeDRankP>); }
+			else if (rank == 3) { novelRankAlpha.push(<FadeERankP>E</FadeERankP>); }
+			else if (rank == 2) { novelRankAlpha.push(<FadeFRankP>F</FadeFRankP>); }
+			else if (rank == 1) { novelRankAlpha.push(<FadeGRankP>G</FadeGRankP>); }
+			else { novelRankAlpha.push(<FadeNRankP>N</FadeNRankP>); }
+		})
+	} else {
+		novelRankNum.forEach(function (rank) {
+			if (rank == 10) { novelRankAlpha.push(<NRankP>?</NRankP>); }
+			else if (rank == 9) { novelRankAlpha.push(<NRankP>?</NRankP>); }
+			else if (rank == 8) { novelRankAlpha.push(<NRankP>?</NRankP>); }
+			else if (rank == 7) { novelRankAlpha.push(<NRankP>?</NRankP>); }
+			else if (rank == 6) { novelRankAlpha.push(<NRankP>?</NRankP>); }
+			else if (rank == 5) { novelRankAlpha.push(<NRankP>?</NRankP>); }
+			else if (rank == 4) { novelRankAlpha.push(<NRankP>?</NRankP>); }
+			else if (rank == 3) { novelRankAlpha.push(<NRankP>?</NRankP>); }
+			else if (rank == 2) { novelRankAlpha.push(<NRankP>?</NRankP>); }
+			else if (rank == 1) { novelRankAlpha.push(<NRankP>?</NRankP>); }
+			else { novelRankAlpha.push(<NRankP>?</NRankP>); }
+		})
+	}
+
+	return (
+    <Box sx={{ flexGrow: 1 }} ref={el}>
+      <Grid container spacing={1} columns={5} alignItems="center">
+        <Grid item xs={1} alignItems="stretch">
+          <DotItem elevation={10}>
+            ポイント
+            <br />
+            {novelRankAlpha[0]}
+            <PointP>{globalPoint}</PointP>
+          </DotItem>
+        </Grid>
+        <Grid item xs={1}>
+          <DotItem elevation={10}>
+            ブクマ
+            <br />
+            {novelRankAlpha[1]}
+            <PointP>{favoriteCount}</PointP>
+          </DotItem>
+        </Grid>
+        <Grid item xs={1}>
+          <DotItem elevation={10}>
+            ひょうかしゃ
+            <br />
+            {novelRankAlpha[2]}
+            <PointP>{reviewerCount}</PointP>
+          </DotItem>
+        </Grid>
+        <Grid item xs={1}>
+          <DotItem elevation={10}>
+            へいきんてん
+            <br />
+            {novelRankAlpha[3]}
+            <PointP>{averageRate}</PointP>
+          </DotItem>
+        </Grid>
+        <Grid item xs={1}>
+          <DotItem elevation={10}>
+            かんそう
+            <br />
+            {novelRankAlpha[4]}
+            <PointP>{commentCount}</PointP>
+          </DotItem>
+        </Grid>
+      </Grid>
+    </Box>
+  );
 	});
 
 
