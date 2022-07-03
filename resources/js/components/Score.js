@@ -19,12 +19,12 @@ const Score = memo(({
 		const graphAnim = function () {
 			const windowY = window.innerHeight; // ブラウザの大きさを取得。
 			// elの相対位置を取得
-			const itemPos = el.current.getBoundingClientRect().bottom;
+			const itemPos = (el.current.getBoundingClientRect().top + el.current.getBoundingClientRect().bottom) / 2;
 			// チャートの位置がブラウザ中央付近になったら起動
-			if (itemPos < windowY * 4/5 && windowY * 1/5 < itemPos && animation == false) {
+			if (itemPos < windowY * 4/5 && 0 < itemPos && animation == false) {
 				setAnimation(true);
 				//console.log(animation, "true!!!!!")
-			} else if (itemPos < windowY * 1/5 && animation == true){
+			} else if ((itemPos < 0 || windowY * 4/5 < itemPos) && animation == true){
 				setAnimation(false);
 			}
 		};

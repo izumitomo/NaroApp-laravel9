@@ -109,10 +109,10 @@ const RankChart = memo(({
 			// チャートの位置を取得
 			const chartPos = el.current.getBoundingClientRect().bottom;
 			// チャートの位置がウィンドウ中央付近になったら起動
-			if (chartPos < windowY * 4/5 && windowY * 1/5 < chartPos && chartFlag == false) {
+			if (chartPos < windowY * 4/5 && 0 < chartPos && chartFlag == false) {
         setChartFlag(true);
         //console.log(chartFlag, "true!!!!!")
-      } else if (chartPos < windowY * 1/5 && chartFlag == true){
+      } else if ((chartPos < 0 || windowY * 4/5 < chartPos ) && chartFlag == true){
 				setChartFlag(false);
 			}
 		};

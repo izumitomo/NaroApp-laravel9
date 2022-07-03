@@ -19,6 +19,18 @@ export const fade = keyframes`
   }
 `;
 
+export const fastFade = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`; 
+
 export const Centering = styled(Paper)`
   &&&{
     padding: 8px;
@@ -85,7 +97,11 @@ export const SSSRankP = styled(RankP)`
   background-size: 300% 100%;
   -webkit-background-clip: text;
   color: transparent;
-  animation: ${shineSSS} 3s infinite;
+  animation:
+    ${shineSSS} 3s infinite,
+    ${fastFade} 2s forwards;
+  opacity: 0;
+
 `;
 
 export const SRankNonAnimationP = styled(RankP)`
