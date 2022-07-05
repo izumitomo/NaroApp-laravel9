@@ -112,9 +112,10 @@ const RankChart = memo(({
 			if (chartPos < windowY * 7/10 && 0 < chartPos && chartFlag == false) {
         setChartFlag(true);
         //console.log(chartFlag, "true!!!!!")
-      } else if ((chartPos < 0 || windowY * 7/10 < chartPos ) && chartFlag == true){
-				setChartFlag(false);
 			}
+			/* else if ((chartPos < 0 || windowY * 7 / 10 < chartPos) && chartFlag == true) {
+				setChartFlag(false);
+			} */
 		};
 		window.addEventListener("scroll", graphAnim); // スクロール時の処理
 		
