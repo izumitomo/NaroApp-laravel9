@@ -97,7 +97,7 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const title = "なろーせんとーりょく！";
 
-  const saveAsImage = (uri) => {
+/*   const saveAsImage = (uri) => {
     const downloadLink = document.createElement("a");
 
     if (typeof downloadLink.download === "string") {
@@ -122,7 +122,7 @@ const Home = () => {
       const targetImgUri = canvas.toDataURL("img/png");
       saveAsImage(targetImgUri);
     });
-  };
+  }; */
 		
   return (
     <ThemeProvider theme={theme}>
@@ -133,7 +133,6 @@ const Home = () => {
           <IconButton color="pink" size="large" onClick={() => setHidden(false)}>
             <ErrorRounded fontSize="large"/>
           </IconButton>
-          <button onClick={() => onClickExport()}>PNG出力</button>
         </>
       ) : (
         <>
