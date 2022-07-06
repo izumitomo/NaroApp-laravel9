@@ -23,9 +23,10 @@ const Score = memo(({
 			if (itemPos < windowY * 9/10 && 0 < itemPos && animation == false) {
 				setAnimation(true);
 				//console.log(animation, "true!!!!!")
-			} else if ((itemPos < 0 || windowY * 9/10 < itemPos) && animation == true){
-				setAnimation(false);
 			}
+			/* else if ((itemPos < 0 || windowY * 9 / 10 < itemPos) && animation == true) {
+				setAnimation(false);
+			} */
 		};
 		window.addEventListener("scroll", graphAnim); // スクロール時の処理
 

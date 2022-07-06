@@ -163,7 +163,7 @@ const Result = memo(({
 						onClick={handleModal}
 					>
 						<Grid item xs={4} sm={2}>
-							<Ranking index={index} />
+							<Ranking index={index} novels={novels} />
 						</Grid>
 						<Grid item xs={16} sm={18} margin="auto">
 							<NovelTitle href={novelUrl + novel.ncode} target="_blank">
