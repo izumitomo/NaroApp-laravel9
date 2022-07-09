@@ -16,6 +16,6 @@ mix
   .react()
   .sass("resources/sass/app.scss", "public/css");
 
-if (!mix.inProduction()) {
+if (mix.inProduction() == false) {
   mix.sourceMaps();
 }
