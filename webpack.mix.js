@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+let JavaScriptObfuscator = require("webpack-obfuscator");
 
 /*
  |--------------------------------------------------------------------------
@@ -11,7 +12,22 @@ const mix = require('laravel-mix');
  |
  */
 
+let config = {};
+
+if (mix.inProduction()) {
+  config.plugins = [
+    new JavaScriptObfuscator({
+      rotateUnicodeArray: true,
+    }),
+  ];
+}
+
+mix.webpackConfig(config);
+
 mix.js('resources/js/app.js', 'public/js')
     .react()
     .sass('resources/sass/app.scss', 'public/css')
-    .sourceMaps();
+
+if (!mix.inProduction()) {
+    mix.sourceMaps();
+}
