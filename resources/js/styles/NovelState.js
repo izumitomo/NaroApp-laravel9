@@ -95,4 +95,7 @@ export const LengthDiv = styled.div`
 
 export const StoryP = styled.p`
   font-family: "milk-b";
+  &:hover {
+    cursor: zoom-in;
+  }
 `;

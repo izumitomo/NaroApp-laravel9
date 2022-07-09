@@ -9,8 +9,8 @@ import { auth } from "../firebase/Config";
 import {Box, Grid, InputLabel, IconButton, Select, MenuItem, FormGroup, FormControl, FormControlLabel, Checkbox} from '@mui/material';
 import { ThemeProvider, createTheme} from '@mui/material/styles';
 import { WifiFind, ErrorRounded } from "@mui/icons-material";
-import { WhitePaper, TitleP, GenreP, IsekaiP, SearchP, LoginButton, LogoutButton, RegisterButton, SearchButton } from "../styles/Home";
-import html2canvas from "html2canvas";
+import { WhitePaper, TitleP, GenreP, IsekaiP, SearchP, LoginButton, LogoutButton,  SearchButton, SubtitleP, TutorialButton } from "../styles/Home";
+//import html2canvas from "html2canvas";
 
 
 const Home = () => {
@@ -95,7 +95,6 @@ const Home = () => {
   }, [user])
 
   const [loading, setLoading] = useState(false);
-  const title = "なろーせんとーりょく！";
 
 /*   const saveAsImage = (uri) => {
     const downloadLink = document.createElement("a");
@@ -126,7 +125,8 @@ const Home = () => {
 		
   return (
     <ThemeProvider theme={theme}>
-      <TitleP>{title}</TitleP>
+      <TitleP>なろーせんとーりょく！</TitleP>
+      <SubtitleP>readers.ver</SubtitleP>
       {user ? (
         <>
           <LogoutButton onClick={logout}>ログアウト</LogoutButton>
@@ -136,6 +136,7 @@ const Home = () => {
         </>
       ) : (
         <>
+          <TutorialButton component={Link} to={"/tutorial"}>つかいかた</TutorialButton>
           <LoginButton component={Link} to={"/login"}>
             パワーアップ
           </LoginButton>

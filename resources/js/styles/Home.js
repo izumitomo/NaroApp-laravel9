@@ -13,11 +13,22 @@ export const TitleP = styled.p`
   text-align: center;
   font-family: "pixel10-b";
   font-size: 46px;
+  margin: 0px;
 
   @media (max-width: 600px) {
     font-size: 30px;
   }
 `;
+
+export const SubtitleP = styled.p`
+  font-size: 30px;
+  font-family: "pixel12-b";
+  text-align: end;
+  @media (max-width: 600px) {
+    font-size: 20px;
+  }
+`
+
 export const GenreP = styled.p`
   color: black;
   font-family: "pixel10-r";
@@ -37,7 +48,7 @@ export const SearchP = styled(GenreP)`
   fontsize: 22px;
 `;
 
-export const RegisterButton = styled(Button)`
+export const TutorialButton = styled(Button)`
   &&& {
     color: white;
     background-color: #0d6efd;
@@ -50,13 +61,13 @@ export const RegisterButton = styled(Button)`
   }
 `;
 
-export const LoginButton = styled(RegisterButton)`
+export const LoginButton = styled(TutorialButton)`
   &&& {
     background-color: rgb(255 71 71);
   }
 `;
 
-export const LogoutButton = styled(RegisterButton)`
+export const LogoutButton = styled(TutorialButton)`
   &&& {
     background-color: rgb(255 102 232);
   }

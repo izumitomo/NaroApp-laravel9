@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Box, Fab, Grid } from "@mui/material";
 import { AcUnitRounded, BoltRounded } from "@mui/icons-material";
-import {
-	onAuthStateChanged,
-	signInWithPopup,
-} from "firebase/auth";
+import {onAuthStateChanged, signInWithPopup } from "firebase/auth";
 import { auth, googleProvider, twitterProvider } from "../firebase/Config";
 import { Navigate, Link } from "react-router-dom";
 import { StoryP, AuthP} from "../styles/Login";
