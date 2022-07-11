@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import { Paper } from "@mui/material";
+import { Button, Paper } from "@mui/material";
 
 export const leftToRight = keyframes`
   from {
@@ -220,10 +220,23 @@ export const FadeNRankP = styled(NRankP)`
   opacity: 0;
 `;
 
+export const TutorialButton = styled(Button)`
+  &&& {
+    color: white;
+    background-color: #0d6efd;
+    font-family: "pixel10-b";
+    font-size: 20px;
+    text-transform: capitalize;
+    @media (max-width: 600px) {
+      font-size: 15px;
+    }
+  }
+`;
+
 export const BalloonDiv = styled.div`
   position: relative;
   display: inline-block;
-  margin: 1.5em 0 1.5em 15px;
+  margin: 1.5em 15px 1.5em 0;
   padding: 7px 10px;
   min-width: 120px;
   max-width: 100%;
@@ -238,21 +251,47 @@ export const BalloonDiv = styled.div`
     content: "";
     position: absolute;
     top: 50%;
-    left: -24px;
+    right: -24px;
     margin-top: -12px;
     border: 12px solid transparent;
-    border-right: 12px solid #fff;
+    border-left: 12px solid #fff;
     z-index: 2;
   }
   &:after {
     content: "";
     position: absolute;
     top: 50%;
-    left: -30px;
+    right: -30px;
     margin-top: -14px;
     border: 14px solid transparent;
-    border-right: 14px solid #555;
+    border-left: 14px solid #555;
     z-index: 1;
+  }
+  p {
+    margin: 0;
+    padding: 0;
+  }
+`;
+
+export const BlueBalloonDiv = styled.div`
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  margin: 1.5em 0 1.5em 15px;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  font-size: 16px;
+  background: #e0edff;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -30px;
+    margin-top: -15px;
+    border: 15px solid transparent;
+    border-right: 15px solid #e0edff;
   }
   p {
     margin: 0;

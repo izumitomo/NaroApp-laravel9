@@ -9,7 +9,8 @@ import { auth } from "../firebase/Config";
 import {Box, Grid, InputLabel, IconButton, Select, MenuItem, FormGroup, FormControl, FormControlLabel, Checkbox} from '@mui/material';
 import { ThemeProvider, createTheme} from '@mui/material/styles';
 import { WifiFind, ErrorRounded } from "@mui/icons-material";
-import { WhitePaper, TitleP, GenreP, IsekaiP, SearchP, LoginButton, LogoutButton,  SearchButton, SubtitleP, TutorialButton } from "../styles/Home";
+import { WhitePaper, TitleP, GenreP, IsekaiP, SearchP, LoginButton, LogoutButton,  SearchButton, SubtitleP, } from "../styles/Home";
+import { TutorialButton } from "../styles/Common";
 //import html2canvas from "html2canvas";
 
 
@@ -126,7 +127,7 @@ const Home = () => {
   return (
     <ThemeProvider theme={theme}>
       <TitleP>なろーせんとーりょく！</TitleP>
-      <SubtitleP>readers.ver</SubtitleP>
+      <SubtitleP>Readers.Ver</SubtitleP>
       {user ? (
         <>
           <LogoutButton onClick={logout}>ログアウト</LogoutButton>

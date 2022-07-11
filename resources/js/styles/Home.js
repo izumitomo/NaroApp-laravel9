@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import {Paper, IconButton, Button} from "@mui/material";
-import { Centering } from "./Common";
+import {Button} from "@mui/material";
+import { Centering, TutorialButton } from "./Common";
 export const WhitePaper = styled(Centering)`
   &&& {
     background-color: #ffffff;
@@ -46,19 +46,6 @@ export const IsekaiP = styled(GenreP)`
 `;
 export const SearchP = styled(GenreP)`
   fontsize: 22px;
-`;
-
-export const TutorialButton = styled(Button)`
-  &&& {
-    color: white;
-    background-color: #0d6efd;
-    font-family: "pixel10-b";
-    font-size: 20px;
-    text-transform: capitalize;
-    @media (max-width: 600px) {
-      font-size: 15px;
-    }
-  }
 `;
 
 export const LoginButton = styled(TutorialButton)`
