@@ -127,17 +127,23 @@ const Home = () => {
   return (
     <ThemeProvider theme={theme}>
       <TitleP>なろーせんとーりょく！</TitleP>
-      <SubtitleP>Readers.Ver</SubtitleP>
+      <SubtitleP>Readers Ver.</SubtitleP>
       {user ? (
         <>
           <LogoutButton onClick={logout}>ログアウト</LogoutButton>
-          <IconButton color="pink" size="large" onClick={() => setHidden(false)}>
-            <ErrorRounded fontSize="large"/>
+          <TutorialButton component={Link} to={"/tutorial"}>
+            しつもん
+          </TutorialButton>
+          <IconButton
+            color="pink"
+            size="large"
+            onClick={() => setHidden(false)}
+          >
+            <ErrorRounded fontSize="large" />
           </IconButton>
         </>
       ) : (
         <>
-          <TutorialButton component={Link} to={"/tutorial"}>つかいかた</TutorialButton>
           <LoginButton component={Link} to={"/login"}>
             パワーアップ
           </LoginButton>
@@ -281,7 +287,7 @@ const Home = () => {
             </div>
           </Grid>
           {!hidden && (
-            <Grid item xs={10} sx={{mt:1}}>
+            <Grid item xs={10} sx={{ mt: 1 }}>
               <Order setOrder={setOrder} />
             </Grid>
           )}

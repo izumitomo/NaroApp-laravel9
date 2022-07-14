@@ -8,7 +8,7 @@ const question2 = "Q.誰がなんで作ったの？"
 const question3 = "Q.どうやって計算してるの？";
 const question4 = "Q.どうしてジャンルごとにボーダーが違うの？";
 const question5 = "Q.能力の表記方法に見覚えが……";
-const question6 = "Q.タイトルのReaders.Verって？";
+const question6 = "Q.タイトルのReaders Ver.って？";
 const question7 = "感想・意見について"
 const question8 = "izumiについて"
 const text = "なろーせんとーりょくの作成に至ったのは、元々コメディ月間1位を取ったのがきっかけ。なろうに投稿したので、開発背景やデータの算出方法に興味がある方は是非。"
@@ -60,10 +60,10 @@ const Tutorial = () => {
           {question8}
           <br />
         </IndexA>
-        {/*         <IndexA href="#8">
-          {question8}
+        <IndexA href="#8" style={{ color: "#ef00ff" }}>
+          特別エッセイ
           <br />
-        </IndexA> */}
+        </IndexA>
       </div>
       <BlueBalloonDiv id="1">
         <QuestionP>{question1}</QuestionP>
@@ -128,8 +128,9 @@ const Tutorial = () => {
       <BalloonDiv>
         <MainP>
           なろーせんとーりょく！に関するエッセイをなろうに書いたので、なろーせんとーりょく！を使ってみた感想・意見をizumiに伝えてくれる奇特な方は是非そちらへ！
+          制作経緯やざっくりとした戦闘力の算出方法等、載っています。
           <br />
-          今のところ、Writers.Verを制作する予定はありませんが、反響次第で……
+          今のところ、Writers Ver.を制作する予定はありませんが、反響次第で……
         </MainP>
       </BalloonDiv>
       <SpecialBalloonDiv id="8">
@@ -140,7 +141,9 @@ const Tutorial = () => {
           コメディで月間1位を取った際に、各ジャンルのポイント以外の指標の差異が目に留まり、こんなものを作ってしまったコメディ作者です。
         </MainP>
       </BalloonDiv>
-			<BackButton component={Link} to={"/"}>ホームに戻る</BackButton>
+      <BackButton component={Link} to={"/"}>
+        ホームに戻る
+      </BackButton>
     </>
   );
 }
