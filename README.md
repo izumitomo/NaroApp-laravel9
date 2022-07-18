@@ -26,9 +26,9 @@ https://user-images.githubusercontent.com/90303089/177453345-220b7800-f7c3-4414-
 ## 環境
 - php: 8.0.2
 - laravel/framework: 9.11
-- react 18.1.0
-- react-chartjs-2 4.2.0
-- firebase 9.8.4
+- react: 18.1.0
+- react-chartjs-2: 4.2.0
+- firebase: 9.8.4
 
 ## 補足
 NaroAppはデザインにも注力をしており、全体としてドット絵のゲームテイストの表記を中心としている。
