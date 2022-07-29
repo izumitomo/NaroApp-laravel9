@@ -25,7 +25,7 @@ https://user-images.githubusercontent.com/90303089/177453345-220b7800-f7c3-4414-
 
 ## 環境
 - php: 8.0.2
-- laravel/framework: 9.11
+- laravel: 9.11
 - react: 18.1.0
 - react-chartjs-2: 4.2.0
 - firebase: 9.8.4
