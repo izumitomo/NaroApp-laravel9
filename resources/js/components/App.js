@@ -2,6 +2,7 @@ import React from "react";
 import Home from "./Home";
 import Register from "./Register";
 import Login from "./Login";
+import Tutorial from "./Tutorial";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createRoot } from "react-dom/client";
 
@@ -12,8 +13,9 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/tutorial" element={<Tutorial />} />
         <Route path={"/register"} element={<Register />} />
-        <Route path={"/login"} element={<Login />} />{" "}
+        <Route path={"/login"} element={<Login />} />
       </Routes>
     </BrowserRouter>
   );
