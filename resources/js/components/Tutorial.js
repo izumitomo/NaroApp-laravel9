@@ -61,7 +61,7 @@ const Tutorial = () => {
           <br />
         </IndexA>
         <IndexA href="#8" style={{ color: "#ef00ff" }}>
-          特別エッセイ
+          <a href="https://ncode.syosetu.com/n9418hx/">特別エッセイ</a>
           <br />
         </IndexA>
       </div>
@@ -127,7 +127,9 @@ const Tutorial = () => {
       </SpecialBalloonDiv>
       <BalloonDiv>
         <MainP>
-          なろーせんとーりょく！に関するエッセイをなろうに書いたので、なろーせんとーりょく！を使ってみた感想・意見をizumiに伝えてくれる奇特な方は是非そちらへ！
+          なろーせんとーりょく！に関する
+          <a href="https://ncode.syosetu.com/n9418hx/">特別エッセイ</a>
+          をなろうに書いたので、なろーせんとーりょく！を使ってみた感想・意見をizumiに伝えてくれる奇特な方は是非そちらへ！
           制作経緯やざっくりとした戦闘力の算出方法等、載っています。
           <br />
           今のところ、Writers Ver.を制作する予定はありませんが、反響次第で……
