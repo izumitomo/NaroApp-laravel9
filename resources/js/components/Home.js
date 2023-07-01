@@ -131,9 +131,9 @@ const Home = () => {
       {user ? (
         <>
           <LogoutButton onClick={logout}>ログアウト</LogoutButton>
-          <TutorialButton component={Link} to={"/tutorial"}>
+          {/* <TutorialButton component={Link} to={"/tutorial"}>
             しつもん
-          </TutorialButton>
+          </TutorialButton> */}
           <IconButton
             color="pink"
             size="large"
